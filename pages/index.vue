@@ -2,13 +2,32 @@
   <div class="welcome-container">
     <div id="welcome" class="welcome-main pa-6">
       <v-row class="welcome-main-logo">
-        <v-col cols="6">
+        <v-col cols="2"></v-col>
+        <v-col cols="2">
           <v-img
             contain
             :src="require('~/assets/main-logo.png')"
             max-height="120"
           ></v-img>
         </v-col>
+        <v-col cols="2">
+          <v-row justify="end">
+            <span
+              :style="lang === 'EN' && langActive"
+              class="international"
+              @click="lang = 'EN'"
+              >EN</span
+            >
+            <span :style="langActive" class="mx-2">|</span>
+            <span
+              :style="lang === 'DE' && langActive"
+              class="international mr-4"
+              @click="lang = 'DE'"
+              >DE</span
+            >
+          </v-row>
+        </v-col>
+        <v-col cols="6"></v-col>
       </v-row>
       <v-row class="full-height" align-content="center">
         <v-col cols="2">
@@ -53,6 +72,7 @@ export default {
         'Dr. Nidal Toman',
         'Contact',
       ],
+      lang: 'EN',
 
       welcomeStyle: {
         color: this.$vuetify.theme.themes.light.text,
@@ -63,12 +83,18 @@ export default {
       descriptionStyle: {
         color: this.$vuetify.theme.themes.light.text,
       },
+      langActive: {
+        color: this.$vuetify.theme.themes.light.primary3,
+      },
     }
   },
 }
 </script>
 
 <style>
+.international {
+  cursor: pointer;
+}
 .welcome-main-logo {
   height: 0%;
 }
