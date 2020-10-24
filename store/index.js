@@ -1,9 +1,16 @@
 export const state = () => ({
   locales: ['en', 'de'],
-  locale: 'de',
+  locale: 'en',
 
   tab: 0,
-  labels: ['Home', 'Treatments', 'Info Desk', 'Dr. Nidal Toman', 'Contact'],
+  labels: [
+    'Home',
+    'Treatments',
+    'Practice',
+    'Info Desk',
+    'Dr. Nidal Toman',
+    'Contact',
+  ],
 })
 
 export const mutations = {

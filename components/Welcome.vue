@@ -12,18 +12,23 @@
         </v-col>
         <v-col cols="2">
           <v-row justify="end">
-            <span
-              :style="locale === 'en' && langActive"
-              class="international"
-              @click="locale = 'en'"
-              >EN</span
+            <nuxt-link
+              :style="locale === 'en' && localeActive"
+              :to="
+                locale === 'de'
+                  ? $route.fullPath.replace(/^\/[^\/]+/, '')
+                  : $route.fullPath
+              "
+              @click="setLanguage('en')"
+              >EN</nuxt-link
             >
-            <span :style="langActive" class="mx-2">|</span>
-            <span
-              :style="locale === 'de' && langActive"
-              class="international mr-4"
-              @click="locale = 'de'"
-              >DE</span
+            <span :style="localeActive" class="mx-2">|</span>
+            <nuxt-link
+              :style="locale === 'de' && localeActive"
+              :to="locale === 'en' ? '/de' + $route.fullPath : $route.fullPath"
+              class="mr-4"
+              @click="setLanguage('de')"
+              >DE</nuxt-link
             >
           </v-row>
         </v-col>
@@ -32,15 +37,14 @@
       <v-row class="full-height" align-content="end">
         <v-col cols="3">
           <div class="d-flex flex-column">
-            <span :style="welcomeStyle" class="text-h5 font-weight-medium"
-              >Welcome to Clinic of</span
-            >
-            <span :style="nameStyle" class="text-h3 font-weight-bold"
-              >Dr med Nidal Toman</span
-            >
+            <span :style="welcomeStyle" class="text-h5 font-weight-medium">
+              {{ $t('title1') }}
+            </span>
+            <span :style="nameStyle" class="text-h3 font-weight-bold">
+              {{ $t('title2') }}
+            </span>
             <span :style="descriptionStyle" class="text-h6 mb-10">
-              Plastic surgeon and specialist for plastic, aesthetic and
-              reconstructive surgery in Berlin
+              {{ $t('title3') }}
             </span>
             <v-col cols="4">
               <v-tabs
@@ -52,7 +56,9 @@
                 <v-tabs-slider
                   :color="$vuetify.theme.themes.light.primary3"
                 ></v-tabs-slider>
-                <v-tab v-for="label in labels" :key="label">{{ label }}</v-tab>
+                <v-tab v-for="label in labels" :key="label">{{
+                  $t(label)
+                }}</v-tab>
               </v-tabs>
             </v-col>
           </div>
@@ -75,7 +81,7 @@ export default {
       descriptionStyle: {
         color: this.$vuetify.theme.themes.light.text,
       },
-      langActive: {
+      localeActive: {
         color: this.$vuetify.theme.themes.light.primary3,
       },
     }
@@ -101,15 +107,17 @@ export default {
       },
     },
   },
+  methods: {
+    setLanguage(val) {
+      this.locale = val
+    },
+  },
 }
 </script>
 
 <style>
-.international {
-  cursor: pointer;
-}
-.welcome-main-logo {
-  height: 0%;
+a {
+  text-decoration: none;
 }
 .welcome-container {
   width: 100%;
@@ -119,6 +127,9 @@ export default {
 .welcome-main {
   width: 200%;
   height: 100%;
+}
+.welcome-main-logo {
+  height: 0%;
 }
 .full-height {
   height: 100%;
