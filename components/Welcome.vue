@@ -13,16 +13,16 @@
         <v-col cols="2">
           <v-row justify="end">
             <span
-              :style="lang === 'EN' && langActive"
+              :style="locale === 'en' && langActive"
               class="international"
-              @click="lang = 'EN'"
+              @click="locale = 'en'"
               >EN</span
             >
             <span :style="langActive" class="mx-2">|</span>
             <span
-              :style="lang === 'DE' && langActive"
+              :style="locale === 'de' && langActive"
               class="international mr-4"
-              @click="lang = 'DE'"
+              @click="locale = 'de'"
               >DE</span
             >
           </v-row>
@@ -64,16 +64,6 @@
 export default {
   data() {
     return {
-      tab: 0,
-      labels: [
-        'Welcome',
-        'Treatments',
-        'Info Desk',
-        'Dr. Nidal Toman',
-        'Contact',
-      ],
-      lang: 'EN',
-
       welcomeStyle: {
         color: this.$vuetify.theme.themes.light.text,
       },
@@ -87,6 +77,27 @@ export default {
         color: this.$vuetify.theme.themes.light.primary3,
       },
     }
+  },
+  computed: {
+    tab: {
+      set(val) {
+        this.$store.commit('SET_TAB', val)
+      },
+      get() {
+        return this.$store.state.tab
+      },
+    },
+    labels() {
+      return this.$store.state.labels
+    },
+    locale: {
+      set(val) {
+        this.$store.commit('SET_LOCALE', val)
+      },
+      get() {
+        return this.$store.state.locale
+      },
+    },
   },
 }
 </script>
