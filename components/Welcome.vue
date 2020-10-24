@@ -29,18 +29,20 @@
         </v-col>
         <v-col cols="6"></v-col>
       </v-row>
-      <v-row class="full-height" align-content="center">
-        <v-col cols="2">
+      <v-row class="full-height" align-content="end">
+        <v-col cols="3">
           <div class="d-flex flex-column">
-            <span :style="welcomeStyle" class="text-h5"
+            <span :style="welcomeStyle" class="text-h5 font-weight-medium"
               >Welcome to Clinic of</span
             >
-            <span :style="nameStyle" class="text-h3">Dr med Nidal Toman</span>
+            <span :style="nameStyle" class="text-h3 font-weight-bold"
+              >Dr med Nidal Toman</span
+            >
             <span :style="descriptionStyle" class="text-h6 mb-10">
               Plastic surgeon and specialist for plastic, aesthetic and
               reconstructive surgery in Berlin
             </span>
-            <v-col cols="6">
+            <v-col cols="4">
               <v-tabs
                 v-model="tab"
                 background-color="transparent"
