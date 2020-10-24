@@ -1,6 +1,19 @@
 <template>
   <div class="treatments-container">
-    <div id="treatments" class="treatments-main pa-6">
+    <div
+      id="treatments"
+      style="position: relative"
+      class="treatments-main pa-6"
+    >
+      <v-tabs
+        v-model="tab"
+        style="position: absolute; top: 100px; right: 10px"
+        background-color="transparent"
+        :color="$vuetify.theme.themes.light.primary"
+        vertical
+      >
+        <v-tab v-for="label in labels" :key="label">{{ $t(label) }}</v-tab>
+      </v-tabs>
       <v-row class="treatments-main-logo"></v-row>
       <v-row class="full-height">
         <v-tabs
@@ -9,7 +22,7 @@
           :color="$vuetify.theme.themes.light.primary"
           right
         >
-          <v-tab v-for="label in labels" :key="label">{{ label }}</v-tab>
+          <v-tab v-for="label in labels" :key="label">{{ $t(label) }}</v-tab>
         </v-tabs>
       </v-row>
     </div>
