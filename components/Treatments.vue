@@ -19,16 +19,28 @@
 <script>
 export default {
   data() {
-    return {
-      tab: 0,
-      labels: [
-        'Welcome',
-        'Treatments',
-        'Info Desk',
-        'Dr. Nidal Toman',
-        'Contact',
-      ],
-    }
+    return {}
+  },
+  computed: {
+    tab: {
+      set(val) {
+        this.$store.commit('SET_TAB', val)
+      },
+      get() {
+        return this.$store.state.tab
+      },
+    },
+    labels() {
+      return this.$store.state.labels
+    },
+    locale: {
+      set(val) {
+        this.$store.commit('SET_LOCALE', val)
+      },
+      get() {
+        return this.$store.state.locale
+      },
+    },
   },
 }
 </script>
