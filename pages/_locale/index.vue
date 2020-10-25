@@ -2,20 +2,23 @@
   <div>
     <!-- <Welcome />
     <Treatments /> -->
-    <TreatmentDetail />
+    <!-- <TreatmentDetail /> -->
+    <Contact />
   </div>
 </template>
 
 <script>
 // import TreatmentDetail from '../TreatmentDetail/TreatmentDetail'
 // import Welcome from '~/components/Welcome'
-import TreatmentDetail from '~/components/TreatmentDetail/TreatmentDetail'
+// import TreatmentDetail from '~/components/TreatmentDetail/TreatmentDetail'
+import Contact from '~/components/Contact/Contact'
 
 export default {
   components: {
     // Welcome,
     // Treatments,
-    TreatmentDetail,
+    Contact,
+    // TreatmentDetail,
   },
 }
 </script>
