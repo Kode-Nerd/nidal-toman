@@ -1,6 +1,6 @@
 export const state = () => ({
   locales: ['en', 'de'],
-  locale: 'en',
+  locale: 'de',
 
   tab: 0,
   labels: [

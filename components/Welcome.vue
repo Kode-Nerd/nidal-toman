@@ -13,22 +13,22 @@
         <v-col cols="2">
           <v-row justify="end">
             <nuxt-link
-              :style="locale === 'en' && localeActive"
+              :style="locale === 'de' && localeActive"
               :to="
-                locale === 'de'
+                locale === 'en'
                   ? $route.fullPath.replace(/^\/[^\/]+/, '')
                   : $route.fullPath
               "
-              @click="setLanguage('en')"
-              >EN</nuxt-link
+              @click="setLanguage('de')"
+              >DE</nuxt-link
             >
             <span :style="localeActive" class="mx-2">|</span>
             <nuxt-link
-              :style="locale === 'de' && localeActive"
-              :to="locale === 'en' ? '/de' + $route.fullPath : $route.fullPath"
+              :style="locale === 'en' && localeActive"
+              :to="locale === 'de' ? '/en' + $route.fullPath : $route.fullPath"
               class="mr-4"
-              @click="setLanguage('de')"
-              >DE</nuxt-link
+              @click="setLanguage('en')"
+              >EN</nuxt-link
             >
           </v-row>
         </v-col>

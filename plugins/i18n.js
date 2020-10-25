@@ -7,7 +7,7 @@ export default ({ app, store }) => {
   // Set i18n instance on app
   app.i18n = new VueI18n({
     locale: store.state.locale,
-    fallbackLocale: 'en',
+    fallbackLocale: 'de',
     messages: {
       en: {
         ...require(`~/assets/locales/en/welcome.json`),
