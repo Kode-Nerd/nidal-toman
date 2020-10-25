@@ -11,6 +11,9 @@ export const state = () => ({
     'Dr. Nidal Toman',
     'Contact',
   ],
+
+  // treatment details
+  activeTab: 'general',
 })
 
 export const mutations = {
@@ -19,5 +22,8 @@ export const mutations = {
   },
   SET_LOCALE(state, val) {
     state.locale = val
+  },
+  SET_ACTIVE_TAB_TREATMENT_DETAIL(state, { activeTab }) {
+    state.activeTab = activeTab
   },
 }

@@ -1,18 +1,21 @@
 <template>
   <div>
-    <Welcome />
-    <Treatments />
+    <!-- <Welcome />
+    <Treatments /> -->
+    <TreatmentDetail />
   </div>
 </template>
 
 <script>
-import Welcome from '~/components/Welcome'
-import Treatments from '~/components/Treatments'
+// import TreatmentDetail from '../TreatmentDetail/TreatmentDetail'
+// import Welcome from '~/components/Welcome'
+import TreatmentDetail from '~/components/TreatmentDetail/TreatmentDetail'
 
 export default {
   components: {
-    Welcome,
-    Treatments,
+    // Welcome,
+    // Treatments,
+    TreatmentDetail,
   },
 }
 </script>
