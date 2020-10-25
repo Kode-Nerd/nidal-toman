@@ -35,7 +35,7 @@
         <v-col cols="6"></v-col>
       </v-row>
       <v-row class="full-height" align-content="end">
-        <v-col cols="3">
+        <div :style="welcomeBannerStyle">
           <div class="d-flex flex-column">
             <span :style="welcomeStyle" class="text-h5 font-weight-medium">
               {{ $t('title1') }}
@@ -60,7 +60,7 @@
               </v-tabs>
             </v-col>
           </div>
-        </v-col>
+        </div>
       </v-row>
     </div>
   </div>
@@ -70,7 +70,8 @@
 export default {
   data() {
     return {
-      deltaScroll: 0,
+      welcomeMainLeftPos: 0,
+      welcomeBannerLeftPos: 0,
     }
   },
   computed: {
@@ -121,7 +122,15 @@ export default {
     welcomeMainStyle() {
       return {
         position: 'absolute',
-        left: `${this.deltaScroll}px`,
+        left: `${this.welcomeMainLeftPos}px`,
+      }
+    },
+    welcomeBannerStyle() {
+      return {
+        width: '25%',
+        position: 'absolute',
+        left: `${24 + this.welcomeBannerLeftPos}px`,
+        bottom: '36px',
       }
     },
   },
@@ -132,8 +141,34 @@ export default {
     getEvent(e) {
       e.preventDefault()
       e.stopPropagation()
-      this.deltaScroll -= e.deltaY / 10
-      console.log(e.deltaX, e.deltaY, this.deltaScroll)
+      console.log('triggered')
+      this.animateMainContainer(e.deltaX, e.deltaY)
+      this.animateWelcomeBanner(e.deltaX, e.deltaY)
+    },
+    animateMainContainer(deltaX, deltaY) {
+      let leftPos = this.welcomeMainLeftPos
+      if (leftPos <= 0 && leftPos > -window.innerWidth) {
+        this.welcomeMainLeftPos -= deltaY / 5
+
+        // to avoid offset set by wheel event
+        leftPos = this.welcomeMainLeftPos
+        if (leftPos > 0) {
+          this.welcomeMainLeftPos = 0
+        }
+      }
+    },
+    animateWelcomeBanner(deltaX, deltaY) {
+      let leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
+        this.welcomeBannerLeftPos += deltaY / 5
+      }
+
+      // to avoid offset set by wheel event
+      leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain >= 0) {
+        console.log('called')
+        this.welcomeBannerLeftPos = 0
+      }
     },
   },
 }
