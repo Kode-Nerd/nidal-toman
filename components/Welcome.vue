@@ -1,6 +1,6 @@
 <template>
-  <div class="welcome-container">
-    <div id="welcome" class="welcome-main pa-6">
+  <div class="welcome-container" @wheel="getEvent">
+    <div id="welcome" :style="welcomeMainStyle" class="welcome-main pa-6">
       <v-row class="welcome-main-logo">
         <v-col cols="2"></v-col>
         <v-col cols="2">
@@ -50,12 +50,10 @@
               <v-tabs
                 v-model="tab"
                 background-color="transparent"
-                :color="$vuetify.theme.themes.light.primary"
+                :color="themes.light.primary"
                 vertical
               >
-                <v-tabs-slider
-                  :color="$vuetify.theme.themes.light.primary3"
-                ></v-tabs-slider>
+                <v-tabs-slider :color="themes.light.primary3"></v-tabs-slider>
                 <v-tab v-for="label in labels" :key="label">{{
                   $t(label)
                 }}</v-tab>
@@ -72,18 +70,7 @@
 export default {
   data() {
     return {
-      welcomeStyle: {
-        color: this.$vuetify.theme.themes.light.text,
-      },
-      nameStyle: {
-        color: this.$vuetify.theme.themes.light.primary3,
-      },
-      descriptionStyle: {
-        color: this.$vuetify.theme.themes.light.text,
-      },
-      localeActive: {
-        color: this.$vuetify.theme.themes.light.primary3,
-      },
+      deltaScroll: 0,
     }
   },
   computed: {
@@ -106,10 +93,47 @@ export default {
         return this.$store.state.locale
       },
     },
+
+    // custom-styling
+    themes() {
+      return this.$vuetify.theme.themes
+    },
+    welcomeStyle() {
+      return {
+        color: this.themes.light.text,
+      }
+    },
+    nameStyle() {
+      return {
+        color: this.themes.light.primary3,
+      }
+    },
+    descriptionStyle() {
+      return {
+        color: this.themes.light.text,
+      }
+    },
+    localeActive() {
+      return {
+        color: this.themes.light.primary3,
+      }
+    },
+    welcomeMainStyle() {
+      return {
+        position: 'absolute',
+        left: `${this.deltaScroll}px`,
+      }
+    },
   },
   methods: {
     setLanguage(val) {
       this.locale = val
+    },
+    getEvent(e) {
+      e.preventDefault()
+      e.stopPropagation()
+      this.deltaScroll -= e.deltaY / 10
+      console.log(e.deltaX, e.deltaY, this.deltaScroll)
     },
   },
 }
@@ -122,7 +146,8 @@ a {
 .welcome-container {
   width: 100%;
   height: 100vh;
-  overflow-x: scroll;
+  position: relative;
+  /* overflow-x: scroll; */
 }
 .welcome-main {
   width: 200%;
