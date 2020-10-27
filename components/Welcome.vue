@@ -171,6 +171,9 @@ export default {
       if (leftPosMain >= 0) {
         this.welcomeBannerLeftPos = 0
       }
+      if (leftPosMain <= -window.innerWidth + 1) {
+        this.welcomeBannerLeftPos = window.innerWidth - 1
+      }
     },
   },
 }
