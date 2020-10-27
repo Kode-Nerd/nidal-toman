@@ -141,7 +141,7 @@ export default {
     getEvent(e) {
       e.preventDefault()
       e.stopPropagation()
-      console.log('triggered')
+
       this.animateMainContainer(e.deltaX, e.deltaY)
       this.animateWelcomeBanner(e.deltaX, e.deltaY)
     },
@@ -155,6 +155,9 @@ export default {
         if (leftPos > 0) {
           this.welcomeMainLeftPos = 0
         }
+        if (leftPos <= -window.innerWidth) {
+          this.welcomeMainLeftPos = -window.innerWidth + 1
+        }
       }
     },
     animateWelcomeBanner(deltaX, deltaY) {
@@ -166,7 +169,6 @@ export default {
       // to avoid offset set by wheel event
       leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain >= 0) {
-        console.log('called')
         this.welcomeBannerLeftPos = 0
       }
     },
