@@ -72,6 +72,7 @@ export default {
     return {
       welcomeMainLeftPos: 0,
       welcomeBannerLeftPos: 0,
+      bannerOpacity: 1,
     }
   },
   computed: {
@@ -131,6 +132,7 @@ export default {
         position: 'absolute',
         left: `${24 + this.welcomeBannerLeftPos}px`,
         bottom: '36px',
+        opacity: this.bannerOpacity,
       }
     },
   },
@@ -173,6 +175,20 @@ export default {
       }
       if (leftPosMain <= -window.innerWidth + 1) {
         this.welcomeBannerLeftPos = window.innerWidth - 1
+      }
+
+      // animating obacity
+      if (
+        leftPosMain <= -window.innerWidth / 6 &&
+        leftPosMain > -window.innerWidth
+      ) {
+        this.bannerOpacity -= (deltaY / (5 * window.innerWidth)) * 4
+      }
+      if (this.bannerOpacity < 0) {
+        this.bannerOpacity = 0
+      }
+      if (this.bannerOpacity >= 0.9 && deltaY < 0) {
+        this.bannerOpacity = 1
       }
     },
   },
