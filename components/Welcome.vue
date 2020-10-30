@@ -61,6 +61,13 @@
             </v-col>
           </div>
         </div>
+        <div :style="figure1">
+          <v-img
+            contain
+            :src="require('~/assets/_asset3.png')"
+            max-height="100vh"
+          ></v-img>
+        </div>
       </v-row>
     </div>
   </div>
@@ -73,6 +80,7 @@ export default {
       welcomeMainLeftPos: 0,
       welcomeBannerLeftPos: 0,
       bannerOpacity: 1,
+      figure1LeftPos: 0,
     }
   },
   computed: {
@@ -135,6 +143,14 @@ export default {
         opacity: this.bannerOpacity,
       }
     },
+    figure1() {
+      return {
+        width: '100vh',
+        position: 'absolute',
+        bottom: '0px',
+        left: `${this.figure1LeftPos + 65}vw`,
+      }
+    },
   },
   methods: {
     setLanguage(val) {
@@ -146,6 +162,7 @@ export default {
 
       this.animateMainContainer(e.deltaX, e.deltaY)
       this.animateWelcomeBanner(e.deltaX, e.deltaY)
+      this.animateFigureOne(e.deltaX, e.deltaY)
     },
     animateMainContainer(deltaX, deltaY) {
       let leftPos = this.welcomeMainLeftPos
@@ -189,6 +206,22 @@ export default {
       }
       if (this.bannerOpacity >= 0.9 && deltaY < 0) {
         this.bannerOpacity = 1
+      }
+    },
+    animateFigureOne(deltaX, deltaY) {
+      let leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
+        this.figure1LeftPos -= deltaY / 200
+      }
+
+      // to avoid offset set by wheel event
+      leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain >= 0) {
+        this.figure1LeftPos = 0
+      }
+      if (leftPosMain <= -window.innerWidth / 4) {
+        const temp = this.figure1LeftPos
+        this.figure1LeftPos = temp
       }
     },
   },
