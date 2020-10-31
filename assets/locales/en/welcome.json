@@ -5,9 +5,11 @@
   "home": "Home", 
   "treatments": "Treatments",
   "practice": "Practice",
-  "info Desk": "Info Desk",
+  "infoDesk": "Info Desk",
   "drNidalToman": "Dr. Nidal Toman",
   "contact": "Contact",
   "infusion": "Power & Anti-stress Infusion Therapies",
-  "discover": "Discover More"
+  "discover": "Discover More",
+  "man": "MAN",
+  "woman": "WOMAN"
 }

@@ -83,6 +83,34 @@
             >
           </nuxt-link>
         </div>
+        <div :style="figureWoman" class="d-flex flex-column align-center">
+          <v-img
+            contain
+            :src="require('~/assets/_asset2.png')"
+            max-height="70vh"
+          ></v-img>
+          <span :style="localeActive" class="text-h6">
+            {{ $t('woman') }}
+          </span>
+          <nuxt-link :style="textStyle" class="align-self-end" to="#"
+            >{{ $t('discover') }}
+            <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
+          </nuxt-link>
+        </div>
+        <div :style="figureMan" class="d-flex flex-column align-center">
+          <v-img
+            contain
+            :src="require('~/assets/_asset4.png')"
+            max-height="70vh"
+          ></v-img>
+          <span :style="localeActive" class="text-h6">
+            {{ $t('man') }}
+          </span>
+          <nuxt-link :style="textStyle" class="align-self-end" to="#"
+            >{{ $t('discover') }}
+            <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
+          </nuxt-link>
+        </div>
       </v-row>
     </div>
   </div>
@@ -97,6 +125,8 @@ export default {
       bannerOpacity: 1,
       figure1LeftPos: 0,
       figure2LeftPos: 0,
+      figureWomanLeftPos: 0,
+      figureManLeftPos: 0,
     }
   },
   computed: {
@@ -180,6 +210,22 @@ export default {
         left: `${this.figure2LeftPos + 150}vw`,
       }
     },
+    figureWoman() {
+      return {
+        width: '50vw',
+        position: 'absolute',
+        bottom: '10vh',
+        left: `${this.figureWomanLeftPos + 180}vw`,
+      }
+    },
+    figureMan() {
+      return {
+        width: '50vw',
+        position: 'absolute',
+        bottom: '10vh',
+        left: `${this.figureManLeftPos + 180}vw`,
+      }
+    },
   },
   methods: {
     getEvent(e) {
@@ -190,6 +236,8 @@ export default {
       this.animateWelcomeBanner(e.deltaX, e.deltaY)
       this.animateFigureOne(e.deltaX, e.deltaY)
       this.animateFigureTwo(e.deltaX, e.deltaY)
+      this.animateFigureWoman(e.deltaX, e.deltaY)
+      this.animateFigureMan(e.deltaX, e.deltaY)
     },
     animateMainContainer(deltaX, deltaY) {
       let leftPos = this.welcomeMainLeftPos
@@ -251,13 +299,38 @@ export default {
     animateFigureTwo(deltaX, deltaY) {
       let leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figure2LeftPos -= deltaY / 85
+        this.figure2LeftPos -= deltaY / 75
       }
 
       // to avoid offset set by wheel event
       leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain >= 0) {
         this.figure2LeftPos = 0
+      }
+    },
+
+    animateFigureWoman(deltaX, deltaY) {
+      let leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
+        this.figureWomanLeftPos -= deltaY / 95
+      }
+
+      // to avoid offset set by wheel event
+      leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain >= 0) {
+        this.figureWomanLeftPos = 0
+      }
+    },
+    animateFigureMan(deltaX, deltaY) {
+      let leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
+        this.figureManLeftPos -= deltaY / 220
+      }
+
+      // to avoid offset set by wheel event
+      leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain >= 0) {
+        this.figureManLeftPos = 0
       }
     },
   },
