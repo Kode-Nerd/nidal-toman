@@ -13,6 +13,7 @@
         <v-col cols="2">
           <v-row justify="end">
             <nuxt-link
+              class="localization"
               :style="locale === 'de' ? localeActive : textStyle"
               :to="
                 locale === 'en'
@@ -26,7 +27,7 @@
             <nuxt-link
               :style="locale === 'en' ? localeActive : textStyle"
               :to="locale === 'de' ? '/en' + $route.fullPath : $route.fullPath"
-              class="mr-4"
+              class="mr-4 localization"
               @click="setLanguage('en')"
               >EN</nuxt-link
             >
@@ -68,12 +69,21 @@
             max-height="100vh"
           ></v-img>
         </div>
-        <div :style="figure2">
+        <div :style="figure2" class="d-flex flex-column align-center">
+          <span :style="textStyle" class="text-h6">
+            {{ $t('infusion') }}
+          </span>
           <v-img
             contain
             :src="require('~/assets/_asset1.png')"
             max-height="70vh"
           ></v-img>
+          <nuxt-link :style="localeActive" class="align-self-end" to="#"
+            >{{ $t('discover') }}
+            <v-icon :color="themes.light.primary3" medium
+              >mdi-arrow-right</v-icon
+            >
+          </nuxt-link>
         </div>
       </v-row>
     </div>
@@ -163,7 +173,7 @@ export default {
       return {
         width: '60vh',
         position: 'absolute',
-        bottom: '20vh',
+        bottom: '5vh',
         left: `${this.figure2LeftPos + 150}vw`,
       }
     },
@@ -241,7 +251,7 @@ export default {
     animateFigureTwo(deltaX, deltaY) {
       let leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figure2LeftPos -= deltaY / 93
+        this.figure2LeftPos -= deltaY / 85
       }
 
       // to avoid offset set by wheel event
@@ -276,5 +286,8 @@ a {
 }
 .full-width {
   width: 100%;
+}
+.localization {
+  z-index: 1;
 }
 </style>

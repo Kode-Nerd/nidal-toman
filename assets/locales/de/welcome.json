@@ -2,10 +2,12 @@
   "title1": "Willkommen in der Klinik von",
   "title2": "Dr. med Nidal Toman",
   "title3": "Plastischer Chirurg und Spezialist für plastische, ästhetische und rekonstruktive Chirurgie in Berlin",
-  "Home": "Home",
-  "Treatments": "Behandlungen",
-  "Practice": "Praxis",
-  "Info Desk": "Infothek",
-  "Dr. Nidal Toman": "Dr. Nidal Toman",
-  "Contact": "Kontakt"
+  "home": "Home",
+  "treatments": "Behandlungen",
+  "practice": "Praxis",
+  "infoDesk": "Infothek",
+  "drNidalToman": "Dr. Nidal Toman",
+  "contact": "Kontakt",
+  "infusion": "Power & Anti-Stress Infusionstherapie",
+  "discover": "Mehr Informationen"
 }

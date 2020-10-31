@@ -4,12 +4,12 @@ export const state = () => ({
 
   tab: 0,
   labels: [
-    'Home',
-    'Treatments',
-    'Practice',
-    'Info Desk',
-    'Dr. Nidal Toman',
-    'Contact',
+    'home',
+    'treatments',
+    'practice',
+    'infoDesk',
+    'drNidalToman',
+    'contact',
   ],
 })
 
