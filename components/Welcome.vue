@@ -144,7 +144,7 @@ export default {
     },
     welcomeBannerStyle() {
       return {
-        width: '25%',
+        width: '20%',
         position: 'absolute',
         left: `${24 + this.welcomeBannerLeftPos}px`,
         bottom: '36px',
