@@ -10,7 +10,7 @@
             max-height="120"
           ></v-img>
         </v-col>
-        <v-col cols="2">
+        <v-col :style="localeStyle" cols="2">
           <v-row justify="end">
             <nuxt-link
               class="localization"
@@ -148,6 +148,11 @@ export default {
       return {
         position: 'absolute',
         left: `${this.welcomeMainLeftPos}px`,
+      }
+    },
+    localeStyle() {
+      return {
+        opacity: this.bannerOpacity,
       }
     },
     welcomeBannerStyle() {
