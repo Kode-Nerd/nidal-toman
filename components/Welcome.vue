@@ -68,6 +68,13 @@
             max-height="100vh"
           ></v-img>
         </div>
+        <div :style="figure2">
+          <v-img
+            contain
+            :src="require('~/assets/_asset1.png')"
+            max-height="70vh"
+          ></v-img>
+        </div>
       </v-row>
     </div>
   </div>
@@ -81,6 +88,7 @@ export default {
       welcomeBannerLeftPos: 0,
       bannerOpacity: 1,
       figure1LeftPos: 0,
+      figure2LeftPos: 0,
     }
   },
   computed: {
@@ -151,6 +159,14 @@ export default {
         left: `${this.figure1LeftPos + 65}vw`,
       }
     },
+    figure2() {
+      return {
+        width: '60vh',
+        position: 'absolute',
+        bottom: '20vh',
+        left: `${this.figure2LeftPos + 150}vw`,
+      }
+    },
   },
   methods: {
     setLanguage(val) {
@@ -163,25 +179,26 @@ export default {
       this.animateMainContainer(e.deltaX, e.deltaY)
       this.animateWelcomeBanner(e.deltaX, e.deltaY)
       this.animateFigureOne(e.deltaX, e.deltaY)
+      this.animateFigureTwo(e.deltaX, e.deltaY)
     },
     animateMainContainer(deltaX, deltaY) {
       let leftPos = this.welcomeMainLeftPos
-      if (leftPos <= 0 && leftPos > -window.innerWidth) {
+      if (leftPos <= 0 && leftPos >= -window.innerWidth) {
         this.welcomeMainLeftPos -= deltaY / 5
 
         // to avoid offset set by wheel event
         leftPos = this.welcomeMainLeftPos
-        if (leftPos > 0) {
+        if (leftPos >= 0) {
           this.welcomeMainLeftPos = 0
         }
         if (leftPos <= -window.innerWidth) {
-          this.welcomeMainLeftPos = -window.innerWidth + 1
+          this.welcomeMainLeftPos = -window.innerWidth
         }
       }
     },
     animateWelcomeBanner(deltaX, deltaY) {
       let leftPosMain = this.welcomeMainLeftPos
-      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
+      if (leftPosMain <= 0 && leftPosMain >= -window.innerWidth) {
         this.welcomeBannerLeftPos += deltaY / 5
       }
 
@@ -190,34 +207,47 @@ export default {
       if (leftPosMain >= 0) {
         this.welcomeBannerLeftPos = 0
       }
-      if (leftPosMain <= -window.innerWidth + 1) {
-        this.welcomeBannerLeftPos = window.innerWidth - 1
+      if (leftPosMain <= -window.innerWidth) {
+        this.welcomeBannerLeftPos = window.innerWidth
       }
 
-      // animating obacity
+      // animating opacity
       if (
-        leftPosMain <= -window.innerWidth / 6 &&
-        leftPosMain > -window.innerWidth
+        leftPosMain <= -window.innerWidth / 12 &&
+        leftPosMain >= -window.innerWidth / 6
       ) {
-        this.bannerOpacity -= (deltaY / (5 * window.innerWidth)) * 4
+        this.bannerOpacity -= (deltaY / (5 * window.innerWidth)) * 12
       }
-      if (this.bannerOpacity < 0) {
-        this.bannerOpacity = 0
-      }
-      if (this.bannerOpacity >= 0.9 && deltaY < 0) {
+      leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain >= -window.innerWidth / 12) {
         this.bannerOpacity = 1
+      }
+      if (leftPosMain <= -window.innerWidth / 6) {
+        this.bannerOpacity = 0
       }
     },
     animateFigureOne(deltaX, deltaY) {
       let leftPosMain = this.welcomeMainLeftPos
-      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth + 1) {
-        this.figure1LeftPos -= deltaY / 200
+      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
+        this.figure1LeftPos -= deltaY / 150
       }
 
       // to avoid offset set by wheel event
       leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain >= 0) {
         this.figure1LeftPos = 0
+      }
+    },
+    animateFigureTwo(deltaX, deltaY) {
+      let leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
+        this.figure2LeftPos -= deltaY / 93
+      }
+
+      // to avoid offset set by wheel event
+      leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain >= 0) {
+        this.figure2LeftPos = 0
       }
     },
   },
