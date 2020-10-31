@@ -13,7 +13,7 @@
         <v-col cols="2">
           <v-row justify="end">
             <nuxt-link
-              :style="locale === 'de' && localeActive"
+              :style="locale === 'de' ? localeActive : textStyle"
               :to="
                 locale === 'en'
                   ? $route.fullPath.replace(/^\/[^\/]+/, '')
@@ -24,7 +24,7 @@
             >
             <span :style="localeActive" class="mx-2">|</span>
             <nuxt-link
-              :style="locale === 'en' && localeActive"
+              :style="locale === 'en' ? localeActive : textStyle"
               :to="locale === 'de' ? '/en' + $route.fullPath : $route.fullPath"
               class="mr-4"
               @click="setLanguage('en')"
@@ -43,7 +43,7 @@
             <span :style="nameStyle" class="text-h3 font-weight-bold">
               {{ $t('title2') }}
             </span>
-            <span :style="descriptionStyle" class="text-h6 mb-10">
+            <span :style="textStyle" class="text-h6 mb-10">
               {{ $t('title3') }}
             </span>
             <v-col cols="4">
@@ -126,7 +126,7 @@ export default {
         color: this.themes.light.primary3,
       }
     },
-    descriptionStyle() {
+    textStyle() {
       return {
         color: this.themes.light.text,
       }
