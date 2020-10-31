@@ -20,7 +20,6 @@
                   ? $route.fullPath.replace(/^\/[^\/]+/, '')
                   : $route.fullPath
               "
-              @click="setLanguage('de')"
               >DE</nuxt-link
             >
             <span :style="localeActive" class="mx-2">|</span>
@@ -28,7 +27,6 @@
               :style="locale === 'en' ? localeActive : textStyle"
               :to="locale === 'de' ? '/en' + $route.fullPath : $route.fullPath"
               class="mr-4 localization"
-              @click="setLanguage('en')"
               >EN</nuxt-link
             >
           </v-row>
@@ -179,9 +177,6 @@ export default {
     },
   },
   methods: {
-    setLanguage(val) {
-      this.locale = val
-    },
     getEvent(e) {
       e.preventDefault()
       e.stopPropagation()
