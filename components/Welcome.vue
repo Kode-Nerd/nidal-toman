@@ -210,7 +210,7 @@ export default {
     },
     animateFigureOne(deltaX, deltaY) {
       let leftPosMain = this.welcomeMainLeftPos
-      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
+      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth + 1) {
         this.figure1LeftPos -= deltaY / 200
       }
 
@@ -218,10 +218,6 @@ export default {
       leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain >= 0) {
         this.figure1LeftPos = 0
-      }
-      if (leftPosMain <= -window.innerWidth / 4) {
-        const temp = this.figure1LeftPos
-        this.figure1LeftPos = temp
       }
     },
   },
