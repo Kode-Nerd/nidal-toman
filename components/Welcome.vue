@@ -1,6 +1,10 @@
 <template>
-  <div class="welcome-container">
-    <div id="welcome" class="welcome-main pa-6">
+  <div
+    class="welcome-container"
+    :style="welcomeContainerStyle"
+    @wheel="getEvent"
+  >
+    <div id="welcome" :style="welcomeMainStyle" class="welcome-main pa-6">
       <v-row class="welcome-main-logo">
         <v-col cols="2"></v-col>
         <v-col cols="2">
@@ -10,32 +14,31 @@
             max-height="120"
           ></v-img>
         </v-col>
-        <v-col cols="2">
+        <v-col :style="localeStyle" cols="2">
           <v-row justify="end">
             <nuxt-link
-              :style="locale === 'en' && localeActive"
+              class="localization"
+              :style="locale === 'de' ? localeActive : textStyle"
               :to="
-                locale === 'de'
+                locale === 'en'
                   ? $route.fullPath.replace(/^\/[^\/]+/, '')
                   : $route.fullPath
               "
-              @click="setLanguage('en')"
-              >EN</nuxt-link
+              >DE</nuxt-link
             >
             <span :style="localeActive" class="mx-2">|</span>
             <nuxt-link
-              :style="locale === 'de' && localeActive"
-              :to="locale === 'en' ? '/de' + $route.fullPath : $route.fullPath"
-              class="mr-4"
-              @click="setLanguage('de')"
-              >DE</nuxt-link
+              :style="locale === 'en' ? localeActive : textStyle"
+              :to="locale === 'de' ? '/en' + $route.fullPath : $route.fullPath"
+              class="mr-4 localization"
+              >EN</nuxt-link
             >
           </v-row>
         </v-col>
         <v-col cols="6"></v-col>
       </v-row>
       <v-row class="full-height" align-content="end">
-        <v-col cols="3">
+        <div :style="welcomeBannerStyle">
           <div class="d-flex flex-column">
             <span :style="welcomeStyle" class="text-h5 font-weight-medium">
               {{ $t('title1') }}
@@ -43,26 +46,81 @@
             <span :style="nameStyle" class="text-h3 font-weight-bold">
               {{ $t('title2') }}
             </span>
-            <span :style="descriptionStyle" class="text-h6 mb-10">
+            <span :style="textStyle" class="text-h6 mb-10">
               {{ $t('title3') }}
             </span>
             <v-col cols="4">
               <v-tabs
                 v-model="tab"
                 background-color="transparent"
-                :color="$vuetify.theme.themes.light.primary"
+                :color="themes.light.primary"
                 vertical
               >
-                <v-tabs-slider
-                  :color="$vuetify.theme.themes.light.primary3"
-                ></v-tabs-slider>
+                <v-tabs-slider :color="themes.light.primary3"></v-tabs-slider>
                 <v-tab v-for="label in labels" :key="label">{{
                   $t(label)
                 }}</v-tab>
               </v-tabs>
             </v-col>
           </div>
-        </v-col>
+        </div>
+        <div :style="figure1">
+          <v-img
+            contain
+            :src="require('~/assets/_asset3.png')"
+            max-height="100vh"
+          ></v-img>
+        </div>
+        <div :style="figure2" class="d-flex flex-column align-center">
+          <span :style="textStyle" class="text-h6">
+            {{ $t('infusion') }}
+          </span>
+          <v-img
+            contain
+            :src="require('~/assets/_asset1.png')"
+            max-height="70vh"
+          ></v-img>
+          <nuxt-link :style="localeActive" class="align-self-end" to="#"
+            >{{ $t('discover') }}
+            <v-icon :color="themes.light.primary3" medium
+              >mdi-arrow-right</v-icon
+            >
+          </nuxt-link>
+        </div>
+        <div :style="figureWoman" class="d-flex flex-column align-center">
+          <v-img
+            contain
+            :src="require('~/assets/_asset2.png')"
+            max-height="70vh"
+          ></v-img>
+          <span :style="localeActive" class="text-h6">
+            {{ $t('woman') }}
+          </span>
+          <nuxt-link
+            :style="[textStyle, moreInfoStyle]"
+            class="align-self-end mr-6"
+            to="#"
+            >{{ $t('discover') }}
+            <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
+          </nuxt-link>
+        </div>
+        <div :style="figureMan" class="d-flex flex-column align-center">
+          <v-img
+            contain
+            :src="require('~/assets/_asset4.png')"
+            max-height="70vh"
+          ></v-img>
+          <span :style="localeActive" class="text-h6">
+            {{ $t('man') }}
+          </span>
+          <nuxt-link
+            :style="[textStyle, moreInfoStyle]"
+            class="align-self-end mr-6"
+            to="#"
+            >{{ $t('discover') }}
+            <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
+          </nuxt-link>
+        </div>
       </v-row>
     </div>
   </div>
@@ -72,18 +130,14 @@
 export default {
   data() {
     return {
-      welcomeStyle: {
-        color: this.$vuetify.theme.themes.light.text,
-      },
-      nameStyle: {
-        color: this.$vuetify.theme.themes.light.primary3,
-      },
-      descriptionStyle: {
-        color: this.$vuetify.theme.themes.light.text,
-      },
-      localeActive: {
-        color: this.$vuetify.theme.themes.light.primary3,
-      },
+      welcomeMainLeftPos: 0,
+      welcomeBannerLeftPos: 0,
+      bannerOpacity: 1,
+      figure1LeftPos: 0,
+      figure2LeftPos: 0,
+      figureWomanRightPos: 0,
+      figureManRightPos: 0,
+      moreInfoOpacity: 0,
     }
   },
   computed: {
@@ -106,10 +160,205 @@ export default {
         return this.$store.state.locale
       },
     },
+
+    // custom-styling
+    themes() {
+      return this.$vuetify.theme.themes
+    },
+    welcomeContainerStyle() {
+      return {
+        backgroundImage: `linear-gradient(${this.themes.light.primary4}, ${this.themes.light.background})`,
+      }
+    },
+    welcomeStyle() {
+      return {
+        color: this.themes.light.text,
+      }
+    },
+    nameStyle() {
+      return {
+        color: this.themes.light.primary3,
+      }
+    },
+    textStyle() {
+      return {
+        color: this.themes.light.text,
+      }
+    },
+    localeActive() {
+      return {
+        color: this.themes.light.primary3,
+      }
+    },
+    welcomeMainStyle() {
+      return {
+        position: 'absolute',
+        left: `${this.welcomeMainLeftPos}px`,
+      }
+    },
+    localeStyle() {
+      return {
+        opacity: this.bannerOpacity,
+      }
+    },
+    welcomeBannerStyle() {
+      return {
+        width: '20%',
+        position: 'absolute',
+        left: `${24 + this.welcomeBannerLeftPos}px`,
+        bottom: '36px',
+        opacity: this.bannerOpacity,
+      }
+    },
+    figure1() {
+      return {
+        width: '100vh',
+        position: 'absolute',
+        bottom: '0px',
+        left: `${this.figure1LeftPos + 65}vw`,
+      }
+    },
+    figure2() {
+      return {
+        width: '60vh',
+        position: 'absolute',
+        bottom: '5vh',
+        left: `${this.figure2LeftPos + 150}vw`,
+      }
+    },
+    figureWoman() {
+      return {
+        width: '50vw',
+        position: 'absolute',
+        bottom: '10vh',
+        right: `${this.figureWomanRightPos}px`,
+      }
+    },
+    figureMan() {
+      return {
+        width: '50vw',
+        position: 'absolute',
+        bottom: '10vh',
+        right: `${this.figureManRightPos}px`,
+      }
+    },
+    moreInfoStyle() {
+      return {
+        opacity: this.moreInfoOpacity,
+      }
+    },
   },
   methods: {
-    setLanguage(val) {
-      this.locale = val
+    getEvent(e) {
+      e.preventDefault()
+      e.stopPropagation()
+
+      this.animateMainContainer(e.deltaX, e.deltaY)
+      this.animateWelcomeBanner(e.deltaX, e.deltaY)
+      this.animateFigureOne(e.deltaX, e.deltaY)
+      this.animateFigureTwo(e.deltaX, e.deltaY)
+      this.animateFigureWoman(e.deltaX, e.deltaY)
+      this.animateFigureMan(e.deltaX, e.deltaY)
+    },
+    animateMainContainer(deltaX, deltaY) {
+      let leftPos = this.welcomeMainLeftPos
+      if (leftPos <= 0 && leftPos >= -window.innerWidth) {
+        this.welcomeMainLeftPos -= deltaY / 5
+
+        // to avoid offset set by wheel event
+        leftPos = this.welcomeMainLeftPos
+        if (leftPos >= 0) {
+          this.welcomeMainLeftPos = 0
+        }
+        if (leftPos <= -window.innerWidth) {
+          this.welcomeMainLeftPos = -window.innerWidth
+        }
+      }
+    },
+    animateWelcomeBanner(deltaX, deltaY) {
+      const leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain <= 0 && leftPosMain >= -window.innerWidth) {
+        this.welcomeBannerLeftPos += deltaY / 5
+      }
+
+      // to avoid offset set by wheel event
+      if (leftPosMain >= 0) {
+        this.welcomeBannerLeftPos = 0
+      }
+      if (leftPosMain <= -window.innerWidth) {
+        this.welcomeBannerLeftPos = window.innerWidth
+      }
+
+      // animating opacity
+      if (
+        leftPosMain <= -window.innerWidth / 12 &&
+        leftPosMain >= -window.innerWidth / 6
+      ) {
+        this.bannerOpacity -= (deltaY / (5 * window.innerWidth)) * 12
+      }
+      if (leftPosMain >= -window.innerWidth / 12) {
+        this.bannerOpacity = 1
+      }
+      if (leftPosMain <= -window.innerWidth / 6) {
+        this.bannerOpacity = 0
+      }
+    },
+    animateFigureOne(deltaX, deltaY) {
+      const leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
+        this.figure1LeftPos -= deltaY / 150
+      }
+
+      // to avoid offset set by wheel event
+      if (leftPosMain >= 0) {
+        this.figure1LeftPos = 0
+      }
+    },
+    animateFigureTwo(deltaX, deltaY) {
+      const leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
+        this.figure2LeftPos -= deltaY / 75
+      }
+
+      // to avoid offset set by wheel event
+      if (leftPosMain >= 0) {
+        this.figure2LeftPos = 0
+      }
+    },
+
+    animateFigureWoman(deltaX, deltaY) {
+      const leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain <= 0 && leftPosMain >= -window.innerWidth) {
+        this.figureWomanRightPos += deltaY / (5 * 2)
+      }
+
+      // to avoid offset set by wheel event
+      if (leftPosMain >= 0) {
+        this.figureWomanRightPos = 0
+      }
+      if (leftPosMain <= -window.innerWidth) {
+        this.figureWomanRightPos = window.innerWidth / 2
+      }
+
+      // animating opacity
+      if (
+        leftPosMain <= (-window.innerWidth / 12) * 11 &&
+        leftPosMain >= -window.innerWidth
+      ) {
+        this.moreInfoOpacity += (deltaY / (5 * window.innerWidth)) * 12
+      }
+      if (leftPosMain >= (-window.innerWidth / 12) * 11) {
+        this.moreInfoOpacity = 0
+      }
+      if (leftPosMain <= -window.innerWidth) {
+        this.moreInfoOpacity = 1
+      }
+    },
+    animateFigureMan(deltaX, deltaY) {
+      const leftPosMain = this.welcomeMainLeftPos
+      if (leftPosMain >= 0) {
+        this.figureManRightPos = 0
+      }
     },
   },
 }
@@ -122,7 +371,8 @@ a {
 .welcome-container {
   width: 100%;
   height: 100vh;
-  overflow-x: scroll;
+  position: relative;
+  /* overflow-x: scroll; */
 }
 .welcome-main {
   width: 200%;
@@ -136,5 +386,8 @@ a {
 }
 .full-width {
   width: 100%;
+}
+.localization {
+  z-index: 1;
 }
 </style>
