@@ -92,7 +92,10 @@
           <span :style="localeActive" class="text-h6">
             {{ $t('woman') }}
           </span>
-          <nuxt-link :style="textStyle" class="align-self-end mr-6" to="#"
+          <nuxt-link
+            :style="[textStyle, moreInfoStyle]"
+            class="align-self-end mr-6"
+            to="#"
             >{{ $t('discover') }}
             <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
           </nuxt-link>
@@ -106,7 +109,10 @@
           <span :style="localeActive" class="text-h6">
             {{ $t('man') }}
           </span>
-          <nuxt-link :style="textStyle" class="align-self-end mr-6" to="#"
+          <nuxt-link
+            :style="[textStyle, moreInfoStyle]"
+            class="align-self-end mr-6"
+            to="#"
             >{{ $t('discover') }}
             <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
           </nuxt-link>
@@ -127,6 +133,7 @@ export default {
       figure2LeftPos: 0,
       figureWomanRightPos: 0,
       figureManRightPos: 0,
+      moreInfoOpacity: 0,
     }
   },
   computed: {
@@ -226,6 +233,11 @@ export default {
         right: `${this.figureManRightPos}px`,
       }
     },
+    moreInfoStyle() {
+      return {
+        opacity: this.moreInfoOpacity,
+      }
+    },
   },
   methods: {
     getEvent(e) {
@@ -255,13 +267,12 @@ export default {
       }
     },
     animateWelcomeBanner(deltaX, deltaY) {
-      let leftPosMain = this.welcomeMainLeftPos
+      const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain >= -window.innerWidth) {
         this.welcomeBannerLeftPos += deltaY / 5
       }
 
       // to avoid offset set by wheel event
-      leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain >= 0) {
         this.welcomeBannerLeftPos = 0
       }
@@ -276,7 +287,6 @@ export default {
       ) {
         this.bannerOpacity -= (deltaY / (5 * window.innerWidth)) * 12
       }
-      leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain >= -window.innerWidth / 12) {
         this.bannerOpacity = 1
       }
@@ -285,53 +295,58 @@ export default {
       }
     },
     animateFigureOne(deltaX, deltaY) {
-      let leftPosMain = this.welcomeMainLeftPos
+      const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
         this.figure1LeftPos -= deltaY / 150
       }
 
       // to avoid offset set by wheel event
-      leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain >= 0) {
         this.figure1LeftPos = 0
       }
     },
     animateFigureTwo(deltaX, deltaY) {
-      let leftPosMain = this.welcomeMainLeftPos
+      const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
         this.figure2LeftPos -= deltaY / 75
       }
 
       // to avoid offset set by wheel event
-      leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain >= 0) {
         this.figure2LeftPos = 0
       }
     },
 
     animateFigureWoman(deltaX, deltaY) {
-      let leftPosMain = this.welcomeMainLeftPos
+      const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain >= -window.innerWidth) {
-        this.figureWomanRightPos += deltaY / 10
+        this.figureWomanRightPos += deltaY / (5 * 2)
       }
 
       // to avoid offset set by wheel event
-      leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain >= 0) {
         this.figureWomanRightPos = 0
       }
       if (leftPosMain <= -window.innerWidth) {
         this.figureWomanRightPos = window.innerWidth / 2
       }
+
+      // animating opacity
+      if (
+        leftPosMain <= (-window.innerWidth / 12) * 11 &&
+        leftPosMain >= -window.innerWidth
+      ) {
+        this.moreInfoOpacity += (deltaY / (5 * window.innerWidth)) * 12
+      }
+      if (leftPosMain >= (-window.innerWidth / 12) * 11) {
+        this.moreInfoOpacity = 0
+      }
+      if (leftPosMain <= -window.innerWidth) {
+        this.moreInfoOpacity = 1
+      }
     },
     animateFigureMan(deltaX, deltaY) {
-      let leftPosMain = this.welcomeMainLeftPos
-      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        // this.figureManRightPos -= deltaY / 230
-      }
-
-      // to avoid offset set by wheel event
-      leftPosMain = this.welcomeMainLeftPos
+      const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain >= 0) {
         this.figureManRightPos = 0
       }
