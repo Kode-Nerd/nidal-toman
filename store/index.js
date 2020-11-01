@@ -1,15 +1,15 @@
 export const state = () => ({
   locales: ['en', 'de'],
-  locale: 'en',
+  locale: 'de',
 
   tab: 0,
   labels: [
-    'Home',
-    'Treatments',
-    'Practice',
-    'Info Desk',
-    'Dr. Nidal Toman',
-    'Contact',
+    'home',
+    'treatments',
+    'practice',
+    'infoDesk',
+    'drNidalToman',
+    'contact',
   ],
 
   // treatment details

@@ -2,10 +2,14 @@
   "title1": "Welcome to Clinic of",
   "title2": "Dr med Nidal Toman",
   "title3": "Plastic surgeon and specialist for plastic, aesthetic and reconstructive surgery in Berlin",
-  "Home": "Home", 
-  "Treatments": "Treatments",
-  "Practice": "Practice",
-  "Info Desk": "Info Desk",
-  "Dr. Nidal Toman": "Dr. Nidal Toman",
-  "Contact": "Contact"
+  "home": "Home", 
+  "treatments": "Treatments",
+  "practice": "Practice",
+  "infoDesk": "Info Desk",
+  "drNidalToman": "Dr. Nidal Toman",
+  "contact": "Contact",
+  "infusion": "Power & Anti-stress Infusion Therapies",
+  "discover": "Discover More",
+  "man": "MAN",
+  "woman": "WOMAN"
 }
