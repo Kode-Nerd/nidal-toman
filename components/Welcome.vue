@@ -125,8 +125,8 @@ export default {
       bannerOpacity: 1,
       figure1LeftPos: 0,
       figure2LeftPos: 0,
-      figureWomanLeftPos: 0,
-      figureManLeftPos: 0,
+      figureWomanRightPos: 0,
+      figureManRightPos: 0,
     }
   },
   computed: {
@@ -215,7 +215,7 @@ export default {
         width: '50vw',
         position: 'absolute',
         bottom: '10vh',
-        left: `${this.figureWomanLeftPos + 180}vw`,
+        right: `${this.figureWomanRightPos}px`,
       }
     },
     figureMan() {
@@ -223,7 +223,7 @@ export default {
         width: '50vw',
         position: 'absolute',
         bottom: '10vh',
-        left: `${this.figureManLeftPos + 180}vw`,
+        right: `${this.figureManRightPos}px`,
       }
     },
   },
@@ -311,26 +311,29 @@ export default {
 
     animateFigureWoman(deltaX, deltaY) {
       let leftPosMain = this.welcomeMainLeftPos
-      if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figureWomanLeftPos -= deltaY / 88
+      if (leftPosMain <= 0 && leftPosMain >= -window.innerWidth) {
+        this.figureWomanRightPos += deltaY / 10
       }
 
       // to avoid offset set by wheel event
       leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain >= 0) {
-        this.figureWomanLeftPos = 0
+        this.figureWomanRightPos = 0
+      }
+      if (leftPosMain <= -window.innerWidth) {
+        this.figureWomanRightPos = window.innerWidth / 2
       }
     },
     animateFigureMan(deltaX, deltaY) {
       let leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figureManLeftPos -= deltaY / 230
+        // this.figureManRightPos -= deltaY / 230
       }
 
       // to avoid offset set by wheel event
       leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain >= 0) {
-        this.figureManLeftPos = 0
+        this.figureManRightPos = 0
       }
     },
   },
