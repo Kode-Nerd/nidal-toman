@@ -11,7 +11,8 @@
           <v-img
             contain
             :src="require('~/assets/main-logo.png')"
-            max-height="120"
+            max-width="20vw"
+            :style="mainLogoStyle"
           ></v-img>
         </v-col>
         <v-col :style="localeStyle" cols="2">
@@ -138,6 +139,7 @@ export default {
       figureWomanRightPos: 0,
       figureManRightPos: 0,
       moreInfoOpacity: 0,
+      innerWidth: 0,
     }
   },
   computed: {
@@ -167,7 +169,7 @@ export default {
     },
     welcomeContainerStyle() {
       return {
-        backgroundImage: `linear-gradient(${this.themes.light.primary4}, ${this.themes.light.background})`,
+        background: `linear-gradient(180.17deg, rgba(254, 249, 255, 0.46) 0.14%, rgba(229, 229, 229, 0) 64.64%)`,
       }
     },
     welcomeStyle() {
@@ -210,6 +212,16 @@ export default {
         opacity: this.bannerOpacity,
       }
     },
+    leftMainLogoPos() {
+      return this.innerWidth * 0.4 + this.welcomeBannerLeftPos
+    },
+    mainLogoStyle() {
+      return {
+        position: 'absolute',
+        left: `${this.leftMainLogoPos}px`,
+        top: '36px',
+      }
+    },
     figure1() {
       return {
         width: '100vh',
@@ -223,7 +235,7 @@ export default {
         width: '60vh',
         position: 'absolute',
         bottom: '5vh',
-        left: `${this.figure2LeftPos + 150}vw`,
+        left: `${this.figure2LeftPos + 130}vw`,
       }
     },
     figureWoman() {
@@ -248,11 +260,15 @@ export default {
       }
     },
   },
+  mounted() {
+    this.innerWidth = window.innerWidth
+  },
   methods: {
     getEvent(e) {
       e.preventDefault()
       e.stopPropagation()
 
+      this.innerWidth = window.innerWidth
       this.animateMainContainer(e.deltaX, e.deltaY)
       this.animateWelcomeBanner(e.deltaX, e.deltaY)
       this.animateFigureOne(e.deltaX, e.deltaY)
@@ -306,7 +322,7 @@ export default {
     animateFigureOne(deltaX, deltaY) {
       const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figure1LeftPos -= deltaY / 150
+        this.figure1LeftPos -= deltaY / 160
       }
 
       // to avoid offset set by wheel event
@@ -317,7 +333,7 @@ export default {
     animateFigureTwo(deltaX, deltaY) {
       const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figure2LeftPos -= deltaY / 75
+        this.figure2LeftPos -= deltaY / 110
       }
 
       // to avoid offset set by wheel event
@@ -328,12 +344,15 @@ export default {
 
     animateFigureWoman(deltaX, deltaY) {
       const leftPosMain = this.welcomeMainLeftPos
-      if (leftPosMain <= 0 && leftPosMain >= -window.innerWidth) {
-        this.figureWomanRightPos += deltaY / (5 * 2)
+      if (
+        leftPosMain <= -window.innerWidth / 2 &&
+        leftPosMain >= -window.innerWidth
+      ) {
+        this.figureWomanRightPos += deltaY / 5
       }
 
       // to avoid offset set by wheel event
-      if (leftPosMain >= 0) {
+      if (leftPosMain >= -window.innerWidth / 2) {
         this.figureWomanRightPos = 0
       }
       if (leftPosMain <= -window.innerWidth) {
