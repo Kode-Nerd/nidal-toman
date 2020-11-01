@@ -312,7 +312,7 @@ export default {
     animateFigureWoman(deltaX, deltaY) {
       let leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figureWomanLeftPos -= deltaY / 95
+        this.figureWomanLeftPos -= deltaY / 88
       }
 
       // to avoid offset set by wheel event
@@ -324,7 +324,7 @@ export default {
     animateFigureMan(deltaX, deltaY) {
       let leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figureManLeftPos -= deltaY / 220
+        this.figureManLeftPos -= deltaY / 230
       }
 
       // to avoid offset set by wheel event
