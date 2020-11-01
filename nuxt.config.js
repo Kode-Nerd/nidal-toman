@@ -55,7 +55,7 @@ export default {
     customVariables: ['~/assets/variables.scss'],
     defaultAssets: {
       font: {
-        family: 'Avenir' 
+        family: 'Avenir',
       },
     },
     treeShake: true,
@@ -63,23 +63,22 @@ export default {
       dark: false,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-          text: colors.blueGrey.lighten5
+          // primary: colors.blue.darken2,
+          // accent: colors.grey.darken3,
+          // secondary: colors.amber.darken3,
+          // info: colors.teal.lighten1,
+          // warning: colors.amber.base,
+          // error: colors.deepOrange.accent4,
+          // success: colors.green.accent3,
         },
         light: {
           primary: '#6C756B',
           primary2: '#B279A7',
           primary3: '#CCA43B',
-          primary4: "#FCEBFF",
+          primary4: '#FCEBFF',
           text: colors.blueGrey.darken3,
-          background: "#FFFFFF"
-        }
+          background: '#FFFFFF',
+        },
       },
     },
   },
@@ -100,5 +99,5 @@ export default {
         })
       }
     },
-  }
+  },
 }
