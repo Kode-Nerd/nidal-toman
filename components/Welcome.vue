@@ -1,5 +1,9 @@
 <template>
-  <div class="welcome-container" @wheel="getEvent">
+  <div
+    class="welcome-container"
+    :style="welcomeContainerStyle"
+    @wheel="getEvent"
+  >
     <div id="welcome" :style="welcomeMainStyle" class="welcome-main pa-6">
       <v-row class="welcome-main-logo">
         <v-col cols="2"></v-col>
@@ -160,6 +164,11 @@ export default {
     // custom-styling
     themes() {
       return this.$vuetify.theme.themes
+    },
+    welcomeContainerStyle() {
+      return {
+        backgroundImage: `linear-gradient(${this.themes.light.primary4}, ${this.themes.light.background})`,
+      }
     },
     welcomeStyle() {
       return {
