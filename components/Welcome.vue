@@ -92,7 +92,7 @@
           <span :style="localeActive" class="text-h6">
             {{ $t('woman') }}
           </span>
-          <nuxt-link :style="textStyle" class="align-self-end" to="#"
+          <nuxt-link :style="textStyle" class="align-self-end mr-6" to="#"
             >{{ $t('discover') }}
             <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
           </nuxt-link>
@@ -106,7 +106,7 @@
           <span :style="localeActive" class="text-h6">
             {{ $t('man') }}
           </span>
-          <nuxt-link :style="textStyle" class="align-self-end" to="#"
+          <nuxt-link :style="textStyle" class="align-self-end mr-6" to="#"
             >{{ $t('discover') }}
             <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
           </nuxt-link>
