@@ -73,13 +73,13 @@
           ></v-img>
         </div>
         <div :style="figure2" class="d-flex flex-column align-center">
-          <span :style="textStyle" class="text-h6">
+          <span :style="textStyle" class="text-h6 mb-n14">
             {{ $t('infusion') }}
           </span>
           <v-img
             contain
             :src="require('~/assets/_asset1.png')"
-            max-height="70vh"
+            max-height="65vh"
           ></v-img>
           <nuxt-link :style="localeActive" class="align-self-end" to="#"
             >{{ $t('discover') }}
@@ -89,38 +89,32 @@
           </nuxt-link>
         </div>
         <div :style="figureWoman" class="d-flex flex-column align-center">
+          <span :style="[localeActive, womanLabel]" class="text-h6">
+            {{ $t('woman') }}
+          </span>
+          <nuxt-link :style="[textStyle, moreInfoStyle, moreInfoWoman]" to="#"
+            >{{ $t('discover') }}
+            <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
+          </nuxt-link>
           <v-img
             contain
             :src="require('~/assets/_asset2.png')"
-            max-height="70vh"
+            max-height="80vh"
           ></v-img>
-          <span :style="localeActive" class="text-h6">
-            {{ $t('woman') }}
+        </div>
+        <div :style="figureMan" class="d-flex flex-column align-center">
+          <span :style="[localeActive, manLabel]" class="text-h6">
+            {{ $t('man') }}
           </span>
-          <nuxt-link
-            :style="[textStyle, moreInfoStyle]"
-            class="align-self-end mr-6"
-            to="#"
+          <nuxt-link :style="[textStyle, moreInfoStyle, moreInfoMan]" to="#"
             >{{ $t('discover') }}
             <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
           </nuxt-link>
-        </div>
-        <div :style="figureMan" class="d-flex flex-column align-center">
           <v-img
             contain
             :src="require('~/assets/_asset4.png')"
-            max-height="70vh"
+            max-height="80vh"
           ></v-img>
-          <span :style="localeActive" class="text-h6">
-            {{ $t('man') }}
-          </span>
-          <nuxt-link
-            :style="[textStyle, moreInfoStyle]"
-            class="align-self-end mr-6"
-            to="#"
-            >{{ $t('discover') }}
-            <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
-          </nuxt-link>
         </div>
       </v-row>
     </div>
@@ -232,17 +226,17 @@ export default {
     },
     figure2() {
       return {
-        width: '60vh',
+        width: '100vh',
         position: 'absolute',
         bottom: '5vh',
-        left: `${this.figure2LeftPos + 130}vw`,
+        left: `${this.figure2LeftPos + 110}vw`,
       }
     },
     figureWoman() {
       return {
         width: '50vw',
         position: 'absolute',
-        bottom: '10vh',
+        bottom: '0vh',
         right: `${this.figureWomanRightPos}px`,
       }
     },
@@ -250,13 +244,41 @@ export default {
       return {
         width: '50vw',
         position: 'absolute',
-        bottom: '10vh',
+        bottom: '18vh',
         right: `${this.figureManRightPos}px`,
       }
     },
     moreInfoStyle() {
       return {
         opacity: this.moreInfoOpacity,
+      }
+    },
+    womanLabel() {
+      return {
+        position: 'absolute',
+        top: '5%',
+        left: '42%',
+      }
+    },
+    moreInfoWoman() {
+      return {
+        position: 'absolute',
+        top: '15%',
+        right: '16%',
+      }
+    },
+    manLabel() {
+      return {
+        position: 'absolute',
+        top: '15%',
+        left: '38%',
+      }
+    },
+    moreInfoMan() {
+      return {
+        position: 'absolute',
+        top: '35%',
+        left: '10%',
       }
     },
   },
@@ -322,7 +344,7 @@ export default {
     animateFigureOne(deltaX, deltaY) {
       const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figure1LeftPos -= deltaY / 160
+        this.figure1LeftPos -= deltaY / 60
       }
 
       // to avoid offset set by wheel event
