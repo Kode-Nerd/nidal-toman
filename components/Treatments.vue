@@ -1,10 +1,6 @@
 <template>
-  <div class="treatments-container">
-    <div
-      id="treatments"
-      style="position: relative"
-      class="treatments-main pa-6"
-    >
+  <div id="treatments" class="treatments-container">
+    <div style="position: relative" class="treatments-main pa-6">
       <v-tabs
         v-model="tab"
         style="position: absolute; top: 100px; right: 10px"
@@ -60,6 +56,7 @@ export default {
 
 <style>
 .treatments-container {
+  background: gray;
   width: 100%;
   height: 100vh;
   overflow-y: scroll;

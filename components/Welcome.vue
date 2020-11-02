@@ -136,6 +136,7 @@ export default {
       moreInfoOpacity: 0,
       innerWidth: 0,
       figure2MoreInfoRightPos: 45,
+      atEnd: false,
     }
   },
   computed: {
@@ -274,6 +275,7 @@ export default {
         position: 'absolute',
         top: '15%',
         right: '16%',
+        zIndex: 1,
       }
     },
     manLabel() {
@@ -288,6 +290,7 @@ export default {
         position: 'absolute',
         top: '35%',
         left: '10%',
+        zIndex: 1,
       }
     },
   },
@@ -299,6 +302,8 @@ export default {
       e.preventDefault()
       e.stopPropagation()
 
+      this.checkEndSection()
+
       this.innerWidth = window.innerWidth
       this.animateMainContainer(e.deltaX, e.deltaY)
       this.animateWelcomeBanner(e.deltaX, e.deltaY)
@@ -306,6 +311,31 @@ export default {
       this.animateFigureTwo(e.deltaX, e.deltaY)
       this.animateFigureWoman(e.deltaX, e.deltaY)
       this.animateFigureMan(e.deltaX, e.deltaY)
+      this.jumpNextSection(e.deltaX, e.deltaY)
+    },
+    checkEndSection() {
+      const leftPos = this.welcomeMainLeftPos
+
+      if (leftPos === -window.innerWidth) {
+        setTimeout(() => {
+          this.atEnd = true
+        }, 1000)
+      } else {
+        this.atEnd = false
+      }
+    },
+    jumpNextSection(deltaX, deltaY) {
+      const leftPos = this.welcomeMainLeftPos
+
+      if (leftPos === -window.innerWidth && deltaY > 70 && this.atEnd) {
+        const target = '#treatments'
+        const options = {
+          duration: 1000,
+          offset: 0,
+          easing: 'easeInOutQuint',
+        }
+        this.$vuetify.goTo(target, options)
+      }
     },
     animateMainContainer(deltaX, deltaY) {
       let leftPos = this.welcomeMainLeftPos
