@@ -126,6 +126,7 @@ export default {
   data() {
     return {
       // please aware this default position in default condition of animation function
+      timeoutID: null,
       welcomeMainLeftPos: 0,
       welcomeBannerLeftPos: 0,
       bannerOpacity: 1,
@@ -317,10 +318,12 @@ export default {
       const leftPos = this.welcomeMainLeftPos
 
       if (leftPos === -window.innerWidth) {
-        setTimeout(() => {
+        this.timeoutID = setTimeout(() => {
           this.atEnd = true
         }, 1000)
-      } else {
+      } else if (this.timeoutID !== null) {
+        clearTimeout(this.timeoutID)
+        this.timeoutID = null
         this.atEnd = false
       }
     },
