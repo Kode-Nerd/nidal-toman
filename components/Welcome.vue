@@ -81,7 +81,7 @@
             :src="require('~/assets/_asset1.png')"
             max-height="65vh"
           ></v-img>
-          <nuxt-link :style="localeActive" class="align-self-end" to="#"
+          <nuxt-link :style="[localeActive, figure2MoreInfoStyle]" to="#"
             >{{ $t('discover') }}
             <v-icon :color="themes.light.primary3" medium
               >mdi-arrow-right</v-icon
@@ -125,6 +125,7 @@
 export default {
   data() {
     return {
+      // please aware this default position in default condition of animation function
       welcomeMainLeftPos: 0,
       welcomeBannerLeftPos: 0,
       bannerOpacity: 1,
@@ -134,6 +135,7 @@ export default {
       figureManRightPos: 0,
       moreInfoOpacity: 0,
       innerWidth: 0,
+      figure2MoreInfoRightPos: 45,
     }
   },
   computed: {
@@ -230,6 +232,13 @@ export default {
         position: 'absolute',
         bottom: '5vh',
         left: `${this.figure2LeftPos + 110}vw`,
+      }
+    },
+    figure2MoreInfoStyle() {
+      return {
+        position: 'absolute',
+        bottom: '0%',
+        right: `${this.figure2MoreInfoRightPos}%`,
       }
     },
     figureWoman() {
@@ -358,9 +367,15 @@ export default {
         this.figure2LeftPos -= deltaY / 110
       }
 
+      // to animate "Discover More"
+      if (leftPosMain <= 0 && leftPosMain >= (-window.innerWidth / 3) * 2) {
+        this.figure2MoreInfoRightPos -= deltaY / 100
+      }
+
       // to avoid offset set by wheel event
       if (leftPosMain >= 0) {
         this.figure2LeftPos = 0
+        this.figure2MoreInfoRightPos = 45
       }
     },
 
