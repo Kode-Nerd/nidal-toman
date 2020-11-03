@@ -12,10 +12,12 @@ export default ({ app, store }) => {
       en: {
         ...require(`~/assets/locales/en/welcome.json`),
         ...require(`~/assets/locales/en/treatment.json`),
+        ...require(`~/assets/locales/en/practice.json`),
       },
       de: {
         ...require(`~/assets/locales/de/welcome.json`),
         ...require(`~/assets/locales/de/treatment.json`),
+        ...require(`~/assets/locales/de/practice.json`),
       },
     },
   })
