@@ -77,6 +77,12 @@
             {{ $t('infusion') }}
           </span>
           <v-img
+            :style="figure2LogoStyle"
+            contain
+            :src="require(`~/assets/_B'lance.png`)"
+            max-height="20vh"
+          ></v-img>
+          <v-img
             contain
             :src="require('~/assets/_asset1.png')"
             max-height="65vh"
@@ -241,6 +247,13 @@ export default {
         position: 'absolute',
         bottom: '0%',
         right: `${this.figure2MoreInfoRightPos}%`,
+      }
+    },
+    figure2LogoStyle() {
+      return {
+        position: 'absolute',
+        bottom: '7%',
+        right: `${this.figure2MoreInfoRightPos - 15}%`,
       }
     },
     figureWoman() {

@@ -4,6 +4,7 @@
     <Treatments />
     <TreatmentDetail />
     <Contact />
+    <Practice />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import Treatments from '~/components/Treatments'
 import Welcome from '~/components/Welcome'
 import TreatmentDetail from '~/components/TreatmentDetail/TreatmentDetail'
 import Contact from '~/components/Contact/Contact'
+import Practice from '~/components/Practice/Practice'
 
 export default {
   components: {
@@ -19,6 +21,7 @@ export default {
     Treatments,
     Contact,
     TreatmentDetail,
+    Practice,
   },
 }
 </script>
