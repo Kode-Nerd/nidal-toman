@@ -4,7 +4,8 @@
       <li
         v-for="option in navOptions"
         :key="option.value"
-        :class="option.value"
+        :class="{ [option.value]: true, active: option.value === selectedNav }"
+        @click="handleSelectActiveNav(option.value)"
       >
         {{ option.label }}
       </li>
@@ -43,6 +44,11 @@ export default {
       ],
     }
   },
+  methods: {
+    handleSelectActiveNav(selectedNav) {
+      this.selectedNav = selectedNav
+    },
+  },
 }
 </script>
 
@@ -53,6 +59,45 @@ export default {
   float: right;
 }
 
+.active {
+  opacity: 1;
+}
+
+.active.infodesk ~ .underline {
+  margin-left: 120px;
+  width: 107px;
+}
+
+.active.treatments ~ .underline {
+  margin-left: 0px;
+  width: 120px;
+}
+
+.active.infodesk ~ .underline {
+  margin-left: 120px;
+  width: 107px;
+}
+
+.active.profile ~ .underline {
+  margin-left: calc(120px + 107px);
+  width: 154px;
+}
+
+.active.contact ~ .underline {
+  margin-left: calc(120px + 107px + 154px);
+  width: 96px;
+}
+
+.active.practice ~ .underline {
+  margin-left: calc(120px + 107px + 154px + 96px);
+  width: 96px;
+}
+
+ul li:hover {
+  opacity: 1;
+  transition: 0.8s;
+}
+
 ul li {
   display: inline;
   text-align: center;
@@ -60,37 +105,10 @@ ul li {
   padding: 15px 20px;
   margin: 0;
   text-decoration: none;
-  color: #333;
+  color: #494949;
   background: #fff;
   cursor: pointer;
-}
-
-.treatments {
-  width: 120px;
-}
-
-.treatments:hover ~ .underline {
-  width: 120px;
-}
-
-.infodesk:hover ~ .underline {
-  margin-left: 120px;
-  width: 107px;
-}
-
-.profile:hover ~ .underline {
-  margin-left: calc(120px + 107px);
-  width: 154px;
-}
-
-.contact:hover ~ .underline {
-  margin-left: calc(120px + 107px + 154px);
-  width: 96px;
-}
-
-.practice:hover ~ .underline {
-  margin-left: calc(120px + 107px + 154px + 96px);
-  width: 96px;
+  opacity: 0.6;
 }
 
 .nav {

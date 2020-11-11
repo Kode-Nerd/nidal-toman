@@ -21,7 +21,7 @@
               :index="`0${index}`"
               :title="$t(`practice.content.title${index}`)"
               :subtitle="$t(`practice.content.subtitle${index}`)"
-              speed="2"
+              :speed="Number(2)"
             />
           </div>
         </div>
@@ -36,7 +36,7 @@
               :index="`0${index + 1}`"
               :title="$t(`practice.content.title${index + 1}`)"
               :subtitle="$t(`practice.content.subtitle${index + 1}`)"
-              speed="-2"
+              :speed="Number(-2)"
             />
           </div>
         </div>
@@ -80,8 +80,10 @@ export default {
 }
 
 .practice__container {
-  padding: 110px;
-  scroll-behavior: smooth;
+  width: 65%;
+  margin: 0 auto;
+  min-width: 850px;
+  padding-top: 180px;
 }
 
 .header__title {
