@@ -1,20 +1,12 @@
 <template>
   <div class="profile__container">
     <div class="profile__header">
-      <div class="header__title">Dr. med. Nidal Toman</div>
+      <div class="header__title">{{ $t('profile.title') }}</div>
       <div class="header__subtitle">
-        Specialist in plastic, aesthetic & reconstructive surgery.
+        {{ $t('profile.subtitle') }}
       </div>
       <div class="header__description">
-        As an experienced specialist in plastic, aesthetic and reconstructive
-        surgery, Dr. Nidal Toman specializes in aesthetic operations. Here he
-        can look back on over 15 years of experience. His operative treatment
-        focuses on facial surgery, breast surgery, body contouring and
-        liposuction. Another main focus is on minimally invasive skin
-        rejuvenating procedures, wrinkle treatments. His many years of
-        experience and the trust of his patients led to the establishment of his
-        private practice for aesthetic surgery in Uhlandstr. 33 on
-        Kurfürstendamm in Berlin-Charlottenburg.
+        {{ $t('profile.description') }}
       </div>
     </div>
 
@@ -27,18 +19,10 @@
           <div>
             <div class="subtitle__name">
               <div class="line" />
-              <div>Dr. med. Nidal Toman</div>
+              <div>{{ $t('profile.title') }}</div>
             </div>
             <div class="sutitle__description">
-              It is important to me to achieve the best possible and natural
-              results with healthy recovery phases for my patients through the
-              most modern treatment methods and scar-saving surgical techniques.
-              At numerous national and international congresses, I was
-              constantly educated about current and modern procedures in plastic
-              and aesthetic surgery. I would be happy to inform you in an
-              exclusive atmosphere about the latest developments and forms of
-              treatment in the field of aesthetic medicine and take a lot of
-              time for your concerns and wishes. I look forward to meeting you!
+              {{ $t('profile.profileDescription') }}
             </div>
           </div>
         </div>
@@ -48,7 +32,14 @@
           <div class="vita__title">Vita</div>
         </div>
         <div>
-          <ProfileVitaItem />
+          <ProfileVitaItem
+            v-for="index in 7"
+            :key="`vita-${index}`"
+            :title="$t(`profile.vita.${index - 1}.title`)"
+            :subtitle="$t(`profile.vita.${index - 1}.subtitle`)"
+            :year="$t(`profile.vita.${index - 1}.year`)"
+            :place="$t(`profile.vita.${index - 1}.place`)"
+          />
         </div>
       </div>
       <div class="publication__container">
@@ -56,7 +47,14 @@
           <div class="publication__title">Publication</div>
         </div>
         <div>
-          <ProfilePublicationItem />
+          <ProfilePublicationItem
+            v-for="(item, index) in PublicationData"
+            :key="item.title"
+            :title="item.title"
+            :subtitle="item.subtitle"
+            :detail="item.detail"
+            :index="index + 1 < 10 ? `0${index + 1}` : index + 1"
+          />
         </div>
       </div>
       <div class="book__container">
@@ -84,6 +82,7 @@ import ProfileVitaItem from './ProfileVitaItem'
 import ProfileBookItem from './ProfileBookItem'
 import ProfilePublicationItem from './ProfilePublicationItem'
 import ProfilePublishedSummary from './ProfilePublishedSummary'
+import PublicationData from './assets/publications.json'
 import ProfileImage from '~/assets/images/profile/profile_dr-nidal-toman.png'
 
 export default {
@@ -96,6 +95,7 @@ export default {
   data() {
     return {
       ProfileImage,
+      PublicationData,
     }
   },
 }

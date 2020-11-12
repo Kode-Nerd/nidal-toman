@@ -13,11 +13,13 @@ export default ({ app, store }) => {
         ...require(`~/assets/locales/en/welcome.json`),
         ...require(`~/assets/locales/en/treatment.json`),
         ...require(`~/assets/locales/en/practice.json`),
+        profile: { ...require('~/assets/locales/en/profile.json') },
       },
       de: {
         ...require(`~/assets/locales/de/welcome.json`),
         ...require(`~/assets/locales/de/treatment.json`),
         ...require(`~/assets/locales/de/practice.json`),
+        profile: { ...require('~/assets/locales/de/profile.json') },
       },
     },
   })

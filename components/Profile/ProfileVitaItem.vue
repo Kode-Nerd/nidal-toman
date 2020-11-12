@@ -1,32 +1,34 @@
 <template>
   <div class="vita-item__container">
-    <div class="item__year">2004</div>
+    <div class="item__year">{{ year }}</div>
     <div class="item__symbol">
       <div class="circle" />
       <div class="line" />
     </div>
     <div class="item__details">
-      <div class="item__title">Dissertation</div>
+      <div class="item__title">{{ title }}</div>
       <div class="item__subtitle">
-        "Subjective time perception under normal conditions & simulated
-        weightlessness"
+        {{ `"${subtitle}"` }}
       </div>
       <div class="item__place">
-        Institute for Physiology at the Free University of Berlin
+        {{ place }}
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['year', 'title', 'subtitle', 'place'],
+}
 </script>
 
 <style scoped>
 .vita-item__container {
   width: 100%;
   display: grid;
-  grid-template-columns: 100px 100px calc(100% - 200px);
+  grid-template-columns: 170px 100px calc(100% - 270px);
+  margin-top: 20px;
 }
 
 .item__symbol {
