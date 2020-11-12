@@ -1,76 +1,79 @@
 <template>
-  <div class="profile__container">
-    <div class="profile__header">
-      <div class="header__title">{{ $t('profile.title') }}</div>
-      <div class="header__subtitle">
-        {{ $t('profile.subtitle') }}
-      </div>
-      <div class="header__description">
-        {{ $t('profile.description') }}
-      </div>
-    </div>
-
-    <div class="profile__body">
-      <div class="detail__container">
-        <div class="profile__photo">
-          <img :src="ProfileImage" class="profile-img" />
+  <div class="wrapper">
+    <NavHeader />
+    <div class="profile__container">
+      <div class="profile__header">
+        <div class="header__title">{{ $t('profile.title') }}</div>
+        <div class="header__subtitle">
+          {{ $t('profile.subtitle') }}
         </div>
-        <div class="profile__subtitle">
-          <div>
-            <div class="subtitle__name">
-              <div class="line" />
-              <div>{{ $t('profile.title') }}</div>
-            </div>
-            <div class="sutitle__description">
-              {{ $t('profile.profileDescription') }}
+        <div class="header__description">
+          {{ $t('profile.description') }}
+        </div>
+      </div>
+
+      <div class="profile__body">
+        <div class="detail__container">
+          <div class="profile__photo">
+            <img :src="ProfileImage" class="profile-img" />
+          </div>
+          <div class="profile__subtitle">
+            <div>
+              <div class="subtitle__name">
+                <div class="line" />
+                <div>{{ $t('profile.title') }}</div>
+              </div>
+              <div class="sutitle__description">
+                {{ $t('profile.profileDescription') }}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="vita__container">
-        <div class="vita__header">
-          <div class="vita__title">Vita</div>
+        <div class="vita__container">
+          <div class="vita__header">
+            <div class="vita__title">Vita</div>
+          </div>
+          <div>
+            <ProfileVitaItem
+              v-for="index in 7"
+              :key="`vita-${index}`"
+              :title="$t(`profile.vita.${index - 1}.title`)"
+              :subtitle="$t(`profile.vita.${index - 1}.subtitle`)"
+              :year="$t(`profile.vita.${index - 1}.year`)"
+              :place="$t(`profile.vita.${index - 1}.place`)"
+            />
+          </div>
         </div>
-        <div>
-          <ProfileVitaItem
-            v-for="index in 7"
-            :key="`vita-${index}`"
-            :title="$t(`profile.vita.${index - 1}.title`)"
-            :subtitle="$t(`profile.vita.${index - 1}.subtitle`)"
-            :year="$t(`profile.vita.${index - 1}.year`)"
-            :place="$t(`profile.vita.${index - 1}.place`)"
-          />
+        <div class="publication__container">
+          <div class="publication__header">
+            <div class="publication__title">Publication</div>
+          </div>
+          <div>
+            <ProfilePublicationItem
+              v-for="(item, index) in PublicationData"
+              :key="item.title"
+              :title="item.title"
+              :subtitle="item.subtitle"
+              :detail="item.detail"
+              :index="index + 1 < 10 ? `0${index + 1}` : index + 1"
+            />
+          </div>
         </div>
-      </div>
-      <div class="publication__container">
-        <div class="publication__header">
-          <div class="publication__title">Publication</div>
+        <div class="book__container">
+          <div class="book__header">
+            <div class="book__title">Books</div>
+          </div>
+          <div>
+            <ProfileBookItem />
+          </div>
         </div>
-        <div>
-          <ProfilePublicationItem
-            v-for="(item, index) in PublicationData"
-            :key="item.title"
-            :title="item.title"
-            :subtitle="item.subtitle"
-            :detail="item.detail"
-            :index="index + 1 < 10 ? `0${index + 1}` : index + 1"
-          />
-        </div>
-      </div>
-      <div class="book__container">
-        <div class="book__header">
-          <div class="book__title">Books</div>
-        </div>
-        <div>
-          <ProfileBookItem />
-        </div>
-      </div>
-      <div class="publication__container">
-        <div class="publication__header">
-          <div class="publication__title">Published Summaries</div>
-        </div>
-        <div>
-          <ProfilePublishedSummary />
+        <div class="publication__container">
+          <div class="publication__header">
+            <div class="publication__title">Published Summaries</div>
+          </div>
+          <div>
+            <ProfilePublishedSummary />
+          </div>
         </div>
       </div>
     </div>
@@ -84,6 +87,7 @@ import ProfilePublicationItem from './ProfilePublicationItem'
 import ProfilePublishedSummary from './ProfilePublishedSummary'
 import PublicationData from './assets/publications.json'
 import ProfileImage from '~/assets/images/profile/profile_dr-nidal-toman.png'
+import NavHeader from '~/components/Global/NavigationHeader'
 
 export default {
   components: {
@@ -91,6 +95,7 @@ export default {
     ProfileBookItem,
     ProfilePublicationItem,
     ProfilePublishedSummary,
+    NavHeader,
   },
   data() {
     return {
@@ -102,6 +107,10 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  margin-top: 50px;
+}
+
 .profile__body {
 }
 
