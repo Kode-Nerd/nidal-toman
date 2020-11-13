@@ -84,6 +84,7 @@
         </div>
       </div>
     </div>
+    <FooterComponent />
   </div>
 </template>
 
@@ -96,6 +97,7 @@ import PublicationData from './assets/publications.json'
 import PublishedSummaries from './assets/publishedSummaries.json'
 import ProfileImage from '~/assets/images/profile/profile_dr-nidal-toman.png'
 import NavHeader from '~/components/Global/NavigationHeader'
+import FooterComponent from '~/components/Footer/Footer'
 
 export default {
   components: {
@@ -104,6 +106,7 @@ export default {
     ProfilePublicationItem,
     ProfilePublishedSummary,
     NavHeader,
+    FooterComponent,
   },
   data() {
     return {
