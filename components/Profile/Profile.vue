@@ -72,7 +72,14 @@
             <div class="publication__title">Published Summaries</div>
           </div>
           <div>
-            <ProfilePublishedSummary />
+            <ProfilePublishedSummary
+              v-for="(item, index) in PublishedSummaries"
+              :key="`published-summary-${index}`"
+              :title="item.title"
+              :author="item.author"
+              :detail="item.detail"
+              :index="index + 1 < 10 ? `0${index + 1}` : index + 1"
+            />
           </div>
         </div>
       </div>
@@ -86,6 +93,7 @@ import ProfileBookItem from './ProfileBookItem'
 import ProfilePublicationItem from './ProfilePublicationItem'
 import ProfilePublishedSummary from './ProfilePublishedSummary'
 import PublicationData from './assets/publications.json'
+import PublishedSummaries from './assets/publishedSummaries.json'
 import ProfileImage from '~/assets/images/profile/profile_dr-nidal-toman.png'
 import NavHeader from '~/components/Global/NavigationHeader'
 
@@ -101,6 +109,7 @@ export default {
     return {
       ProfileImage,
       PublicationData,
+      PublishedSummaries,
     }
   },
 }

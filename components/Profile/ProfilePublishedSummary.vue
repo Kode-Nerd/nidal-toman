@@ -1,27 +1,36 @@
 <template>
   <div class="published-item__container">
     <div class="published__title">
-      Lasting outcome of the surgical treatment of migraine headaches - a four
-      year follow-up
+      {{ title }}
     </div>
-    <div class="published__detail">
-      Muehlberger T, Brittner W, Buschmann A, Toman N.
+    <div class="published__detail author">
+      {{ author }}
     </div>
-    <div class="published__detail">Plast Reconstr Surg 2008; 122: 32-33</div>
-    <div class="published__index">01</div>
+    <div class="published__detail">{{ detail }}</div>
+    <div class="published__index">{{ index }}</div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['title', 'author', 'detail', 'index'],
+}
 </script>
 
 <style scoped>
+.published-item__container {
+  margin-top: 30px;
+}
+
 .published__title {
   font-weight: 500;
   font-size: 24px;
   line-height: 33px;
   color: #ffffff;
+}
+
+.author {
+  font-style: italic;
 }
 
 .published__detail {
