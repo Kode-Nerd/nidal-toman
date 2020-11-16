@@ -482,7 +482,6 @@ a {
   width: 100%;
   height: 100vh;
   position: relative;
-  /* overflow-x: scroll; */
 }
 .welcome-main {
   width: 200%;
