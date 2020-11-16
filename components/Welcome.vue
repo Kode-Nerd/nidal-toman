@@ -56,9 +56,10 @@
                 background-color="transparent"
                 :color="themes.light.primary"
                 vertical
+                :style="tabsStyle"
               >
                 <v-tabs-slider :color="themes.light.primary3"></v-tabs-slider>
-                <v-tab v-for="label in labels" :key="label">{{
+                <v-tab v-for="label in labels" :key="label" class="tab">{{
                   $t(label)
                 }}</v-tab>
               </v-tabs>
@@ -194,6 +195,13 @@ export default {
     localeActive() {
       return {
         color: this.themes.light.primary3,
+      }
+    },
+    tabsStyle() {
+      return {
+        borderLeftStyle: 'solid',
+        borderColor: this.themes.light.primary3,
+        borderWidth: '1px',
       }
     },
     welcomeMainStyle() {
@@ -491,5 +499,8 @@ a {
 }
 .localization {
   z-index: 1;
+}
+.tab {
+  justify-content: flex-start !important;
 }
 </style>
