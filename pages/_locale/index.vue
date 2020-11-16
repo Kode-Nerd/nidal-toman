@@ -1,29 +1,29 @@
 <template>
   <div>
-    <!-- <Welcome /> -->
+    <Welcome />
     <!-- <Treatments />
     <TreatmentDetail />
     <Contact /> -->
-    <Practice />
+    <!-- <Practice /> -->
     <!-- <Profile /> -->
   </div>
 </template>
 
 <script>
 // import Treatments from '~/components/Treatments'
-// import Welcome from '~/components/Welcome'
+import Welcome from '~/components/Welcome'
 // import TreatmentDetail from '~/components/TreatmentDetail/TreatmentDetail'
 // import Contact from '~/components/Contact/Contact'
-import Practice from '~/components/Practice/Practice'
+// import Practice from '~/components/Practice/Practice'
 // import Profile from '~/components/Profile/Profile'
 
 export default {
   components: {
-    // Welcome,
+    Welcome,
     // Treatments,
     // Contact,
     // TreatmentDetail,
-    Practice,
+    // Practice,
     // Profile,
   },
 }

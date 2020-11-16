@@ -3,7 +3,7 @@ export const state = () => ({
   locale: 'de',
 
   tab: 0,
-  labels: ['treatments', 'practice', 'infoDesk', 'drNidalToman', 'contact'],
+  labels: ['treatments', 'practices', 'infoDesk', 'drNidalToman', 'contact'],
 
   // treatment details
   activeTab: 'general',
