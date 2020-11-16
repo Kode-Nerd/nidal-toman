@@ -1,43 +1,45 @@
 <template>
-  <div id="practices" class="wrapper">
-    <NavigationHeader />
-    <div class="practice__container" @wheel="handleScroll">
-      <div class="practice__header">
-        <div class="header__title">{{ $t('practice.title') }}</div>
-        <div class="header__subtitle">
-          {{ $t('practice.subtitle') }}
-        </div>
-      </div>
-
-      <div class="practice__body">
-        <div class="body__left-column">
-          <div
-            v-for="index in indexList"
-            :key="`${index}-practice-content`"
-            class="item"
-          >
-            <Item
-              :image-path="`praxis${index}.jpg`"
-              :index="`0${index}`"
-              :title="$t(`practice.content.title${index}`)"
-              :subtitle="$t(`practice.content.subtitle${index}`)"
-              :speed="Number(2)"
-            />
+  <div id="practices" class="practices-container">
+    <div class="wrapper">
+      <NavigationHeader />
+      <div class="practice__container" @wheel="handleScroll">
+        <div class="practice__header">
+          <div class="header__title">{{ $t('practice.title') }}</div>
+          <div class="header__subtitle">
+            {{ $t('practice.subtitle') }}
           </div>
         </div>
-        <div class="body__right-column">
-          <div
-            v-for="index in indexList"
-            :key="`${index + 1}-practice-content`"
-            class="item"
-          >
-            <Item
-              :image-path="`praxis${index + 1}.jpg`"
-              :index="`0${index + 1}`"
-              :title="$t(`practice.content.title${index + 1}`)"
-              :subtitle="$t(`practice.content.subtitle${index + 1}`)"
-              :speed="Number(-2)"
-            />
+
+        <div class="practice__body">
+          <div class="body__left-column">
+            <div
+              v-for="index in indexList"
+              :key="`${index}-practice-content`"
+              class="item"
+            >
+              <Item
+                :image-path="`praxis${index}.jpg`"
+                :index="`0${index}`"
+                :title="$t(`practice.content.title${index}`)"
+                :subtitle="$t(`practice.content.subtitle${index}`)"
+                :speed="Number(2)"
+              />
+            </div>
+          </div>
+          <div class="body__right-column">
+            <div
+              v-for="index in indexList"
+              :key="`${index + 1}-practice-content`"
+              class="item"
+            >
+              <Item
+                :image-path="`praxis${index + 1}.jpg`"
+                :index="`0${index + 1}`"
+                :title="$t(`practice.content.title${index + 1}`)"
+                :subtitle="$t(`practice.content.subtitle${index + 1}`)"
+                :speed="Number(-2)"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -56,7 +58,7 @@ export default {
   },
   data() {
     return {
-      scrollYPosition: 0,
+      scrollYPosition: -100,
       indexList: [1, 3, 5],
     }
   },
@@ -68,13 +70,19 @@ export default {
       const scrollOffset = e.deltaY / 5
       this.scrollYPosition += scrollOffset
 
-      window.scrollTo(0, this.scrollYPosition)
+      const sectionContainer = document.getElementById('practices')
+      sectionContainer.scrollTo(0, this.scrollYPosition)
     },
   },
 }
 </script>
 
 <style scoped>
+.practices-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
 .wrapper {
   padding-top: 50px;
 }
