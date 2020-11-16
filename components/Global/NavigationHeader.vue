@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="nav__container">
     <ul>
       <li
         v-for="option in navOptions"
@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.nav__container {
   width: 720px;
   border-bottom: 1px solid #e5e5e5;
   float: right;
