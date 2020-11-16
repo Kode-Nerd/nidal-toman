@@ -16,11 +16,26 @@
 <script>
 export default {
   props: {
-    imagePath: String,
-    index: String,
-    title: String,
-    subtitle: String,
-    speed: Number,
+    imagePath: {
+      type: String,
+      default: '',
+    },
+    index: {
+      type: String,
+      default: '',
+    },
+    title: {
+      type: String,
+      default: '',
+    },
+    subtitle: {
+      type: String,
+      default: '',
+    },
+    speed: {
+      type: Number,
+      default: 1,
+    },
   },
 }
 </script>
