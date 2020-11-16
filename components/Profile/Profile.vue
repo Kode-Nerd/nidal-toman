@@ -96,7 +96,7 @@ import ProfilePublishedSummary from './ProfilePublishedSummary'
 import PublicationData from './assets/publications.json'
 import PublishedSummaries from './assets/publishedSummaries.json'
 import ProfileImage from '~/assets/images/profile/profile_dr-nidal-toman.png'
-import NavHeader from '~/components/Global/NavigationHeader'
+import NavHeader from '~/components/global/NavigationHeader'
 import FooterComponent from '~/components/Footer/Footer'
 
 export default {
