@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div id="practices" class="wrapper">
     <NavigationHeader />
     <div class="practice__container" @wheel="handleScroll">
       <div class="practice__header">

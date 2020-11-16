@@ -3,8 +3,8 @@
     <Welcome />
     <!-- <Treatments />
     <TreatmentDetail /> -->
+    <Practice />
     <!-- <Contact /> -->
-    <!-- <Practice /> -->
     <Profile />
   </div>
 </template>
@@ -13,17 +13,17 @@
 import Welcome from '~/components/Welcome'
 // import Treatments from '~/components/Treatments'
 // import TreatmentDetail from '~/components/TreatmentDetail/TreatmentDetail'
+import Practice from '~/components/Practice/Practice'
 // import Contact from '~/components/Contact/Contact'
-// import Practice from '~/components/Practice/Practice'
 import Profile from '~/components/Profile/Profile'
 
 export default {
   components: {
     Welcome,
     // Treatments,
+    Practice,
     // Contact,
     // TreatmentDetail,
-    // Practice,
     Profile,
   },
   head() {

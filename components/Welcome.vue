@@ -352,7 +352,7 @@ export default {
       const leftPos = this.welcomeMainLeftPos
 
       if (leftPos === -window.innerWidth && deltaY > 70 && this.atEnd) {
-        const target = '#treatments'
+        const target = '#practices'
         const options = {
           duration: 1000,
           offset: 0,
