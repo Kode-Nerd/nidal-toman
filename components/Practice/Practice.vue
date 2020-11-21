@@ -1,5 +1,5 @@
 <template>
-  <div id="practices" class="practices-container" @wheel="handleScroll">
+  <div :id="id" class="practices-container" @wheel="handleScroll">
     <div class="wrapper">
       <NavigationHeader />
       <div class="practice__container">
@@ -58,31 +58,112 @@ export default {
   },
   data() {
     return {
-      scrollYPosition: -100,
+      id: 'practices',
+
+      atStart: true,
+      atEnd: false,
+      timeoutID: null,
+      scrollYPosition: 0,
       indexList: [1, 3, 5],
     }
+  },
+  computed: {
+    endPosition() {
+      const sectionContainer = document.getElementById('practices')
+
+      return sectionContainer.scrollHeight - sectionContainer.clientHeight
+    },
+    atTop() {
+      return this.scrollYPosition <= 0
+    },
+    atBottom() {
+      return this.scrollYPosition >= this.endPosition
+    },
+    maxDelta() {
+      return this.$store.state.maxScrollDeltaSpeedBetweenSection
+    },
+    sectionID() {
+      return this.$store.state.sectionID
+    },
   },
   methods: {
     handleScroll(e) {
       e.preventDefault()
       e.stopPropagation()
 
-      const scrollOffset = e.deltaY / 5
+      this.checkEdgeSection(e.deltaX, e.deltaY)
+
+      this.scrollSection(e.deltaX, e.deltaY)
+
+      this.jumpSection(e.deltaX, e.deltaY)
+    },
+    checkEdgeSection() {
+      if (this.atTop) {
+        if (this.timeoutID === null) {
+          this.timeoutID = setTimeout(() => {
+            this.atStart = true
+          }, 1000)
+        }
+      } else if (this.atBottom) {
+        if (this.timeoutID === null) {
+          this.timeoutID = setTimeout(() => {
+            this.atEnd = true
+          }, 1000)
+        }
+      } else {
+        if (this.timeoutID !== null) {
+          clearTimeout(this.timeoutID)
+          this.timeoutID = null
+        }
+
+        this.atStart = false
+        this.atEnd = false
+      }
+    },
+    jumpSection(deltaX, deltaY) {
+      const prevSection = this.sectionID.find(
+        (id, index) => this.sectionID[index + 1] === '#' + this.id
+      )
+      const nextSection = this.sectionID.find(
+        (id, index) => this.sectionID[index - 1] === '#' + this.id
+      )
+
+      // executing next / prev section
+      if (this.atStart || this.atEnd) {
+        const options = {
+          duration: 1000,
+          offset: 0,
+          easing: 'easeInOutQuint',
+        }
+        if (deltaY < -this.maxDelta && this.atStart && prevSection) {
+          const target = prevSection
+
+          this.$vuetify.goTo(target, options)
+        }
+        if (deltaY > this.maxDelta && this.atEnd && nextSection) {
+          const target = nextSection
+
+          this.$vuetify.goTo(target, options)
+        }
+      }
+    },
+
+    scrollSection(deltaX, deltaY) {
+      const scrollOffset = deltaY / 5
       this.scrollYPosition += scrollOffset
 
       // offset handler
-      if (this.scrollYPosition < 0) {
+      if (this.atTop) {
         this.scrollYPosition = 0
       }
 
       const sectionContainer = document.getElementById('practices')
-      const endPosition =
-        sectionContainer.scrollHeight - sectionContainer.clientHeight
 
-      if (this.scrollYPosition > endPosition) {
-        this.scrollYPosition = endPosition
+      if (this.atBottom) {
+        this.scrollYPosition = this.endPosition
       }
 
+      console.log(this.scrollYPosition)
       sectionContainer.scrollTo(0, this.scrollYPosition)
     },
   },
