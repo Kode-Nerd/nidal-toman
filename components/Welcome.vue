@@ -1,10 +1,11 @@
 <template>
   <div
+    id="welcome"
     class="welcome-container"
     :style="welcomeContainerStyle"
     @wheel="getEvent"
   >
-    <div id="welcome" :style="welcomeMainStyle" class="welcome-main pa-6">
+    <div :style="welcomeMainStyle" class="welcome-main pa-6">
       <v-row class="welcome-main-logo">
         <v-col cols="2"></v-col>
         <v-col cols="2">
@@ -144,6 +145,7 @@ export default {
       moreInfoOpacity: 0,
       innerWidth: 0,
       figure2MoreInfoRightPos: 45,
+      atStart: true,
       atEnd: false,
     }
   },
@@ -166,6 +168,9 @@ export default {
       get() {
         return this.$store.state.locale
       },
+    },
+    sectionID() {
+      return this.$store.state.sectionID
     },
 
     // custom-styling
@@ -324,7 +329,7 @@ export default {
       e.preventDefault()
       e.stopPropagation()
 
-      this.checkEndSection()
+      this.checkEdgeSection()
 
       this.innerWidth = window.innerWidth
       this.animateMainContainer(e.deltaX, e.deltaY)
@@ -335,16 +340,25 @@ export default {
       this.animateFigureMan(e.deltaX, e.deltaY)
       this.jumpNextSection(e.deltaX, e.deltaY)
     },
-    checkEndSection() {
+    checkEdgeSection() {
       const leftPos = this.welcomeMainLeftPos
 
-      if (leftPos === -window.innerWidth) {
-        this.timeoutID = setTimeout(() => {
-          this.atEnd = true
-        }, 1000)
+      if (leftPos === 0) {
+        if (this.timeoutID === null) {
+          this.timeoutID = setTimeout(() => {
+            this.atStart = true
+          }, 1000)
+        }
+      } else if (leftPos === -window.innerWidth) {
+        if (this.timeoutID === null) {
+          this.timeoutID = setTimeout(() => {
+            this.atEnd = true
+          }, 1000)
+        }
       } else if (this.timeoutID !== null) {
         clearTimeout(this.timeoutID)
         this.timeoutID = null
+        this.atStart = false
         this.atEnd = false
       }
     },
