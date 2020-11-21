@@ -134,6 +134,7 @@ export default {
   data() {
     return {
       // please aware this default position in default condition of animation function
+      id: '#welcome',
       timeoutID: null,
       welcomeMainLeftPos: 0,
       welcomeBannerLeftPos: 0,
@@ -171,6 +172,9 @@ export default {
     },
     sectionID() {
       return this.$store.state.sectionID
+    },
+    maxDelta() {
+      return this.$store.state.maxScrollDeltaSpeedBetweenSection
     },
 
     // custom-styling
@@ -338,7 +342,8 @@ export default {
       this.animateFigureTwo(e.deltaX, e.deltaY)
       this.animateFigureWoman(e.deltaX, e.deltaY)
       this.animateFigureMan(e.deltaX, e.deltaY)
-      this.jumpNextSection(e.deltaX, e.deltaY)
+
+      this.jumpSection(e.deltaX, e.deltaY)
     },
     checkEdgeSection() {
       const leftPos = this.welcomeMainLeftPos
@@ -362,19 +367,45 @@ export default {
         this.atEnd = false
       }
     },
-    jumpNextSection(deltaX, deltaY) {
+    jumpSection(deltaX, deltaY) {
       const leftPos = this.welcomeMainLeftPos
+      const prevSection = this.sectionID.find(
+        (id, index) => this.sectionID[index + 1] === this.id
+      )
+      const nextSection = this.sectionID.find(
+        (id, index) => this.sectionID[index - 1] === this.id
+      )
 
-      if (leftPos === -window.innerWidth && deltaY > 70 && this.atEnd) {
-        const target = '#practices'
+      // executing next / prev section
+      if (this.atStart || this.atEnd) {
         const options = {
           duration: 1000,
           offset: 0,
           easing: 'easeInOutQuint',
         }
-        this.$vuetify.goTo(target, options)
+        if (
+          leftPos === 0 &&
+          deltaY < -this.maxDelta &&
+          this.atStart &&
+          prevSection
+        ) {
+          const target = prevSection
+
+          this.$vuetify.goTo(target, options)
+        }
+        if (
+          leftPos === -window.innerWidth &&
+          deltaY > this.maxDelta &&
+          this.atEnd &&
+          nextSection
+        ) {
+          const target = nextSection
+
+          this.$vuetify.goTo(target, options)
+        }
       }
     },
+
     animateMainContainer(deltaX, deltaY) {
       let leftPos = this.welcomeMainLeftPos
       if (leftPos <= 0 && leftPos >= -window.innerWidth) {
