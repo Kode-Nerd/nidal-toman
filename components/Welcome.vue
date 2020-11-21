@@ -176,6 +176,12 @@ export default {
     maxDelta() {
       return this.$store.state.maxScrollDeltaSpeedBetweenSection
     },
+    atLeft() {
+      return this.welcomeMainLeftPos === 0
+    },
+    atRight() {
+      return this.welcomeMainLeftPos === -window.innerWidth
+    },
 
     // custom-styling
     themes() {
@@ -346,15 +352,13 @@ export default {
       this.jumpSection(e.deltaX, e.deltaY)
     },
     checkEdgeSection() {
-      const leftPos = this.welcomeMainLeftPos
-
-      if (leftPos === 0) {
+      if (this.atLeft) {
         if (this.timeoutID === null) {
           this.timeoutID = setTimeout(() => {
             this.atStart = true
           }, 1000)
         }
-      } else if (leftPos === -window.innerWidth) {
+      } else if (this.atRight) {
         if (this.timeoutID === null) {
           this.timeoutID = setTimeout(() => {
             this.atEnd = true
