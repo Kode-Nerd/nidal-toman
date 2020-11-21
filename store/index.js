@@ -6,6 +6,8 @@ export const state = () => ({
   labels: ['treatments', 'practices', 'infoDesk', 'drNidalToman', 'contact'],
 
   maxScrollDeltaSpeedBetweenSection: 70,
+  currentID: '#welcome',
+  fromID: '',
   sectionID: [
     '#welcome',
     // 'treatments',
@@ -28,5 +30,11 @@ export const mutations = {
   },
   SET_ACTIVE_TAB_TREATMENT_DETAIL(state, { activeTab }) {
     state.activeTab = activeTab
+  },
+  SET_CURRENT_ID(state, val) {
+    state.currentID = val
+  },
+  SET_FROM_ID(state, val) {
+    state.fromID = val
   },
 }

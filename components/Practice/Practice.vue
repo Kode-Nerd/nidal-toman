@@ -68,6 +68,12 @@ export default {
     }
   },
   computed: {
+    fromID() {
+      return this.$store.state.fromID
+    },
+    currentID() {
+      return this.$store.state.currentID
+    },
     endPosition() {
       const sectionContainer = document.getElementById('practices')
 
@@ -84,6 +90,24 @@ export default {
     },
     sectionID() {
       return this.$store.state.sectionID
+    },
+  },
+  watch: {
+    currentID(val) {
+      const fromIndex = this.sectionID.indexOf(this.fromID)
+      const currentIndex = this.sectionID.indexOf(val)
+      const sectionContainer = document.getElementById('practices')
+
+      if (this.fromID !== `#${this.id}`) {
+        if (fromIndex < currentIndex) {
+          this.scrollYPosition = 0
+          sectionContainer.scrollTo(0, this.scrollYPosition)
+        }
+        if (fromIndex > currentIndex) {
+          this.scrollYPosition = this.endPosition
+          sectionContainer.scrollTo(0, this.scrollYPosition)
+        }
+      }
     },
   },
   methods: {
@@ -135,15 +159,22 @@ export default {
           offset: 0,
           easing: 'easeInOutQuint',
         }
+        let target
+
         if (deltaY < -this.maxDelta && this.atStart && prevSection) {
-          const target = prevSection
+          target = prevSection
 
           this.$vuetify.goTo(target, options)
         }
         if (deltaY > this.maxDelta && this.atEnd && nextSection) {
-          const target = nextSection
+          target = nextSection
 
           this.$vuetify.goTo(target, options)
+        }
+
+        if (target) {
+          this.$store.commit('SET_FROM_ID', `#${this.id}`)
+          this.$store.commit('SET_CURRENT_ID', target)
         }
       }
     },

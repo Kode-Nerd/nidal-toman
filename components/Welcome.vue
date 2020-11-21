@@ -182,6 +182,12 @@ export default {
     atRight() {
       return this.welcomeMainLeftPos === -window.innerWidth
     },
+    fromID() {
+      return this.$store.state.fromID
+    },
+    currentID() {
+      return this.$store.state.currentID
+    },
 
     // custom-styling
     themes() {
@@ -331,6 +337,21 @@ export default {
       }
     },
   },
+  watch: {
+    currentID(val) {
+      const fromIndex = this.sectionID.indexOf(this.fromID)
+      const currentIndex = this.sectionID.indexOf(val)
+
+      if (this.fromID !== `#${this.id}`) {
+        if (fromIndex < currentIndex) {
+          this.welcomeMainLeftPos = 0
+        }
+        if (fromIndex > currentIndex) {
+          this.welcomeMainLeftPos = -window.innerWidth
+        }
+      }
+    },
+  },
   mounted() {
     this.innerWidth = window.innerWidth
   },
@@ -389,15 +410,22 @@ export default {
           offset: 0,
           easing: 'easeInOutQuint',
         }
+        let target
+
         if (deltaY < -this.maxDelta && this.atStart && prevSection) {
-          const target = prevSection
+          target = prevSection
 
           this.$vuetify.goTo(target, options)
         }
         if (deltaY > this.maxDelta && this.atEnd && nextSection) {
-          const target = nextSection
+          target = nextSection
 
           this.$vuetify.goTo(target, options)
+        }
+
+        if (target) {
+          this.$store.commit('SET_FROM_ID', `#${this.id}`)
+          this.$store.commit('SET_CURRENT_ID', target)
         }
       }
     },
