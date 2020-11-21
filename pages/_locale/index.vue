@@ -5,7 +5,7 @@
     <TreatmentDetail /> -->
     <Practice />
     <!-- <Contact /> -->
-    <Profile />
+    <!-- <Profile /> -->
   </div>
 </template>
 
