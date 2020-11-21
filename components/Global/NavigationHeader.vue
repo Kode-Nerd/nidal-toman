@@ -20,29 +20,17 @@ export default {
   data() {
     return {
       selectedNav: 'infodesk',
-      navOptions: [
-        {
-          label: 'Treatments',
-          value: 'treatments',
-        },
-        {
-          label: 'Info Desk',
-          value: 'infodesk',
-        },
-        {
-          label: 'Dr. Nidal Toman',
-          value: 'profile',
-        },
-        {
-          label: 'Contact',
-          value: 'contact',
-        },
-        {
-          label: 'Practice',
-          value: 'practice',
-        },
-      ],
     }
+  },
+  computed: {
+    navOptions() {
+      const mapped = this.$store.state.labels.map((label) => ({
+        label: this.$t(label),
+        value: label,
+      }))
+
+      return mapped
+    },
   },
   methods: {
     handleSelectActiveNav(selectedNav) {
@@ -63,33 +51,28 @@ export default {
   opacity: 1;
 }
 
-.active.infodesk ~ .underline {
-  margin-left: 120px;
-  width: 107px;
-}
-
 .active.treatments ~ .underline {
   margin-left: 0px;
   width: 120px;
 }
 
-.active.infodesk ~ .underline {
+.active.practices ~ .underline {
   margin-left: 120px;
+  width: 96px;
+}
+
+.active.infoDesk ~ .underline {
+  margin-left: calc(120px + 96px);
   width: 107px;
 }
 
-.active.profile ~ .underline {
-  margin-left: calc(120px + 107px);
+.active.drNidalToman ~ .underline {
+  margin-left: calc(120px + 96px + 107px);
   width: 154px;
 }
 
 .active.contact ~ .underline {
-  margin-left: calc(120px + 107px + 154px);
-  width: 96px;
-}
-
-.active.practice ~ .underline {
-  margin-left: calc(120px + 107px + 154px + 96px);
+  margin-left: calc(120px + 96px + 107px + 154px);
   width: 96px;
 }
 
