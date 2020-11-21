@@ -15,7 +15,7 @@ import Welcome from '~/components/Welcome'
 // import TreatmentDetail from '~/components/TreatmentDetail/TreatmentDetail'
 import Practice from '~/components/Practice/Practice'
 // import Contact from '~/components/Contact/Contact'
-import Profile from '~/components/Profile/Profile'
+// import Profile from '~/components/Profile/Profile'
 
 export default {
   components: {
@@ -24,7 +24,7 @@ export default {
     Practice,
     // Contact,
     // TreatmentDetail,
-    Profile,
+    // Profile,
   },
   head() {
     return {
