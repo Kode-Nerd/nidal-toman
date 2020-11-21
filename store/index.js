@@ -12,7 +12,7 @@ export const state = () => ({
     '#welcome',
     // 'treatments',
     '#practices',
-    '#infoDesk',
+    // '#infoDesk',
     '#drNidalToman',
     '#contact',
   ],
