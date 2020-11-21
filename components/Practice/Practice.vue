@@ -1,8 +1,8 @@
 <template>
-  <div id="practices" class="practices-container">
+  <div id="practices" class="practices-container" @wheel="handleScroll">
     <div class="wrapper">
       <NavigationHeader />
-      <div class="practice__container" @wheel="handleScroll">
+      <div class="practice__container">
         <div class="practice__header">
           <div class="header__title">{{ $t('practice.title') }}</div>
           <div class="header__subtitle">
@@ -70,7 +70,19 @@ export default {
       const scrollOffset = e.deltaY / 5
       this.scrollYPosition += scrollOffset
 
+      // offset handler
+      if (this.scrollYPosition < 0) {
+        this.scrollYPosition = 0
+      }
+
       const sectionContainer = document.getElementById('practices')
+      const endPosition =
+        sectionContainer.scrollHeight - sectionContainer.clientHeight
+
+      if (this.scrollYPosition > endPosition) {
+        this.scrollYPosition = endPosition
+      }
+
       sectionContainer.scrollTo(0, this.scrollYPosition)
     },
   },
