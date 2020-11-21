@@ -4,8 +4,8 @@
     <!-- <Treatments />
     <TreatmentDetail /> -->
     <Practice />
-    <!-- <Contact /> -->
-    <!-- <Profile /> -->
+    <Profile />
+    <Contact />
   </div>
 </template>
 
@@ -14,17 +14,17 @@ import Welcome from '~/components/Welcome'
 // import Treatments from '~/components/Treatments'
 // import TreatmentDetail from '~/components/TreatmentDetail/TreatmentDetail'
 import Practice from '~/components/Practice/Practice'
-// import Contact from '~/components/Contact/Contact'
-// import Profile from '~/components/Profile/Profile'
+import Profile from '~/components/Profile/Profile'
+import Contact from '~/components/Contact/Contact'
 
 export default {
   components: {
     Welcome,
     // Treatments,
-    Practice,
-    // Contact,
     // TreatmentDetail,
-    // Profile,
+    Practice,
+    Profile,
+    Contact,
   },
   head() {
     return {
