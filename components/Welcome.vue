@@ -386,20 +386,12 @@ export default {
           offset: 0,
           easing: 'easeInOutQuint',
         }
-        if (
-          deltaY < -this.maxDelta &&
-          this.atStart &&
-          prevSection
-        ) {
+        if (deltaY < -this.maxDelta && this.atStart && prevSection) {
           const target = prevSection
 
           this.$vuetify.goTo(target, options)
         }
-        if (
-          deltaY > this.maxDelta &&
-          this.atEnd &&
-          nextSection
-        ) {
+        if (deltaY > this.maxDelta && this.atEnd && nextSection) {
           const target = nextSection
 
           this.$vuetify.goTo(target, options)
