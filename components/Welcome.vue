@@ -1,6 +1,6 @@
 <template>
   <div
-    id="welcome"
+    :id="id"
     class="welcome-container"
     :style="welcomeContainerStyle"
     @wheel="getEvent"
@@ -134,7 +134,7 @@ export default {
   data() {
     return {
       // please aware this default position in default condition of animation function
-      id: '#welcome',
+      id: 'welcome',
       timeoutID: null,
       welcomeMainLeftPos: 0,
       welcomeBannerLeftPos: 0,
@@ -360,9 +360,12 @@ export default {
             this.atEnd = true
           }, 1000)
         }
-      } else if (this.timeoutID !== null) {
-        clearTimeout(this.timeoutID)
-        this.timeoutID = null
+      } else {
+        if (this.timeoutID !== null) {
+          clearTimeout(this.timeoutID)
+          this.timeoutID = null
+        }
+
         this.atStart = false
         this.atEnd = false
       }
@@ -370,10 +373,10 @@ export default {
     jumpSection(deltaX, deltaY) {
       const leftPos = this.welcomeMainLeftPos
       const prevSection = this.sectionID.find(
-        (id, index) => this.sectionID[index + 1] === this.id
+        (id, index) => this.sectionID[index + 1] === '#' + this.id
       )
       const nextSection = this.sectionID.find(
-        (id, index) => this.sectionID[index - 1] === this.id
+        (id, index) => this.sectionID[index - 1] === '#' + this.id
       )
 
       // executing next / prev section
