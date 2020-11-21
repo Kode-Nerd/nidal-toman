@@ -371,7 +371,6 @@ export default {
       }
     },
     jumpSection(deltaX, deltaY) {
-      const leftPos = this.welcomeMainLeftPos
       const prevSection = this.sectionID.find(
         (id, index) => this.sectionID[index + 1] === '#' + this.id
       )
