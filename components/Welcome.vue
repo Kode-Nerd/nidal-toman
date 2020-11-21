@@ -387,7 +387,6 @@ export default {
           easing: 'easeInOutQuint',
         }
         if (
-          leftPos === 0 &&
           deltaY < -this.maxDelta &&
           this.atStart &&
           prevSection
@@ -397,7 +396,6 @@ export default {
           this.$vuetify.goTo(target, options)
         }
         if (
-          leftPos === -window.innerWidth &&
           deltaY > this.maxDelta &&
           this.atEnd &&
           nextSection
