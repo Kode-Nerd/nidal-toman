@@ -163,7 +163,6 @@ export default {
         this.scrollYPosition = this.endPosition
       }
 
-      console.log(this.scrollYPosition)
       sectionContainer.scrollTo(0, this.scrollYPosition)
     },
   },
