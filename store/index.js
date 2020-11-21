@@ -5,6 +5,16 @@ export const state = () => ({
   tab: 0,
   labels: ['treatments', 'practices', 'infoDesk', 'drNidalToman', 'contact'],
 
+  maxScrollDeltaSpeedBetweenSection: 70,
+  sectionID: [
+    '#welcome',
+    // 'treatments',
+    '#practices',
+    '#infoDesk',
+    '#drNidalToman',
+    '#contact',
+  ],
+
   // treatment details
   activeTab: 'general',
 })
