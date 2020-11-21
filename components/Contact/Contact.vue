@@ -1,5 +1,5 @@
 <template>
-  <div class="contact-wrapper">
+  <div id="contact" class="contact-wrapper">
     <div class="contact-section__header">
       <div class="contact__title">We available for you</div>
       <div class="contact__subtitle">

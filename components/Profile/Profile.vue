@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div id="profile" class="wrapper">
     <NavHeader />
     <div class="profile__container">
       <div class="profile__header">
