@@ -40,6 +40,16 @@
         <v-col cols="6"></v-col>
       </v-row>
       <v-row class="full-height" align-content="end">
+        <v-tabs
+          v-model="tab"
+          :style="[topNavStyle, moreInfoStyle]"
+          background-color="transparent"
+          :color="$vuetify.theme.themes.light.primary"
+        >
+          <v-tab v-for="label in labels" :key="label" :ripple="false">{{
+            $t(label)
+          }}</v-tab>
+        </v-tabs>
         <div :style="welcomeBannerStyle">
           <div class="d-flex flex-column">
             <span :style="welcomeStyle" class="text-h5 font-weight-medium">
@@ -60,9 +70,13 @@
                 :style="tabsStyle"
               >
                 <v-tabs-slider :color="themes.light.primary3"></v-tabs-slider>
-                <v-tab v-for="label in labels" :key="label" class="tab">{{
-                  $t(label)
-                }}</v-tab>
+                <v-tab
+                  v-for="label in labels"
+                  :key="label"
+                  class="tab"
+                  :ripple="false"
+                  >{{ $t(label) }}</v-tab
+                >
               </v-tabs>
             </v-col>
           </div>
@@ -144,7 +158,6 @@ export default {
       figureWomanRightPos: 0,
       figureManRightPos: 0,
       moreInfoOpacity: 0,
-      innerWidth: 0,
       figure2MoreInfoRightPos: 45,
       atStart: true,
       atEnd: false,
@@ -246,13 +259,13 @@ export default {
       }
     },
     leftMainLogoPos() {
-      return this.innerWidth * 0.4 + this.welcomeBannerLeftPos
+      return `calc(50vw - 10vw + ${this.welcomeBannerLeftPos}px)`
     },
     mainLogoStyle() {
       return {
         position: 'absolute',
-        left: `${this.leftMainLogoPos}px`,
-        top: '36px',
+        left: this.leftMainLogoPos,
+        top: '72px',
       }
     },
     figure1() {
@@ -336,6 +349,14 @@ export default {
         zIndex: 1,
       }
     },
+    topNavStyle() {
+      return {
+        position: 'absolute',
+        top: '10px',
+        left: `${this.welcomeBannerLeftPos}px`,
+        zIndex: 1,
+      }
+    },
   },
   watch: {
     currentID(val) {
@@ -352,9 +373,6 @@ export default {
       }
     },
   },
-  mounted() {
-    this.innerWidth = window.innerWidth
-  },
   methods: {
     getEvent(e) {
       e.preventDefault()
@@ -362,7 +380,6 @@ export default {
 
       this.checkEdgeSection()
 
-      this.innerWidth = window.innerWidth
       this.animateMainContainer(e.deltaX, e.deltaY)
       this.animateWelcomeBanner(e.deltaX, e.deltaY)
       this.animateFigureOne(e.deltaX, e.deltaY)
