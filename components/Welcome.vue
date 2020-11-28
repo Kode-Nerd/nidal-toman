@@ -40,16 +40,7 @@
         <v-col cols="6"></v-col>
       </v-row>
       <v-row class="full-height" align-content="end">
-        <v-tabs
-          v-model="tab"
-          :style="[topNavStyle, moreInfoStyle]"
-          background-color="transparent"
-          :color="$vuetify.theme.themes.light.primary"
-        >
-          <v-tab v-for="label in labels" :key="label" :ripple="false">{{
-            $t(label)
-          }}</v-tab>
-        </v-tabs>
+        <TopNav :nav-style="[topNavStyle, moreInfoStyle]" />
         <div :style="welcomeBannerStyle">
           <div class="d-flex flex-column">
             <span :style="welcomeStyle" class="text-h5 font-weight-medium">
@@ -62,22 +53,13 @@
               {{ $t('title3') }}
             </span>
             <v-col cols="4">
-              <v-tabs
-                v-model="tab"
-                background-color="transparent"
-                :color="themes.light.primary"
-                vertical
-                :style="tabsStyle"
-              >
-                <v-tabs-slider :color="themes.light.primary3"></v-tabs-slider>
-                <v-tab
-                  v-for="label in labels"
-                  :key="label"
-                  class="tab"
-                  :ripple="false"
-                  >{{ $t(label) }}</v-tab
-                >
-              </v-tabs>
+              <TopNav
+                :nav-style="[tabsStyle]"
+                :vertical="true"
+                :custom-slider="true"
+                :slider-color="themes.light.primary3"
+                tab-justify="left"
+              />
             </v-col>
           </div>
         </div>
@@ -144,7 +126,12 @@
 </template>
 
 <script>
+import TopNav from '~/components/global/TopNav'
+
 export default {
+  components: {
+    TopNav,
+  },
   data() {
     return {
       // please aware this default position in default condition of animation function
