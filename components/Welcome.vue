@@ -354,7 +354,7 @@ export default {
         position: 'absolute',
         top: '10px',
         left: `${this.welcomeBannerLeftPos}px`,
-        zIndex: 1,
+        zIndex: this.moreInfoOpacity === 0 ? -1 : 1,
       }
     },
   },
@@ -500,6 +500,9 @@ export default {
       if (leftPosMain >= 0) {
         this.figure1LeftPos = 0
       }
+      if (leftPosMain <= -window.innerWidth) {
+        this.figure1LeftPos = -119
+      }
     },
     animateFigureTwo(deltaX, deltaY) {
       const leftPosMain = this.welcomeMainLeftPos
@@ -516,6 +519,10 @@ export default {
       if (leftPosMain >= 0) {
         this.figure2LeftPos = 0
         this.figure2MoreInfoRightPos = 45
+      }
+      if (leftPosMain <= -window.innerWidth) {
+        this.figure2LeftPos = -65.5
+        this.figure2MoreInfoRightPos = -2.5
       }
     },
 
