@@ -247,6 +247,7 @@ export default {
     localeStyle() {
       return {
         opacity: this.bannerOpacity,
+        zIndex: this.bannerOpacity === 0 ? -1 : 1,
       }
     },
     welcomeBannerStyle() {
@@ -387,7 +388,7 @@ export default {
       this.animateFigureWoman(e.deltaX, e.deltaY)
       this.animateFigureMan(e.deltaX, e.deltaY)
 
-      this.jumpSection(e.deltaX, e.deltaY)
+      // this.jumpSection(e.deltaX, e.deltaY)
     },
     checkEdgeSection() {
       if (this.atLeft) {
