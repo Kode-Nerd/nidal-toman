@@ -1,6 +1,13 @@
 <template>
   <div>
-    <div v-if="!backgroundIsTransparent" :style="backgroundSupportStyle"></div>
+    <div v-if="!backgroundIsTransparent" :style="backgroundSupportStyle">
+      <v-img
+        contain
+        :src="require('~/assets/logo.png')"
+        max-height="40px"
+        :style="logoStyle"
+      ></v-img>
+    </div>
     <v-tabs v-model="tab" v-bind="bindObj">
       <v-tabs-slider v-if="customSlider" :color="sliderColor"></v-tabs-slider>
       <v-tab
@@ -97,6 +104,13 @@ export default {
     zIndex5Style() {
       return {
         zIndex: 5,
+      }
+    },
+    logoStyle() {
+      return {
+        position: 'fixed',
+        left: '0px',
+        top: 'calc(24px - 20px)',
       }
     },
     bindObj() {
