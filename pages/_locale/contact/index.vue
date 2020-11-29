@@ -9,6 +9,18 @@ export default {
   components: {
     Contact,
   },
+  head() {
+    return {
+      title: 'Contact',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'This is description from Contact Page',
+        },
+      ],
+    }
+  },
 }
 </script>
 
