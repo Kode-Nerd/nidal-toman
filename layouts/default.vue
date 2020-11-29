@@ -8,6 +8,7 @@
       />
       <div :style="spacerStyle" />
       <nuxt />
+      <Footer />
     </v-main>
   </v-app>
 </template>
@@ -16,12 +17,14 @@
 import Vue from 'vue'
 import VueRellax from 'vue-rellax'
 import TopNav from '@/components/global/TopNav'
+import Footer from '@/components/Footer/Footer'
 
 Vue.use(VueRellax)
 
 export default {
   components: {
     TopNav,
+    Footer,
   },
   computed: {
     topNavStyle() {

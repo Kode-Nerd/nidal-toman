@@ -75,7 +75,7 @@ export default {
     endPosition() {
       const sectionContainer = document.getElementById('practices')
 
-      return sectionContainer.clientHeight - window.innerHeight + 72
+      return sectionContainer.clientHeight - window.innerHeight + 72 + 221
     },
     atTop() {
       return this.scrollYPosition <= 0
