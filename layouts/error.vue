@@ -35,7 +35,13 @@ export default {
     }, 1000)
     setTimeout(() => {
       clearInterval(timer)
-      this.$router.push('/')
+
+      const englishPageDetected = /^\/en/.test(this.$route.fullPath)
+      if (englishPageDetected) {
+        this.$router.push('/en/')
+      } else {
+        this.$router.push('/')
+      }
     }, 3000)
   },
 }

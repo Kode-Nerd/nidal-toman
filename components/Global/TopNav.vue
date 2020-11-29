@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     goto(label) {
-      this.$router.push(label)
+      this.$router.push({ path: label })
     },
   },
 }
