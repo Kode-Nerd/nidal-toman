@@ -25,7 +25,7 @@ export default {
   computed: {
     navOptions() {
       const mapped = this.$store.state.labels.map((label) => ({
-        label: this.$t(label),
+        label: this.$t(`nav.${label}`),
         value: label,
       }))
 
