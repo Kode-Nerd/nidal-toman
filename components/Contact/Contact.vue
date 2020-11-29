@@ -1,5 +1,5 @@
 <template>
-  <div id="contact" class="contact-wrapper">
+  <div :id="id" class="contact-wrapper">
     <v-carousel
       cycle
       height="600"
@@ -95,6 +95,7 @@ export default {
   data() {
     return {
       MessageIcon,
+      id: 'contact',
       colors: [
         'indigo',
         'warning',
