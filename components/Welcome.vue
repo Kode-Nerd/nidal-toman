@@ -151,17 +151,6 @@ export default {
     }
   },
   computed: {
-    tab: {
-      set(val) {
-        this.$store.commit('SET_TAB', val)
-      },
-      get() {
-        return this.$store.state.tab
-      },
-    },
-    labels() {
-      return this.$store.state.labels
-    },
     locale: {
       set(val) {
         this.$store.commit('SET_LOCALE', val)
@@ -579,8 +568,5 @@ a {
 }
 .localization {
   z-index: 1;
-}
-.tab {
-  justify-content: flex-start !important;
 }
 </style>
