@@ -112,7 +112,7 @@ export default {
     },
   },
   watch: {
-    '$route.fullPath': {
+    '$route.path': {
       handler(val) {
         /* eslint no-useless-escape: 0 */
         const regex = /^\/en/
