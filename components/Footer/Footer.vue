@@ -6,7 +6,9 @@
         <div class="footer__subtitle">Plasticher Chirurg</div>
       </div>
 
-      <div class="button">Contact Us <img :src="ArrowIcon" /></div>
+      <div v-if="!isOnContactPage" class="button" @click="gotoContact">
+        Contact Us <img :src="ArrowIcon" />
+      </div>
     </div>
 
     <div class="footer__row">
@@ -47,6 +49,16 @@ export default {
       CallIcon,
     }
   },
+  computed: {
+    isOnContactPage() {
+      return /\/contact/.test(this.$route.fullPath)
+    },
+  },
+  methods: {
+    gotoContact() {
+      this.$router.push({ path: 'contact' })
+    },
+  },
 }
 </script>
 
@@ -85,6 +97,7 @@ export default {
   display: flex;
   align-items: center;
   color: #fff;
+  cursor: pointer;
 }
 
 .copyright {
