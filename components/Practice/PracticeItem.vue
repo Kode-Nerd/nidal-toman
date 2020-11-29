@@ -1,5 +1,5 @@
 <template>
-  <div v-rellax="false" class="practice-item__container">
+  <div v-rellax="{ speed }" class="practice-item__container">
     <div class="practice-item__image">
       <img :src="require(`~/assets/images/practice/${imagePath}`)" />
     </div>
