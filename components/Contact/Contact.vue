@@ -1,5 +1,6 @@
 <template>
   <div id="contact" class="contact-wrapper">
+    <TopNav :nav-style="[topNavStyle]" />
     <div class="contact-section__header">
       <div class="contact__title">We available for you</div>
       <div class="contact__subtitle">
@@ -76,12 +77,25 @@
 
 <script>
 import MessageIcon from '~/assets/icons/message.svg'
+import TopNav from '~/components/global/TopNav'
 
 export default {
+  components: {
+    TopNav,
+  },
   data() {
     return {
       MessageIcon,
     }
+  },
+  computed: {
+    topNavStyle() {
+      return {
+        position: 'absolute',
+        top: '10px',
+        right: '24px',
+      }
+    },
   },
 }
 </script>
