@@ -55,9 +55,9 @@
     </div>
 
     <div class="contact-section__detail">
-      <div class="message-container">
+      <!-- <div class="message-container">
         <img :src="MessageIcon" alt="Message" />
-      </div>
+      </div> -->
 
       <v-row id="contact-form" class="contact-address-container">
         <v-col>
@@ -137,7 +137,8 @@ export default {
   height: 40px;
   font-size: 14px;
   line-height: 19px;
-  color: #6c756b;
+  /* color: #6c756b; */
+  color: #ffffff;
   margin-top: 22px;
 }
 
