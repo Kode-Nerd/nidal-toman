@@ -1,14 +1,6 @@
 <template>
   <div>
-    <div
-      :style="{
-        background: background,
-        height: '48px',
-        width: '100%',
-        position: 'fixed',
-        top: '0px',
-      }"
-    ></div>
+    <div v-if="!backgroundIsTransparent" :style="backgroundSupportStyle"></div>
     <v-tabs v-model="tab" v-bind="bindObj">
       <v-tabs-slider v-if="customSlider" :color="sliderColor"></v-tabs-slider>
       <v-tab
@@ -83,6 +75,18 @@ export default {
           return 'tab-right'
         default:
           return undefined
+      }
+    },
+    backgroundIsTransparent() {
+      return this.background === 'transparent'
+    },
+    backgroundSupportStyle() {
+      return {
+        background: this.background,
+        height: '48px',
+        width: '100%',
+        position: 'fixed',
+        top: '0px',
       }
     },
     bindObj() {
