@@ -192,8 +192,6 @@ export default {
         this.scrollYPosition = this.endPosition
       }
 
-      console.log(sectionContainer.clientHeight, window.innerHeight, window)
-      console.log('TRIGGERED INSIDE', this.scrollYPosition, scrollOffset)
       window.scrollTo(0, this.scrollYPosition)
     },
   },

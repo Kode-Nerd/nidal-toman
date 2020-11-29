@@ -142,7 +142,6 @@ export default {
       splittedColor[2] = opacity
       const finalColor = splittedColor.join('')
 
-      console.log(finalColor)
       return `#${finalColor}`
     },
   },
