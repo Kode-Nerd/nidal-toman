@@ -186,8 +186,6 @@ export default {
         this.scrollYPosition = 0
       }
 
-      const sectionContainer = document.getElementById('practices')
-
       if (this.atBottom) {
         this.scrollYPosition = this.endPosition
       }
