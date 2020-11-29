@@ -2,7 +2,7 @@
   <v-tabs
     v-model="tab"
     :style="navStyle"
-    background-color="transparent"
+    :background-color="background"
     :color="color"
     :vertical="vertical"
   >
@@ -49,6 +49,10 @@ export default {
       type: String,
       default: 'center',
     },
+    background: {
+      type: String,
+      default: 'transparent',
+    },
   },
   computed: {
     tab: {
@@ -77,7 +81,7 @@ export default {
     '$route.fullPath': {
       handler(val) {
         /* eslint no-useless-escape: 0 */
-        const regex = /^\/[^\/]+/
+        const regex = /^\/en/
         const path = val.replace(regex, '')
         const matched = path.match(/[^\/]+/g)
 
