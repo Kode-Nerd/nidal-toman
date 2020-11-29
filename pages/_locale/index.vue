@@ -23,6 +23,7 @@ export default {
     Practice,
     Profile,
   },
+  layout: 'custom',
   head() {
     return {
       title: 'Home',
