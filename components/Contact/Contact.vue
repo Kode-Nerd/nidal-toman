@@ -2,7 +2,7 @@
   <div :id="id" class="contact-wrapper">
     <v-carousel
       cycle
-      height="600"
+      height="400"
       hide-delimiter-background
       show-arrows-on-hover
     >
