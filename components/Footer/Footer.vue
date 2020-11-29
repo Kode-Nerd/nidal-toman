@@ -13,6 +13,25 @@
 
     <div class="footer__row">
       <div class="copyright">Dr. Nidal Toman</div>
+      <div>
+        <nuxt-link
+          class="localization"
+          :style="locale === 'de' ? localeActive : textStyle"
+          :to="
+            locale === 'en'
+              ? $route.fullPath.replace(/^\/[^\/]+/, '')
+              : $route.fullPath
+          "
+          >DE</nuxt-link
+        >
+        <span :style="textStyle" class="mx-2">|</span>
+        <nuxt-link
+          :style="locale === 'en' ? localeActive : textStyle"
+          :to="locale === 'de' ? '/en' + $route.fullPath : $route.fullPath"
+          class="mr-4 localization"
+          >EN</nuxt-link
+        >
+      </div>
       <div class="detail__container">
         <div class="detail__item">
           <img :src="PlaceIcon" height="24" />
@@ -50,8 +69,30 @@ export default {
     }
   },
   computed: {
+    locale: {
+      set(val) {
+        this.$store.commit('SET_LOCALE', val)
+      },
+      get() {
+        return this.$store.state.locale
+      },
+    },
+    themes() {
+      return this.$vuetify.theme.themes
+    },
     isOnContactPage() {
       return /\/contact/.test(this.$route.fullPath)
+    },
+    localeActive() {
+      return {
+        color: this.themes.light.background,
+        textDecoration: 'underline',
+      }
+    },
+    textStyle() {
+      return {
+        color: this.themes.light.background,
+      }
     },
   },
   methods: {
@@ -63,6 +104,10 @@ export default {
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+}
+
 .footer__container {
   background: #363636;
   padding: 50px 100px;
