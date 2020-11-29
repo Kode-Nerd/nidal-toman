@@ -73,6 +73,28 @@ export default {
       }
     },
   },
+  watch: {
+    '$route.fullPath': {
+      handler(val) {
+        /* eslint no-useless-escape: 0 */
+        const regex = /^\/[^\/]+/
+        const path = val.replace(regex, '')
+        const matched = path.match(/[^\/]+/g)
+
+        let label
+
+        if (!matched) {
+          label = 'treatments'
+        } else {
+          label = matched[0]
+        }
+
+        this.tab = this.labels.indexOf(label)
+      },
+      deep: true,
+      immediate: true,
+    },
+  },
   methods: {
     goto(label) {
       this.$router.push({ path: label })
