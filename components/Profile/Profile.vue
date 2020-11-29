@@ -1,5 +1,5 @@
 <template>
-  <div id="drNidalToman" class="wrapper">
+  <div :id="id" class="wrapper">
     <!-- <NavHeader /> -->
     <div class="profile__container">
       <div class="profile__header">
@@ -110,6 +110,7 @@ export default {
   },
   data() {
     return {
+      id: 'profile',
       ProfileImage,
       PublicationData,
       PublishedSummaries,
