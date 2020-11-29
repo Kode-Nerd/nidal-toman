@@ -7,11 +7,20 @@
       show-arrows-on-hover
     >
       <v-carousel-item v-for="(slide, i) in slides" :key="i">
-        <v-sheet :color="colors[i]" height="100%">
-          <v-row class="fill-height" align="center" justify="center">
-            <div class="display-3">{{ slide }} Slide</div>
-          </v-row>
-        </v-sheet>
+        <v-img
+          :src="require(`~/assets/images/practice/${imagePaths[i]}`)"
+          height="100%"
+          :style="mainLogoStyle"
+        >
+          <div class="fill-height carousel-dark">
+            <v-row class="fill-height" align="center" justify="center">
+              <v-col :offset="2" :cols="10">
+                <div class="display-3">{{ slide }}</div>
+                <div class="title">{{ sub[i] }}</div>
+              </v-col>
+            </v-row>
+          </div>
+        </v-img>
       </v-carousel-item>
     </v-carousel>
     <div class="contact-section__header">
@@ -35,7 +44,7 @@
         </div>
         <div class="profile__link" @click="gotoProfile">know more</div>
       </div>
-      <div class="contact-person">
+      <!-- <div class="contact-person">
         <div class="profile-container">
           <div class="profile__pict"></div>
           <div class="profile__detail">
@@ -43,7 +52,7 @@
             <div class="profile__title">Management assistant</div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="contact-section__detail">
@@ -96,15 +105,23 @@ export default {
     return {
       MessageIcon,
       id: 'contact',
-      colors: [
-        'indigo',
-        'warning',
-        'pink darken-2',
-        'red lighten-1',
-        'deep-purple accent-4',
-      ],
-      slides: ['First', 'Second', 'Third', 'Fourth', 'Fifth'],
+      indexList: [1, 2, 3, 4, 5, 6],
     }
+  },
+  computed: {
+    slides() {
+      return this.indexList.map((index) =>
+        this.$t(`practice.content.title${index}`)
+      )
+    },
+    sub() {
+      return this.indexList.map((index) =>
+        this.$t(`practice.content.subtitle${index}`)
+      )
+    },
+    imagePaths() {
+      return this.indexList.map((index) => `praxis${index}.jpg`)
+    },
   },
   methods: {
     gotoProfile() {
@@ -200,7 +217,7 @@ export default {
 }
 
 .contact-section__header {
-  padding: 140px 140px 0px 140px;
+  padding: 70px 140px 0px 140px;
   font-weight: 300;
   font-size: 24px;
   line-height: 33px;
@@ -261,5 +278,9 @@ export default {
 
 .contact-person:not(:first-child) {
   margin-top: 110px;
+}
+
+.carousel-dark {
+  background: rgba(0, 0, 0, 0.4);
 }
 </style>
