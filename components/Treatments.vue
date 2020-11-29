@@ -8,7 +8,9 @@
         :color="$vuetify.theme.themes.light.primary"
         vertical
       >
-        <v-tab v-for="label in labels" :key="label">{{ $t(label) }}</v-tab>
+        <v-tab v-for="label in labels" :key="label">{{
+          $t(`nav.${label}`)
+        }}</v-tab>
       </v-tabs>
       <v-row class="treatments-main-logo"></v-row>
       <v-row class="full-height">
@@ -18,7 +20,9 @@
           :color="$vuetify.theme.themes.light.primary"
           right
         >
-          <v-tab v-for="label in labels" :key="label">{{ $t(label) }}</v-tab>
+          <v-tab v-for="label in labels" :key="label">{{
+            $t(`nav.${label}`)
+          }}</v-tab>
         </v-tabs>
       </v-row>
     </div>
