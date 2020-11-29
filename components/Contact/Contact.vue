@@ -10,7 +10,6 @@
         <v-img
           :src="require(`~/assets/images/practice/${imagePaths[i]}`)"
           height="100%"
-          :style="mainLogoStyle"
         >
           <div class="fill-height carousel-dark">
             <v-row class="fill-height" align="center" justify="center">
