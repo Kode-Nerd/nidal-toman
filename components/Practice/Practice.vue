@@ -1,6 +1,6 @@
 <template>
   <div :id="id" class="wrapper" @wheel="handleScroll">
-    <NavigationHeader />
+    <!-- <NavigationHeader /> -->
     <div class="practice__container">
       <div class="practice__header">
         <div class="header__title">{{ $t('practice.title') }}</div>
@@ -47,12 +47,12 @@
 
 <script>
 import PracticeItem from './PracticeItem'
-import NavigationHeader from '~/components/global/NavigationHeader'
+// import NavigationHeader from '~/components/global/NavigationHeader'
 
 export default {
   components: {
     Item: PracticeItem,
-    NavigationHeader,
+    // NavigationHeader,
   },
   data() {
     return {
@@ -75,7 +75,7 @@ export default {
     endPosition() {
       const sectionContainer = document.getElementById('practices')
 
-      return sectionContainer.scrollHeight - sectionContainer.clientHeight
+      return sectionContainer.clientHeight - window.innerHeight + 72
     },
     atTop() {
       return this.scrollYPosition <= 0
@@ -113,11 +113,11 @@ export default {
       e.preventDefault()
       e.stopPropagation()
 
-      this.checkEdgeSection(e.deltaX, e.deltaY)
+      // this.checkEdgeSection(e.deltaX, e.deltaY)
 
       this.scrollSection(e.deltaX, e.deltaY)
 
-      this.jumpSection(e.deltaX, e.deltaY)
+      // this.jumpSection(e.deltaX, e.deltaY)
     },
     checkEdgeSection() {
       if (this.atTop) {
@@ -192,7 +192,9 @@ export default {
         this.scrollYPosition = this.endPosition
       }
 
-      sectionContainer.scrollTo(0, this.scrollYPosition)
+      console.log(sectionContainer.clientHeight, window.innerHeight, window)
+      console.log('TRIGGERED INSIDE', this.scrollYPosition, scrollOffset)
+      window.scrollTo(0, this.scrollYPosition)
     },
   },
 }

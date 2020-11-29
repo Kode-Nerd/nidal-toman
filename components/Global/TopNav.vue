@@ -54,6 +54,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    backopacity: {
+      type: String,
+      default: 'FF',
+    },
   },
   computed: {
     tab: {
@@ -82,19 +86,25 @@ export default {
     },
     backgroundSupportStyle() {
       return {
-        background: this.background,
+        background: this.finalColor(this.backopacity, this.background),
         height: '48px',
         width: '100%',
         position: 'fixed',
         top: '0px',
+        zIndex: 5,
+      }
+    },
+    zIndex5Style() {
+      return {
+        zIndex: 5,
       }
     },
     bindObj() {
       const { color, vertical, right } = this
 
       return {
-        style: this.navStyle,
-        backgroundColor: this.background,
+        style: [...this.navStyle, this.zIndex5Style],
+        backgroundColor: 'transparent',
         color,
         vertical,
         right,
@@ -126,6 +136,14 @@ export default {
   methods: {
     goto(label) {
       this.$router.push({ path: label })
+    },
+    finalColor(opacity, color) {
+      const splittedColor = color.split('#')
+      splittedColor[2] = opacity
+      const finalColor = splittedColor.join('')
+
+      console.log(finalColor)
+      return `#${finalColor}`
     },
   },
 }

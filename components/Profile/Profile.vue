@@ -1,6 +1,6 @@
 <template>
   <div id="drNidalToman" class="wrapper">
-    <NavHeader />
+    <!-- <NavHeader /> -->
     <div class="profile__container">
       <div class="profile__header">
         <div class="header__title">{{ $t('profile.title') }}</div>
@@ -96,7 +96,7 @@ import ProfilePublishedSummary from './ProfilePublishedSummary'
 import PublicationData from './assets/publications.json'
 import PublishedSummaries from './assets/publishedSummaries.json'
 import ProfileImage from '~/assets/images/profile/profile_dr-nidal-toman.png'
-import NavHeader from '~/components/global/NavigationHeader'
+// import NavHeader from '~/components/global/NavigationHeader'
 import FooterComponent from '~/components/Footer/Footer'
 
 export default {
@@ -105,7 +105,7 @@ export default {
     ProfileBookItem,
     ProfilePublicationItem,
     ProfilePublishedSummary,
-    NavHeader,
+    // NavHeader,
     FooterComponent,
   },
   data() {
