@@ -1,21 +1,26 @@
 <template>
-  <v-tabs
-    v-model="tab"
-    :style="navStyle"
-    :background-color="background"
-    :color="color"
-    :vertical="vertical"
-  >
-    <v-tabs-slider v-if="customSlider" :color="sliderColor"></v-tabs-slider>
-    <v-tab
-      v-for="label in labels"
-      :key="label"
-      :ripple="false"
-      :class="justifyContentTab"
-      @click="goto(label)"
-      >{{ $t(label) }}</v-tab
-    >
-  </v-tabs>
+  <div>
+    <div
+      :style="{
+        background: background,
+        height: '48px',
+        width: '100%',
+        position: 'fixed',
+        top: '0px',
+      }"
+    ></div>
+    <v-tabs v-model="tab" v-bind="bindObj">
+      <v-tabs-slider v-if="customSlider" :color="sliderColor"></v-tabs-slider>
+      <v-tab
+        v-for="label in labels"
+        :key="label"
+        :ripple="false"
+        :class="justifyContentTab"
+        @click="goto(label)"
+        >{{ $t(label) }}</v-tab
+      >
+    </v-tabs>
+  </div>
 </template>
 
 <script>
@@ -53,6 +58,10 @@ export default {
       type: String,
       default: 'transparent',
     },
+    right: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     tab: {
@@ -74,6 +83,17 @@ export default {
           return 'tab-right'
         default:
           return undefined
+      }
+    },
+    bindObj() {
+      const { color, vertical, right } = this
+
+      return {
+        style: this.navStyle,
+        backgroundColor: this.background,
+        color,
+        vertical,
+        right,
       }
     },
   },

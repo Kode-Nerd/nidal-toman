@@ -1,6 +1,11 @@
 <template>
   <v-app id="app" :dark="false">
     <v-main>
+      <TopNav
+        :nav-style="[topNavStyle, tabsStyle]"
+        :background="themes.light.background"
+      />
+      <div :style="spacerStyle" />
       <nuxt />
     </v-main>
   </v-app>
@@ -9,10 +14,42 @@
 <script>
 import Vue from 'vue'
 import VueRellax from 'vue-rellax'
+import TopNav from '@/components/global/TopNav'
 
 Vue.use(VueRellax)
 
-export default {}
+export default {
+  components: {
+    TopNav,
+  },
+  computed: {
+    topNavStyle() {
+      return {
+        position: 'fixed',
+        right: '0px',
+        top: '0px',
+      }
+    },
+    themes() {
+      return this.$vuetify.theme.themes
+    },
+    tabsStyle() {
+      return {
+        borderBottomStyle: 'solid',
+        borderColor: this.themes.light.primary1,
+        borderWidth: '1px',
+        width: '60%',
+      }
+    },
+    spacerStyle() {
+      return {
+        background: this.themes.light.background,
+        height: '48px',
+        width: '100%',
+      }
+    },
+  },
+}
 </script>
 
 <style>
