@@ -10,15 +10,17 @@ export default ({ app, store }) => {
     fallbackLocale: 'de',
     messages: {
       en: {
-        ...require(`~/assets/locales/en/welcome.json`),
-        ...require(`~/assets/locales/en/treatment.json`),
-        ...require(`~/assets/locales/en/practice.json`),
+        nav: { ...require('~/assets/locales/en/nav.json') },
+        welcome: { ...require(`~/assets/locales/en/welcome.json`) },
+        treatments: { ...require(`~/assets/locales/en/treatment.json`) },
+        practice: { ...require(`~/assets/locales/en/practice.json`) },
         profile: { ...require('~/assets/locales/en/profile.json') },
       },
       de: {
-        ...require(`~/assets/locales/de/welcome.json`),
-        ...require(`~/assets/locales/de/treatment.json`),
-        ...require(`~/assets/locales/de/practice.json`),
+        nav: { ...require('~/assets/locales/de/nav.json') },
+        welcome: { ...require(`~/assets/locales/de/welcome.json`) },
+        treatments: { ...require(`~/assets/locales/de/treatment.json`) },
+        practice: { ...require(`~/assets/locales/de/practice.json`) },
         profile: { ...require('~/assets/locales/de/profile.json') },
       },
     },

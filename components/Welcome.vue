@@ -44,13 +44,13 @@
         <div :style="welcomeBannerStyle">
           <div class="d-flex flex-column">
             <span :style="welcomeStyle" class="text-h5 font-weight-medium">
-              {{ $t('title1') }}
+              {{ $t('welcome.title1') }}
             </span>
             <span :style="nameStyle" class="text-h3 font-weight-bold">
-              {{ $t('title2') }}
+              {{ $t('welcome.title2') }}
             </span>
             <span :style="textStyle" class="text-h6 mb-10">
-              {{ $t('title3') }}
+              {{ $t('welcome.title3') }}
             </span>
             <v-col cols="4">
               <TopNav
@@ -72,7 +72,7 @@
         </div>
         <div :style="figure2" class="d-flex flex-column align-center">
           <span :style="textStyle" class="text-h6 mb-n14">
-            {{ $t('infusion') }}
+            {{ $t('welcome.infusion') }}
           </span>
           <v-img
             :style="figure2LogoStyle"
@@ -86,7 +86,7 @@
             max-height="65vh"
           ></v-img>
           <nuxt-link :style="[localeActive, figure2MoreInfoStyle]" to="#"
-            >{{ $t('discover') }}
+            >{{ $t('welcome.discover') }}
             <v-icon :color="themes.light.primary3" medium
               >mdi-arrow-right</v-icon
             >
@@ -94,10 +94,10 @@
         </div>
         <div :style="figureWoman" class="d-flex flex-column align-center">
           <span :style="[localeActive, womanLabel]" class="text-h6">
-            {{ $t('woman') }}
+            {{ $t('welcome.woman') }}
           </span>
           <nuxt-link :style="[textStyle, moreInfoStyle, moreInfoWoman]" to="#"
-            >{{ $t('discover') }}
+            >{{ $t('welcome.discover') }}
             <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
           </nuxt-link>
           <v-img
@@ -108,10 +108,10 @@
         </div>
         <div :style="figureMan" class="d-flex flex-column align-center">
           <span :style="[localeActive, manLabel]" class="text-h6">
-            {{ $t('man') }}
+            {{ $t('welcome.man') }}
           </span>
           <nuxt-link :style="[textStyle, moreInfoStyle, moreInfoMan]" to="#"
-            >{{ $t('discover') }}
+            >{{ $t('welcome.discover') }}
             <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
           </nuxt-link>
           <v-img

@@ -9,7 +9,7 @@
         :ripple="false"
         :class="justifyContentTab"
         @click="goto(label)"
-        >{{ $t(label) }}</v-tab
+        >{{ $t(`nav.${label}`) }}</v-tab
       >
     </v-tabs>
   </div>
