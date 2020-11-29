@@ -5,7 +5,6 @@
     <TreatmentDetail />
     <Practice />
     <Profile />
-    <Contact />
   </div>
 </template>
 
@@ -15,7 +14,6 @@ import Treatments from '~/components/Treatments'
 import TreatmentDetail from '~/components/TreatmentDetail/TreatmentDetail'
 import Practice from '~/components/Practice/Practice'
 import Profile from '~/components/Profile/Profile'
-import Contact from '~/components/Contact/Contact'
 
 export default {
   components: {
@@ -24,7 +22,6 @@ export default {
     TreatmentDetail,
     Practice,
     Profile,
-    Contact,
   },
   head() {
     return {
