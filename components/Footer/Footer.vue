@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     gotoContact() {
-      this.$router.push({ path: 'contact' })
+      this.$router.push({ path: 'contact', hash: '#contact-form' })
     },
   },
 }

@@ -33,7 +33,7 @@
             </div>
           </div>
         </div>
-        <div class="profile__link">know more</div>
+        <div class="profile__link" @click="gotoProfile">know more</div>
       </div>
       <div class="contact-person">
         <div class="profile-container">
@@ -51,7 +51,7 @@
         <img :src="MessageIcon" alt="Message" />
       </div>
 
-      <v-row class="contact-address-container">
+      <v-row id="contact-form" class="contact-address-container">
         <v-col>
           <div class="contact-detail__title">Contact Us</div>
           <div class="contact-detail__subtitle">
@@ -105,6 +105,11 @@ export default {
       ],
       slides: ['First', 'Second', 'Third', 'Fourth', 'Fifth'],
     }
+  },
+  methods: {
+    gotoProfile() {
+      this.$router.push({ path: 'profile' })
+    },
   },
 }
 </script>
@@ -232,6 +237,10 @@ export default {
   line-height: 33px;
 
   color: #494949;
+}
+
+.profile__link {
+  cursor: pointer;
 }
 
 .profile-container {
