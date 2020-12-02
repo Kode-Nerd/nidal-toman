@@ -12,7 +12,8 @@
     </div>
 
     <div class="footer__row">
-      <div class="copyright">Dr. Nidal Toman</div>
+      <!-- <div class="copyright">Dr. Nidal Toman</div> -->
+      <SocialMedia :icon-color="themes.light.background" />
       <Locale :dark-style="true" />
       <div class="detail__container">
         <div class="detail__item">
@@ -41,10 +42,12 @@ import MailIcon from '~/assets/icons/mail-outline.svg'
 import PlaceIcon from '~/assets/icons/place-outline.svg'
 import CallIcon from '~/assets/icons/call-outline.svg'
 import Locale from '~/components/global/Locale'
+import SocialMedia from '~/components/global/SocialMedia'
 
 export default {
   components: {
     Locale,
+    SocialMedia,
   },
   data() {
     return {
