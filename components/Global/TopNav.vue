@@ -9,6 +9,7 @@
         ></v-img>
       </div>
       <SocialMedia :small="true" />
+      <v-spacer />
     </div>
     <v-tabs v-model="tab" v-bind="bindObj">
       <v-tabs-slider v-if="customSlider" :color="sliderColor"></v-tabs-slider>
@@ -21,15 +22,20 @@
         >{{ $t(`nav.${label}`) }}</v-tab
       >
     </v-tabs>
+    <div v-if="!backgroundIsTransparent" :style="localeStyle">
+      <Locale />
+    </div>
   </div>
 </template>
 
 <script>
 import SocialMedia from '~/components/global/SocialMedia'
+import Locale from '~/components/global/Locale'
 
 export default {
   components: {
     SocialMedia,
+    Locale,
   },
   props: {
     navStyle: {
@@ -116,6 +122,17 @@ export default {
     zIndex5Style() {
       return {
         zIndex: 5,
+      }
+    },
+    localeStyle() {
+      return {
+        zIndex: 5,
+        position: 'fixed',
+        top: '0px',
+        right: '24px',
+        height: '48px',
+        display: 'flex',
+        alignItems: 'center',
       }
     },
     bindObj() {
