@@ -52,7 +52,7 @@
             <span :style="textStyle" class="text-h6 mb-10">
               {{ $t('welcome.title3') }}
             </span>
-            <v-col cols="4">
+            <v-col cols="6">
               <TopNav
                 :nav-style="[tabsStyle]"
                 :vertical="true"
