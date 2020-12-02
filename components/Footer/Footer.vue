@@ -13,25 +13,7 @@
 
     <div class="footer__row">
       <div class="copyright">Dr. Nidal Toman</div>
-      <div>
-        <nuxt-link
-          class="localization"
-          :style="locale === 'de' ? localeActive : textStyle"
-          :to="
-            locale === 'en'
-              ? $route.fullPath.replace(/^\/[^\/]+/, '')
-              : $route.fullPath
-          "
-          >DE</nuxt-link
-        >
-        <span :style="textStyle" class="mx-2">|</span>
-        <nuxt-link
-          :style="locale === 'en' ? localeActive : textStyle"
-          :to="locale === 'de' ? '/en' + $route.fullPath : $route.fullPath"
-          class="mr-4 localization"
-          >EN</nuxt-link
-        >
-      </div>
+      <Locale :dark-style="true" />
       <div class="detail__container">
         <div class="detail__item">
           <img :src="PlaceIcon" height="24" />
@@ -58,8 +40,12 @@ import ArrowIcon from '~/assets/icons/arrow.svg'
 import MailIcon from '~/assets/icons/mail-outline.svg'
 import PlaceIcon from '~/assets/icons/place-outline.svg'
 import CallIcon from '~/assets/icons/call-outline.svg'
+import Locale from '~/components/global/Locale'
 
 export default {
+  components: {
+    Locale,
+  },
   data() {
     return {
       ArrowIcon,
@@ -83,17 +69,6 @@ export default {
     isOnContactPage() {
       return /\/contact/.test(this.$route.fullPath)
     },
-    localeActive() {
-      return {
-        color: this.themes.light.background,
-        textDecoration: 'underline',
-      }
-    },
-    textStyle() {
-      return {
-        color: this.themes.light.background,
-      }
-    },
   },
   methods: {
     gotoContact() {
@@ -104,10 +79,6 @@ export default {
 </script>
 
 <style scoped>
-a {
-  text-decoration: none;
-}
-
 .footer__container {
   background: #363636;
   padding: 50px 100px;

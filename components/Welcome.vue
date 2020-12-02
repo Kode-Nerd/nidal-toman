@@ -18,23 +18,7 @@
         </v-col>
         <v-col :style="localeStyle" cols="2">
           <v-row justify="end">
-            <nuxt-link
-              class="localization"
-              :style="locale === 'de' ? localeActive : textStyle"
-              :to="
-                locale === 'en'
-                  ? $route.fullPath.replace(/^\/[^\/]+/, '')
-                  : $route.fullPath
-              "
-              >DE</nuxt-link
-            >
-            <span :style="localeActive" class="mx-2">|</span>
-            <nuxt-link
-              :style="locale === 'en' ? localeActive : textStyle"
-              :to="locale === 'de' ? '/en' + $route.fullPath : $route.fullPath"
-              class="mr-4 localization"
-              >EN</nuxt-link
-            >
+            <Locale custom-class="mr-4" />
           </v-row>
         </v-col>
         <v-col cols="6"></v-col>
@@ -85,7 +69,7 @@
             :src="require('~/assets/_asset1.png')"
             max-height="65vh"
           ></v-img>
-          <nuxt-link :style="[localeActive, figure2MoreInfoStyle]" to="#"
+          <nuxt-link :style="[discoverTextStyle, figure2MoreInfoStyle]" to="#"
             >{{ $t('welcome.discover') }}
             <v-icon :color="themes.light.primary3" medium
               >mdi-arrow-right</v-icon
@@ -93,7 +77,7 @@
           </nuxt-link>
         </div>
         <div :style="figureWoman" class="d-flex flex-column align-center">
-          <span :style="[localeActive, womanLabel]" class="text-h6">
+          <span :style="[discoverTextStyle, womanLabel]" class="text-h6">
             {{ $t('welcome.woman') }}
           </span>
           <nuxt-link :style="[textStyle, moreInfoStyle, moreInfoWoman]" to="#"
@@ -107,7 +91,7 @@
           ></v-img>
         </div>
         <div :style="figureMan" class="d-flex flex-column align-center">
-          <span :style="[localeActive, manLabel]" class="text-h6">
+          <span :style="[discoverTextStyle, manLabel]" class="text-h6">
             {{ $t('welcome.man') }}
           </span>
           <nuxt-link :style="[textStyle, moreInfoStyle, moreInfoMan]" to="#"
@@ -127,10 +111,12 @@
 
 <script>
 import TopNav from '~/components/global/TopNav'
+import Locale from '~/components/global/Locale'
 
 export default {
   components: {
     TopNav,
+    Locale,
   },
   data() {
     return {
@@ -151,14 +137,6 @@ export default {
     }
   },
   computed: {
-    locale: {
-      set(val) {
-        this.$store.commit('SET_LOCALE', val)
-      },
-      get() {
-        return this.$store.state.locale
-      },
-    },
     sectionID() {
       return this.$store.state.sectionID
     },
@@ -202,7 +180,7 @@ export default {
         color: this.themes.light.text,
       }
     },
-    localeActive() {
+    discoverTextStyle() {
       return {
         color: this.themes.light.primary3,
       }
@@ -565,8 +543,5 @@ a {
 }
 .full-width {
   width: 100%;
-}
-.localization {
-  z-index: 1;
 }
 </style>
