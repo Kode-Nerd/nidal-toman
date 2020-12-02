@@ -56,6 +56,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     defaultAssets: {
+      icons: 'fa',
       font: {
         family: 'Avenir',
       },

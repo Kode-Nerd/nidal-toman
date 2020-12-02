@@ -1,12 +1,14 @@
 <template>
   <div>
     <div v-if="!backgroundIsTransparent" :style="backgroundSupportStyle">
-      <v-img
-        contain
-        :src="require('~/assets/logo.png')"
-        max-height="40px"
-        :style="logoStyle"
-      ></v-img>
+      <div>
+        <v-img
+          contain
+          :src="require('~/assets/logo.png')"
+          max-height="40px"
+        ></v-img>
+      </div>
+      <SocialMedia :small="true" />
     </div>
     <v-tabs v-model="tab" v-bind="bindObj">
       <v-tabs-slider v-if="customSlider" :color="sliderColor"></v-tabs-slider>
@@ -23,7 +25,12 @@
 </template>
 
 <script>
+import SocialMedia from '~/components/global/SocialMedia'
+
 export default {
+  components: {
+    SocialMedia,
+  },
   props: {
     navStyle: {
       type: Array,
@@ -78,6 +85,9 @@ export default {
     labels() {
       return this.$store.state.labels
     },
+    themes() {
+      return this.$vuetify.theme.themes
+    },
     justifyContentTab() {
       switch (this.tabJustify) {
         case 'left':
@@ -99,18 +109,13 @@ export default {
         position: 'fixed',
         top: '0px',
         zIndex: 5,
+        display: 'flex',
+        alignItems: 'center',
       }
     },
     zIndex5Style() {
       return {
         zIndex: 5,
-      }
-    },
-    logoStyle() {
-      return {
-        position: 'fixed',
-        left: '0px',
-        top: 'calc(24px - 20px)',
       }
     },
     bindObj() {
