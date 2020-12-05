@@ -41,8 +41,8 @@ import ArrowIcon from '~/assets/icons/arrow.svg'
 import MailIcon from '~/assets/icons/mail-outline.svg'
 import PlaceIcon from '~/assets/icons/place-outline.svg'
 import CallIcon from '~/assets/icons/call-outline.svg'
-import Locale from '~/components/global/Locale'
-import SocialMedia from '~/components/global/SocialMedia'
+import Locale from '~/components/Global/Locale'
+import SocialMedia from '~/components/Global/SocialMedia'
 
 export default {
   components: {
