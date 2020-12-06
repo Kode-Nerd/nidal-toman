@@ -3,7 +3,7 @@ export const state = () => ({
   locale: 'de',
 
   tab: 0,
-  labels: ['treatments', 'practice', 'infoDesk', 'profile', 'contact'],
+  labels: ['treatments', 'infoDesk', 'profile', 'contact'],
 
   maxScrollDeltaSpeedBetweenSection: 70,
   currentID: '#welcome',
@@ -11,7 +11,7 @@ export const state = () => ({
   sectionID: [
     '#welcome',
     // 'treatments',
-    '#practices',
+    // '#practices',
     '#infoDesk',
     '#drNidalToman',
     '#contact',
