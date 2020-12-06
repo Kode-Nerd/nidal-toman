@@ -151,7 +151,7 @@ export default {
     '$route.path': {
       handler(val) {
         /* eslint no-useless-escape: 0 */
-        const regex = /^\/en/
+        const regex = /^\/de/
         const path = val.replace(regex, '')
         const matched = path.match(/[^\/]+/g)
 
