@@ -1,21 +1,19 @@
 <template>
   <div :class="customClass">
     <nuxt-link
-      class="localization"
-      :style="locale === 'de' ? localeActive : textStyle"
+      :style="locale === 'en' ? localeActive : textStyle"
       :to="
-        locale === 'en'
+        locale === 'de'
           ? $route.fullPath.replace(/^\/[^\/]+/, '')
           : $route.fullPath
       "
-      >DE</nuxt-link
+      >EN</nuxt-link
     >
     <span :style="dividerStyle" class="mx-2">|</span>
     <nuxt-link
-      :style="locale === 'en' ? localeActive : textStyle"
-      :to="locale === 'de' ? '/en' + $route.fullPath : $route.fullPath"
-      class="mr-4 localization"
-      >EN</nuxt-link
+      :style="locale === 'de' ? localeActive : textStyle"
+      :to="locale === 'en' ? '/de' + $route.fullPath : $route.fullPath"
+      >DE</nuxt-link
     >
   </div>
 </template>

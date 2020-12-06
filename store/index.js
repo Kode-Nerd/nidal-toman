@@ -1,6 +1,6 @@
 export const state = () => ({
   locales: ['en', 'de'],
-  locale: 'de',
+  locale: 'en',
 
   tab: 0,
   labels: ['treatments', 'infoDesk', 'profile', 'contact'],
