@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import SocialMedia from '~/components/Global/SocialMedia'
-import Locale from '~/components/Global/Locale'
+import SocialMedia from '~/components/global/SocialMedia'
+import Locale from '~/components/global/Locale'
 
 export default {
   components: {
