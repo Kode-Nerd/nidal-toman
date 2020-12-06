@@ -55,14 +55,15 @@
           ></v-img>
         </div>
         <div :style="figure2" class="d-flex flex-column align-center">
-          <span :style="textStyle" class="text-h6 mb-n14">
+          <span :style="textStyle" class="text-h6 mb-n10">
             {{ $t('welcome.infusion') }}
           </span>
           <v-img
             :style="figure2LogoStyle"
             contain
             :src="require(`~/assets/_B'lance.png`)"
-            max-height="20vh"
+            height="100%"
+            width="200%"
           ></v-img>
           <v-img
             contain
@@ -263,7 +264,8 @@ export default {
       return {
         position: 'absolute',
         bottom: '7%',
-        right: `${this.figure2MoreInfoRightPos - 15}%`,
+        right: `${this.figure2MoreInfoRightPos - 10}%`,
+        opacity: '40%',
       }
     },
     figureWoman() {
