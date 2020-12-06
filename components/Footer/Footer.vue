@@ -10,11 +10,12 @@
         Contact Us <img :src="ArrowIcon" />
       </div>
     </div>
-
     <div class="footer__row">
-      <!-- <div class="copyright">Dr. Nidal Toman</div> -->
       <SocialMedia :icon-color="themes.light.background" />
-      <Locale :dark-style="true" />
+    </div>
+    <div class="footer__row">
+      <div class="copyright">Dr. Nidal Toman - {{ latestYear }}</div>
+      <Legal :dark-style="true" />
       <div class="detail__container">
         <div class="detail__item">
           <img :src="PlaceIcon" height="24" />
@@ -41,12 +42,14 @@ import ArrowIcon from '~/assets/icons/arrow.svg'
 import MailIcon from '~/assets/icons/mail-outline.svg'
 import PlaceIcon from '~/assets/icons/place-outline.svg'
 import CallIcon from '~/assets/icons/call-outline.svg'
-import Locale from '~/components/global/Locale'
+// import Locale from '~/components/global/Locale'
+import Legal from '~/components/global/Legal'
 import SocialMedia from '~/components/global/SocialMedia'
 
 export default {
   components: {
-    Locale,
+    // Locale,
+    Legal,
     SocialMedia,
   },
   data() {
@@ -71,6 +74,9 @@ export default {
     },
     isOnContactPage() {
       return /\/contact/.test(this.$route.fullPath)
+    },
+    latestYear() {
+      return new Date().getFullYear()
     },
   },
   methods: {
