@@ -71,8 +71,8 @@
           ></v-img>
           <nuxt-link :style="[discoverTextStyle, figure2MoreInfoStyle]" to="#"
             >{{ $t('welcome.discover') }}
-            <v-icon :color="themes.light.primary3" medium
-              >mdi-arrow-right</v-icon
+            <v-icon class="ml-2" :color="themes.light.primary3" medium
+              >fas fa-long-arrow-alt-right</v-icon
             >
           </nuxt-link>
         </div>
@@ -80,9 +80,13 @@
           <span :style="[discoverTextStyle, womanLabel]" class="text-h6">
             {{ $t('welcome.woman') }}
           </span>
-          <nuxt-link :style="[textStyle, moreInfoStyle, moreInfoWoman]" to="#"
-            >{{ $t('welcome.discover') }}
-            <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
+          <nuxt-link
+            :style="[textStyle, moreInfoStyle, moreInfoWoman, discover2Style]"
+            to="#"
+            >{{ $t('welcome.discover2') }}
+            <v-icon class="ml-2" :color="themes.light.text" medium
+              >fas fa-long-arrow-alt-right</v-icon
+            >
           </nuxt-link>
           <v-img
             contain
@@ -94,9 +98,13 @@
           <span :style="[discoverTextStyle, manLabel]" class="text-h6">
             {{ $t('welcome.man') }}
           </span>
-          <nuxt-link :style="[textStyle, moreInfoStyle, moreInfoMan]" to="#"
-            >{{ $t('welcome.discover') }}
-            <v-icon :color="themes.light.text" medium>mdi-arrow-right</v-icon>
+          <nuxt-link
+            :style="[textStyle, moreInfoStyle, moreInfoMan, discover2Style]"
+            to="#"
+            >{{ $t('welcome.discover2') }}
+            <v-icon class="ml-2" :color="themes.light.text" medium
+              >fas fa-long-arrow-alt-right</v-icon
+            >
           </nuxt-link>
           <v-img
             contain
@@ -221,6 +229,11 @@ export default {
         position: 'absolute',
         left: this.leftMainLogoPos,
         top: '72px',
+      }
+    },
+    discover2Style() {
+      return {
+        width: '30%',
       }
     },
     figure1() {
