@@ -9,7 +9,14 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext'
+      }
+    ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -58,7 +65,7 @@ export default {
     defaultAssets: {
       icons: 'fa',
       font: {
-        family: 'Avenir',
+        family: 'Lato',
       },
     },
     treeShake: true,
