@@ -5,6 +5,7 @@
     <TreatmentDetail />
     <Practice />
     <Profile />
+    <Infodesk />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import Treatments from '~/components/Treatments'
 import TreatmentDetail from '~/components/TreatmentDetail/TreatmentDetail'
 import Practice from '~/components/Practice/Practice'
 import Profile from '~/components/Profile/Profile'
+import Infodesk from '~/components/Infodesk/Infodesk.vue'
 
 export default {
   components: {
@@ -22,6 +24,7 @@ export default {
     TreatmentDetail,
     Practice,
     Profile,
+    Infodesk,
   },
   layout: 'custom',
   head() {
