@@ -242,7 +242,7 @@ export default {
         width: '100vh',
         position: 'absolute',
         bottom: '0px',
-        left: `${this.figure1LeftPos + 65}vw`,
+        left: `${this.figure1LeftPos + 62}vw`,
       }
     },
     figure2() {
@@ -257,7 +257,7 @@ export default {
       return {
         position: 'absolute',
         bottom: '0%',
-        right: `${this.figure2MoreInfoRightPos}%`,
+        right: `${this.figure2MoreInfoRightPos + 10}%`,
       }
     },
     figure2LogoStyle() {
