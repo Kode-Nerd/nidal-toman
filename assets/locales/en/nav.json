@@ -1,8 +1,10 @@
 {
   "home": "Home", 
-  "treatments": "Treatments",
+  "treatments": "Welcome",
+  "ivtherapies": "IV Therapies",
+  "procedures": "Procedures",
   "practice": "Practice",
-  "infoDesk": "Info Desk",
-  "profile": "Dr. Nidal Toman",
+  "info-desk": "Info Desk",
+  "profile": "Dr. med. Nidal Toman",
   "contact": "Contact"
 }

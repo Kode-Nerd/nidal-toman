@@ -3,7 +3,7 @@ export const state = () => ({
   locale: 'en',
 
   tab: 0,
-  labels: ['treatments', 'infoDesk', 'profile', 'contact'],
+  labels: ['treatments', 'ivtherapies', 'procedures', 'profile', 'contact'],
 
   maxScrollDeltaSpeedBetweenSection: 70,
   currentID: '#welcome',
