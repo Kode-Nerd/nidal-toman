@@ -355,14 +355,40 @@ export default {
       }
     },
     welcomeMainLeftPos(val) {
-      if (val === -window.innerWidth) {
+      if (val <= -window.innerWidth) {
         const proceduresIndex = this.labels.indexOf('procedures')
         this.tab = proceduresIndex
       }
-      if (val === 0) {
+      if (val >= 0) {
         const treatmentsIndex = this.labels.indexOf('treatments')
         this.tab = treatmentsIndex
       }
+    },
+    '$route.query': {
+      handler(val, old) {
+        if (!old) {
+          return
+        }
+
+        const innerWidth = window.innerWidth
+        if (val.id === 'procedures') {
+          this.animateMainContainer(0, 5 * innerWidth)
+          this.animateWelcomeBanner(0, 5 * innerWidth)
+          this.animateFigureOne(0, 5 * innerWidth)
+          this.animateFigureTwo(0, 5 * innerWidth)
+          this.animateFigureWoman(0, 5 * innerWidth)
+          this.animateFigureMan(0, 5 * innerWidth)
+        } else {
+          this.animateMainContainer(0, -5 * innerWidth)
+          this.animateWelcomeBanner(0, -5 * innerWidth)
+          this.animateFigureOne(0, -5 * innerWidth)
+          this.animateFigureTwo(0, -5 * innerWidth)
+          this.animateFigureWoman(0, -5 * innerWidth)
+          this.animateFigureMan(0, -5 * innerWidth)
+        }
+      },
+      deep: true,
+      immediate: true,
     },
   },
   methods: {

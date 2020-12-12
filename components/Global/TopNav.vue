@@ -168,6 +168,9 @@ export default {
 
         if (!matched) {
           label = 'welcome'
+          if (this.$route.query && this.$route.query.id) {
+            label = this.$route.query.id
+          }
         } else {
           label = matched[0]
         }
@@ -182,6 +185,13 @@ export default {
     goto(label) {
       if (label === 'welcome') {
         this.$router.push({ path: this.locale === 'en' ? '/' : '/de/' })
+        return
+      }
+      if (label === 'procedures') {
+        this.$router.push({
+          path: this.locale === 'en' ? '/' : '/de/',
+          query: { id: 'procedures' },
+        })
         return
       }
       this.$router.push({ path: label })
