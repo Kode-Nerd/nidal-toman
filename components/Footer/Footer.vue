@@ -43,8 +43,8 @@ import MailIcon from '~/assets/icons/mail-outline.svg'
 import PlaceIcon from '~/assets/icons/place-outline.svg'
 import CallIcon from '~/assets/icons/call-outline.svg'
 // import Locale from '~/components/global/Locale'
-import Legal from '~/components/global/Legal'
-import SocialMedia from '~/components/global/SocialMedia'
+import Legal from '~/components/Global/Legal'
+import SocialMedia from '~/components/Global/SocialMedia'
 
 export default {
   components: {

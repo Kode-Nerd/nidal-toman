@@ -119,8 +119,8 @@
 </template>
 
 <script>
-import TopNav from '~/components/global/TopNav'
-import Locale from '~/components/global/Locale'
+import TopNav from '~/components/Global/TopNav'
+import Locale from '~/components/Global/Locale'
 
 export default {
   components: {
