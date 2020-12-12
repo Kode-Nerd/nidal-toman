@@ -151,8 +151,7 @@ export default {
     '$route.path': {
       handler(val) {
         /* eslint no-useless-escape: 0 */
-        const regex = /^\/de/
-        const path = val.replace(regex, '')
+        const path = val.replace(/^\/de/, '')
         const matched = path.match(/[^\/]+/g)
 
         let label
@@ -171,6 +170,10 @@ export default {
   },
   methods: {
     goto(label) {
+      if (label === 'treatments') {
+        this.$router.push({ path: '/' })
+        return
+      }
       this.$router.push({ path: label })
     },
     finalColor(opacity, color) {

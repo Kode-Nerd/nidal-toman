@@ -181,6 +181,7 @@ export default {
     },
     nameStyle() {
       return {
+        fontFamily: 'Adamina!important',
         color: this.themes.light.primary3,
       }
     },
