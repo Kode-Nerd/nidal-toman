@@ -47,7 +47,7 @@
 
 <script>
 import PracticeItem from './PracticeItem'
-// import NavigationHeader from '~/components/global/NavigationHeader'
+// import NavigationHeader from '~/components/Global/NavigationHeader'
 
 export default {
   components: {
