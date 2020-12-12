@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!backgroundIsTransparent" :style="backgroundSupportStyle">
+    <div v-if="showLogo" :style="backgroundSupportStyle">
       <div>
         <nuxt-link :to="locale === 'en' ? '/' : '/de/'">
           <v-img
@@ -16,7 +16,7 @@
     <v-tabs v-model="tab" v-bind="bindObj">
       <v-tabs-slider v-if="customSlider" :color="sliderColor"></v-tabs-slider>
       <v-tab
-        v-for="label in labels"
+        v-for="label in showLabels"
         :key="label"
         :ripple="false"
         :class="justifyContentTab"
@@ -80,6 +80,15 @@ export default {
       type: String,
       default: 'FF',
     },
+    showLogo: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      showLabels: [],
+    }
   },
   computed: {
     locale: {
@@ -157,31 +166,37 @@ export default {
       }
     },
   },
-  watch: {
-    '$route.path': {
-      handler(val) {
-        /* eslint no-useless-escape: 0 */
-        const path = val.replace(/^\/de/, '')
-        const matched = path.match(/[^\/]+/g)
+  mounted() {
+    if (this.showLogo) {
+      const filteredLabels = this.labels.filter((label) => label !== 'welcome')
 
-        let label
+      this.showLabels = [...filteredLabels]
+    } else {
+      this.showLabels = [...this.labels]
+    }
 
-        if (!matched) {
-          label = 'welcome'
-          if (this.$route.query && this.$route.query.id) {
-            label = this.$route.query.id
-          }
-        } else {
-          label = matched[0]
-        }
-
-        this.tab = this.labels.indexOf(label)
-      },
-      deep: true,
-      immediate: true,
-    },
+    const path = this.$route.path
+    this.checkActiveTab(path)
   },
   methods: {
+    checkActiveTab(val) {
+      /* eslint no-useless-escape: 0 */
+      const path = val.replace(/^\/de/, '')
+      const matched = path.match(/[^\/]+/g)
+
+      let label
+
+      if (!matched) {
+        label = 'welcome'
+        if (this.$route.query && this.$route.query.id) {
+          label = this.$route.query.id
+        }
+      } else {
+        label = matched[0]
+      }
+
+      this.tab = this.showLabels.indexOf(label)
+    },
     goto(label) {
       if (label === 'welcome') {
         this.$router.push({ path: this.locale === 'en' ? '/' : '/de/' })

@@ -5,6 +5,7 @@
         :nav-style="[topNavStyle, tabsStyle]"
         :background="themes.light.background"
         backopacity="B3"
+        :show-logo="true"
       />
       <div :style="spacerStyle" />
       <nuxt />
