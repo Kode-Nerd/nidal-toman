@@ -265,7 +265,7 @@ export default {
         position: 'absolute',
         bottom: '7%',
         right: `${this.figure2MoreInfoRightPos - 10}%`,
-        opacity: '40%',
+        opacity: '70%',
       }
     },
     figureWoman() {
