@@ -146,6 +146,17 @@ export default {
     }
   },
   computed: {
+    tab: {
+      set(val) {
+        this.$store.commit('SET_TAB', val)
+      },
+      get() {
+        return this.$store.state.tab
+      },
+    },
+    labels() {
+      return this.$store.state.labels
+    },
     sectionID() {
       return this.$store.state.sectionID
     },
@@ -341,6 +352,16 @@ export default {
         if (fromIndex > currentIndex) {
           this.welcomeMainLeftPos = -window.innerWidth
         }
+      }
+    },
+    welcomeMainLeftPos(val) {
+      if (val === -window.innerWidth) {
+        const proceduresIndex = this.labels.indexOf('procedures')
+        this.tab = proceduresIndex
+      }
+      if (val === 0) {
+        const treatmentsIndex = this.labels.indexOf('treatments')
+        this.tab = treatmentsIndex
       }
     },
   },
