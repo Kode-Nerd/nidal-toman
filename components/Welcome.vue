@@ -371,25 +371,27 @@ export default {
         }
 
         const innerWidth = window.innerWidth
-        if (val.id === 'procedures') {
-          this.animateMainContainer(0, 5 * innerWidth)
-          this.animateWelcomeBanner(0, 5 * innerWidth)
-          this.animateFigureOne(0, 5 * innerWidth)
-          this.animateFigureTwo(0, 5 * innerWidth)
-          this.animateFigureWoman(0, 5 * innerWidth)
-          this.animateFigureMan(0, 5 * innerWidth)
-        } else {
-          this.animateMainContainer(0, -5 * innerWidth)
-          this.animateWelcomeBanner(0, -5 * innerWidth)
-          this.animateFigureOne(0, -5 * innerWidth)
-          this.animateFigureTwo(0, -5 * innerWidth)
-          this.animateFigureWoman(0, -5 * innerWidth)
-          this.animateFigureMan(0, -5 * innerWidth)
+        let deltaY = 5 * innerWidth
+
+        if (val.id !== 'procedures') {
+          deltaY = -deltaY
         }
+
+        this.animateAll(0, deltaY)
       },
       deep: true,
       immediate: true,
     },
+  },
+  mounted() {
+    const innerWidth = window.innerWidth
+    let deltaY = 0
+
+    if (this.$route.query && this.$route.query.id === 'procedures') {
+      deltaY = 5 * innerWidth
+    }
+
+    this.animateAll(0, deltaY)
   },
   methods: {
     getEvent(e) {
@@ -398,14 +400,17 @@ export default {
 
       this.checkEdgeSection()
 
-      this.animateMainContainer(e.deltaX, e.deltaY)
-      this.animateWelcomeBanner(e.deltaX, e.deltaY)
-      this.animateFigureOne(e.deltaX, e.deltaY)
-      this.animateFigureTwo(e.deltaX, e.deltaY)
-      this.animateFigureWoman(e.deltaX, e.deltaY)
-      this.animateFigureMan(e.deltaX, e.deltaY)
+      this.animateAll(e.deltaX, e.deltaY)
 
       // this.jumpSection(e.deltaX, e.deltaY)
+    },
+    animateAll(deltaX, deltaY) {
+      this.animateMainContainer(deltaX, deltaY)
+      this.animateWelcomeBanner(deltaX, deltaY)
+      this.animateFigureOne(deltaX, deltaY)
+      this.animateFigureTwo(deltaX, deltaY)
+      this.animateFigureWoman(deltaX, deltaY)
+      this.animateFigureMan(deltaX, deltaY)
     },
     checkEdgeSection() {
       if (this.atLeft) {
