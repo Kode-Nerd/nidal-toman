@@ -180,7 +180,7 @@ export default {
   },
   methods: {
     goto(label) {
-      if (label === 'treatments') {
+      if (label === 'welcome') {
         this.$router.push({ path: this.locale === 'en' ? '/' : '/de/' })
         return
       }
