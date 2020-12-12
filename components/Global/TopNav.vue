@@ -2,11 +2,13 @@
   <div>
     <div v-if="!backgroundIsTransparent" :style="backgroundSupportStyle">
       <div>
-        <v-img
-          contain
-          :src="require('~/assets/logo.png')"
-          max-height="40px"
-        ></v-img>
+        <nuxt-link :to="locale === 'en' ? '/' : '/de/'">
+          <v-img
+            contain
+            :src="require('~/assets/logo.png')"
+            max-height="40px"
+          ></v-img>
+        </nuxt-link>
       </div>
       <SocialMedia :small="true" />
       <v-spacer />
@@ -80,6 +82,14 @@ export default {
     },
   },
   computed: {
+    locale: {
+      set(val) {
+        this.$store.commit('SET_LOCALE', val)
+      },
+      get() {
+        return this.$store.state.locale
+      },
+    },
     tab: {
       set(val) {
         this.$store.commit('SET_TAB', val)
@@ -171,7 +181,7 @@ export default {
   methods: {
     goto(label) {
       if (label === 'treatments') {
-        this.$router.push({ path: '/' })
+        this.$router.push({ path: this.locale === 'en' ? '/' : '/de/' })
         return
       }
       this.$router.push({ path: label })
