@@ -16,8 +16,8 @@
 <script>
 import Vue from 'vue'
 import VueRellax from 'vue-rellax'
-import TopNav from '@/components/global/TopNav'
-import Footer from '@/components/Footer/Footer'
+import TopNav from '../components/global/TopNav'
+import Footer from '../components/Footer/Footer'
 
 Vue.use(VueRellax)
 
