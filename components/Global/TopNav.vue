@@ -167,7 +167,7 @@ export default {
         let label
 
         if (!matched) {
-          label = 'treatments'
+          label = 'welcome'
         } else {
           label = matched[0]
         }
