@@ -5,6 +5,8 @@ export const state = () => ({
   tab: 0,
   labels: ['welcome', 'ivtherapies', 'procedures', 'profile', 'contact'],
 
+  path: 'welcome',
+
   maxScrollDeltaSpeedBetweenSection: 70,
   currentID: '#welcome',
   fromID: '',
@@ -36,5 +38,8 @@ export const mutations = {
   },
   SET_FROM_ID(state, val) {
     state.fromID = val
+  },
+  SET_PATH(state, val) {
+    state.path = val
   },
 }

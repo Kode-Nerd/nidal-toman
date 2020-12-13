@@ -1,22 +1,18 @@
 <template>
   <div :class="customClass">
-    <nuxt-link
-      :style="locale === 'en' ? localeActive : textStyle"
-      :to="
-        locale === 'de'
-          ? $route.fullPath.replace(/^\/[^\/]+/, '')
-          : $route.fullPath
-      "
+    <nuxt-link :style="path === 'imprint' ? linkActive : textStyle" to="imprint"
       >Impressum</nuxt-link
     >
     <span :style="dividerStyle" class="mx-1">|</span>
-    <nuxt-link
-      :style="locale === 'de' ? localeActive : textStyle"
-      :to="locale === 'en' ? '/de' + $route.fullPath : $route.fullPath"
+    <nuxt-link :style="path === 'privacy' ? linkActive : textStyle" to="privacy"
       >Datenschutz</nuxt-link
     >
     <span :style="dividerStyle" class="mx-1">|</span>
-    <nuxt-link :style="textStyle" to="infodesk">Info Desk</nuxt-link>
+    <nuxt-link
+      :style="path === 'infodesk' ? linkActive : textStyle"
+      to="infodesk"
+      >Info Desk</nuxt-link
+    >
   </div>
 </template>
 
@@ -33,13 +29,8 @@ export default {
     },
   },
   computed: {
-    locale: {
-      set(val) {
-        this.$store.commit('SET_LOCALE', val)
-      },
-      get() {
-        return this.$store.state.locale
-      },
+    path() {
+      return this.$store.state.path
     },
     themes() {
       return this.$vuetify.theme.themes
@@ -55,7 +46,7 @@ export default {
         color: this.themes.light.text,
       }
     },
-    localeActive() {
+    linkActive() {
       if (this.darkStyle) {
         return {
           color: this.themes.light.background,
@@ -72,7 +63,7 @@ export default {
         return this.textStyle
       }
 
-      return this.localeActive
+      return this.linkActive
     },
   },
 }

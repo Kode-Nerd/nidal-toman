@@ -108,6 +108,14 @@ export default {
         return this.$store.state.tab
       },
     },
+    path: {
+      set(val) {
+        this.$store.commit('SET_PATH', val)
+      },
+      get() {
+        return this.$store.state.path
+      },
+    },
     labels() {
       return this.$store.state.labels
     },
@@ -226,6 +234,7 @@ export default {
         }
       }
       this.tab = indexFound
+      this.path = label
     },
     goto(label) {
       if (label === 'welcome') {
