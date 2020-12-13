@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="showing">
     <div v-if="showLogo" :style="backgroundSupportStyle">
       <div>
         <nuxt-link :to="locale === 'en' ? '/' : '/de/'">
@@ -87,6 +87,7 @@ export default {
   },
   data() {
     return {
+      showing: true,
       showLabels: [],
     }
   },
@@ -170,6 +171,7 @@ export default {
     '$route.path': {
       handler(val, old) {
         this.checkActiveTab(val, old)
+        this.updateComponent()
       },
       deep: true,
       immediate: true,
@@ -188,6 +190,12 @@ export default {
     this.checkActiveTab(path, true)
   },
   methods: {
+    updateComponent() {
+      this.showing = false
+      this.$nextTick(() => {
+        this.showing = true
+      })
+    },
     checkActiveTab(val, old) {
       /* eslint no-useless-escape: 0 */
       const path = val.replace(/^\/de/, '')
