@@ -170,8 +170,7 @@ export default {
   watch: {
     '$route.path': {
       handler(val, old) {
-        this.checkActiveTab(val, old)
-        this.updateComponent()
+        this.updateComponent(val, old)
       },
       deep: true,
       immediate: true,
@@ -185,15 +184,15 @@ export default {
     } else {
       this.showLabels = [...this.labels]
     }
-
-    const path = this.$route.path
-    this.checkActiveTab(path, true)
   },
   methods: {
-    updateComponent() {
+    updateComponent(val, old) {
       this.showing = false
       this.$nextTick(() => {
         this.showing = true
+        this.$nextTick(() => {
+          this.checkActiveTab(val, old)
+        })
       })
     },
     checkActiveTab(val, old) {
@@ -216,7 +215,9 @@ export default {
       if (old) {
         const els = document.getElementsByClassName('v-tabs-slider-wrapper')
         const el = els.length && els[0]
+        console.log('MASUK IF', el, els)
         if (el) {
+          console.log('MASUK LAGI', indexFound)
           if (indexFound < 0) {
             el.style.display = 'none'
           } else {
