@@ -16,11 +16,7 @@
       >Datenschutz</nuxt-link
     >
     <span :style="dividerStyle" class="mx-1">|</span>
-    <nuxt-link
-      :style="locale === 'de' ? localeActive : textStyle"
-      :to="locale === 'en' ? '/de' + $route.fullPath : $route.fullPath"
-      >Info Desk</nuxt-link
-    >
+    <nuxt-link :style="textStyle" to="infodesk">Info Desk</nuxt-link>
   </div>
 </template>
 

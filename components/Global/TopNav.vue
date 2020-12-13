@@ -166,6 +166,15 @@ export default {
       }
     },
   },
+  watch: {
+    '$route.path': {
+      handler(val, old) {
+        this.checkActiveTab(val, old)
+      },
+      deep: true,
+      immediate: true,
+    },
+  },
   mounted() {
     if (this.showLogo) {
       const filteredLabels = this.labels.filter((label) => label !== 'welcome')
@@ -176,10 +185,10 @@ export default {
     }
 
     const path = this.$route.path
-    this.checkActiveTab(path)
+    this.checkActiveTab(path, true)
   },
   methods: {
-    checkActiveTab(val) {
+    checkActiveTab(val, old) {
       /* eslint no-useless-escape: 0 */
       const path = val.replace(/^\/de/, '')
       const matched = path.match(/[^\/]+/g)
@@ -195,7 +204,19 @@ export default {
         label = matched[0]
       }
 
-      this.tab = this.showLabels.indexOf(label)
+      const indexFound = this.showLabels.indexOf(label)
+      if (old) {
+        const els = document.getElementsByClassName('v-tabs-slider-wrapper')
+        const el = els.length && els[0]
+        if (el) {
+          if (indexFound < 0) {
+            el.style.display = 'none'
+          } else {
+            el.style.display = 'block'
+          }
+        }
+      }
+      this.tab = indexFound
     },
     goto(label) {
       if (label === 'welcome') {
