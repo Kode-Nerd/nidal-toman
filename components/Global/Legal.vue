@@ -1,17 +1,21 @@
 <template>
   <div :class="customClass">
-    <nuxt-link :style="path === 'imprint' ? linkActive : textStyle" to="imprint"
-      >Impressum</nuxt-link
+    <nuxt-link
+      :style="path === 'imprint' ? linkActive : textStyle"
+      to="imprint"
+      >{{ $t('nav.imprint') }}</nuxt-link
     >
     <span :style="dividerStyle" class="mx-1">|</span>
-    <nuxt-link :style="path === 'privacy' ? linkActive : textStyle" to="privacy"
-      >Datenschutz</nuxt-link
+    <nuxt-link
+      :style="path === 'privacy' ? linkActive : textStyle"
+      to="privacy"
+      >{{ $t('nav.privacy') }}</nuxt-link
     >
     <span :style="dividerStyle" class="mx-1">|</span>
     <nuxt-link
       :style="path === 'infodesk' ? linkActive : textStyle"
       to="infodesk"
-      >Info Desk</nuxt-link
+      >{{ $t('nav.infodesk') }}</nuxt-link
     >
   </div>
 </template>
