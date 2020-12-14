@@ -90,6 +90,12 @@ export default {
           primary4: '#FCEBFF', // light pink
           text: colors.blueGrey.darken3,
           background: '#FFFFFF', // white
+          color1: '#D5A35A', // lighter gold
+          color2: '#F2E6E1', // pink skin
+          color3: '#A2706F', // brown
+          color4: '#4A2040', // purple
+          color5: '#331832', // darker purple
+          color6: '#FFF8EE', // yellow skin
         },
       },
     },
