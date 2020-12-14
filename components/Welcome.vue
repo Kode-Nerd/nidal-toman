@@ -27,10 +27,10 @@
         <TopNav :nav-style="[topNavStyle, moreInfoStyle]" />
         <div :style="welcomeBannerStyle">
           <div class="d-flex flex-column">
-            <span :style="welcomeStyle" class="text-h5 font-weight-medium">
+            <span :style="welcomeStyle" class="text-h5 font-weight-bold">
               {{ $t('welcome.title1') }}
             </span>
-            <span :style="nameStyle" class="text-h3 font-weight-bold">
+            <span :style="nameStyle" class="text-h3">
               {{ $t('welcome.title2') }}
             </span>
             <span :style="textStyle" class="text-h6 mb-10">
@@ -187,7 +187,7 @@ export default {
     },
     welcomeStyle() {
       return {
-        color: this.themes.light.text,
+        color: this.themes.light.primary,
       }
     },
     nameStyle() {
@@ -198,7 +198,7 @@ export default {
     },
     textStyle() {
       return {
-        color: this.themes.light.text,
+        color: this.themes.light.primary,
       }
     },
     discoverTextStyle() {
