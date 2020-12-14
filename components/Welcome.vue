@@ -55,7 +55,7 @@
           ></v-img>
         </div>
         <div :style="figure2" class="d-flex flex-column align-center">
-          <span :style="textStyle" class="text-h6 mb-n10">
+          <span :style="textStyle" class="text-h4 mb-n3 font-weight-light">
             {{ $t('welcome.infusion') }}
           </span>
           <v-img
@@ -63,7 +63,6 @@
             contain
             :src="require(`~/assets/_B'lance.png`)"
             height="80%"
-            width="160%"
           ></v-img>
           <v-img
             contain
@@ -72,20 +71,23 @@
           ></v-img>
           <nuxt-link :style="[discoverTextStyle, figure2MoreInfoStyle]" to="#"
             >{{ $t('welcome.discover') }}
-            <v-icon class="ml-2" :color="themes.light.primary3" medium
+            <v-icon class="ml-2" :color="themes.light.color4" medium
               >fas fa-long-arrow-alt-right</v-icon
             >
           </nuxt-link>
         </div>
         <div :style="figureWoman" class="d-flex flex-column align-center">
-          <span :style="[discoverTextStyle, womanLabel]" class="text-h6">
+          <span
+            :style="[maleFemaleStyle, womanLabel]"
+            class="text-h5 font-weight-light"
+          >
             {{ $t('welcome.woman') }}
           </span>
           <nuxt-link
-            :style="[textStyle, moreInfoStyle, moreInfoWoman, discover2Style]"
+            :style="[moreInfoStyle, moreInfoWoman, discover2Style]"
             to="#"
             >{{ $t('welcome.discover2') }}
-            <v-icon class="ml-2" :color="themes.light.text" medium
+            <v-icon class="ml-2" :color="themes.light.color3" medium
               >fas fa-long-arrow-alt-right</v-icon
             >
           </nuxt-link>
@@ -96,14 +98,17 @@
           ></v-img>
         </div>
         <div :style="figureMan" class="d-flex flex-column align-center">
-          <span :style="[discoverTextStyle, manLabel]" class="text-h6">
+          <span
+            :style="[maleFemaleStyle, manLabel]"
+            class="text-h5 font-weight-light"
+          >
             {{ $t('welcome.man') }}
           </span>
           <nuxt-link
-            :style="[textStyle, moreInfoStyle, moreInfoMan, discover2Style]"
+            :style="[moreInfoStyle, moreInfoMan, discover2Style]"
             to="#"
             >{{ $t('welcome.discover2') }}
-            <v-icon class="ml-2" :color="themes.light.text" medium
+            <v-icon class="ml-2" :color="themes.light.color3" medium
               >fas fa-long-arrow-alt-right</v-icon
             >
           </nuxt-link>
@@ -201,9 +206,14 @@ export default {
         color: this.themes.light.primary,
       }
     },
-    discoverTextStyle() {
+    maleFemaleStyle() {
       return {
         color: this.themes.light.primary3,
+      }
+    },
+    discoverTextStyle() {
+      return {
+        color: this.themes.light.color4,
       }
     },
     tabsStyle() {
@@ -246,6 +256,7 @@ export default {
     },
     discover2Style() {
       return {
+        color: this.themes.light.color3,
         width: '30%',
       }
     },
@@ -320,7 +331,7 @@ export default {
       return {
         position: 'absolute',
         top: '15%',
-        left: '38%',
+        left: '36%',
       }
     },
     moreInfoMan() {
