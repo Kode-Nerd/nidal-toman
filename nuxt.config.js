@@ -84,12 +84,12 @@ export default {
           // success: colors.green.accent3,
         },
         light: {
-          primary: '#6C756B',
-          primary2: '#B279A7',
-          primary3: '#CCA43B',
-          primary4: '#FCEBFF',
+          primary: '#6C756B', // old green
+          primary2: '#B279A7', // dark pink
+          primary3: '#CCA43B', // gold
+          primary4: '#FCEBFF', // light pink
           text: colors.blueGrey.darken3,
-          background: '#FFFFFF',
+          background: '#FFFFFF', // white
         },
       },
     },
