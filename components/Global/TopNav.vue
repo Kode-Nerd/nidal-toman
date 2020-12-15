@@ -192,6 +192,12 @@ export default {
     } else {
       this.showLabels = [...this.labels]
     }
+
+    // to handle active tab in direct load to path
+    this.$nextTick(() => {
+      const path = this.$route.path
+      this.checkActiveTab(path, true)
+    })
   },
   methods: {
     updateComponent(val, old) {
