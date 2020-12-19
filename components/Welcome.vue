@@ -386,16 +386,11 @@ export default {
         const proceduresIndex = this.labels.indexOf('procedures')
         this.tab = proceduresIndex
         this.path = 'procedures'
-        // this.$router.push({
-        //   path: this.locale === 'en' ? '/' : '/de/',
-        //   query: { id: 'procedures' },
-        // })
       }
       if (val >= 0) {
         const welcomeIndex = this.labels.indexOf('welcome')
         this.tab = welcomeIndex
         this.path = 'welcome'
-        // this.$router.push({ path: this.locale === 'en' ? '/' : '/de/' })
       }
     },
     path(val, old) {
