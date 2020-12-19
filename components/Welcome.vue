@@ -14,7 +14,9 @@
             :src="require('~/assets/main-logo.png')"
             max-width="20vw"
             :style="mainLogoStyle"
-          ></v-img>
+          >
+            {{ welcomeMainLeftPos }} | {{ innerWidth }}
+          </v-img>
         </v-col>
         <v-col :style="localeStyle" cols="2">
           <v-row justify="end">
@@ -151,6 +153,7 @@ export default {
       figure2MoreInfoRightPos: 45,
       atStart: true,
       atEnd: false,
+      innerWidth: 0,
     }
   },
   computed: {
@@ -432,6 +435,7 @@ export default {
   },
   mounted() {
     const innerWidth = window.innerWidth
+    this.innerWidth = innerWidth
     let deltaY = 0
 
     if (this.$route.query && this.$route.query.id === 'procedures') {
