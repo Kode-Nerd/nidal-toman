@@ -253,7 +253,7 @@ export default {
     goto(label) {
       this.path = label
       if (label === 'welcome') {
-        if (this.$route.path !== '/') {
+        if (this.$route.path !== '/' || !this.$route.query.pos) {
           this.$router.push({ path: finalpath(this.locale, '/') })
         }
         return
