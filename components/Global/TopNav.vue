@@ -250,10 +250,12 @@ export default {
         return
       }
       if (label === 'procedures') {
-        this.$router.push({
-          path: this.locale === 'en' ? '/' : '/de/',
-          query: { id: 'procedures' },
-        })
+        if (this.$route.path !== '/') {
+          this.$router.push({
+            path: this.locale === 'en' ? '/' : '/de/',
+            query: { id: 'procedures' },
+          })
+        }
         return
       }
       this.$router.push({ path: label })
