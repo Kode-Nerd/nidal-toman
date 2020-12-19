@@ -395,6 +395,7 @@ export default {
     },
     path(val, old) {
       if (old === undefined) {
+        return
       }
       const innerWidth = window.innerWidth
       let deltaY = 0
