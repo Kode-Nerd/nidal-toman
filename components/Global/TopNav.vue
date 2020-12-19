@@ -179,10 +179,13 @@ export default {
   watch: {
     '$route.path': {
       handler(val, old) {
-        this.updateComponent(val, old)
+        this.checkActiveTab(val, old)
       },
       deep: true,
       immediate: true,
+    },
+    locale(val, old) {
+      this.updateComponent(val, old)
     },
   },
   mounted() {
@@ -197,7 +200,7 @@ export default {
     // to handle active tab in direct load to path
     this.$nextTick(() => {
       const path = this.$route.path
-      this.checkActiveTab(path, true)
+      this.updateComponent(path, true)
     })
   },
   methods: {
