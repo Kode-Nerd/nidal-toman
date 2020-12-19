@@ -12,7 +12,8 @@
           <v-img
             contain
             :src="require('~/assets/main-logo.png')"
-            max-width="20vw"
+            max-height="120px"
+            height="20%"
             :style="mainLogoStyle"
           >
             <div v-if="showPos">
@@ -370,7 +371,7 @@ export default {
     topNavStyle() {
       return {
         position: 'absolute',
-        top: '10px',
+        top: '0px',
         left: `${this.welcomeBannerLeftPos}px`,
         zIndex: this.moreInfoOpacity === 0 ? -1 : 1,
       }
