@@ -399,7 +399,6 @@ export default {
       }
     },
     path(val, old) {
-      console.log('TRIGGERED', val, old)
       if (old === undefined) {
       }
       const innerWidth = window.innerWidth
