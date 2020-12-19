@@ -304,15 +304,15 @@ export default {
     figure2MoreInfoStyle() {
       return {
         position: 'absolute',
-        bottom: '0%',
-        right: `${this.figure2MoreInfoRightPos + 10}%`,
+        bottom: '2%',
+        right: `${this.figure2MoreInfoRightPos}%`,
       }
     },
     figure2LogoStyle() {
       return {
         position: 'absolute',
         bottom: '7%',
-        right: `${this.figure2MoreInfoRightPos - 10}%`,
+        right: `${this.figure2MoreInfoRightPos - 7}%`,
         opacity: '70%',
       }
     },
