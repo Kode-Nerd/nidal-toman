@@ -295,7 +295,7 @@ export default {
         width: '100vh',
         position: 'absolute',
         bottom: '5vh',
-        left: `${this.figure2LeftPos + 110}vw`,
+        left: `${this.figure2LeftPos + 200}vw`,
       }
     },
     figure2MoreInfoStyle() {
@@ -584,7 +584,7 @@ export default {
     animateFigureTwo(deltaX, deltaY) {
       const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figure2LeftPos -= deltaY / 110
+        this.figure2LeftPos -= deltaY / 30
       }
 
       // to animate "Discover More"
@@ -598,7 +598,7 @@ export default {
         this.figure2MoreInfoRightPos = 45
       }
       if (leftPosMain <= -window.innerWidth) {
-        this.figure2LeftPos = -65.5
+        this.figure2LeftPos = -237
         this.figure2MoreInfoRightPos = -2.5
       }
     },
