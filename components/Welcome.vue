@@ -284,7 +284,7 @@ export default {
         width: '100vh',
         position: 'absolute',
         bottom: '0px',
-        left: `${this.figure1LeftPos + 62}vw`,
+        right: `${83 - this.figure1LeftPos}vw`,
       }
     },
     figure2() {
