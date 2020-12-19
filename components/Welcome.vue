@@ -15,7 +15,9 @@
             max-width="20vw"
             :style="mainLogoStyle"
           >
-            {{ welcomeMainLeftPos }} | {{ innerWidth }}
+            <div v-if="showPos">
+              {{ welcomeMainLeftPos }} | {{ innerWidth }}
+            </div>
           </v-img>
         </v-col>
         <v-col :style="localeStyle" cols="2">
@@ -154,6 +156,7 @@ export default {
       atStart: true,
       atEnd: false,
       innerWidth: 0,
+      showPos: false,
     }
   },
   computed: {
@@ -434,6 +437,9 @@ export default {
     },
   },
   mounted() {
+    if (this.$route.query.pos === 'true') {
+      this.showPos = true
+    }
     const innerWidth = window.innerWidth
     this.innerWidth = innerWidth
     let deltaY = 0
