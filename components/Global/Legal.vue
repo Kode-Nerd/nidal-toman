@@ -2,25 +2,27 @@
   <div :class="customClass">
     <nuxt-link
       :style="path === 'imprint' ? linkActive : textStyle"
-      to="imprint"
+      :to="finalpath('imprint')"
       >{{ $t('nav.imprint') }}</nuxt-link
     >
     <span :style="dividerStyle" class="mx-1">|</span>
     <nuxt-link
       :style="path === 'privacy' ? linkActive : textStyle"
-      to="privacy"
+      :to="finalpath('privacy')"
       >{{ $t('nav.privacy') }}</nuxt-link
     >
     <span :style="dividerStyle" class="mx-1">|</span>
     <nuxt-link
       :style="path === 'infodesk' ? linkActive : textStyle"
-      to="infodesk"
+      :to="finalpath('infodesk')"
       >{{ $t('nav.infodesk') }}</nuxt-link
     >
   </div>
 </template>
 
 <script>
+import { finalpath } from '~/helpers'
+
 export default {
   props: {
     darkStyle: {
@@ -35,6 +37,9 @@ export default {
   computed: {
     path() {
       return this.$store.state.path
+    },
+    locale() {
+      return this.$store.state.locale
     },
     themes() {
       return this.$vuetify.theme.themes
@@ -68,6 +73,11 @@ export default {
       }
 
       return this.linkActive
+    },
+  },
+  methods: {
+    finalpath(path) {
+      return finalpath(this.locale, path)
     },
   },
 }
