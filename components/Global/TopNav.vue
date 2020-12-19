@@ -211,6 +211,7 @@ export default {
     },
     checkActiveTab(val, old) {
       /* eslint no-useless-escape: 0 */
+
       const path = val.replace(/^\/de/, '')
       const matched = path.match(/[^\/]+/g)
 
@@ -226,12 +227,11 @@ export default {
       }
 
       const indexFound = this.showLabels.indexOf(label)
+
       if (old) {
         const els = document.getElementsByClassName('v-tabs-slider-wrapper')
         const el = els.length && els[0]
-        console.log('MASUK IF', el, els)
         if (el) {
-          console.log('MASUK LAGI', indexFound)
           if (indexFound < 0) {
             el.style.display = 'none'
           } else {
@@ -239,10 +239,12 @@ export default {
           }
         }
       }
+
       this.tab = indexFound
       this.path = label
     },
     goto(label) {
+      this.path = label
       if (label === 'welcome') {
         this.$router.push({ path: this.locale === 'en' ? '/' : '/de/' })
         return

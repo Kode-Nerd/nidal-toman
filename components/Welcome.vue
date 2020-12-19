@@ -159,6 +159,22 @@ export default {
         return this.$store.state.tab
       },
     },
+    path: {
+      set(val) {
+        this.$store.commit('SET_PATH', val)
+      },
+      get() {
+        return this.$store.state.path
+      },
+    },
+    locale: {
+      set(val) {
+        this.$store.commit('SET_LOCALE', val)
+      },
+      get() {
+        return this.$store.state.locale
+      },
+    },
     labels() {
       return this.$store.state.labels
     },
@@ -369,11 +385,33 @@ export default {
       if (val <= -window.innerWidth) {
         const proceduresIndex = this.labels.indexOf('procedures')
         this.tab = proceduresIndex
+        this.path = 'procedures'
+        // this.$router.push({
+        //   path: this.locale === 'en' ? '/' : '/de/',
+        //   query: { id: 'procedures' },
+        // })
       }
       if (val >= 0) {
-        const treatmentsIndex = this.labels.indexOf('treatments')
-        this.tab = treatmentsIndex
+        const welcomeIndex = this.labels.indexOf('welcome')
+        this.tab = welcomeIndex
+        this.path = 'welcome'
+        // this.$router.push({ path: this.locale === 'en' ? '/' : '/de/' })
       }
+    },
+    path(val, old) {
+      console.log('TRIGGERED', val, old)
+      if (old === undefined) {
+      }
+      const innerWidth = window.innerWidth
+      let deltaY = 0
+      const delta = 5 * innerWidth
+      if (val === 'welcome') {
+        deltaY = -delta
+      }
+      if (val === 'procedures') {
+        deltaY = delta
+      }
+      this.animateAll(0, deltaY)
     },
     '$route.query': {
       handler(val, old) {
