@@ -69,7 +69,9 @@
             :src="require('~/assets/_asset1.png')"
             max-height="65vh"
           ></v-img>
-          <nuxt-link :style="[discoverTextStyle, figure2MoreInfoStyle]" to="#"
+          <nuxt-link
+            :style="[discoverTextStyle, figure2MoreInfoStyle]"
+            :to="finalpath('ivtherapies')"
             >{{ $t('welcome.discover') }}
             <v-icon class="ml-2" :color="themes.light.color4" medium
               >fas fa-long-arrow-alt-right</v-icon
@@ -126,6 +128,7 @@
 <script>
 import TopNav from '~/components/Global/TopNav'
 import Locale from '~/components/Global/Locale'
+import { finalpath } from '~/helpers'
 
 export default {
   components: {
@@ -447,6 +450,9 @@ export default {
       this.animateAll(e.deltaX, e.deltaY)
 
       // this.jumpSection(e.deltaX, e.deltaY)
+    },
+    finalpath(path) {
+      return finalpath(this.locale, path)
     },
     animateAll(deltaX, deltaY) {
       this.animateMainContainer(deltaX, deltaY)
