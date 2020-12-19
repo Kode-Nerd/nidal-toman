@@ -2,7 +2,7 @@
   <div v-if="showing">
     <div v-if="showLogo" :style="backgroundSupportStyle">
       <div>
-        <nuxt-link :to="locale === 'en' ? '/' : '/de/'">
+        <nuxt-link :to="finalpath('/')">
           <v-img
             contain
             :src="require('~/assets/logo.png')"
@@ -33,6 +33,7 @@
 <script>
 import SocialMedia from '~/components/Global/SocialMedia'
 import Locale from '~/components/Global/Locale'
+import { finalpath } from '~/helpers'
 
 export default {
   components: {
@@ -243,22 +244,25 @@ export default {
       this.tab = indexFound
       this.path = label
     },
+    finalpath(path) {
+      return finalpath(this.locale, path)
+    },
     goto(label) {
       this.path = label
       if (label === 'welcome') {
-        this.$router.push({ path: this.locale === 'en' ? '/' : '/de/' })
+        this.$router.push({ path: finalpath(this.locale, '/') })
         return
       }
       if (label === 'procedures') {
         if (this.$route.path !== '/') {
           this.$router.push({
-            path: this.locale === 'en' ? '/' : '/de/',
+            path: finalpath(this.locale, '/'),
             query: { id: 'procedures' },
           })
         }
         return
       }
-      this.$router.push({ path: label })
+      this.$router.push({ path: finalpath(this.locale, label) })
     },
     finalColor(opacity, color) {
       const splittedColor = color.split('#')
