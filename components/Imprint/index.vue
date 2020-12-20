@@ -1,8 +1,11 @@
 <template>
   <v-container>
     <v-row class="mt-16">
-      <div class="d-flex flex-column mb-6">
-        <span class="text-h2 mb-4">{{ $t('imprint.mainTitle') }}</span>
+      <Section
+        :title="$t('imprint.mainTitle')"
+        title-component="h2"
+        :title-color="themes.light.text"
+      >
         <div class="d-flex flex-column">
           <span
             v-for="(text, index) in contentExtractor($t('imprint.subtitle'))"
@@ -11,7 +14,7 @@
             >{{ text }}</span
           >
         </div>
-      </div>
+      </Section>
     </v-row>
     <v-row v-for="key in 8" :key="key">
       <Section :title="$t(`imprint.title${key}`)">
