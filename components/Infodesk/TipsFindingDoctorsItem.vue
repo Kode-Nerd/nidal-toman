@@ -1,7 +1,7 @@
 <template>
   <div class="finding-doctor-item__container">
     <div class="finding-doctor-item__left">
-      <div class="finding-doctor-item__index">0{{ +index + 1 }}.</div>
+      <div class="finding-doctor-item__index">0{{ +index }}.</div>
       <div class="finding-doctor-item__title">
         {{ title }}
       </div>

@@ -1,22 +1,20 @@
 <template>
   <div :class="{ 'detail-item__container': true, dark: dark }">
     <div class="detail-item__title" @click="onShowDetail()">
-      How do I pay the premium?
+      {{ title }}
     </div>
     <transition name="slide-fade">
       <div v-if="isShow" class="detail-item__subtitle">
-        With medassure follow-up costs insurance, the one-time insurance premium
-        is collected by direct debit. The bank details are stored when the
-        online transaction is made.
+        {{ subtitle }}
       </div>
     </transition>
-    <div class="detail-item__index">01</div>
+    <div class="detail-item__index">0{{ index }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['dark'],
+  props: ['dark', 'title', 'subtitle', 'index'],
   data() {
     return {
       isShow: false,
@@ -46,6 +44,7 @@ export default {
   font-weight: 600;
   font-size: 24px;
   line-height: 33px;
+  cursor: pointer;
 }
 
 .detail-item__subtitle {
