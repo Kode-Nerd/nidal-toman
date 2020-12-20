@@ -22,7 +22,7 @@ export function contentExtractor(input) {
           validLink = validLink.slice(0, -1)
         }
 
-        transformed = text.replace(
+        transformed = transformed.replace(
           validLink,
           `<a href="${validLink}" target="_blank">${validLink}</a>`
         )
