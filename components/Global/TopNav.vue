@@ -215,7 +215,6 @@ export default {
     },
     checkActiveTab(val, old) {
       /* eslint no-useless-escape: 0 */
-
       const path = val.replace(/^\/de/, '')
       const matched = path.match(/[^\/]+/g)
 

@@ -10,6 +10,7 @@ export function finalpath(locale, path, def = 'en') {
 
 export function contentExtractor(input) {
   return input.split('\n').map((text) => {
+    /* eslint no-useless-escape: 0 */
     const matched = `${text} `.match(
       /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/g
     )
