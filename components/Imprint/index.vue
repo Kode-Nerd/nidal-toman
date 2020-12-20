@@ -11,8 +11,8 @@
             v-for="(text, index) in contentExtractor($t('imprint.subtitle'))"
             :key="index"
             class="text-subtitle-1 mb-3"
-            >{{ text }}</span
-          >
+            v-html="text"
+          ></span>
         </div>
       </Section>
     </v-row>
@@ -33,6 +33,7 @@
 
 <script>
 import Section from '~/components/Global/Section'
+import { contentExtractor } from '~/helpers'
 export default {
   components: {
     Section,
@@ -44,27 +45,7 @@ export default {
   },
   methods: {
     contentExtractor(input) {
-      return input.split('\n').map((text) => {
-        const matched = `${text} `.match(
-          /(http)s*(:\/\/)+(www\.)*(\w|\W)+\.+\w+(\/.*)*(\s|\.)+/g
-        )
-        let transformed = text
-        if (matched) {
-          matched.forEach((link) => {
-            let validLink = link.split(' ')[0]
-            if (validLink[validLink.length - 1] === '.') {
-              validLink = validLink.slice(0, -1)
-            }
-
-            transformed = text.replace(
-              validLink,
-              `<a href="${validLink}" target="_blank">${validLink}</a>`
-            )
-          })
-        }
-
-        return transformed
-      })
+      return contentExtractor(input)
     },
   },
 }
