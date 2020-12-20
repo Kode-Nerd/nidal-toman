@@ -62,7 +62,7 @@ export default {
       }
 
       return {
-        color: this.themes.light.primary3,
+        color: this.themes.light.color1,
       }
     },
     dividerStyle() {

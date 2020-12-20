@@ -46,7 +46,7 @@
                 :nav-style="[tabsStyle]"
                 :vertical="true"
                 :custom-slider="true"
-                :slider-color="themes.light.primary3"
+                :slider-color="themes.light.color1"
                 tab-justify="left"
               />
             </v-col>
@@ -224,7 +224,7 @@ export default {
     nameStyle() {
       return {
         fontFamily: 'Adamina!important',
-        color: this.themes.light.primary3,
+        color: this.themes.light.color1,
       }
     },
     textStyle() {
@@ -234,7 +234,7 @@ export default {
     },
     maleFemaleStyle() {
       return {
-        color: this.themes.light.primary3,
+        color: this.themes.light.color1,
       }
     },
     discoverTextStyle() {
@@ -245,7 +245,7 @@ export default {
     tabsStyle() {
       return {
         borderLeftStyle: 'solid',
-        borderColor: this.themes.light.primary3,
+        borderColor: this.themes.light.color1,
         borderWidth: '1px',
       }
     },

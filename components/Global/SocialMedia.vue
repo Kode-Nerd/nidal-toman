@@ -36,7 +36,7 @@ export default {
     iconColor: {
       type: String,
       default() {
-        return this.$vuetify.theme.themes.light.primary3
+        return this.$vuetify.theme.themes.light.color1
       },
     },
     small: {
