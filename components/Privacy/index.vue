@@ -53,7 +53,90 @@
         </Section>
       </Section>
     </v-row>
-    <v-row> </v-row>
+    <v-row>
+      <Section
+        :title="$t('privacy.title2.title')"
+        title-component="h2"
+        :title-color="themes.light.text"
+      >
+        <Section
+          v-for="(sub, i) in 3"
+          :key="i"
+          :title="$t(`privacy.title2.sub[${i}].title`)"
+        >
+          <div class="d-flex flex-column">
+            <span
+              v-for="(text, j) in contentExtractor(
+                $t(`privacy.title2.sub[${i}].text`)
+              )"
+              :key="j"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></span>
+          </div>
+        </Section>
+        <Section :title="$t(`privacy.title2.sub[${3}].title`)">
+          <div class="d-flex flex-column">
+            <span
+              v-for="(text, j) in contentExtractor(
+                $t(`privacy.title2.sub[${3}].text`)
+              )"
+              :key="j"
+              class="text-subtitle-1 mb-3 font-weight-bold"
+              v-html="text"
+            ></span>
+          </div>
+        </Section>
+        <Section
+          v-for="(sub, i) in 4"
+          :key="i"
+          :title="$t(`privacy.title2.sub[${i + 4}].title`)"
+        >
+          <div class="d-flex flex-column">
+            <span
+              v-for="(text, j) in contentExtractor(
+                $t(`privacy.title2.sub[${i + 4}].text`)
+              )"
+              :key="j"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></span>
+          </div>
+        </Section>
+        <Section :title="$t(`privacy.title2.sub[${8}].title`)">
+          <div class="d-flex flex-column">
+            <span
+              v-for="(text, j) in contentExtractor(
+                $t(`privacy.title2.sub[${8}].text1`)
+              )"
+              :key="j"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></span>
+          </div>
+          <ul>
+            <li
+              v-for="(text, j) in contentExtractor(
+                $t(`privacy.title2.sub[${8}].list`)
+              )"
+              :key="j"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></li>
+          </ul>
+          <div class="d-flex flex-column">
+            <span
+              v-for="(text, j) in contentExtractor(
+                $t(`privacy.title2.sub[${8}].text2`)
+              )"
+              :key="j"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></span>
+          </div>
+        </Section>
+      </Section>
+    </v-row>
     <v-row> </v-row>
     <v-row> </v-row>
     <v-row> </v-row>
