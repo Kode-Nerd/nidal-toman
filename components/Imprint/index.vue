@@ -10,7 +10,6 @@
             class="text-subtitle-1 mb-3"
             >{{ text }}</span
           >
-          <a href="www.google.com">www.google.com</a>
         </div>
       </div>
     </v-row>
