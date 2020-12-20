@@ -17,6 +17,7 @@ export default ({ app, store }) => {
         profile: { ...require('~/assets/locales/en/profile.json') },
         imprint: { ...require('~/assets/locales/en/imprint.json') },
         privacy: { ...require('~/assets/locales/en/privacy.json') },
+        infodesk: { ...require(`~/assets/locales/en/infodesk.json`) },
       },
       de: {
         nav: { ...require('~/assets/locales/de/nav.json') },
@@ -26,6 +27,7 @@ export default ({ app, store }) => {
         profile: { ...require('~/assets/locales/de/profile.json') },
         imprint: { ...require('~/assets/locales/de/imprint.json') },
         privacy: { ...require('~/assets/locales/de/privacy.json') },
+        infodesk: { ...require(`~/assets/locales/de/infodesk.json`) },
       },
     },
   })

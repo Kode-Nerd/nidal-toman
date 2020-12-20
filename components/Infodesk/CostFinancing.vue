@@ -1,13 +1,15 @@
 <template>
   <div class="cost-financing__container">
-    <div class="cost-financing__title">Costs & Financing</div>
+    <div class="cost-financing__title">
+      {{ $t('infodesk.costFinancing.title') }}
+    </div>
 
     <div class="cost-financing__list">
       <CostFinancingItem
-        v-for="(item, index) in costFinanceData"
+        v-for="index in 2"
         :key="`cost-finance-item-${index}`"
-        :title="item.title"
-        :subtitle="item.subtitle"
+        :title="$t(`infodesk.costFinancing.section.${index}.title`)"
+        :subtitle="$t(`infodesk.costFinancing.section.${index}.subtitle`)"
       />
     </div>
   </div>

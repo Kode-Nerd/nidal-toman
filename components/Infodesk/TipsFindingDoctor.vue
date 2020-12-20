@@ -1,17 +1,15 @@
 <template>
   <div class="finding-doctor__container">
-    <div class="finding-doctor__title">Tips for finding doctors</div>
+    <div class="finding-doctor__title">{{ $t('infodesk.title') }}</div>
     <div class="finding-doctor__subtitle">
-      You should allow yourself enough time to choose the right doctor. Be clear
-      about how you want to change your appearance and what expectations you
-      have for the operation or treatment.
+      {{ $t('infodesk.subtitle') }}
     </div>
     <div class="finding-doctor__list">
       <FindingDoctorItem
-        v-for="(item, index) in findingDoctorData"
+        v-for="index in 3"
         :key="`finding-doctor-item-${index}`"
-        :title="item.title"
-        :subtitle="item.subtitle"
+        :title="$t(`infodesk.step.${index}.title`)"
+        :subtitle="$t(`infodesk.step.${index}.subtitle`)"
         :index="index"
       />
     </div>

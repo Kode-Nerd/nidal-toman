@@ -2,7 +2,14 @@
   <div class="faq__container">
     <div class="faq__title">FAQ</div>
     <div class="faq__list">
-      <DetailItem :dark="true" />
+      <DetailItem
+        v-for="index in 5"
+        :key="`faq-item-${index}`"
+        :dark="true"
+        :title="$t(`infodesk.faq.details.${index}.title`)"
+        :subtitle="$t(`infodesk.faq.details.${index}.subtitle`)"
+        :index="index"
+      />
     </div>
   </div>
 </template>
