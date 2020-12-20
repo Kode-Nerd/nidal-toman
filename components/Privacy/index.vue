@@ -252,7 +252,26 @@
         </Section>
       </Section>
     </v-row>
-    <v-row> </v-row>
+    <v-row>
+      <Section
+        :title="$t('privacy.title5.title')"
+        title-component="h2"
+        :title-color="themes.light.text"
+      >
+        <Section :title="$t(`privacy.title5.sub[0].title`)">
+          <div class="d-flex flex-column">
+            <span
+              v-for="(text, i) in contentExtractor(
+                $t(`privacy.title5.sub[0].text`)
+              )"
+              :key="i"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></span>
+          </div>
+        </Section>
+      </Section>
+    </v-row>
   </v-container>
 </template>
 
