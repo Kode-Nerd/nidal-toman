@@ -93,13 +93,18 @@
         </v-col>
       </v-row>
     </div>
+    <Map />
   </div>
 </template>
 
 <script>
+import Map from './Map'
 import MessageIcon from '~/assets/icons/message.svg'
 
 export default {
+  components: {
+    Map,
+  },
   data() {
     return {
       MessageIcon,
