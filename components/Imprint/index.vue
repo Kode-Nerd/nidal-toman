@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Section from '~/components/Imprint/Section'
+import Section from '~/components/Global/Section'
 export default {
   components: {
     Section,

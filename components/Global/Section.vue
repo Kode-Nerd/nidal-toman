@@ -1,6 +1,10 @@
 <template>
   <div class="d-flex flex-column mb-6">
-    <span class="text-h4 mb-4" :style="titleStyle">{{ title }}</span>
+    <span
+      :class="[`text-${titleComponent}`, 'mb-4', ...titleClass]"
+      :style="titleStyle"
+      >{{ title }}</span
+    >
     <slot />
   </div>
 </template>
@@ -12,10 +16,20 @@ export default {
       type: String,
       default: '',
     },
+    titleComponent: {
+      type: String,
+      default: 'h4',
+    },
     titleColor: {
       type: String,
       default() {
         return this.$vuetify.theme.themes.light.color1
+      },
+    },
+    titleClass: {
+      type: Array,
+      default() {
+        return []
       },
     },
   },
