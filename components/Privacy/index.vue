@@ -137,7 +137,70 @@
         </Section>
       </Section>
     </v-row>
-    <v-row> </v-row>
+    <v-row>
+      <Section
+        :title="$t('privacy.title3.title')"
+        title-component="h2"
+        :title-color="themes.light.text"
+      >
+        <Section :title="$t(`privacy.title3.sub[0].title`)">
+          <div class="d-flex flex-column">
+            <span
+              v-for="(text, i) in contentExtractor(
+                $t(`privacy.title3.sub[0].text`)
+              )"
+              :key="i"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></span>
+          </div>
+        </Section>
+        <Section :title="$t(`privacy.title3.sub[1].title`)">
+          <div class="d-flex flex-column">
+            <span
+              v-for="(text, i) in contentExtractor(
+                $t(`privacy.title3.sub[1].text1`)
+              )"
+              :key="i"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></span>
+          </div>
+          <ul>
+            <li
+              v-for="(text, j) in contentExtractor(
+                $t(`privacy.title3.sub[1].list`)
+              )"
+              :key="j"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></li>
+          </ul>
+          <div class="d-flex flex-column">
+            <span
+              v-for="(text, i) in contentExtractor(
+                $t(`privacy.title3.sub[1].text2`)
+              )"
+              :key="i"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></span>
+          </div>
+        </Section>
+        <Section :title="$t(`privacy.title3.sub[2].title`)">
+          <div class="d-flex flex-column">
+            <span
+              v-for="(text, i) in contentExtractor(
+                $t(`privacy.title3.sub[2].text`)
+              )"
+              :key="i"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></span>
+          </div>
+        </Section>
+      </Section>
+    </v-row>
     <v-row> </v-row>
     <v-row> </v-row>
   </v-container>
