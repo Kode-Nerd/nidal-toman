@@ -201,7 +201,57 @@
         </Section>
       </Section>
     </v-row>
-    <v-row> </v-row>
+    <v-row>
+      <Section
+        :title="$t('privacy.title4.title')"
+        title-component="h2"
+        :title-color="themes.light.text"
+      >
+        <Section :title="$t(`privacy.title4.sub[0].title`)">
+          <div class="d-flex flex-column">
+            <span
+              v-for="(text, i) in contentExtractor(
+                $t(`privacy.title4.sub[0].text`)
+              )"
+              :key="i"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></span>
+          </div>
+          <Section
+            v-for="(q, i) in 5"
+            :key="i"
+            title-component="h6"
+            :title="$t(`privacy.title4.sub[0].q[${i}].title`)"
+            :title-class="['font-weight-bold']"
+            :title-color="themes.light.text"
+          >
+            <div class="d-flex flex-column">
+              <span
+                v-for="(text, j) in contentExtractor(
+                  $t(`privacy.title4.sub[0].text`)
+                )"
+                :key="j"
+                class="text-subtitle-1 mb-3"
+                v-html="text"
+              ></span>
+            </div>
+          </Section>
+        </Section>
+        <Section :title="$t(`privacy.title4.sub[1].title`)">
+          <div class="d-flex flex-column">
+            <span
+              v-for="(text, i) in contentExtractor(
+                $t(`privacy.title4.sub[1].text`)
+              )"
+              :key="i"
+              class="text-subtitle-1 mb-3"
+              v-html="text"
+            ></span>
+          </div>
+        </Section>
+      </Section>
+    </v-row>
     <v-row> </v-row>
   </v-container>
 </template>
