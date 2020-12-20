@@ -16,19 +16,12 @@
 </template>
 
 <script>
-import CostFinancingData from './assets/costFinancingData.json'
-
 // component
 import CostFinancingItem from './CostFinancingItem'
 
 export default {
   components: {
     CostFinancingItem,
-  },
-  data() {
-    return {
-      costFinanceData: CostFinancingData,
-    }
   },
 }
 </script>

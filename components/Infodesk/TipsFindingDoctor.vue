@@ -17,19 +17,12 @@
 </template>
 
 <script>
-import FindingDoctorData from './assets/findingDoctorData.json'
-
 // component
 import FindingDoctorItem from './TipsFindingDoctorsItem'
 
 export default {
   components: {
     FindingDoctorItem,
-  },
-  data() {
-    return {
-      findingDoctorData: FindingDoctorData,
-    }
   },
 }
 </script>
