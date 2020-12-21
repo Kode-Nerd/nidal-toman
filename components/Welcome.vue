@@ -129,6 +129,14 @@
             max-height="80vh"
           ></v-img>
         </div>
+        <div :style="[moreInfoStyle, secondLocaleStyle]">
+          <Locale />
+        </div>
+        <div class="d-flex align-center" :style="[moreInfoStyle, legalStyle]">
+          <SocialMedia :small="true" />
+          <div class="mx-1" />
+          <Legal />
+        </div>
       </v-row>
     </div>
   </div>
@@ -137,12 +145,16 @@
 <script>
 import TopNav from '~/components/Global/TopNav'
 import Locale from '~/components/Global/Locale'
+import Legal from '~/components/Global/Legal'
 import { finalpath } from '~/helpers'
+import SocialMedia from '~/components/Global/SocialMedia'
 
 export default {
   components: {
     TopNav,
     Locale,
+    Legal,
+    SocialMedia,
   },
   data() {
     return {
@@ -262,7 +274,7 @@ export default {
     localeStyle() {
       return {
         opacity: this.bannerOpacity,
-        zIndex: this.bannerOpacity === 0 ? -1 : 6,
+        zIndex: this.bannerOpacity === 0 ? -1 : 5,
       }
     },
     welcomeBannerStyle() {
@@ -377,6 +389,22 @@ export default {
         position: 'absolute',
         top: '0px',
         left: `${this.welcomeBannerLeftPos}px`,
+      }
+    },
+    legalStyle() {
+      return {
+        position: 'absolute',
+        bottom: '24px',
+        right: '36px',
+        zIndex: 2,
+      }
+    },
+    secondLocaleStyle() {
+      return {
+        position: 'absolute',
+        top: '24px',
+        right: '36px',
+        zIndex: 5,
       }
     },
   },
