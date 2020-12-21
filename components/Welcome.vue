@@ -29,7 +29,11 @@
         <v-col cols="6"></v-col>
       </v-row>
       <v-row class="full-height" align-content="end">
-        <TopNav :nav-style="[topNavStyle, moreInfoStyle]" />
+        <TopNav
+          :nav-style="[topNavStyle]"
+          :slider-color="themes.light.color1"
+          :custom-slider="true"
+        />
         <div :style="welcomeBannerStyle">
           <div class="d-flex flex-column">
             <span :style="welcomeStyle" class="text-h5 font-weight-bold">
@@ -38,18 +42,16 @@
             <span :style="nameStyle" class="text-h3">
               {{ $t('welcome.title2') }}
             </span>
-            <span :style="textStyle" class="text-h6 mb-10">
-              {{ $t('welcome.title3') }}
-            </span>
-            <v-col cols="6">
-              <TopNav
-                :nav-style="[tabsStyle]"
-                :vertical="true"
-                :custom-slider="true"
-                :slider-color="themes.light.color1"
-                tab-justify="left"
-              />
+            <v-col cols="8">
+              <v-row>
+                <span :style="textStyle" class="text-h6 mb-8">
+                  {{ $t('welcome.title3') }}
+                </span>
+              </v-row>
             </v-col>
+            <span class="text-h6 font-weight-thin">
+              {{ $t('welcome.philosophy') }}
+            </span>
           </div>
         </div>
         <div :style="figure1">
@@ -91,6 +93,7 @@
             {{ $t('welcome.woman') }}
           </span>
           <nuxt-link
+            class="font-weight-light"
             :style="[moreInfoStyle, moreInfoWoman, discover2Style]"
             to="#"
             >{{ $t('welcome.discover2') }}
@@ -112,6 +115,7 @@
             {{ $t('welcome.man') }}
           </span>
           <nuxt-link
+            class="font-weight-light"
             :style="[moreInfoStyle, moreInfoMan, discover2Style]"
             to="#"
             >{{ $t('welcome.discover2') }}
@@ -263,10 +267,10 @@ export default {
     },
     welcomeBannerStyle() {
       return {
-        width: '20%',
+        width: '30%',
         position: 'absolute',
         left: `${24 + this.welcomeBannerLeftPos}px`,
-        bottom: '36px',
+        bottom: '22%',
         opacity: this.bannerOpacity,
       }
     },
@@ -373,7 +377,6 @@ export default {
         position: 'absolute',
         top: '0px',
         left: `${this.welcomeBannerLeftPos}px`,
-        zIndex: this.moreInfoOpacity === 0 ? -1 : 1,
       }
     },
   },
