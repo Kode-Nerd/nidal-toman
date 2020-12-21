@@ -168,7 +168,7 @@ export default {
       const { color, vertical, right } = this
 
       return {
-        style: [...this.navStyle, this.zIndex5Style],
+        style: [this.zIndex5Style, ...this.navStyle],
         backgroundColor: 'transparent',
         color,
         vertical,
