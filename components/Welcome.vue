@@ -174,10 +174,17 @@ export default {
       atEnd: false,
       innerWidth: 0,
       showPos: false,
-      userAgent: '',
     }
   },
   computed: {
+    userAgent: {
+      set(val) {
+        this.$store.commit('SET_USERAGENT', val)
+      },
+      get() {
+        return this.$store.state.userAgent
+      },
+    },
     tab: {
       set(val) {
         this.$store.commit('SET_TAB', val)
@@ -475,7 +482,6 @@ export default {
     }
     const innerWidth = window.innerWidth
     this.innerWidth = innerWidth
-    this.userAgent = navigator.userAgent.toLowerCase()
     let deltaY = 0
 
     if (this.$route.query && this.$route.query.id === 'procedures') {
