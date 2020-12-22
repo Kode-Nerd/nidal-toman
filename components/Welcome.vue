@@ -17,7 +17,7 @@
             :style="mainLogoStyle"
           >
             <div v-if="showPos">
-              {{ welcomeMainLeftPos }} | {{ innerWidth }}
+              {{ welcomeMainLeftPos }} | {{ innerWidth }} | {{ userAgent }}
             </div>
           </v-img>
         </v-col>
@@ -174,6 +174,7 @@ export default {
       atEnd: false,
       innerWidth: 0,
       showPos: false,
+      userAgent: '',
     }
   },
   computed: {
@@ -474,6 +475,7 @@ export default {
     }
     const innerWidth = window.innerWidth
     this.innerWidth = innerWidth
+    this.userAgent = navigator.userAgent.toLowerCase()
     let deltaY = 0
 
     if (this.$route.query && this.$route.query.id === 'procedures') {
