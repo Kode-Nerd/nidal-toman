@@ -13,7 +13,7 @@
             contain
             :src="require('~/assets/main-logo.png')"
             max-height="120px"
-            height="20%"
+            height="120px"
             :style="mainLogoStyle"
           >
             <div v-if="showPos">
@@ -80,7 +80,7 @@
             :style="[discoverTextStyle, figure2MoreInfoStyle]"
             :to="finalpath('ivtherapies')"
             >{{ $t('welcome.discover') }}
-            <v-icon class="ml-2" :color="themes.light.color4" medium
+            <v-icon class="ml-2" :color="themes.light.primary2" medium
               >fas fa-long-arrow-alt-right</v-icon
             >
           </nuxt-link>
@@ -97,7 +97,7 @@
             :style="[moreInfoStyle, moreInfoWoman, discover2Style]"
             to="#"
             >{{ $t('welcome.discover2') }}
-            <v-icon class="ml-2" :color="themes.light.color3" medium
+            <v-icon class="ml-2" :color="themes.light.primary4" medium
               >fas fa-long-arrow-alt-right</v-icon
             >
           </nuxt-link>
@@ -119,7 +119,7 @@
             :style="[moreInfoStyle, moreInfoMan, discover2Style]"
             to="#"
             >{{ $t('welcome.discover2') }}
-            <v-icon class="ml-2" :color="themes.light.color3" medium
+            <v-icon class="ml-2" :color="themes.light.primary4" medium
               >fas fa-long-arrow-alt-right</v-icon
             >
           </nuxt-link>
@@ -263,7 +263,7 @@ export default {
     },
     discoverTextStyle() {
       return {
-        color: this.themes.light.color4,
+        color: this.themes.light.primary2,
       }
     },
     tabsStyle() {
@@ -295,7 +295,7 @@ export default {
       }
     },
     leftMainLogoPos() {
-      return `calc(50vw - 10vw + ${this.welcomeBannerLeftPos}px)`
+      return `calc(50vw - 150px + ${this.welcomeBannerLeftPos}px)`
     },
     mainLogoStyle() {
       return {
@@ -306,7 +306,7 @@ export default {
     },
     discover2Style() {
       return {
-        color: this.themes.light.color3,
+        color: this.themes.light.primary4,
         width: '30%',
       }
     },
