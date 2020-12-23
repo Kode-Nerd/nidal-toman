@@ -23,7 +23,7 @@ export default {
     titleColor: {
       type: String,
       default() {
-        return this.$vuetify.theme.themes.light.color1
+        return this.$vuetify.theme.themes.light.primary3
       },
     },
     titleClass: {

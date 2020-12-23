@@ -31,7 +31,7 @@
       <v-row class="full-height" align-content="end">
         <TopNav
           :nav-style="[topNavStyle]"
-          :slider-color="themes.light.color1"
+          :slider-color="themes.light.primary3"
           :custom-slider="true"
         />
         <div :style="welcomeBannerStyle">
@@ -248,7 +248,7 @@ export default {
     nameStyle() {
       return {
         fontFamily: 'Adamina!important',
-        color: this.themes.light.color1,
+        color: this.themes.light.primary3,
       }
     },
     textStyle() {
@@ -258,7 +258,7 @@ export default {
     },
     maleFemaleStyle() {
       return {
-        color: this.themes.light.color1,
+        color: this.themes.light.primary3,
       }
     },
     discoverTextStyle() {
@@ -269,7 +269,7 @@ export default {
     tabsStyle() {
       return {
         borderLeftStyle: 'solid',
-        borderColor: this.themes.light.color1,
+        borderColor: this.themes.light.primary3,
         borderWidth: '1px',
       }
     },
