@@ -28,7 +28,7 @@
       </p>
     </div>
     <div style="height: 20vh" />
-    <div style="width: 100%">
+    <div class="font-weight-light" style="width: 100%">
       <span class="text-h6 font-weight-bold">Contact:</span><br />
       <span>
         Uhlandstraße 33, 10719 Berlin<br />
