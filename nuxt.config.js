@@ -88,7 +88,7 @@ export default {
           primary: '#6C756B', // dark green
           primary2: '#B279A7', // violet
           primary3: '#D2AF69', // gold
-          brown: '#5E0B15', // brown
+          primary4: '#5E0B15', // brown
           background: '#FFFFFF', // white
           text: colors.blueGrey.darken3,
           // alternatives
