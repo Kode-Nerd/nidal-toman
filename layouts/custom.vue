@@ -45,6 +45,18 @@ export default {
       this.ready = true
     })
   },
+  head() {
+    return {
+      title: 'Home',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'This is description from Home Page',
+        },
+      ],
+    }
+  },
 }
 </script>
 
