@@ -87,9 +87,6 @@
               type="arrow-right"
               :color="themes.light.primary2"
             />
-            <!-- <v-icon class="ml-2" :color="themes.light.primary2" medium
-              >fas fa-long-arrow-alt-right</v-icon
-            > -->
           </nuxt-link>
         </div>
         <div :style="figureWoman" class="d-flex flex-column align-center">
@@ -111,9 +108,6 @@
               type="arrow-right"
               :color="themes.light.primary4"
             />
-            <!-- <v-icon class="ml-2" :color="themes.light.primary4" medium
-              >fas fa-long-arrow-alt-right</v-icon
-            > -->
           </nuxt-link>
           <v-img
             contain
@@ -140,9 +134,6 @@
               type="arrow-right"
               :color="themes.light.primary4"
             />
-            <!-- <v-icon class="ml-2" :color="themes.light.primary4" medium
-              >fas fa-long-arrow-alt-right</v-icon
-            > -->
           </nuxt-link>
           <v-img
             contain
