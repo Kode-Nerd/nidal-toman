@@ -79,10 +79,19 @@
           <nuxt-link
             :style="[discoverTextStyle, figure2MoreInfoStyle]"
             :to="finalpath('ivtherapies')"
-            >{{ $t('welcome.discover') }}
-            <v-icon class="ml-2" :color="themes.light.primary2" medium
-              >fas fa-long-arrow-alt-right</v-icon
-            >
+          >
+            <div class="d-flex align-center">
+              {{ $t('welcome.discover') }}
+              <BIcon
+                class="ml-2"
+                size="1.5rem"
+                type="arrow-right"
+                :color="themes.light.primary2"
+              />
+              <!-- <v-icon class="ml-2" :color="themes.light.primary2" medium
+                >fas fa-long-arrow-alt-right</v-icon
+              > -->
+            </div>
           </nuxt-link>
         </div>
         <div :style="figureWoman" class="d-flex flex-column align-center">
@@ -97,9 +106,18 @@
             :style="[moreInfoStyle, moreInfoWoman, discover2Style]"
             to="#"
             >{{ $t('welcome.discover2') }}
-            <v-icon class="ml-2" :color="themes.light.primary4" medium
-              >fas fa-long-arrow-alt-right</v-icon
-            >
+            <div class="d-flex align-center">
+              {{ $t('welcome.discover') }}
+              <BIcon
+                class="ml-2"
+                size="1.5rem"
+                type="arrow-right"
+                :color="themes.light.primary4"
+              />
+              <!-- <v-icon class="ml-2" :color="themes.light.primary4" medium
+                >fas fa-long-arrow-alt-right</v-icon
+              > -->
+            </div>
           </nuxt-link>
           <v-img
             contain
@@ -119,9 +137,18 @@
             :style="[moreInfoStyle, moreInfoMan, discover2Style]"
             to="#"
             >{{ $t('welcome.discover2') }}
-            <v-icon class="ml-2" :color="themes.light.primary4" medium
-              >fas fa-long-arrow-alt-right</v-icon
-            >
+            <div class="d-flex align-center">
+              {{ $t('welcome.discover') }}
+              <BIcon
+                class="ml-2"
+                size="1.5rem"
+                type="arrow-right"
+                :color="themes.light.primary4"
+              />
+              <!-- <v-icon class="ml-2" :color="themes.light.primary4" medium
+                >fas fa-long-arrow-alt-right</v-icon
+              > -->
+            </div>
           </nuxt-link>
           <v-img
             contain
@@ -143,6 +170,7 @@
 </template>
 
 <script>
+import BIcon from '~/components/Global/BIcon'
 import TopNav from '~/components/Global/TopNav'
 import Locale from '~/components/Global/Locale'
 import Legal from '~/components/Global/Legal'
@@ -155,6 +183,7 @@ export default {
     Locale,
     Legal,
     SocialMedia,
+    BIcon,
   },
   data() {
     return {
