@@ -80,18 +80,16 @@
             :style="[discoverTextStyle, figure2MoreInfoStyle]"
             :to="finalpath('ivtherapies')"
           >
-            <div class="d-flex align-center">
-              {{ $t('welcome.discover') }}
-              <BIcon
-                class="ml-2"
-                size="1.5rem"
-                type="arrow-right"
-                :color="themes.light.primary2"
-              />
-              <!-- <v-icon class="ml-2" :color="themes.light.primary2" medium
-                >fas fa-long-arrow-alt-right</v-icon
-              > -->
-            </div>
+            {{ $t('welcome.discover') }}
+            <BIcon
+              class="ml-2"
+              size="1.5rem"
+              type="arrow-right"
+              :color="themes.light.primary2"
+            />
+            <!-- <v-icon class="ml-2" :color="themes.light.primary2" medium
+              >fas fa-long-arrow-alt-right</v-icon
+            > -->
           </nuxt-link>
         </div>
         <div :style="figureWoman" class="d-flex flex-column align-center">
@@ -105,19 +103,17 @@
             class="font-weight-light"
             :style="[moreInfoStyle, moreInfoWoman, discover2Style]"
             to="#"
-            >{{ $t('welcome.discover2') }}
-            <div class="d-flex align-center">
-              {{ $t('welcome.discover') }}
-              <BIcon
-                class="ml-2"
-                size="1.5rem"
-                type="arrow-right"
-                :color="themes.light.primary4"
-              />
-              <!-- <v-icon class="ml-2" :color="themes.light.primary4" medium
-                >fas fa-long-arrow-alt-right</v-icon
-              > -->
-            </div>
+          >
+            {{ $t('welcome.discover2') }}
+            <BIcon
+              class="ml-2"
+              size="1.5rem"
+              type="arrow-right"
+              :color="themes.light.primary4"
+            />
+            <!-- <v-icon class="ml-2" :color="themes.light.primary4" medium
+              >fas fa-long-arrow-alt-right</v-icon
+            > -->
           </nuxt-link>
           <v-img
             contain
@@ -136,19 +132,17 @@
             class="font-weight-light"
             :style="[moreInfoStyle, moreInfoMan, discover2Style]"
             to="#"
-            >{{ $t('welcome.discover2') }}
-            <div class="d-flex align-center">
-              {{ $t('welcome.discover') }}
-              <BIcon
-                class="ml-2"
-                size="1.5rem"
-                type="arrow-right"
-                :color="themes.light.primary4"
-              />
-              <!-- <v-icon class="ml-2" :color="themes.light.primary4" medium
-                >fas fa-long-arrow-alt-right</v-icon
-              > -->
-            </div>
+          >
+            {{ $t('welcome.discover2') }}
+            <BIcon
+              class="ml-2"
+              size="1.5rem"
+              type="arrow-right"
+              :color="themes.light.primary4"
+            />
+            <!-- <v-icon class="ml-2" :color="themes.light.primary4" medium
+              >fas fa-long-arrow-alt-right</v-icon
+            > -->
           </nuxt-link>
           <v-img
             contain
@@ -366,7 +360,7 @@ export default {
       return {
         position: 'absolute',
         bottom: '7%',
-        right: `${this.figure2MoreInfoRightPos - 7}%`,
+        right: `${this.figure2MoreInfoRightPos - 3}%`,
         opacity: '70%',
       }
     },

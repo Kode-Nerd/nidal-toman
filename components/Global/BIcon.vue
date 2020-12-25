@@ -1,5 +1,5 @@
 <template>
-  <div :style="iconStyle" />
+  <svg :style="iconStyle" />
 </template>
 
 <script>
@@ -33,6 +33,7 @@ export default {
         width: this.size,
         height: this.size,
         margin: '0px',
+        verticalAlign: 'middle',
       }
     },
   },
