@@ -104,6 +104,6 @@ export default {
 .fullscreen {
   width: 100vw;
   height: 100vh;
-  overflow: visible;
+  overflow: hidden;
 }
 </style>
