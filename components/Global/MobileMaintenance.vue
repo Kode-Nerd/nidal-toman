@@ -3,12 +3,13 @@
     :style="fontPrimaryStyle"
     class="fullscreen py-6 px-8 d-flex flex-column justify-space-between align-center"
   >
-    <v-img
-      :style="figure1"
-      contain
-      :src="require('~/assets/_asset3.png')"
-      height="50vh"
-    ></v-img>
+    <div :style="[figureContainer, figure1]">
+      <v-img
+        contain
+        :src="require('~/assets/_asset3.png')"
+        :height="figureSize"
+      ></v-img>
+    </div>
     <v-img
       contain
       :src="require('~/assets/main-logo.png')"
@@ -27,7 +28,14 @@
         clinic.
       </p>
     </div>
-    <div style="height: 20vh" />
+    <div style="height: 20vh; width: 100%">
+      <a
+        class="text-h6 font-weight-bold"
+        href="https://www.google.com/maps/place/Plastische+Chirurgie/@52.5003229,13.3247357,21z/data=!4m12!1m6!3m5!1s0x47a850fa4954eca3:0x1406c2788da9ed70!2sPlastische+Chirurgie!8m2!3d52.5003285!4d13.3246307!3m4!1s0x47a850fa4954eca3:0x1406c2788da9ed70!8m2!3d52.5003285!4d13.3246307"
+        target="_blank"
+        >Find us!</a
+      >
+    </div>
     <div class="font-weight-light" style="width: 100%">
       <span class="text-h6 font-weight-bold">Contact:</span><br />
       <span>
@@ -60,6 +68,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      figureSize: '50vh',
+    }
+  },
   computed: {
     themes() {
       return this.$vuetify.theme.themes
@@ -73,8 +86,14 @@ export default {
       return {
         position: 'absolute',
         marginRight: '0px',
-        right: '0px',
-        bottom: '0px',
+        right: '-18vh',
+        bottom: '2vh',
+      }
+    },
+    figureContainer() {
+      return {
+        width: this.figureSize,
+        height: this.figureSize,
       }
     },
   },
