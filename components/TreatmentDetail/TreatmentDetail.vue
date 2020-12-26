@@ -1,7 +1,6 @@
 <template>
   <div class="treat-detail-container">
     <div class="treat-detail__button-container">
-      <img :src="icons.burgerMenu" alt="menus" />
       <img :src="icons.closeIcon" alt="close" />
     </div>
     <div class="treat-detail__title">Face Lift</div>
@@ -69,10 +68,12 @@ export default {
 <style>
 .treat-detail-container {
   position: relative;
-  width: 50%;
+  width: 100%;
   padding: 60px;
   box-shadow: 0px 2px 10px rgba(185, 185, 185, 0.25);
   height: 100vh;
+  z-index: 2;
+  background: #fff;
 }
 
 .treat-detail__title {
@@ -91,6 +92,10 @@ export default {
   position: absolute;
   top: 40px;
   right: 40px;
+}
+
+.treat-detail__button-container > button {
+  cursor: pointer;
 }
 
 .treat-detail__button-container > img:not(:first-child) {

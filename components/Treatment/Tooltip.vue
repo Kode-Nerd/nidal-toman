@@ -1,0 +1,71 @@
+<template>
+  <div class="tooltip">
+    <div class="tooltip__content">asdasdasdasdasdsad</div>
+    <div class="tooltip__detail">
+      <span class="treatment__detail">see details</span>
+    </div>
+    <div class="tooltip__arrow"></div>
+  </div>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style scoped>
+.tooltip {
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  -webkit-box-shadow: 0px 0px 20px -5px rgba(196, 196, 196, 1);
+  -moz-box-shadow: 0px 0px 20px -5px rgba(196, 196, 196, 1);
+  box-shadow: 0px 0px 20px -5px rgba(196, 196, 196, 1);
+  border-radius: 6px;
+  transition: 5s ease;
+  background: #fff;
+}
+
+.tooltip__content {
+  padding: 15px 20px;
+  background: #f4f4f4;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.tooltip__detail {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.treatment__detail {
+  cursor: pointer;
+}
+
+.tooltip__arrow {
+  width: 50px;
+  height: 25px;
+  position: absolute;
+  top: 100%;
+  left: 20%;
+  transform: translateX(-20%);
+  overflow: hidden;
+}
+
+.tooltip__arrow::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  transform: translateX(-10%) translateY(-50%) rotate(45deg);
+  top: 0;
+  left: 10%;
+  -webkit-box-shadow: 0px 0px 20px -5px rgba(196, 196, 196, 1);
+  -moz-box-shadow: 0px 0px 20px -5px rgba(196, 196, 196, 1);
+  box-shadow: 0px 0px 20px -5px rgba(196, 196, 196, 1);
+}
+</style>
