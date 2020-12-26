@@ -11,7 +11,7 @@
       <div class="treatment__image">
         <Tooltip />
       </div>
-      <div class="right__detail">
+      <div v-if="visibleTreatmentDetail" class="right__detail">
         <TreatmentDetail />
       </div>
     </div>
@@ -30,6 +30,11 @@ export default {
     MainNavigation,
     VerticalNavigation,
     Tooltip,
+  },
+  computed: {
+    visibleTreatmentDetail() {
+      return this.$store.state.visibleTreatmentDetail
+    },
   },
 }
 </script>

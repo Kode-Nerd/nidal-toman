@@ -23,6 +23,7 @@ export const state = () => ({
 
   // treatment details
   activeTab: 'general',
+  visibleTreatmentDetail: false,
 })
 
 export const mutations = {
@@ -49,5 +50,8 @@ export const mutations = {
   },
   SET_USERAGENT(state, val) {
     state.userAgent = val
+  },
+  SET_VISIBLE_TREATMENT_DETAIL(state, val) {
+    state.visibleTreatmentDetail = val
   },
 }
