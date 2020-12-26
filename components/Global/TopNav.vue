@@ -168,7 +168,7 @@ export default {
       const { color, vertical, right } = this
 
       return {
-        style: [...this.navStyle, this.zIndex5Style],
+        style: [this.zIndex5Style, ...this.navStyle],
         backgroundColor: 'transparent',
         color,
         vertical,
@@ -215,7 +215,6 @@ export default {
     },
     checkActiveTab(val, old) {
       /* eslint no-useless-escape: 0 */
-
       const path = val.replace(/^\/de/, '')
       const matched = path.match(/[^\/]+/g)
 

@@ -85,12 +85,17 @@ export default {
           // success: colors.green.accent3,
         },
         light: {
-          primary: '#6C756B', // old green
-          primary2: '#B279A7', // dark pink
-          primary3: '#CCA43B', // gold
-          primary4: '#FCEBFF', // light pink
-          text: colors.blueGrey.darken3,
+          primary: '#6C756B', // dark green
+          primary2: '#B279A7', // violet
+          primary3: '#D2AF69', // gold
+          primary4: '#5E0B15', // brown
           background: '#FFFFFF', // white
+          text: colors.blueGrey.darken3,
+          // alternatives
+          tmpprimary: '#6C756B', // dark green
+          tmpprimary2: '#B279A7', // violet
+          tmpprimary3: '#CCA43B', // gold
+          tmpprimary4: '#FCEBFF', // light pink
           color1: '#D5A35A', // lighter gold
           color2: '#F2E6E1', // pink skin
           color3: '#A2706F', // brown

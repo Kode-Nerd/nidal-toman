@@ -45,6 +45,7 @@ import CallIcon from '~/assets/icons/call-outline.svg'
 // import Locale from '~/components/Global/Locale'
 import Legal from '~/components/Global/Legal'
 import SocialMedia from '~/components/Global/SocialMedia'
+import { finalpath } from '~/helpers'
 
 export default {
   components: {
@@ -81,7 +82,10 @@ export default {
   },
   methods: {
     gotoContact() {
-      this.$router.push({ path: 'contact', hash: '#contact-form' })
+      this.$router.push({
+        path: finalpath(this.locale, 'contact'),
+        hash: '#contact-form',
+      })
     },
   },
 }

@@ -20,7 +20,7 @@ export default {
   computed: {
     titleStyle() {
       return {
-        color: this.$vuetify.theme.themes.light.color1,
+        color: this.$vuetify.theme.themes.light.primary3,
       }
     },
     subtitleStyle() {

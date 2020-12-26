@@ -6,6 +6,8 @@ export const state = () => ({
   labels: ['welcome', 'ivtherapies', 'procedures', 'profile', 'contact'],
 
   path: 'welcome',
+  userAgent: '',
+  ready: false,
 
   maxScrollDeltaSpeedBetweenSection: 70,
   currentID: '#welcome',
@@ -24,6 +26,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+  SET_READY(state, val) {
+    state.ready = val
+  },
   SET_TAB(state, val) {
     state.tab = val
   },
@@ -41,5 +46,8 @@ export const mutations = {
   },
   SET_PATH(state, val) {
     state.path = val
+  },
+  SET_USERAGENT(state, val) {
+    state.userAgent = val
   },
 }

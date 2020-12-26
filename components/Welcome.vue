@@ -13,11 +13,11 @@
             contain
             :src="require('~/assets/main-logo.png')"
             max-height="120px"
-            height="20%"
+            height="120px"
             :style="mainLogoStyle"
           >
             <div v-if="showPos">
-              {{ welcomeMainLeftPos }} | {{ innerWidth }}
+              {{ welcomeMainLeftPos }} | {{ innerWidth }} | {{ userAgent }}
             </div>
           </v-img>
         </v-col>
@@ -29,7 +29,11 @@
         <v-col cols="6"></v-col>
       </v-row>
       <v-row class="full-height" align-content="end">
-        <TopNav :nav-style="[topNavStyle, moreInfoStyle]" />
+        <TopNav
+          :nav-style="[topNavStyle]"
+          :slider-color="themes.light.primary3"
+          :custom-slider="true"
+        />
         <div :style="welcomeBannerStyle">
           <div class="d-flex flex-column">
             <span :style="welcomeStyle" class="text-h5 font-weight-bold">
@@ -38,18 +42,16 @@
             <span :style="nameStyle" class="text-h3">
               {{ $t('welcome.title2') }}
             </span>
-            <span :style="textStyle" class="text-h6 mb-10">
-              {{ $t('welcome.title3') }}
-            </span>
-            <v-col cols="6">
-              <TopNav
-                :nav-style="[tabsStyle]"
-                :vertical="true"
-                :custom-slider="true"
-                :slider-color="themes.light.color1"
-                tab-justify="left"
-              />
+            <v-col cols="8">
+              <v-row>
+                <span :style="textStyle" class="text-h6 mb-8">
+                  {{ $t('welcome.title3') }}
+                </span>
+              </v-row>
             </v-col>
+            <span class="text-h6 font-weight-thin">
+              {{ $t('welcome.philosophy') }}
+            </span>
           </div>
         </div>
         <div :style="figure1">
@@ -77,10 +79,14 @@
           <nuxt-link
             :style="[discoverTextStyle, figure2MoreInfoStyle]"
             :to="finalpath('ivtherapies')"
-            >{{ $t('welcome.discover') }}
-            <v-icon class="ml-2" :color="themes.light.color4" medium
-              >fas fa-long-arrow-alt-right</v-icon
-            >
+          >
+            {{ $t('welcome.discover') }}
+            <BIcon
+              class="ml-2"
+              size="1.5rem"
+              type="arrow-right"
+              :color="themes.light.primary2"
+            />
           </nuxt-link>
         </div>
         <div :style="figureWoman" class="d-flex flex-column align-center">
@@ -91,12 +97,17 @@
             {{ $t('welcome.woman') }}
           </span>
           <nuxt-link
+            class="font-weight-light"
             :style="[moreInfoStyle, moreInfoWoman, discover2Style]"
             to="#"
-            >{{ $t('welcome.discover2') }}
-            <v-icon class="ml-2" :color="themes.light.color3" medium
-              >fas fa-long-arrow-alt-right</v-icon
-            >
+          >
+            {{ $t('welcome.discover2') }}
+            <BIcon
+              class="ml-2"
+              size="1.5rem"
+              type="arrow-right"
+              :color="themes.light.primary4"
+            />
           </nuxt-link>
           <v-img
             contain
@@ -112,12 +123,17 @@
             {{ $t('welcome.man') }}
           </span>
           <nuxt-link
+            class="font-weight-light"
             :style="[moreInfoStyle, moreInfoMan, discover2Style]"
             to="#"
-            >{{ $t('welcome.discover2') }}
-            <v-icon class="ml-2" :color="themes.light.color3" medium
-              >fas fa-long-arrow-alt-right</v-icon
-            >
+          >
+            {{ $t('welcome.discover2') }}
+            <BIcon
+              class="ml-2"
+              size="1.5rem"
+              type="arrow-right"
+              :color="themes.light.primary4"
+            />
           </nuxt-link>
           <v-img
             contain
@@ -125,20 +141,34 @@
             max-height="80vh"
           ></v-img>
         </div>
+        <div :style="[moreInfoStyle, secondLocaleStyle]">
+          <Locale />
+        </div>
+        <div class="d-flex align-center" :style="[moreInfoStyle, legalStyle]">
+          <SocialMedia :small="true" />
+          <div class="mx-1" />
+          <Legal />
+        </div>
       </v-row>
     </div>
   </div>
 </template>
 
 <script>
+import BIcon from '~/components/Global/BIcon'
 import TopNav from '~/components/Global/TopNav'
 import Locale from '~/components/Global/Locale'
+import Legal from '~/components/Global/Legal'
 import { finalpath } from '~/helpers'
+import SocialMedia from '~/components/Global/SocialMedia'
 
 export default {
   components: {
     TopNav,
     Locale,
+    Legal,
+    SocialMedia,
+    BIcon,
   },
   data() {
     return {
@@ -161,6 +191,14 @@ export default {
     }
   },
   computed: {
+    userAgent: {
+      set(val) {
+        this.$store.commit('SET_USERAGENT', val)
+      },
+      get() {
+        return this.$store.state.userAgent
+      },
+    },
     tab: {
       set(val) {
         this.$store.commit('SET_TAB', val)
@@ -224,7 +262,7 @@ export default {
     nameStyle() {
       return {
         fontFamily: 'Adamina!important',
-        color: this.themes.light.color1,
+        color: this.themes.light.primary3,
       }
     },
     textStyle() {
@@ -234,18 +272,18 @@ export default {
     },
     maleFemaleStyle() {
       return {
-        color: this.themes.light.color1,
+        color: this.themes.light.primary3,
       }
     },
     discoverTextStyle() {
       return {
-        color: this.themes.light.color4,
+        color: this.themes.light.primary2,
       }
     },
     tabsStyle() {
       return {
         borderLeftStyle: 'solid',
-        borderColor: this.themes.light.color1,
+        borderColor: this.themes.light.primary3,
         borderWidth: '1px',
       }
     },
@@ -258,20 +296,20 @@ export default {
     localeStyle() {
       return {
         opacity: this.bannerOpacity,
-        zIndex: this.bannerOpacity === 0 ? -1 : 6,
+        zIndex: this.bannerOpacity === 0 ? -1 : 5,
       }
     },
     welcomeBannerStyle() {
       return {
-        width: '20%',
+        width: '30%',
         position: 'absolute',
         left: `${24 + this.welcomeBannerLeftPos}px`,
-        bottom: '36px',
+        bottom: '22%',
         opacity: this.bannerOpacity,
       }
     },
     leftMainLogoPos() {
-      return `calc(50vw - 10vw + ${this.welcomeBannerLeftPos}px)`
+      return `calc(50vw - 150px + ${this.welcomeBannerLeftPos}px)`
     },
     mainLogoStyle() {
       return {
@@ -282,7 +320,7 @@ export default {
     },
     discover2Style() {
       return {
-        color: this.themes.light.color3,
+        color: this.themes.light.primary4,
         width: '30%',
       }
     },
@@ -313,7 +351,7 @@ export default {
       return {
         position: 'absolute',
         bottom: '7%',
-        right: `${this.figure2MoreInfoRightPos - 7}%`,
+        right: `${this.figure2MoreInfoRightPos - 3}%`,
         opacity: '70%',
       }
     },
@@ -373,7 +411,22 @@ export default {
         position: 'absolute',
         top: '0px',
         left: `${this.welcomeBannerLeftPos}px`,
-        zIndex: this.moreInfoOpacity === 0 ? -1 : 1,
+      }
+    },
+    legalStyle() {
+      return {
+        position: 'absolute',
+        bottom: '24px',
+        right: '36px',
+        zIndex: 2,
+      }
+    },
+    secondLocaleStyle() {
+      return {
+        position: 'absolute',
+        top: '24px',
+        right: '36px',
+        zIndex: 5,
       }
     },
   },
