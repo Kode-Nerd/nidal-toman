@@ -80,13 +80,17 @@
             :style="[discoverTextStyle, figure2MoreInfoStyle]"
             :to="finalpath('ivtherapies')"
           >
-            {{ $t('welcome.discover') }}
-            <BIcon
-              class="ml-2"
-              size="1.5rem"
-              type="arrow-right"
-              :color="themes.light.primary2"
-            />
+            <div class="d-flex align-center">
+              <span>
+                {{ $t('welcome.discover') }}
+              </span>
+              <CustomSVG
+                class="ml-2"
+                size="1.5rem"
+                :src="require('bootstrap-icons/icons/arrow-right.svg')"
+                :color="themes.light.primary3"
+              />
+            </div>
           </nuxt-link>
         </div>
         <div :style="figureWoman" class="d-flex flex-column align-center">
@@ -101,13 +105,17 @@
             :style="[moreInfoStyle, moreInfoWoman, discover2Style]"
             to="#"
           >
-            {{ $t('welcome.discover2') }}
-            <BIcon
-              class="ml-2"
-              size="1.5rem"
-              type="arrow-right"
-              :color="themes.light.primary4"
-            />
+            <div class="d-flex align-center">
+              <span style="width: 130px">
+                {{ $t('welcome.discover2') }}
+              </span>
+              <CustomSVG
+                class="ml-2"
+                size="1.5rem"
+                :src="require('bootstrap-icons/icons/arrow-right.svg')"
+                :color="themes.light.primary4"
+              />
+            </div>
           </nuxt-link>
           <v-img
             contain
@@ -127,13 +135,17 @@
             :style="[moreInfoStyle, moreInfoMan, discover2Style]"
             to="#"
           >
-            {{ $t('welcome.discover2') }}
-            <BIcon
-              class="ml-2"
-              size="1.5rem"
-              type="arrow-right"
-              :color="themes.light.primary4"
-            />
+            <div class="d-flex align-center">
+              <span style="width: 130px">
+                {{ $t('welcome.discover2') }}
+              </span>
+              <CustomSVG
+                class="ml-2"
+                size="1.5rem"
+                :src="require('bootstrap-icons/icons/arrow-right.svg')"
+                :color="themes.light.primary4"
+              />
+            </div>
           </nuxt-link>
           <v-img
             contain
@@ -155,7 +167,7 @@
 </template>
 
 <script>
-import BIcon from '~/components/Global/BIcon'
+import CustomSVG from '~/components/Global/CustomSVG'
 import TopNav from '~/components/Global/TopNav'
 import Locale from '~/components/Global/Locale'
 import Legal from '~/components/Global/Legal'
@@ -168,7 +180,7 @@ export default {
     Locale,
     Legal,
     SocialMedia,
-    BIcon,
+    CustomSVG,
   },
   data() {
     return {
@@ -277,7 +289,7 @@ export default {
     },
     discoverTextStyle() {
       return {
-        color: this.themes.light.primary2,
+        color: this.themes.light.primary3,
       }
     },
     tabsStyle() {
