@@ -66,7 +66,7 @@ export default {
   computed: {
     activeTab() {
       return this.$store.state.activeTab
-    }
+    },
   },
   methods: {
     ...mapMutations({
