@@ -70,12 +70,12 @@
             :style="figure2LogoStyle"
             contain
             :src="require(`~/assets/_B'lance.png`)"
-            height="80%"
+            width="90vh"
           ></v-img>
           <v-img
             contain
-            :src="require('~/assets/_asset1.png')"
-            max-height="65vh"
+            :src="require('~/assets/fig_1.png')"
+            height="60vh"
           ></v-img>
           <nuxt-link
             :style="[discoverTextStyle, figure2MoreInfoStyle]"
@@ -365,7 +365,8 @@ export default {
       return {
         position: 'absolute',
         bottom: '7%',
-        right: `${this.figure2MoreInfoRightPos - 3}%`,
+        right: `calc(50vh - 45vh)`,
+        // right: `${this.figure2MoreInfoRightPos - 3}%`,
         opacity: '70%',
       }
     },
