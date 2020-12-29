@@ -13,7 +13,7 @@ export default {
     },
     size: {
       type: String,
-      default: '1rem',
+      default: '',
     },
     width: {
       type: String,
@@ -33,6 +33,10 @@ export default {
         return []
       },
     },
+    position: {
+      type: String,
+      default: 'center',
+    },
   },
   computed: {
     svgStyle() {
@@ -43,6 +47,7 @@ export default {
         width: this.size || this.width,
         height: this.size || this.height,
         margin: '0px',
+        maskPosition: this.position,
       }
     },
   },
@@ -52,6 +57,5 @@ export default {
 <style scoped>
 .no-repeat {
   mask-repeat: no-repeat;
-  mask-position: center;
 }
 </style>
