@@ -3,11 +3,12 @@
     :style="fontPrimaryStyle"
     class="fullscreen py-6 px-8 d-flex flex-column justify-space-between align-center"
   >
-    <div :style="[figureContainer, figure1]">
+    <div :style="[figure1]">
       <v-img
         contain
-        :src="require('~/assets/_asset3.png')"
+        :src="require('~/assets/fig_2.png')"
         :height="figureSize"
+        :width="figureSize"
       ></v-img>
     </div>
     <v-img
@@ -70,7 +71,7 @@
 export default {
   data() {
     return {
-      figureSize: '50vh',
+      figureSize: '45vh',
     }
   },
   computed: {
@@ -86,14 +87,8 @@ export default {
       return {
         position: 'absolute',
         marginRight: '0px',
-        right: '-18vh',
+        right: '-13vh',
         bottom: '2vh',
-      }
-    },
-    figureContainer() {
-      return {
-        width: this.figureSize,
-        height: this.figureSize,
       }
     },
   },
