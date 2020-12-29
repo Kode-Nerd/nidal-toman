@@ -91,6 +91,7 @@ export default {
           primary4: '#5E0B15', // brown
           background: '#FFFFFF', // white
           text: colors.blueGrey.darken3,
+          logo: '#D5A35A', // gold logo
           // alternatives
           tmpprimary: '#6C756B', // dark green
           tmpprimary2: '#B279A7', // violet
