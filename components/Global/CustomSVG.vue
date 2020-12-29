@@ -1,6 +1,9 @@
 <template>
-  <svg v-if="src" class="no-repeat" :style="[svgStyle, ...customStyle]" />
-  <div v-else>Source undefined.</div>
+  <div :style="containerStyle">
+    <svg v-if="src" class="no-repeat" :style="[svgStyle, ...customStyle]"></svg>
+    <div v-else>Source undefined.</div>
+    <slot />
+  </div>
 </template>
 
 <script>
@@ -41,13 +44,18 @@ export default {
   computed: {
     svgStyle() {
       return {
+        ...this.containerStyle,
         maskImage: `url(${this.src})`,
         backgroundColor: this.color,
         maskSize: this.size || `${this.width} ${this.height}`,
-        width: this.size || this.width,
-        height: this.size || this.height,
         margin: '0px',
         maskPosition: this.position,
+      }
+    },
+    containerStyle() {
+      return {
+        width: this.size || this.width,
+        height: this.size || this.height,
       }
     },
   },
