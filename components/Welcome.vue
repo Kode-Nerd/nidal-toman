@@ -57,8 +57,9 @@
         <div :style="figure1">
           <v-img
             contain
-            :src="require('~/assets/_asset3.png')"
-            max-height="100vh"
+            position="bottom right"
+            :src="require('~/assets/fig_2.png')"
+            height="100%"
           ></v-img>
         </div>
         <div :style="figure2" class="d-flex flex-column align-center">
@@ -338,10 +339,11 @@ export default {
     },
     figure1() {
       return {
-        width: '100vh',
+        width: '40vh',
+        height: '85vh',
         position: 'absolute',
         bottom: '0px',
-        right: `${83 - this.figure1LeftPos}vw`,
+        right: `${100 - this.figure1LeftPos}vw`,
       }
     },
     figure2() {
