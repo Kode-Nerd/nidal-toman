@@ -9,17 +9,18 @@
       <v-row class="welcome-main-logo">
         <v-col cols="2"></v-col>
         <v-col cols="2">
-          <v-img
-            contain
-            :src="require('~/assets/main-logo.png')"
-            max-height="120px"
-            height="120px"
+          <CustomSVG
             :style="mainLogoStyle"
+            :src="require('~/assets/main-logo.svg')"
+            :width="this.mainLogoWidth"
+            :height="this.mainLogoHeight"
+            :color="themes.light.logo"
+            position="top"
           >
             <div v-if="showPos">
               {{ welcomeMainLeftPos }} | {{ innerWidth }} | {{ userAgent }}
             </div>
-          </v-img>
+          </CustomSVG>
         </v-col>
         <v-col :style="localeStyle" cols="2">
           <v-row justify="end">
@@ -193,6 +194,7 @@ export default {
       bannerOpacity: 1,
       figure1LeftPos: 0,
       figure2LeftPos: 0,
+      mainLogoWidthSize: 65,
       figureWomanRightPos: 0,
       figureManRightPos: 0,
       moreInfoOpacity: 0,
@@ -322,13 +324,15 @@ export default {
       }
     },
     leftMainLogoPos() {
-      return `calc(50vw - 150px + ${this.welcomeBannerLeftPos}px)`
+      return `calc(50vw - ${this.mainLogoWidthSize / 2}vh + ${
+        this.welcomeBannerLeftPos
+      }px)`
     },
     mainLogoStyle() {
       return {
         position: 'absolute',
         left: this.leftMainLogoPos,
-        top: '72px',
+        top: '24px',
       }
     },
     discover2Style() {
@@ -443,6 +447,12 @@ export default {
         right: '36px',
         zIndex: 5,
       }
+    },
+    mainLogoWidth() {
+      return `${this.mainLogoWidthSize}vh`
+    },
+    mainLogoHeight() {
+      return `${0.4 * this.mainLogoWidthSize}vh`
     },
   },
   watch: {
