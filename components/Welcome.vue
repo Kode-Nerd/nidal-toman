@@ -106,7 +106,7 @@
             :style="[moreInfoStyle, moreInfoWoman, discover2Style]"
             to="#"
           >
-            <div class="d-flex align-center">
+            <div class="d-flex align-center justify-end">
               <span style="width: 130px">
                 {{ $t('welcome.discover2') }}
               </span>
@@ -120,8 +120,8 @@
           </nuxt-link>
           <v-img
             contain
-            :src="require('~/assets/_asset2.png')"
-            max-height="80vh"
+            :src="require('~/assets/fig_3.png')"
+            height="80vh"
           ></v-img>
         </div>
         <div :style="figureMan" class="d-flex flex-column align-center">
@@ -136,7 +136,7 @@
             :style="[moreInfoStyle, moreInfoMan, discover2Style]"
             to="#"
           >
-            <div class="d-flex align-center">
+            <div class="d-flex align-center justify-start">
               <span style="width: 130px">
                 {{ $t('welcome.discover2') }}
               </span>
@@ -150,8 +150,8 @@
           </nuxt-link>
           <v-img
             contain
-            :src="require('~/assets/_asset4.png')"
-            max-height="80vh"
+            :src="require('~/assets/fig_4.png')"
+            height="80vh"
           ></v-img>
         </div>
         <div :style="[moreInfoStyle, secondLocaleStyle]">
@@ -395,29 +395,29 @@ export default {
       return {
         position: 'absolute',
         top: '5%',
-        left: '42%',
+        left: '46%',
       }
     },
     moreInfoWoman() {
       return {
         position: 'absolute',
-        top: '15%',
-        right: '16%',
+        top: '20%',
+        right: '15%',
         zIndex: 1,
       }
     },
     manLabel() {
       return {
         position: 'absolute',
-        top: '15%',
-        left: '36%',
+        top: '12%',
+        right: '48%',
       }
     },
     moreInfoMan() {
       return {
         position: 'absolute',
         top: '35%',
-        left: '10%',
+        left: '15%',
         zIndex: 1,
       }
     },
