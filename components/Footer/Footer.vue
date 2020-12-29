@@ -1,17 +1,23 @@
 <template>
   <div class="footer__container">
     <div class="footer__row">
-      <div>
+      <!-- <div>
         <div class="footer__title">Dr. Nidal Toman</div>
         <div class="footer__subtitle">Plasticher Chirurg</div>
-      </div>
-
-      <div v-if="!isOnContactPage" class="button" @click="gotoContact">
-        Contact Us <img :src="ArrowIcon" />
-      </div>
+      </div> -->
+      <CustomSVG
+        :src="require('~/assets/main-logo.svg')"
+        :width="this.mainLogoWidth"
+        :height="this.mainLogoHeight"
+        :color="themes.light.background"
+        position="left"
+      ></CustomSVG>
     </div>
     <div class="footer__row">
       <SocialMedia :icon-color="themes.light.background" />
+      <div v-if="!isOnContactPage" class="button" @click="gotoContact">
+        Contact Us <img :src="ArrowIcon" />
+      </div>
     </div>
     <div class="footer__row">
       <div class="copyright">Dr. Nidal Toman - {{ latestYear }}</div>
@@ -45,6 +51,7 @@ import CallIcon from '~/assets/icons/call-outline.svg'
 // import Locale from '~/components/Global/Locale'
 import Legal from '~/components/Global/Legal'
 import SocialMedia from '~/components/Global/SocialMedia'
+import CustomSVG from '~/components/Global/CustomSVG'
 import { finalpath } from '~/helpers'
 
 export default {
@@ -52,6 +59,7 @@ export default {
     // Locale,
     Legal,
     SocialMedia,
+    CustomSVG,
   },
   data() {
     return {
@@ -59,6 +67,7 @@ export default {
       MailIcon,
       PlaceIcon,
       CallIcon,
+      mainLogoWidthSize: 30,
     }
   },
   computed: {
@@ -78,6 +87,12 @@ export default {
     },
     latestYear() {
       return new Date().getFullYear()
+    },
+    mainLogoWidth() {
+      return `${this.mainLogoWidthSize}vh`
+    },
+    mainLogoHeight() {
+      return `${0.6 * this.mainLogoWidthSize}vh`
     },
   },
   methods: {
