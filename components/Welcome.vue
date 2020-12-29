@@ -60,7 +60,8 @@
             contain
             position="bottom right"
             :src="require('~/assets/fig_2.png')"
-            height="100%"
+            width="40vh"
+            height="85vh"
           ></v-img>
         </div>
         <div :style="figure2" class="d-flex flex-column align-center">
@@ -343,8 +344,6 @@ export default {
     },
     figure1() {
       return {
-        width: '40vh',
-        height: '85vh',
         position: 'absolute',
         bottom: '0px',
         right: `${100 - this.figure1LeftPos}vw`,
