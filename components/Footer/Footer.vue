@@ -1,10 +1,6 @@
 <template>
   <div class="footer__container">
     <div class="footer__row">
-      <!-- <div>
-        <div class="footer__title">Dr. Nidal Toman</div>
-        <div class="footer__subtitle">Plasticher Chirurg</div>
-      </div> -->
       <CustomSVG
         class="ml-n8 mt-n8"
         :src="require('~/assets/main-logo.svg')"
@@ -120,21 +116,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-}
-
-.footer__title {
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 33px;
-  color: #ffffff;
-}
-
-.footer__subtitle {
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 19px;
-
-  color: #ffffff;
 }
 
 .button {
