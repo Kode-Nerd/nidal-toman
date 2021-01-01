@@ -3,11 +3,11 @@
     <div v-if="showLogo" :style="backgroundSupportStyle">
       <div>
         <nuxt-link :to="finalpath('/')">
-          <v-img
-            contain
-            :src="require('~/assets/logo.png')"
-            max-height="40px"
-          ></v-img>
+          <CustomSVG
+            :src="require('~/assets/mini-logo.svg')"
+            size="80px"
+            :color="themes.light.logo"
+          ></CustomSVG>
         </nuxt-link>
       </div>
       <SocialMedia :small="true" />
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import CustomSVG from '~/components/Global/CustomSVG'
 import SocialMedia from '~/components/Global/SocialMedia'
 import Locale from '~/components/Global/Locale'
 import { finalpath } from '~/helpers'
@@ -39,6 +40,7 @@ export default {
   components: {
     SocialMedia,
     Locale,
+    CustomSVG,
   },
   props: {
     navStyle: {
