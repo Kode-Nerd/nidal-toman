@@ -4,6 +4,7 @@
       <div>
         <nuxt-link :to="finalpath('/')">
           <CustomSVG
+            class="ml-3"
             :src="require('~/assets/mini-logo.svg')"
             size="80px"
             :color="themes.light.logo"

@@ -40,7 +40,7 @@
             <span :style="welcomeStyle" class="text-h5 font-weight-bold">
               {{ $t('welcome.title1') }}
             </span>
-            <span :style="nameStyle" class="text-h3 mt-2">
+            <span :style="nameStyle" class="text-h3 mt-3">
               {{ $t('welcome.title2') }}
             </span>
             <v-col cols="8">
