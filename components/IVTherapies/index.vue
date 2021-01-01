@@ -8,7 +8,7 @@
       <v-img
         :style="logoStyle"
         contain
-        :src="require(`~/assets/_B'lance.png`)"
+        :src="require(`~/assets/B'lance.png`)"
         height="80vh"
       ></v-img>
     </v-row>

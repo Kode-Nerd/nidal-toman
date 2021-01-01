@@ -71,7 +71,7 @@
           <v-img
             :style="figure2LogoStyle"
             contain
-            :src="require(`~/assets/_B'lance.png`)"
+            :src="require(`~/assets/B'lance.png`)"
             width="90vh"
           ></v-img>
           <v-img
