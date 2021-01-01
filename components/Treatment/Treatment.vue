@@ -3,12 +3,23 @@
     <div class="treatment__main-nav">
       <MainNavigation />
     </div>
-    <div class="treatment__sub-nav">
+    <!-- <div class="treatment__sub-nav">
       <VerticalNavigation />
-    </div>
+    </div> -->
 
     <div class="treatment__main">
       <div class="treatment__image">
+        <div class="figure__woman">
+          <v-img
+            contain
+            position="bottom center"
+            :src="require('~/assets/fig_3.png')"
+            width="50vh"
+            height="90vh"
+          >
+            <Dot />
+          </v-img>
+        </div>
         <Tooltip />
       </div>
       <div v-if="visibleTreatmentDetail" class="right__detail">
@@ -21,15 +32,17 @@
 <script>
 import TreatmentDetail from '../TreatmentDetail/TreatmentDetail'
 import MainNavigation from './MainNavigation'
-import VerticalNavigation from './VerticalNavigation'
+// import VerticalNavigation from './VerticalNavigation'
 import Tooltip from './Tooltip'
+import Dot from './Dot'
 
 export default {
   components: {
     TreatmentDetail,
     MainNavigation,
-    VerticalNavigation,
+    // VerticalNavigation,
     Tooltip,
+    Dot,
   },
   computed: {
     visibleTreatmentDetail() {
@@ -42,7 +55,9 @@ export default {
 <style scoped>
 .treatment__container {
   width: 100%;
-  min-height: 800px;
+  height: calc(100vh - 48px);
+  position: relative;
+  overflow: hidden;
 }
 
 .treatment__main {
@@ -68,5 +83,11 @@ export default {
   right: 80px;
   top: 100px;
   z-index: 1;
+}
+
+.figure__woman {
+  position: absolute;
+  bottom: 0px;
+  left: calc(50% - 25vh);
 }
 </style>

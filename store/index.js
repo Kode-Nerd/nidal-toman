@@ -21,6 +21,9 @@ export const state = () => ({
     '#contact',
   ],
 
+  // treatment
+  treatmentFigure: '',
+
   // treatment details
   activeTab: 'general',
   visibleTreatmentDetail: false,
