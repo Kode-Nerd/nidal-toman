@@ -6,23 +6,26 @@
         <div class="footer__subtitle">Plasticher Chirurg</div>
       </div> -->
       <CustomSVG
+        class="ml-n8 mt-n8"
         :src="require('~/assets/main-logo.svg')"
         :width="this.mainLogoWidth"
         :height="this.mainLogoHeight"
         :color="themes.light.background"
         position="left"
       ></CustomSVG>
-    </div>
-    <div class="footer__row">
-      <SocialMedia :icon-color="themes.light.background" />
       <div v-if="!isOnContactPage" class="button" @click="gotoContact">
         Contact Us <img :src="ArrowIcon" />
       </div>
     </div>
     <div class="footer__row">
-      <div class="copyright">Dr. Nidal Toman - {{ latestYear }}</div>
-      <Legal :dark-style="true" />
-      <div class="detail__container">
+      <SocialMedia :icon-color="themes.light.background" />
+    </div>
+    <div class="footer__row">
+      <div class="flex__container">
+        <div class="copyright">Dr. Nidal Toman - {{ latestYear }}</div>
+        <Legal class="ml-3" :dark-style="true" />
+      </div>
+      <div class="flex__container">
         <div class="detail__item">
           <img :src="PlaceIcon" height="24" />
           <div class="divider" />
@@ -113,9 +116,10 @@ export default {
 }
 
 .footer__row {
-  max-width: 1200px;
+  /* max-width: 1200px; */
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
 .footer__title {
@@ -134,6 +138,7 @@ export default {
 }
 
 .button {
+  max-height: 46px;
   border-radius: 2px;
   border: 1px solid #fff;
   padding: 10px 25px;
@@ -161,7 +166,7 @@ export default {
   margin-top: 45px;
 }
 
-.detail__container {
+.flex__container {
   display: flex;
 }
 
