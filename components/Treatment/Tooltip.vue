@@ -1,6 +1,6 @@
 <template>
   <div class="tooltip">
-    <div class="tooltip__content">asdasdasdasdasdsad</div>
+    <div class="tooltip__content">{{ name }}</div>
     <div class="tooltip__detail">
       <span class="treatment__detail">see details</span>
     </div>
@@ -9,7 +9,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    name: {
+      type: String,
+      default: '',
+    },
+  },
+}
 </script>
 
 <style scoped>

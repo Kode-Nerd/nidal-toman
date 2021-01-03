@@ -7,7 +7,7 @@
     @blur="hideTooltip"
   >
     <div :style="innerDot" class="inner__dot">
-      <Tooltip v-if="showingTooltip" />
+      <Tooltip v-if="showingTooltip" :name="name" />
     </div>
   </div>
 </template>
@@ -20,6 +20,10 @@ export default {
     Tooltip,
   },
   props: {
+    name: {
+      type: String,
+      default: '',
+    },
     x: {
       type: String,
       default: '0%',
