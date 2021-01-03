@@ -7,7 +7,9 @@
     @blur="hideTooltip"
   >
     <div :style="innerDot" class="inner__dot">
-      <Tooltip v-if="showingTooltip" :name="name" />
+      <v-fade-transition>
+        <Tooltip v-if="showingTooltip" :name="name" />
+      </v-fade-transition>
     </div>
   </div>
 </template>
