@@ -106,7 +106,7 @@
           <nuxt-link
             class="font-weight-light"
             :style="[moreInfoStyle, moreInfoWoman, discover2Style]"
-            to="#"
+            :to="finalpath('treatment') + '?figure=female'"
           >
             <div class="d-flex align-center justify-end">
               <span style="width: 130px">
@@ -136,7 +136,7 @@
           <nuxt-link
             class="font-weight-light"
             :style="[moreInfoStyle, moreInfoMan, discover2Style]"
-            to="#"
+            :to="finalpath('treatment') + '?figure=male'"
           >
             <div class="d-flex align-center justify-start">
               <span style="width: 130px">
