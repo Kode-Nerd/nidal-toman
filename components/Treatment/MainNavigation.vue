@@ -3,7 +3,8 @@
     <div
       class="item__container"
       :class="{ active: active === 'faceHead' }"
-      @click="active = 'faceHead'"
+      @mouseover="active = 'faceHead'"
+      @mouseleave="active = ''"
     >
       <div class="item__title">Face and Head</div>
       <div class="item__line"></div>
@@ -11,7 +12,8 @@
     <div
       class="item__container"
       :class="{ active: active === 'chest' }"
-      @click="active = 'chest'"
+      @mouseover="active = 'chest'"
+      @mouseleave="active = ''"
     >
       <div class="item__title">Chest area</div>
       <div class="item__line"></div>
@@ -19,7 +21,8 @@
     <div
       class="item__container"
       :class="{ active: active === 'body' }"
-      @click="active = 'body'"
+      @mouseover="active = 'body'"
+      @mouseleave="active = ''"
     >
       <div class="item__title">Body</div>
       <div class="item__line"></div>
@@ -27,7 +30,8 @@
     <div
       class="item__container"
       :class="{ active: active === 'outpatient' }"
-      @click="active = 'outpatient'"
+      @mouseover="active = 'outpatient'"
+      @mouseleave="active = ''"
     >
       <div class="item__title">Outpatient treatment</div>
       <div class="item__line"></div>
@@ -39,7 +43,7 @@
 export default {
   data() {
     return {
-      active: 'faceHead',
+      active: '',
     }
   },
 }
