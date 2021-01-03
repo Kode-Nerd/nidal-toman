@@ -15,8 +15,8 @@
             contain
             position="bottom center"
             :src="require('~/assets/fig_3.png')"
-            width="50vh"
-            height="90vh"
+            width="100%"
+            height="100%"
           >
             <Dot
               v-for="(part, index) in womanParts"
@@ -116,6 +116,20 @@ export default {
 .figure__woman {
   position: absolute;
   bottom: 0px;
-  left: calc(50% - 25vh);
+  transform: translate(-50%, 0);
+  left: 50%;
+  width: 50vh;
+  height: 90vh;
+  transition: 1000ms;
+}
+
+.figure__woman.zoom__in {
+  position: absolute;
+  top: -30vh;
+  transform: translate(0, 0);
+  left: -30vh;
+  width: 150vh;
+  height: 270vh;
+  transition: 1000ms;
 }
 </style>
