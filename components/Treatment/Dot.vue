@@ -43,8 +43,8 @@ export default {
   computed: {
     outerDot() {
       return {
-        left: `calc(${this.x} - 6px)`,
-        top: `calc(${this.y} - 6px)`,
+        left: this.x,
+        top: this.y,
         borderColor: this.color,
       }
     },
@@ -76,6 +76,7 @@ div:focus {
   border-radius: 50%;
   fill-opacity: 0%;
   border: solid 0px;
+  transform: translate(-50%, -50%);
   position: absolute;
 }
 
@@ -84,8 +85,6 @@ div:focus {
   height: 22px;
   border: solid 1px;
   transition: 200ms;
-  margin-top: calc(5px - 10px);
-  margin-left: calc(5px - 10px);
 }
 
 .inner__dot {
