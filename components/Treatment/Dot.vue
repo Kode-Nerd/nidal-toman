@@ -4,10 +4,10 @@
     :style="outerDot"
     class="outer__dot"
     :class="{ hover: part.active }"
-    @click="toggleTooltip"
-    @blur="hideTooltip"
+    @click="toggleTooltip(part)"
+    @blur="hideTooltip(part)"
     @mouseover="part.active = true"
-    @mouseleave="part.active = false"
+    @mouseleave="mouseleave(part)"
   >
     <div :style="innerDot" class="inner__dot">
       <v-fade-transition>
@@ -70,11 +70,18 @@ export default {
     },
   },
   methods: {
-    toggleTooltip() {
+    toggleTooltip(part) {
       this.showingTooltip = !this.showingTooltip
+      part.active = this.showingTooltip
     },
-    hideTooltip() {
+    hideTooltip(part) {
       this.showingTooltip = false
+      part.active = false
+    },
+    mouseleave(part) {
+      if (!this.showingTooltip) {
+        part.active = false
+      }
     },
   },
 }
