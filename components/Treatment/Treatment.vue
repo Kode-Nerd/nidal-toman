@@ -11,16 +11,16 @@
       <div class="treatment__image">
         <div class="figure__woman">
           <v-img
+            style="overflow: visible"
             contain
             position="bottom center"
             :src="require('~/assets/fig_3.png')"
             width="50vh"
             height="90vh"
           >
-            <Dot />
+            <Dot x="55%" y="26%" />
           </v-img>
         </div>
-        <Tooltip />
       </div>
       <div v-if="visibleTreatmentDetail" class="right__detail">
         <TreatmentDetail />
@@ -33,7 +33,6 @@
 import TreatmentDetail from '../TreatmentDetail/TreatmentDetail'
 import MainNavigation from './MainNavigation'
 // import VerticalNavigation from './VerticalNavigation'
-import Tooltip from './Tooltip'
 import Dot from './Dot'
 
 export default {
@@ -41,7 +40,6 @@ export default {
     TreatmentDetail,
     MainNavigation,
     // VerticalNavigation,
-    Tooltip,
     Dot,
   },
   computed: {
