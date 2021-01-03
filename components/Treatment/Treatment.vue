@@ -18,7 +18,11 @@
             width="50vh"
             height="90vh"
           >
-            <Dot x="55%" y="26%" />
+            <Dot
+              v-for="(part, index) in bodyParts"
+              :key="index"
+              v-bind="part"
+            />
           </v-img>
         </div>
       </div>
@@ -41,6 +45,32 @@ export default {
     MainNavigation,
     // VerticalNavigation,
     Dot,
+  },
+  data() {
+    return {
+      bodyParts: [
+        {
+          name: 'Face and Head',
+          x: '55%',
+          y: '26%',
+        },
+        {
+          name: 'Chest Area',
+          x: '40%',
+          y: '36%',
+        },
+        {
+          name: 'Body',
+          x: '42%',
+          y: '46%',
+        },
+        {
+          name: 'Outpatient Treatment',
+          x: '65%',
+          y: '40%',
+        },
+      ],
+    }
   },
   computed: {
     visibleTreatmentDetail() {
