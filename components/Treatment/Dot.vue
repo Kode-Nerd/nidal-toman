@@ -1,28 +1,88 @@
 <template>
-  <div class="outer__dot">
-    <div class="inner__dot"></div>
+  <div
+    tabindex="0"
+    :style="outerDot"
+    class="outer__dot"
+    @click="toggleTooltip"
+    @blur="hideTooltip"
+  >
+    <div :style="innerDot" class="inner__dot">
+      <Tooltip v-if="showingTooltip" />
+    </div>
   </div>
 </template>
 
 <script>
-export default {}
+import Tooltip from './Tooltip'
+
+export default {
+  components: {
+    Tooltip,
+  },
+  props: {
+    x: {
+      type: String,
+      default: '0%',
+    },
+    y: {
+      type: String,
+      default: '0%',
+    },
+    color: {
+      type: String,
+      default() {
+        return this.$vuetify.theme.themes.light.background
+      },
+    },
+  },
+  data() {
+    return {
+      showingTooltip: false,
+    }
+  },
+  computed: {
+    outerDot() {
+      return {
+        left: `calc(${this.x} - 6px)`,
+        top: `calc(${this.y} - 6px)`,
+        borderColor: this.color,
+      }
+    },
+    innerDot() {
+      return {
+        background: this.color,
+      }
+    },
+  },
+  methods: {
+    toggleTooltip() {
+      this.showingTooltip = !this.showingTooltip
+    },
+    hideTooltip() {
+      this.showingTooltip = false
+    },
+  },
+}
 </script>
 
 <style scoped>
+div:focus {
+  outline: none;
+}
+
 .outer__dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   fill-opacity: 0%;
-  border: solid 0px red;
-  box-sizing: content-box;
+  border: solid 0px;
   position: absolute;
 }
 
 .outer__dot:hover {
-  width: 20px;
-  height: 20px;
-  border: solid 1px red;
+  width: 22px;
+  height: 22px;
+  border: solid 1px;
   transition: 200ms;
   margin-top: calc(5px - 10px);
   margin-left: calc(5px - 10px);
@@ -34,7 +94,6 @@ export default {}
   left: calc(50% - 2.5px);
   width: 5px;
   height: 5px;
-  background: red;
   border-radius: 50%;
 }
 </style>
