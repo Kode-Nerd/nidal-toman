@@ -93,10 +93,11 @@ div:focus {
 
 .inner__dot {
   position: absolute;
-  top: calc(50% - 2.5px);
-  left: calc(50% - 2.5px);
+  top: 50%;
+  left: 50%;
   width: 5px;
   height: 5px;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
 }
 </style>
