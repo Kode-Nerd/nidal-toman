@@ -19,7 +19,7 @@
             height="90vh"
           >
             <Dot
-              v-for="(part, index) in bodyParts"
+              v-for="(part, index) in womanParts"
               :key="index"
               v-bind="part"
             />
@@ -48,7 +48,7 @@ export default {
   },
   data() {
     return {
-      bodyParts: [
+      womanParts: [
         {
           name: 'Face and Head',
           x: '55%',
