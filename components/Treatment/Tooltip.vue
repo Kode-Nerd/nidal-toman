@@ -16,9 +16,9 @@ export default {}
 .tooltip {
   width: 300px;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0%;
+  left: 0%;
+  transform: translate(-20%, -120%);
   background: white;
   -webkit-box-shadow: 0px 0px 20px -5px rgba(196, 196, 196, 1);
   -moz-box-shadow: 0px 0px 20px -5px rgba(196, 196, 196, 1);
