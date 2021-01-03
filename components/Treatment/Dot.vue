@@ -3,8 +3,11 @@
     tabindex="0"
     :style="outerDot"
     class="outer__dot"
+    :class="{ hover: part.active }"
     @click="toggleTooltip"
     @blur="hideTooltip"
+    @mouseover="part.active = true"
+    @mouseleave="part.active = false"
   >
     <div :style="innerDot" class="inner__dot">
       <v-fade-transition>
@@ -38,6 +41,12 @@ export default {
       type: String,
       default() {
         return this.$vuetify.theme.themes.light.background
+      },
+    },
+    part: {
+      type: Object,
+      default() {
+        return {}
       },
     },
   },
@@ -86,7 +95,7 @@ div:focus {
   position: absolute;
 }
 
-.outer__dot:hover {
+.outer__dot.hover {
   width: 22px;
   height: 22px;
   border: solid 1px;

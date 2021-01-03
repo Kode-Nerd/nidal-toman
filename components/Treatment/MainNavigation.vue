@@ -1,39 +1,14 @@
 <template>
   <div class="main-navigation__container">
     <div
+      v-for="(part, index) in parts"
+      :key="index"
       class="item__container"
-      :class="{ active: active === 'faceHead' }"
-      @mouseover="active = 'faceHead'"
-      @mouseleave="active = ''"
+      :class="{ active: part.active }"
+      @mouseover="part.active = true"
+      @mouseleave="part.active = false"
     >
-      <div class="item__title">Face and Head</div>
-      <div class="item__line"></div>
-    </div>
-    <div
-      class="item__container"
-      :class="{ active: active === 'chest' }"
-      @mouseover="active = 'chest'"
-      @mouseleave="active = ''"
-    >
-      <div class="item__title">Chest area</div>
-      <div class="item__line"></div>
-    </div>
-    <div
-      class="item__container"
-      :class="{ active: active === 'body' }"
-      @mouseover="active = 'body'"
-      @mouseleave="active = ''"
-    >
-      <div class="item__title">Body</div>
-      <div class="item__line"></div>
-    </div>
-    <div
-      class="item__container"
-      :class="{ active: active === 'outpatient' }"
-      @mouseover="active = 'outpatient'"
-      @mouseleave="active = ''"
-    >
-      <div class="item__title">Outpatient treatment</div>
+      <div class="item__title">{{ part.name }}</div>
       <div class="item__line"></div>
     </div>
   </div>
@@ -41,10 +16,13 @@
 
 <script>
 export default {
-  data() {
-    return {
-      active: '',
-    }
+  props: {
+    parts: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
   },
 }
 </script>

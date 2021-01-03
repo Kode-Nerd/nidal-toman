@@ -2,7 +2,8 @@
   <div v-if="!ready" class="__blank" />
   <div v-else class="treatment__container">
     <div class="treatment__main-nav">
-      <MainNavigation />
+      <MainNavigation v-if="isFemale" :parts="womanParts" />
+      <MainNavigation v-if="isMale" :parts="manParts" />
     </div>
     <!-- <div class="treatment__sub-nav">
       <VerticalNavigation />
@@ -22,7 +23,7 @@
             <Dot
               v-for="(part, index) in womanParts"
               :key="index"
-              v-bind="part"
+              v-bind="{ ...part, part }"
             />
           </v-img>
         </div>
@@ -35,7 +36,11 @@
             width="100%"
             height="100%"
           >
-            <Dot v-for="(part, index) in manParts" :key="index" v-bind="part" />
+            <Dot
+              v-for="(part, index) in manParts"
+              :key="index"
+              v-bind="{ ...part, part }"
+            />
           </v-img>
         </div>
       </div>
@@ -68,26 +73,31 @@ export default {
           name: 'Face and Head',
           x: '55%',
           y: '26%',
+          active: false,
         },
         {
           name: 'Chest Area',
           x: '40%',
           y: '36%',
+          active: false,
         },
         {
           name: 'Body',
           x: '42%',
           y: '46%',
+          active: false,
         },
         {
           name: 'Arms',
           x: '65%',
           y: '40%',
+          active: false,
         },
         {
           name: 'Leg',
           x: '45%',
           y: '60%',
+          active: false,
         },
       ],
       manParts: [
@@ -95,26 +105,31 @@ export default {
           name: 'Face and Head',
           x: '55%',
           y: '30%',
+          active: false,
         },
         {
           name: 'Chest Area',
           x: '82%',
           y: '40%',
+          active: false,
         },
         {
           name: 'Body',
           x: '84%',
           y: '50%',
+          active: false,
         },
         {
           name: 'Arms',
           x: '42%',
           y: '38%',
+          active: false,
         },
         {
           name: 'Leg',
           x: '70%',
           y: '65%',
+          active: false,
         },
       ],
     }
