@@ -1,7 +1,7 @@
 <template>
   <div class="tooltip">
     <div class="tooltip__content">{{ name }}</div>
-    <div class="tooltip__detail">
+    <div class="tooltip__detail" @click="openDetail(query)">
       <span class="treatment__detail">see details</span>
     </div>
     <div class="tooltip__arrow"></div>
@@ -14,6 +14,17 @@ export default {
     name: {
       type: String,
       default: '',
+    },
+    query: {
+      type: String,
+      default: '',
+    },
+  },
+  methods: {
+    openDetail(query) {
+      const { figure } = this.$route.query
+
+      this.$router.push({ query: { figure, part: query } })
     },
   },
 }
@@ -46,6 +57,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  cursor: pointer;
 }
 
 .treatment__detail {

@@ -11,7 +11,7 @@
   >
     <div :style="innerDot" class="inner__dot">
       <v-fade-transition>
-        <Tooltip v-if="showingTooltip" :name="name" />
+        <Tooltip v-if="showingTooltip" :name="name" :query="query" />
       </v-fade-transition>
     </div>
   </div>
@@ -42,6 +42,10 @@ export default {
       default() {
         return this.$vuetify.theme.themes.light.background
       },
+    },
+    query: {
+      type: String,
+      default: '',
     },
     part: {
       type: Object,

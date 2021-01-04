@@ -7,6 +7,7 @@
       :class="{ active: part.active }"
       @mouseover="part.active = true"
       @mouseleave="part.active = false"
+      @click="openDetail(part.query)"
     >
       <div class="item__title">{{ part.name }}</div>
       <div class="item__line"></div>
@@ -22,6 +23,13 @@ export default {
       default() {
         return []
       },
+    },
+  },
+  methods: {
+    openDetail(query) {
+      const { figure } = this.$route.query
+
+      this.$router.push({ query: { figure, part: query } })
     },
   },
 }

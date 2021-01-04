@@ -1,11 +1,7 @@
 <template>
   <div class="treat-detail-container">
     <div class="treat-detail__button-container">
-      <img
-        :src="icons.closeIcon"
-        alt="close"
-        @click="setVisibleTreatmentDetail(false)"
-      />
+      <img :src="icons.closeIcon" alt="close" @click="closeDetail" />
     </div>
     <div class="treat-detail__title">Face Lift</div>
     <div class="d-flex treat-detail-nav__container">
@@ -38,8 +34,6 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-
 // assets
 import CloseIcon from '../../assets/icons/close-icon.svg'
 import BurgerMenuIcon from '../../assets/icons/burger-menu.svg'
@@ -69,9 +63,11 @@ export default {
     },
   },
   methods: {
-    ...mapMutations({
-      setVisibleTreatmentDetail: 'SET_VISIBLE_TREATMENT_DETAIL',
-    }),
+    closeDetail() {
+      const { figure } = this.$route.query
+
+      this.$router.push({ query: { figure } })
+    },
   },
 }
 </script>
@@ -103,6 +99,7 @@ export default {
   position: absolute;
   top: 40px;
   right: 40px;
+  cursor: pointer;
 }
 
 .treat-detail__button-container > button {

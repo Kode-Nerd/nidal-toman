@@ -11,7 +11,11 @@
 
     <div class="treatment__main">
       <div class="treatment__image">
-        <div v-if="isFemale" class="figure__woman">
+        <div
+          v-if="isFemale"
+          class="figure__woman"
+          :class="{ zoom__in: visibleTreatmentDetail }"
+        >
           <v-img
             style="overflow: visible"
             contain
@@ -27,7 +31,11 @@
             />
           </v-img>
         </div>
-        <div v-if="isMale" class="figure__man">
+        <div
+          v-if="isMale"
+          class="figure__man"
+          :class="{ zoom__in: visibleTreatmentDetail }"
+        >
           <v-img
             style="overflow: visible"
             contain
@@ -71,30 +79,35 @@ export default {
       womanParts: [
         {
           name: 'Face and Head',
+          query: 'face_and_head',
           x: '55%',
           y: '26%',
           active: false,
         },
         {
           name: 'Chest Area',
+          query: 'chest_area',
           x: '40%',
           y: '36%',
           active: false,
         },
         {
           name: 'Body',
+          query: 'body',
           x: '42%',
           y: '46%',
           active: false,
         },
         {
           name: 'Arms',
+          query: 'arms',
           x: '65%',
           y: '40%',
           active: false,
         },
         {
           name: 'Leg',
+          query: 'leg',
           x: '45%',
           y: '60%',
           active: false,
@@ -103,30 +116,35 @@ export default {
       manParts: [
         {
           name: 'Face and Head',
+          query: 'face_and_head',
           x: '55%',
           y: '30%',
           active: false,
         },
         {
           name: 'Chest Area',
+          query: 'chest_area',
           x: '82%',
           y: '40%',
           active: false,
         },
         {
           name: 'Body',
+          query: 'body',
           x: '84%',
           y: '50%',
           active: false,
         },
         {
           name: 'Arms',
+          query: 'arms',
           x: '42%',
           y: '38%',
           active: false,
         },
         {
           name: 'Leg',
+          query: 'leg',
           x: '70%',
           y: '65%',
           active: false,
@@ -135,8 +153,13 @@ export default {
     }
   },
   computed: {
-    visibleTreatmentDetail() {
-      return this.$store.state.visibleTreatmentDetail
+    visibleTreatmentDetail: {
+      get() {
+        return this.$store.state.visibleTreatmentDetail
+      },
+      set(val) {
+        this.$store.commit('SET_VISIBLE_TREATMENT_DETAIL', val)
+      },
     },
     locale() {
       return this.$store.state.locale
@@ -146,6 +169,21 @@ export default {
     },
     isMale() {
       return this.figure === 'male'
+    },
+  },
+  watch: {
+    '$route.query.part': {
+      handler(val) {
+        if (val) {
+          this.visibleTreatmentDetail = true
+
+          return
+        }
+
+        this.visibleTreatmentDetail = false
+      },
+      deep: true,
+      immediate: true,
     },
   },
   beforeMount() {
@@ -236,7 +274,7 @@ export default {
 
 .figure__man.zoom__in {
   position: absolute;
-  top: 0px;
+  top: -30vh;
   transform: translate(0, 0);
   left: -30vh;
   width: 150vh;
