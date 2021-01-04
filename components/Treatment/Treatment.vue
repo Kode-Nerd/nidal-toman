@@ -199,7 +199,8 @@ export default {
 .treatment__main-nav {
   position: absolute;
   right: 80px;
-  top: 100px;
+  top: 50vh;
+  transform: translate(0, -50%);
   z-index: 1;
 }
 
