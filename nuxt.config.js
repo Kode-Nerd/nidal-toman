@@ -57,7 +57,7 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    ['nuxt-gmaps', { key: '' }]
+    ['nuxt-gmaps', { key: process.env.NUXT_ENV_GMAP_APIKEY }]
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
