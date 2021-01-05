@@ -255,7 +255,6 @@ export default {
   right: 80px;
   top: 50vh;
   transform: translate(0, -50%);
-  z-index: 1;
 }
 
 .figure__woman {
