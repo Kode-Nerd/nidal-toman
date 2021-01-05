@@ -5,9 +5,14 @@
       <MainNavigation v-if="isFemale" :parts="womanParts" />
       <MainNavigation v-if="isMale" :parts="manParts" />
     </div>
-    <!-- <div class="treatment__sub-nav">
-      <VerticalNavigation />
-    </div> -->
+    <div v-if="visibleTreatmentDetail" class="treatment__sub-nav">
+      <span class="text-h5 ml-n6">Surgeries</span>
+      <VerticalNavigation
+        class="mt-3"
+        tab-justify="left"
+        :subparts="womanSubparts[figurePart]"
+      />
+    </div>
 
     <div class="treatment__main">
       <div class="treatment__image">
@@ -58,7 +63,7 @@
 <script>
 import TreatmentDetail from '../TreatmentDetail/TreatmentDetail'
 import MainNavigation from './MainNavigation'
-// import VerticalNavigation from './VerticalNavigation'
+import VerticalNavigation from './VerticalNavigation'
 import Dot from './Dot'
 import { finalpath } from '~/helpers'
 
@@ -66,7 +71,7 @@ export default {
   components: {
     TreatmentDetail,
     MainNavigation,
-    // VerticalNavigation,
+    VerticalNavigation,
     Dot,
   },
   data() {
@@ -146,6 +151,59 @@ export default {
           active: false,
         },
       ],
+      womanSubparts: {
+        face_and_head: [
+          {
+            name: 'Face Lift',
+            query: 'face_lift',
+            x: '55%',
+            y: '30%',
+            active: false,
+          },
+          {
+            name: 'Neck Lift',
+            query: 'neck_lift',
+            x: '82%',
+            y: '40%',
+            active: false,
+          },
+          {
+            name: 'Eyelid Correction',
+            query: 'eyelid_correction',
+            x: '84%',
+            y: '50%',
+            active: false,
+          },
+          {
+            name: 'Rhinoplasty',
+            query: 'rhinoplasty',
+            x: '42%',
+            y: '38%',
+            active: false,
+          },
+          {
+            name: 'Ear Correction',
+            query: 'ear_correction',
+            x: '70%',
+            y: '65%',
+            active: false,
+          },
+          {
+            name: 'Chin Correction',
+            query: 'chin_correction',
+            x: '70%',
+            y: '65%',
+            active: false,
+          },
+          {
+            name: 'Migraine Theraphy',
+            query: 'migraine_theraphy',
+            x: '70%',
+            y: '65%',
+            active: false,
+          },
+        ],
+      },
     }
   },
   computed: {
@@ -247,7 +305,9 @@ export default {
 
 .treatment__sub-nav {
   position: absolute;
-  top: 100px;
+  top: 60px;
+  left: 37vw;
+  z-index: 1;
 }
 
 .treatment__main-nav {

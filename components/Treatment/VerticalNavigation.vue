@@ -1,49 +1,60 @@
 <template>
   <div class="vertical-navigation__container">
     <div
+      v-for="(subpart, index) in subparts"
+      :key="index"
       class="item__container"
-      :class="{ active: active === 'faceHead' }"
-      @click="active = 'faceHead'"
+      :class="{ active: subpart.active }"
+      @click="setActive(index)"
     >
-      <div class="item__title">Face and Head</div>
-    </div>
-    <div
-      class="item__container"
-      :class="{ active: active === 'chest' }"
-      @click="active = 'chest'"
-    >
-      <div class="item__title">Chest area</div>
-    </div>
-    <div
-      class="item__container"
-      :class="{ active: active === 'body' }"
-      @click="active = 'body'"
-    >
-      <div class="item__title">Body</div>
-    </div>
-    <div
-      class="item__container"
-      :class="{ active: active === 'outpatient' }"
-      @click="active = 'outpatient'"
-    >
-      <div class="item__title">Outpatient treatment</div>
+      <div class="item__title">{{ subpart.name }}</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      active: 'faceHead',
+  props: {
+    subparts: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+  },
+  mounted() {
+    const isEmpty = this.subparts.length === 0
+
+    if (isEmpty) {
+      return
     }
+
+    let isNew = true
+
+    this.subparts.forEach((subpart) => {
+      if (subpart.active) {
+        isNew = false
+      }
+    })
+
+    if (isNew) {
+      this.subparts[0].active = true
+    }
+  },
+  methods: {
+    setActive(index) {
+      this.subparts.forEach((subpart) => {
+        subpart.active = false
+      })
+      this.subparts[index].active = true
+    },
   },
 }
 </script>
 
 <style scoped>
 .vertical-navigation__container {
-  margin-left: 50px;
+  margin-left: 0px;
 }
 
 .item__container {
@@ -64,5 +75,6 @@ export default {
 
 .active {
   border-left: 3px solid #c4c4c4;
+  transition: 50ms;
 }
 </style>
