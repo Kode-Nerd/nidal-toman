@@ -5,7 +5,11 @@
       <MainNavigation v-if="isFemale" :parts="womanParts" />
       <MainNavigation v-if="isMale" :parts="manParts" />
     </div>
-    <div v-if="visibleTreatmentDetail" class="treatment__sub-nav">
+    <div
+      v-if="visibleTreatmentDetail"
+      class="treatment__sub-nav"
+      :class="{ z__index__1: visibleTreatmentDetail }"
+    >
       <span class="text-h5 ml-n6">Surgeries</span>
       <VerticalNavigation
         class="mt-3"
@@ -54,7 +58,7 @@
         </div>
       </div>
       <div v-if="visibleTreatmentDetail" class="right__detail">
-        <TreatmentDetail />
+        <TreatmentDetail :subpart="womanSubparts[figurePart][figureSubpart]" />
       </div>
     </div>
   </div>
@@ -223,6 +227,14 @@ export default {
         this.$store.commit('SET_FIGURE_PART', val)
       },
     },
+    figureSubpart: {
+      get() {
+        return this.$store.state.figureSubpart
+      },
+      set(val) {
+        this.$store.commit('SET_FIGURE_SUBPART', val)
+      },
+    },
     locale() {
       return this.$store.state.locale
     },
@@ -307,7 +319,10 @@ export default {
   position: absolute;
   top: 60px;
   left: 37vw;
+}
+.z__index__1 {
   z-index: 1;
+  transition: z-index 1000ms;
 }
 
 .treatment__main-nav {

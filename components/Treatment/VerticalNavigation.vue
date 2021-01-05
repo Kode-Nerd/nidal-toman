@@ -22,6 +22,16 @@ export default {
       },
     },
   },
+  computed: {
+    figureSubpart: {
+      get() {
+        return this.$store.state.figureSubpart
+      },
+      set(val) {
+        this.$store.commit('SET_FIGURE_SUBPART', val)
+      },
+    },
+  },
   mounted() {
     const isEmpty = this.subparts.length === 0
 
@@ -47,6 +57,7 @@ export default {
         subpart.active = false
       })
       this.subparts[index].active = true
+      this.figureSubpart = index
     },
   },
 }

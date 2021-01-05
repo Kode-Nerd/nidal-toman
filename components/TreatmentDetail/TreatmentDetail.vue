@@ -3,7 +3,7 @@
     <div class="treat-detail__button-container">
       <img :src="icons.closeIcon" alt="close" @click="closeDetail" />
     </div>
-    <div class="treat-detail__title">Face Lift</div>
+    <div class="treat-detail__title">{{ subpart.name }}</div>
     <div class="d-flex treat-detail-nav__container">
       <ButtonNav
         v-for="item in items"
@@ -17,7 +17,7 @@
     <div class="treat-detail__content">
       <div v-if="activeTab === 'additional'">
         <ExpandedCardInfo
-          index="0"
+          :index="0"
           title="How i do preparation for operation"
         />
       </div>
@@ -46,6 +46,14 @@ export default {
   components: {
     ButtonNav: TreatmentDetailButtonNav,
     ExpandedCardInfo,
+  },
+  props: {
+    subpart: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
   },
   data() {
     return {

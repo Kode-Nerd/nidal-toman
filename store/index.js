@@ -25,6 +25,7 @@ export const state = () => ({
   activeTab: 'general',
   visibleTreatmentDetail: false,
   figurePart: '',
+  figureSubpart: 0,
 })
 
 export const mutations = {
@@ -57,5 +58,8 @@ export const mutations = {
   },
   SET_FIGURE_PART(state, val) {
     state.figurePart = val
+  },
+  SET_FIGURE_SUBPART(state, val) {
+    state.figureSubpart = val
   },
 }
