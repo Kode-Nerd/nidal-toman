@@ -11,11 +11,7 @@
 
     <div class="treatment__main">
       <div class="treatment__image">
-        <div
-          v-if="isFemale"
-          class="figure__woman"
-          :class="{ zoom__in: visibleTreatmentDetail }"
-        >
+        <div v-if="isFemale" class="figure__woman" :class="detailClass">
           <v-img
             style="overflow: visible"
             contain
@@ -33,11 +29,7 @@
             </div>
           </v-img>
         </div>
-        <div
-          v-if="isMale"
-          class="figure__man"
-          :class="{ zoom__in: visibleTreatmentDetail }"
-        >
+        <div v-if="isMale" class="figure__man" :class="detailClass">
           <v-img
             style="overflow: visible"
             contain
@@ -165,6 +157,14 @@ export default {
         this.$store.commit('SET_VISIBLE_TREATMENT_DETAIL', val)
       },
     },
+    figurePart: {
+      get() {
+        return this.$store.state.figurePart
+      },
+      set(val) {
+        this.$store.commit('SET_FIGURE_PART', val)
+      },
+    },
     locale() {
       return this.$store.state.locale
     },
@@ -174,17 +174,29 @@ export default {
     isMale() {
       return this.figure === 'male'
     },
+    detailClass() {
+      return {
+        zoom__in: this.visibleTreatmentDetail,
+        face__head: this.figurePart === 'face_and_head',
+        chest__area: this.figurePart === 'chest_area',
+        body: this.figurePart === 'body',
+        arms: this.figurePart === 'arms',
+        leg: this.figurePart === 'leg',
+      }
+    },
   },
   watch: {
     '$route.query.part': {
       handler(val) {
         if (val) {
           this.visibleTreatmentDetail = true
+          this.figurePart = val
 
           return
         }
 
         this.visibleTreatmentDetail = false
+        this.figurePart = ''
       },
       deep: true,
       immediate: true,
@@ -258,12 +270,30 @@ export default {
 
 .figure__woman.zoom__in {
   position: absolute;
-  top: -30vh;
   transform: translate(0, 0);
-  left: -30vh;
   width: 150vh;
   height: 270vh;
   transition: 1000ms;
+}
+.figure__woman.zoom__in.face__head {
+  left: -30vh;
+  top: -30vh;
+}
+.figure__woman.zoom__in.chest__area {
+  left: -30vh;
+  top: -50vh;
+}
+.figure__woman.zoom__in.body {
+  left: -30vh;
+  top: -70vh;
+}
+.figure__woman.zoom__in.arms {
+  left: -40vh;
+  top: -70vh;
+}
+.figure__woman.zoom__in.leg {
+  left: -30vh;
+  top: -100vh;
 }
 
 .figure__man {
@@ -278,11 +308,29 @@ export default {
 
 .figure__man.zoom__in {
   position: absolute;
-  top: -30vh;
   transform: translate(0, 0);
-  left: -30vh;
   width: 150vh;
   height: 270vh;
   transition: 1000ms;
+}
+.figure__man.zoom__in.face__head {
+  left: -45vh;
+  top: -40vh;
+}
+.figure__man.zoom__in.chest__area {
+  left: -55vh;
+  top: -55vh;
+}
+.figure__man.zoom__in.body {
+  left: -65vh;
+  top: -70vh;
+}
+.figure__man.zoom__in.arms {
+  left: -40vh;
+  top: -40vh;
+}
+.figure__man.zoom__in.leg {
+  left: -70vh;
+  top: -120vh;
 }
 </style>

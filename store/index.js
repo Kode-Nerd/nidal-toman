@@ -21,12 +21,10 @@ export const state = () => ({
     '#contact',
   ],
 
-  // treatment
-  treatmentFigure: '',
-
   // treatment details
   activeTab: 'general',
   visibleTreatmentDetail: false,
+  figurePart: '',
 })
 
 export const mutations = {
@@ -56,5 +54,8 @@ export const mutations = {
   },
   SET_VISIBLE_TREATMENT_DETAIL(state, val) {
     state.visibleTreatmentDetail = val
+  },
+  SET_FIGURE_PART(state, val) {
+    state.figurePart = val
   },
 }
