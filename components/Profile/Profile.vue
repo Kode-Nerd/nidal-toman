@@ -213,7 +213,7 @@ export default {
 }
 
 .vita__container {
-  background: #e5e5e5;
+  /* background: #e5e5e5; */
   padding: 80px 140px;
 }
 
@@ -223,12 +223,14 @@ export default {
   line-height: 66px;
   text-align: justify;
 
-  color: #fff;
+  color: #6c756b;
+  /* color: #fff; */
   margin-bottom: 40px;
 }
 
 .publication__container {
-  background: #6c756b;
+  background: #e5e5e5;
+  /* background: #6c756b; */
   padding: 80px 140px;
 }
 

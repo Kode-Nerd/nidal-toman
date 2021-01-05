@@ -26,7 +26,8 @@ export default {
   font-weight: 500;
   font-size: 24px;
   line-height: 33px;
-  color: #ffffff;
+  color: #6c756b;
+  /* color: #ffffff; */
 }
 
 .author {
@@ -38,14 +39,17 @@ export default {
   font-size: 18px;
   line-height: 25px;
 
-  color: #ffffff;
+  color: #6c756b;
+  /* color: #ffffff; */
 }
 
 .published__index {
   display: flex;
   justify-content: flex-end;
-  border-bottom: 1px solid #fff;
-  color: #fff;
+  border-bottom: 1px solid #6c756b;
+  /* border-bottom: 1px solid #fff; */
+  color: #6c756b;
+  /* color: #fff; */
 
   font-size: 12px;
   line-height: 16px;
