@@ -24,11 +24,13 @@
             width="100%"
             height="100%"
           >
-            <Dot
-              v-for="(part, index) in womanParts"
-              :key="index"
-              v-bind="{ ...part, part }"
-            />
+            <div v-if="!visibleTreatmentDetail">
+              <Dot
+                v-for="(part, index) in womanParts"
+                :key="index"
+                v-bind="{ ...part, part }"
+              />
+            </div>
           </v-img>
         </div>
         <div
@@ -44,11 +46,13 @@
             width="100%"
             height="100%"
           >
-            <Dot
-              v-for="(part, index) in manParts"
-              :key="index"
-              v-bind="{ ...part, part }"
-            />
+            <div v-if="!visibleTreatmentDetail">
+              <Dot
+                v-for="(part, index) in manParts"
+                :key="index"
+                v-bind="{ ...part, part }"
+              />
+            </div>
           </v-img>
         </div>
       </div>
