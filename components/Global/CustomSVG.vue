@@ -40,6 +40,10 @@ export default {
       type: String,
       default: 'center',
     },
+    cover: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     svgStyle() {
@@ -47,7 +51,9 @@ export default {
         ...this.containerStyle,
         maskImage: `url(${this.src})`,
         backgroundColor: this.color,
-        maskSize: this.size || `${this.width} ${this.height}`,
+        maskSize: this.cover
+          ? 'cover'
+          : this.size || `${this.width} ${this.height}`,
         margin: '0px',
         maskPosition: this.position,
       }

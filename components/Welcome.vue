@@ -40,9 +40,17 @@
             <span :style="welcomeStyle" class="text-h5 font-weight-bold">
               {{ $t('welcome.title1') }}
             </span>
-            <span :style="nameStyle" class="text-h3 mt-3">
+            <CustomSVG
+              class="ml-n8 mb-n6 mt-4"
+              :src="require('~/assets/name.svg')"
+              :width="'38rem'"
+              :height="'4rem'"
+              :color="themes.light.logo"
+              :cover="true"
+            ></CustomSVG>
+            <!-- <span :style="nameStyle" class="text-h3 mt-3">
               {{ $t('welcome.title2') }}
-            </span>
+            </span> -->
             <v-col cols="8">
               <v-row>
                 <span :style="textStyle" class="text-h6 mb-8">
