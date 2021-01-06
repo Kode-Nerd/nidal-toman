@@ -276,9 +276,6 @@ export default {
   padding: 80px 140px;
 }
 
-.publication__header {
-}
-
 .book__container {
   padding: 80px 140px;
 }
