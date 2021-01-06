@@ -94,6 +94,7 @@ export default {
           primary3: '#D2AF69', // gold
           primary4: '#5E0B15', // brown
           background: '#FFFFFF', // white
+          darkBackground: "#E5E5E5", // gray
           text: colors.blueGrey.darken3,
           logo: '#D5A35A', // gold logo
           // alternatives
