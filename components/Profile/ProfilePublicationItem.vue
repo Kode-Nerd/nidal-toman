@@ -15,7 +15,24 @@
 
 <script>
 export default {
-  props: ['title', 'subtitle', 'detail', 'index'],
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+    subtitle: {
+      type: String,
+      default: '',
+    },
+    detail: {
+      type: String,
+      default: '',
+    },
+    index: {
+      type: String,
+      default: '',
+    },
+  },
 }
 </script>
 
@@ -28,7 +45,7 @@ export default {
   font-weight: 500;
   font-size: 24px;
   line-height: 33px;
-  color: #6c756b;
+  /* color: #6c756b; */
   /* color: #ffffff; */
   padding: 0px 20px 0px 5px;
 }
@@ -38,7 +55,7 @@ export default {
   font-size: 18px;
   line-height: 25px;
 
-  color: #6c756b;
+  /* color: #6c756b; */
   /* color: #ffffff; */
   padding: 0px 20px 0px 5px;
 }
@@ -52,7 +69,7 @@ export default {
   justify-content: flex-end;
   border-bottom: 1px solid #6c756b;
   /* border-bottom: 1px solid #fff; */
-  color: #6c756b;
+  /* color: #6c756b; */
   /* color: #fff; */
 
   font-size: 12px;

@@ -3,12 +3,14 @@
     <!-- <NavHeader /> -->
     <div class="profile__container">
       <div class="profile__header">
-        <div class="header__title">{{ $t('profile.title') }}</div>
+        <!-- <div class="header__title">{{ $t('profile.title') }}</div>
         <div class="header__subtitle">
           {{ $t('profile.subtitle') }}
-        </div>
+        </div> -->
         <div class="header__description">
-          {{ $t('profile.description') }}
+          <p>{{ $t('profile.description[0]') }}</p>
+          <p>{{ $t('profile.description[1]') }}</p>
+          <p>{{ $t('profile.description[2]') }}</p>
         </div>
       </div>
 
@@ -19,11 +21,14 @@
           </div>
           <div class="profile__subtitle">
             <div>
-              <div class="subtitle__name">
-                <div class="line" />
+              <div
+                class="subtitle__name text-h4 font-weight-bold"
+                :style="titleStyle"
+              >
+                <div class="line" :style="backgroundComponentStyle" />
                 <div>{{ $t('profile.title') }}</div>
               </div>
-              <div class="sutitle__description">
+              <div class="text-h5 sutitle__description">
                 {{ $t('profile.profileDescription') }}
               </div>
             </div>
@@ -31,54 +36,64 @@
         </div>
         <div class="vita__container">
           <div class="vita__header">
-            <div class="vita__title">Vita</div>
+            <div class="vita__title">{{ $t('profile.vita.label') }}</div>
           </div>
-          <div>
-            <ProfileVitaItem
-              v-for="index in 7"
-              :key="`vita-${index}`"
-              :title="$t(`profile.vita.${index - 1}.title`)"
-              :subtitle="$t(`profile.vita.${index - 1}.subtitle`)"
-              :year="$t(`profile.vita.${index - 1}.year`)"
-              :place="$t(`profile.vita.${index - 1}.place`)"
-            />
+          <div class="vita__subcontainer">
+            <div>
+              <ProfileVitaItem
+                v-for="index in 7"
+                :key="`vita-${index}`"
+                :title="$t(`profile.vita.list.${index - 1}.title`)"
+                :subtitle="$t(`profile.vita.list.${index - 1}.subtitle`)"
+                :year="$t(`profile.vita.list.${index - 1}.year`)"
+                :place="$t(`profile.vita.list.${index - 1}.place`)"
+              />
+            </div>
           </div>
         </div>
         <div class="publication__container">
           <div class="publication__header">
-            <div class="publication__title">Publication</div>
+            <div class="publication__title">
+              {{ $t('profile.publication.label') }}
+            </div>
           </div>
           <div>
             <ProfilePublicationItem
-              v-for="(item, index) in PublicationData"
-              :key="item.title"
-              :title="item.title"
-              :subtitle="item.subtitle"
-              :detail="item.detail"
-              :index="index + 1 < 10 ? `0${index + 1}` : index + 1"
+              v-for="index in 9"
+              :key="`publication-${index}`"
+              :title="$t(`profile.publication.list.${index - 1}.title`)"
+              :subtitle="$t(`profile.publication.list.${index - 1}.subtitle`)"
+              :detail="$t(`profile.publication.list.${index - 1}.detail`)"
+              :index="index < 10 ? `0${index}` : index"
             />
           </div>
         </div>
         <div class="book__container">
           <div class="book__header">
-            <div class="book__title">Books</div>
+            <div class="book__title">{{ $t('profile.books.label') }}</div>
           </div>
           <div>
-            <ProfileBookItem />
+            <ProfileBookItem
+              :title="$t(`profile.books.list[0].title`)"
+              :author="$t(`profile.books.list[0].author`)"
+              :detail="$t(`profile.books.list[0].detail`)"
+            />
           </div>
         </div>
         <div class="publication__container">
           <div class="publication__header">
-            <div class="publication__title">Published Summaries</div>
+            <div class="publication__title">
+              {{ $t('profile.summaries.label') }}
+            </div>
           </div>
           <div>
             <ProfilePublishedSummary
-              v-for="(item, index) in PublishedSummaries"
+              v-for="index in 10"
               :key="`published-summary-${index}`"
-              :title="item.title"
-              :author="item.author"
-              :detail="item.detail"
-              :index="index + 1 < 10 ? `0${index + 1}` : index + 1"
+              :title="$t(`profile.summaries.list.${index - 1}.title`)"
+              :author="$t(`profile.summaries.list.${index - 1}.author`)"
+              :detail="$t(`profile.summaries.list.${index - 1}.detail`)"
+              :index="index < 10 ? `0${index}` : index"
             />
           </div>
         </div>
@@ -93,8 +108,6 @@ import ProfileVitaItem from './ProfileVitaItem'
 import ProfileBookItem from './ProfileBookItem'
 import ProfilePublicationItem from './ProfilePublicationItem'
 import ProfilePublishedSummary from './ProfilePublishedSummary'
-import PublicationData from './assets/publications.json'
-import PublishedSummaries from './assets/publishedSummaries.json'
 import ProfileImage from '~/assets/images/profile/profile_dr-nidal-toman.png'
 // import NavHeader from '~/components/Global/NavigationHeader'
 // import FooterComponent from '~/components/Footer/Footer'
@@ -112,9 +125,22 @@ export default {
     return {
       id: 'profile',
       ProfileImage,
-      PublicationData,
-      PublishedSummaries,
     }
+  },
+  computed: {
+    themes() {
+      return this.$vuetify.theme.themes
+    },
+    titleStyle() {
+      return {
+        color: this.themes.light.primary3,
+      }
+    },
+    backgroundComponentStyle() {
+      return {
+        background: this.themes.light.primary3,
+      }
+    },
   },
 }
 </script>
@@ -122,9 +148,6 @@ export default {
 <style scoped>
 .wrapper {
   margin-top: 50px;
-}
-
-.profile__body {
 }
 
 .profile__subtitle {
@@ -135,7 +158,11 @@ export default {
 }
 
 .vita__header {
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
 }
 
 .vita__title {
@@ -143,8 +170,8 @@ export default {
   font-size: 48px;
   line-height: 66px;
   text-align: justify;
-
-  color: #6c756b;
+  transform: rotate(-90deg);
+  /* color: #6c756b; */
 }
 
 .line {
@@ -161,7 +188,7 @@ export default {
   line-height: 49px;
   text-align: justify;
 
-  color: #6c756b;
+  /* color: #6c756b; */
   margin-bottom: 30px;
 
   display: flex;
@@ -192,7 +219,7 @@ export default {
   font-size: 96px;
   line-height: 131px;
 
-  color: #6c756b;
+  /* color: #6c756b; */
 }
 
 .header__subtitle {
@@ -214,7 +241,16 @@ export default {
 
 .vita__container {
   /* background: #e5e5e5; */
-  padding: 80px 140px;
+  display: flex;
+  padding: 0px;
+  /* padding: 80px 140px; */
+}
+
+.vita__subcontainer {
+  display: flex;
+  flex: 1;
+  padding: 80px;
+  background: rgba(178, 121, 168, 0.51);
 }
 
 .publication__title {
@@ -223,7 +259,7 @@ export default {
   line-height: 66px;
   text-align: justify;
 
-  color: #6c756b;
+  /* color: #6c756b; */
   /* color: #fff; */
   margin-bottom: 40px;
 }
@@ -250,6 +286,6 @@ export default {
   font-size: 48px;
   line-height: 66px;
 
-  color: #6c756b;
+  /* color: #6c756b; */
 }
 </style>

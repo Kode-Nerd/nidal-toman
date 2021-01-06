@@ -2,10 +2,10 @@
   <div class="vita-item__container">
     <div class="item__year">{{ year }}</div>
     <div class="item__symbol">
-      <div class="circle" />
-      <div class="line" />
+      <div class="circle" :style="backgroundComponentStyle" />
+      <div class="line" :style="backgroundComponentStyle" />
     </div>
-    <div class="item__details">
+    <div class="item__details" :style="titleStyle">
       <div class="item__title">{{ title }}</div>
       <div class="item__subtitle">
         {{ `"${subtitle}"` }}
@@ -19,7 +19,39 @@
 
 <script>
 export default {
-  props: ['year', 'title', 'subtitle', 'place'],
+  props: {
+    year: {
+      type: String,
+      default: '',
+    },
+    title: {
+      type: String,
+      default: '',
+    },
+    subtitle: {
+      type: String,
+      default: '',
+    },
+    place: {
+      type: String,
+      default: '',
+    },
+  },
+  computed: {
+    themes() {
+      return this.$vuetify.theme.themes
+    },
+    titleStyle() {
+      return {
+        color: this.themes.light.background,
+      }
+    },
+    backgroundComponentStyle() {
+      return {
+        background: this.themes.light.background,
+      }
+    },
+  },
 }
 </script>
 
@@ -57,7 +89,7 @@ export default {
   line-height: 33px;
   text-align: justify;
 
-  color: #6c756b;
+  /* color: #6c756b; */
 }
 
 .item__subtitle {
@@ -66,7 +98,7 @@ export default {
   line-height: 25px;
   text-align: justify;
 
-  color: #828282;
+  /* color: #828282; */
 }
 
 .item__place {
@@ -75,7 +107,7 @@ export default {
   line-height: 25px;
   text-align: justify;
 
-  color: #6c756b;
+  /* color: #6c756b; */
 }
 
 .item__year {

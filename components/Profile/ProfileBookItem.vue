@@ -1,17 +1,32 @@
 <template>
   <div class="book-item__container">
-    <div class="book__title">Operative migraine therapy</div>
+    <div class="book__title">{{ title }}</div>
     <div class="book__detail">
-      Muehlberger T, Schwarze H, Hristopoulos G, Toman N.
+      {{ author }}
     </div>
     <div class="book__detail">
-      In: Yearbook of surgery 2005. Cologne, Biermann Verlag 2005, 267-276
+      {{ detail }}
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+    author: {
+      type: String,
+      default: '',
+    },
+    detail: {
+      type: String,
+      default: '',
+    },
+  },
+}
 </script>
 
 <style scoped>

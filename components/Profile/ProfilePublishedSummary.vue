@@ -13,7 +13,24 @@
 
 <script>
 export default {
-  props: ['title', 'author', 'detail', 'index'],
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+    author: {
+      type: String,
+      default: '',
+    },
+    detail: {
+      type: String,
+      default: '',
+    },
+    index: {
+      type: String,
+      default: '',
+    },
+  },
 }
 </script>
 
@@ -26,7 +43,7 @@ export default {
   font-weight: 500;
   font-size: 24px;
   line-height: 33px;
-  color: #6c756b;
+  /* color: #6c756b; */
   /* color: #ffffff; */
 }
 
@@ -39,7 +56,7 @@ export default {
   font-size: 18px;
   line-height: 25px;
 
-  color: #6c756b;
+  /* color: #6c756b; */
   /* color: #ffffff; */
 }
 
@@ -48,7 +65,7 @@ export default {
   justify-content: flex-end;
   border-bottom: 1px solid #6c756b;
   /* border-bottom: 1px solid #fff; */
-  color: #6c756b;
+  /* color: #6c756b; */
   /* color: #fff; */
 
   font-size: 12px;

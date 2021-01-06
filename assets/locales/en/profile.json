@@ -1,50 +1,172 @@
 {
   "title": "Dr. med. Nidal Toman",
   "subtitle": "Specialist in plastic, aesthetic & reconstructive surgery.",
-  "description": "As an experienced specialist in plastic, aesthetic and reconstructive surgery, Dr. Nidal Toman specializes in aesthetic operations. Here he can look back on over 15 years of experience. His operative treatment focuses on facial surgery, breast surgery, body contouring and liposuction. Another main focus is on minimally invasive skin rejuvenating procedures, wrinkle treatments. His many years of experience and the trust of his patients led to the establishment of his private practice for aesthetic surgery in Uhlandstr. 33 on Kurfürstendamm in Berlin-Charlottenburg.",
+  "description": [
+    "Nidal TOMAN, M.D., Ph.D. is an influential person with high connectedness in the field of medicine. Born in 1975, Munich, he is a renowned expert in psychophysiology. Upon his graduation from Freien Universität Berlin, he started his career as an assistant doctor at Schlossparkklinik, Berlin in the Department of Plastic, Hand and Breast Surgery, as well as at DRK Clinic, Westend, Berlin in the Departments of Plastic, Hand and Breast Surgery; Migraine Surgery Centre.",
+    "In 2009, Dr Toman obtained the title of “Specialist in Plastic-Aesthetic and Reconstructive Surgery” following his successful completion of a medical specialist examination. Later in that year, he was appointed as the “Head of The Centre for Plastic, Aesthetic and Reconstructive Surgery” at the DRK clinics in Berlin, making him the youngest Chief of Medicine in the world.  A year later, he was awarded a Professorship. Until 2016, Dr Toman worked as “Head of Plastic and Aesthetic Surgery” in various hospitals. Dr Toman has been a self-employed surgeon of plastic and aesthetic and served exquisite clientele at his private clinic located in Uhlandstraße 33, Berlin ever since. He is recognized throughout Europe and the Middle-East as one of the top specialists in his field. His experience, competence and sincere dedication are valued not only by his patients but also his colleagues far beyond the borders of Germany.",
+    "He wrote his PhD thesis in the Centre for Space and Aviation Medicine Berlin, a department connected to the Department of Physiology of the FU Berlin which formed a close cooperation with the ESA and NASA. His theses led him to become a prominent and notable expert in the field of psychophysiology. In journalism and media, he is cited often and interviewed by numerous prestigious journals such as Morgenpost, Welt, Zeit and many more."
+  ],
   "profileDescription": "It is important to me to achieve the best possible and natural results with healthy recovery phases for my patients through the most modern treatment methods and scar-saving surgical techniques. At numerous national and international congresses, I was constantly educated about current and modern procedures in plastic and aesthetic surgery. I would be happy to inform you in an exclusive atmosphere about the latest developments and forms of treatment in the field of aesthetic medicine and take a lot of time for your concerns and wishes. I look forward to meeting you!",
-  "vita": [
-    {
-      "title": "Dissertation",
-      "subtitle": "Subjective sense of time under normal conditions & simulated weightlessness",
-      "place": "Institute for Physiology at the Free University of Berlin",
-      "year": "2004"
-    },
-    {
-      "title": "Specialist Examination",
-      "subtitle": "Specialist in plastic-aesthetic & reconstructive surgery",
-      "place": "State Medical Association Berlin",
-      "year": "2008"
-    },
-    {
-      "title": "Professorship",
-      "subtitle": "Awarded a Professorship",
-      "place": "Health Science University of Mongolia",
-      "year": "2010"
-    },
-    {
-      "title": "Medical management",
-      "subtitle": "Head of the Center for Plastic, Aesthetic and Reconstructive Surgery",
-      "place": "DRK Clinics Berlin",
-      "year": "2011"
-    },
-    {
-      "title": "Chief Doctor",
-      "subtitle": "Head of the Department for Plastic, Aesthetic and Reconstructive Surgery",
-      "place": "Sankt Gertrauden Hospital Berlin",
-      "year": "2012"
-    },
-    {
-      "title": "Chief Doctor",
-      "subtitle": "Head of the Department for Plastic, Aesthetic and Reconstructive Surgery",
-      "place": "Vivantes Klinikum Berlin Spandau",
-      "year": "2013-2016"
-    },
-    {
-      "title": "Foundation of The Private Practice",
-      "subtitle": "Foundation of the private practice for aesthetic & plastic",
-      "place": "Surgery dr. med. Nidal Toman",
-      "year": "2016"
-    }
-  ]
+  "vita": {
+    "label": "Vita",
+    "list": [
+      {
+        "title": "Dissertation",
+        "subtitle": "Subjective sense of time under normal conditions & simulated weightlessness",
+        "place": "Institute for Physiology at the Free University of Berlin",
+        "year": "2004"
+      },
+      {
+        "title": "Specialist Examination",
+        "subtitle": "Specialist in plastic-aesthetic & reconstructive surgery",
+        "place": "State Medical Association Berlin",
+        "year": "2008"
+      },
+      {
+        "title": "Professorship",
+        "subtitle": "Awarded a Professorship",
+        "place": "Health Science University of Mongolia",
+        "year": "2010"
+      },
+      {
+        "title": "Medical management",
+        "subtitle": "Head of the Center for Plastic, Aesthetic and Reconstructive Surgery",
+        "place": "DRK Clinics Berlin",
+        "year": "2011"
+      },
+      {
+        "title": "Chief Doctor",
+        "subtitle": "Head of the Department for Plastic, Aesthetic and Reconstructive Surgery",
+        "place": "Sankt Gertrauden Hospital Berlin",
+        "year": "2012"
+      },
+      {
+        "title": "Chief Doctor",
+        "subtitle": "Head of the Department for Plastic, Aesthetic and Reconstructive Surgery",
+        "place": "Vivantes Klinikum Berlin Spandau",
+        "year": "2013-2016"
+      },
+      {
+        "title": "Foundation of The Private Practice",
+        "subtitle": "Foundation of the private practice for aesthetic & plastic",
+        "place": "Surgery dr. med. Nidal Toman",
+        "year": "2016"
+      }
+    ]
+  },
+  "publication": {
+    "label": "Publication",
+    "list": [
+      {
+        "title": "Emergency pre-hospital care of burn patients",
+        "subtitle": "Thomas Muehlberger, Christian Ottoman, Nidal Toman, Adrian Daigeler, Marcus Lehnhardt",
+        "detail": "Emergency pre-hospital care of burn patients. The Surgeon 2010; 8: 101-104."
+      },
+      {
+        "title": "Aetiology and treatment of a previously denervated tennis elbow",
+        "subtitle": "Muehlberger T, Buschmann A, Ottomann C, Toman N.",
+        "detail": "Aetiology and treatment of a previously denervated tennis elbow. Scand J Plast Reconstr Hand Surg 2009; 43: 50-53"
+      },
+      {
+        "title": "Slow versus rapid fibrin glue in abdominoplasty",
+        "subtitle": "Toman N, Andree C, Kropf B, Muehlberger T.",
+        "detail": "Slow versus rapid fibrin glue in abdominoplasty. Plast Reconstr Surg 2009"
+      },
+      {
+        "title": "Specific C-reactive protein measurements in plastic surgery.",
+        "subtitle": "Toman N, Buschmann A, Muehlberger T.",
+        "detail": "Specific C-reactive protein measurements in plastic surgery. Scand J Plast Reconstr Hand Surg 2008; 42: 138-144"
+      },
+      {
+        "title": "Surgical treatment of angiosarcoma of the scalp – less is more",
+        "subtitle": "Buschmann A, Lehnhardt M, Toman N, Preißler P, Salakdeh MS, Muehlberger T.",
+        "detail": "Surgical treatment of angiosarcoma of the scalp – less is more. Ann Plast Surg 2008; 61: 399-403"
+      },
+      {
+        "title": "Ectopic breast cancer without breast parenchyma",
+        "subtitle": "Toman N, Buschmann A, Muehlberger T.",
+        "detail": "Ectopic breast cancer without breast parenchyma. Breast 2008; 17: 3-4"
+      },
+      {
+        "title": "Extended free deep inferior epigastric flap for coverage of a thoracolumbar defect",
+        "subtitle": "Muehlberger T, Buschmann A, Toman N.",
+        "detail": "Extended free deep inferior epigastric flap for coverage of a thoracolumbar defect. J Reconstr Microsurg 2007; 23: 521-522"
+      },
+      {
+        "title": "Fibrin glue and seroma formation after abdominoplasty",
+        "subtitle": "Toman N, Buschmann A, Muehlberger T.",
+        "detail": "Fibrin glue and seroma formation after abdominoplasty. Surgeon 2007; 78: 531- 535"
+      },
+      {
+        "title": "Skin cell isolation and expansion for cell transplantation is limited in patients using tobacco, alcohol, or are exhibiting diabetes mellitus",
+        "subtitle": "Johnen C, Hartmann B, Steffen I, Bräutigam K, Witascheck T, Toman N, Küntscher MV, Gerlach JC.",
+        "detail": "Skin cell isolation and expansion for cell transplantation is limited in patients using tobacco, alcohol, or are exhibiting diabetes mellitus. Burns. 2006 Mar;32(2):194-200. Epub 2006 Jan 31"
+      }
+    ]
+  },
+  "summaries": {
+    "label": "Published Summaries",
+    "list": [
+      {
+        "title": "Lasting outcome of the surgical treatment of migraine headaches – a four year follow-up",
+        "author": "Muehlberger T, Brittner W, Buschmann A, Toman N.",
+        "detail": "Plast Reconstr Surg 2008; 122: 32-33"
+      },
+      {
+        "title": "The cost-effectiveness of the surgical treatment of migraine headaches",
+        "author": "Muehlberger T, Toman N, Buschmann A.",
+        "detail": "Plast Reconstr Surg 2008; 122: 160-161"
+      },
+      {
+        "title": "Slow versus rapid fibrin glue for the prevention of seroma in abdominoplasty",
+        "author": "Toman N, Buschmann A, Muehlberger T.",
+        "detail": "Plast Reconstr Surg 2008; 122: 153"
+      },
+      {
+        "title": "Fibrin glue and seroma formation after abdominoplasty",
+        "author": "Toman N, Buschmann A, Muehlberger T.",
+        "detail": "www.egms.de/en/meetings/dgch2008/08dgch563.shtml"
+      },
+      {
+        "title": "Ectopic breast cancer without breast parenchyma – a case report",
+        "author": "Toman N, Buschmann A, Muehlberger T.",
+        "detail": "14th Congress of the International Confederation for Plastic, Reconstructive and Aesthetic Surgery (IPRAS), Berlin, 26-30 Juni 2007"
+      },
+      {
+        "title": "Fibrin glue and seroma formation following abdominoplasty: a prospective study",
+        "author": "Toman N, Buschmann A, Ottomann C, Muehlberger T.",
+        "detail": "14th Congress of the International Confederation for Plastic, Reconstructive and Aesthetic Surgery (IPRAS), Berlin, 26-30 Juni 2007"
+      },
+      {
+        "title": "Transpalpebral Corrugator Resection as Migraine Therapy: A Prospective Study",
+        "author": "Muehlberger T, Toman N, Akbas M.",
+        "detail": "Abstracts/36. Jahrestagung VDPC, Congress Compact Verlag Berlin 2005; 119"
+      },
+      {
+        "title": "Migraine therapy with botox: does knowledge of anatomy play a role?",
+        "author": "Muehlberger T, Toman N, Akbas M.",
+        "detail": "Abstracts/36. Jahrestagung VDPC, Congress Compact Verlag Berlin 2005; 118"
+      },
+      {
+        "title": "Fibrin Glue and Seroma Formation After Abdominoplasty: A Prospective Study",
+        "author": "Toman N, Akbas M, Hristopoulos G, Schwarze H, Muehlberger T.",
+        "detail": "Abstracts/36. Jahrestagung VDPC, Congress Compact Verlag Berlin 2005; 129"
+      },
+      {
+        "title": "Complete versus partial resection of the corrugator muscles in surgical migraine therapy",
+        "author": "Muehlberger T, Toman N, Akbas M.",
+        "detail": "Abstracts/36. Jahrestagung VDPC, Congress Compact Verlag Berlin 2005; 77"
+      }
+    ]
+  },
+  "books": {
+    "label": "Books",
+    "list": [
+      {
+        "title": "Operative migraine therapy",
+        "author": "Muehlberger T, Schwarze H, Hristopoulos G, Toman N.",
+        "detail": "In: Yearbook of surgery 2005. Cologne, Biermann Verlag 2005, 267-276"
+      }
+    ]
+  }
 }
