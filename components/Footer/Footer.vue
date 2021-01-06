@@ -18,7 +18,7 @@
     </div>
     <div class="footer__row">
       <div class="flex__container">
-        <div class="copyright">Dr. Nidal Toman - {{ latestYear }}</div>
+        <div class="copyright">Nidal Toman {{ latestYear }}</div>
         <Legal class="ml-3" :dark-style="true" />
       </div>
       <div class="flex__container">
