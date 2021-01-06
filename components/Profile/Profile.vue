@@ -1,5 +1,21 @@
 <template>
   <div :id="id" class="wrapper">
+    <v-carousel
+      style="margin-top: -48px"
+      cycle
+      height="100vh"
+      hide-delimiter-background
+      show-arrows-on-hover
+    >
+      <v-carousel-item v-for="(imagePath, i) in imagePaths" :key="i">
+        <v-img
+          :src="require(`~/assets/images/profile/${imagePaths[i]}`)"
+          height="100%"
+          :position="i === 2 ? 'top' : 'center'"
+        >
+        </v-img>
+      </v-carousel-item>
+    </v-carousel>
     <!-- <NavHeader /> -->
     <div class="profile__container">
       <div class="profile__header">
@@ -131,6 +147,7 @@ export default {
     return {
       id: 'profile',
       ProfileImage,
+      indexList: [1, 2, 3, 4],
     }
   },
   computed: {
@@ -147,13 +164,16 @@ export default {
         background: this.themes.light.primary3,
       }
     },
+    imagePaths() {
+      return this.indexList.map((index) => `profile${index}.jpg`)
+    },
   },
 }
 </script>
 
 <style scoped>
 .wrapper {
-  margin-top: 50px;
+  margin-top: 0px;
 }
 
 .profile__subtitle {
