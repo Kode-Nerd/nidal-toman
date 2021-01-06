@@ -12,8 +12,8 @@
           <CustomSVG
             :style="mainLogoStyle"
             :src="require('~/assets/main-logo.svg')"
-            :width="this.mainLogoWidth"
-            :height="this.mainLogoHeight"
+            :width="mainLogoWidth"
+            :height="mainLogoHeight"
             :color="themes.light.logo"
             position="top"
           >
