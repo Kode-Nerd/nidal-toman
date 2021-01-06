@@ -1,6 +1,5 @@
 <template>
   <div
-    :style="fontPrimaryStyle"
     class="fullscreen py-6 px-8 d-flex flex-column justify-space-between align-center"
   >
     <div :style="[figure1]">
@@ -29,21 +28,23 @@
         clinic.
       </p>
     </div>
-    <div style="height: 20vh; width: 100%">
-      <a
-        class="text-h6 font-weight-bold"
-        href="https://www.google.com/maps/place/Plastische+Chirurgie/@52.5003229,13.3247357,21z/data=!4m12!1m6!3m5!1s0x47a850fa4954eca3:0x1406c2788da9ed70!2sPlastische+Chirurgie!8m2!3d52.5003285!4d13.3246307!3m4!1s0x47a850fa4954eca3:0x1406c2788da9ed70!8m2!3d52.5003285!4d13.3246307"
-        target="_blank"
-        >Find us!</a
-      >
-    </div>
+    <div style="height: 20vh; width: 100%"></div>
     <div class="font-weight-light" style="width: 100%">
       <span class="text-h6 font-weight-bold">Contact:</span><br />
       <span>
         Uhlandstraße 33, 10719 Berlin<br />
         Phone: +49 30 213008000<br />
-        info@nidal-toman.de
-      </span>
+        info@nidal-toman.de </span
+      ><br />
+      <div class="mt-3">
+        <a
+          class="text-h6 font-weight-bold"
+          :style="linkStyle"
+          href="https://www.google.com/maps/place/Plastische+Chirurgie/@52.5003229,13.3247357,21z/data=!4m12!1m6!3m5!1s0x47a850fa4954eca3:0x1406c2788da9ed70!2sPlastische+Chirurgie!8m2!3d52.5003285!4d13.3246307!3m4!1s0x47a850fa4954eca3:0x1406c2788da9ed70!8m2!3d52.5003285!4d13.3246307"
+          target="_blank"
+          >Open in maps ></a
+        >
+      </div>
     </div>
   </div>
   <!-- <v-carousel
@@ -78,9 +79,9 @@ export default {
     themes() {
       return this.$vuetify.theme.themes
     },
-    fontPrimaryStyle() {
+    linkStyle() {
       return {
-        color: this.themes.light.primary,
+        color: this.themes.light.primary3,
       }
     },
     figure1() {
@@ -96,6 +97,9 @@ export default {
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+}
 .fullscreen {
   position: relative;
   width: 100vw;
