@@ -100,6 +100,7 @@
 <script>
 import Map from './Map'
 import MessageIcon from '~/assets/icons/message.svg'
+import { finalpath } from '~/helpers'
 
 export default {
   components: {
@@ -113,6 +114,9 @@ export default {
     }
   },
   computed: {
+    locale() {
+      return this.$store.state.locale
+    },
     slides() {
       return this.indexList.map((index) =>
         this.$t(`practice.content.title${index}`)
@@ -129,7 +133,7 @@ export default {
   },
   methods: {
     gotoProfile() {
-      this.$router.push({ path: 'profile' })
+      this.$router.push({ path: finalpath(this.locale, 'profile') })
     },
   },
 }
