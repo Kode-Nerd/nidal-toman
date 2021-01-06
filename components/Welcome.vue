@@ -37,14 +37,14 @@
         />
         <div :style="welcomeBannerStyle">
           <div class="d-flex flex-column">
-            <span :style="welcomeStyle" class="text-h5 font-weight-bold">
+            <span :style="[titleStyle]" class="text-h4 font-weight-light">
               {{ $t('welcome.title1') }}
             </span>
             <CustomSVG
-              class="ml-n8 mb-n6 mt-4"
+              class="ml-n10 mb-n8 mt-4"
               :src="require('~/assets/name.svg')"
-              :width="'38rem'"
-              :height="'4rem'"
+              :width="'45rem'"
+              :height="'5rem'"
               :color="themes.light.logo"
               :cover="true"
             ></CustomSVG>
@@ -53,7 +53,7 @@
             </span> -->
             <v-col cols="8">
               <v-row>
-                <span :style="textStyle" class="text-h6 mb-8">
+                <span class="text-h5 font-weight-light mb-8">
                   {{ $t('welcome.title3') }}
                 </span>
               </v-row>
@@ -73,7 +73,7 @@
           ></v-img>
         </div>
         <div :style="figure2" class="d-flex flex-column align-center">
-          <span :style="textStyle" class="text-h4 mb-n3 font-weight-light">
+          <span :style="[titleStyle]" class="text-h4 mb-n3 font-weight-light">
             {{ $t('welcome.infusion') }}
           </span>
           <v-img
@@ -107,7 +107,7 @@
         <div :style="figureWoman" class="d-flex flex-column align-center">
           <span
             :style="[maleFemaleStyle, womanLabel]"
-            class="text-h5 font-weight-light"
+            class="text-h4 font-weight-light"
           >
             {{ $t('welcome.woman') }}
           </span>
@@ -124,7 +124,7 @@
                 class="ml-2"
                 size="1.5rem"
                 :src="require('bootstrap-icons/icons/arrow-right.svg')"
-                :color="themes.light.primary4"
+                :color="themes.light.primary"
               />
             </div>
           </nuxt-link>
@@ -137,7 +137,7 @@
         <div :style="figureMan" class="d-flex flex-column align-center">
           <span
             :style="[maleFemaleStyle, manLabel]"
-            class="text-h5 font-weight-light"
+            class="text-h4 font-weight-light"
           >
             {{ $t('welcome.man') }}
           </span>
@@ -154,7 +154,7 @@
                 class="ml-2"
                 size="1.5rem"
                 :src="require('bootstrap-icons/icons/arrow-right.svg')"
-                :color="themes.light.primary4"
+                :color="themes.light.primary"
               />
             </div>
           </nuxt-link>
@@ -278,20 +278,15 @@ export default {
         background: `linear-gradient(180.17deg, rgba(254, 249, 255, 0.46) 0.14%, rgba(229, 229, 229, 0) 64.64%)`,
       }
     },
-    welcomeStyle() {
+    titleStyle() {
       return {
-        color: this.themes.light.primary,
+        textTransform: 'uppercase',
       }
     },
     nameStyle() {
       return {
         fontFamily: 'Adamina!important',
         color: this.themes.light.primary3,
-      }
-    },
-    textStyle() {
-      return {
-        color: this.themes.light.primary,
       }
     },
     maleFemaleStyle() {
@@ -328,7 +323,7 @@ export default {
         width: '30%',
         position: 'absolute',
         left: `${24 + this.welcomeBannerLeftPos}px`,
-        bottom: '22%',
+        bottom: '10%',
         opacity: this.bannerOpacity,
       }
     },
@@ -346,7 +341,6 @@ export default {
     },
     discover2Style() {
       return {
-        color: this.themes.light.primary4,
         width: '30%',
       }
     },

@@ -1,5 +1,5 @@
 <template>
-  <v-app v-if="ready" id="app" :dark="false">
+  <v-app v-if="ready" id="app" :style="textDefaultStyle" :dark="false">
     <v-main v-if="!isMobile">
       <TopNav
         :nav-style="[topNavStyle, tabsStyle]"
@@ -59,6 +59,11 @@ export default {
     },
     themes() {
       return this.$vuetify.theme.themes
+    },
+    textDefaultStyle() {
+      return {
+        color: this.themes.light.primary,
+      }
     },
     tabsStyle() {
       return {

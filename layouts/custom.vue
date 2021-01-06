@@ -1,5 +1,5 @@
 <template>
-  <v-app v-if="ready" id="app" :dark="false">
+  <v-app v-if="ready" id="app" :style="textDefaultStyle" :dark="false">
     <v-main v-if="!isMobile">
       <nuxt />
     </v-main>
@@ -37,6 +37,14 @@ export default {
     },
     isMobile() {
       return this.userAgent.includes('mobile')
+    },
+    themes() {
+      return this.$vuetify.theme.themes
+    },
+    textDefaultStyle() {
+      return {
+        color: this.themes.light.primary,
+      }
     },
   },
   mounted() {
