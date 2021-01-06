@@ -26,7 +26,15 @@
                 :style="titleStyle"
               >
                 <div class="line" :style="backgroundComponentStyle" />
-                <div>{{ $t('profile.title') }}</div>
+                <CustomSVG
+                  class="ml-n8 mb-n8 mt-n3"
+                  :src="require('~/assets/name.svg')"
+                  :width="'30rem'"
+                  :height="'5rem'"
+                  :color="themes.light.logo"
+                  :cover="true"
+                ></CustomSVG>
+                <!-- <div>{{ $t('profile.title') }}</div> -->
               </div>
               <div class="text-h5 sutitle__description">
                 {{ $t('profile.profileDescription') }}
@@ -108,9 +116,8 @@ import ProfileVitaItem from './ProfileVitaItem'
 import ProfileBookItem from './ProfileBookItem'
 import ProfilePublicationItem from './ProfilePublicationItem'
 import ProfilePublishedSummary from './ProfilePublishedSummary'
+import CustomSVG from '~/components/Global/CustomSVG'
 import ProfileImage from '~/assets/images/profile/profile_dr-nidal-toman.png'
-// import NavHeader from '~/components/Global/NavigationHeader'
-// import FooterComponent from '~/components/Footer/Footer'
 
 export default {
   components: {
@@ -118,8 +125,7 @@ export default {
     ProfileBookItem,
     ProfilePublicationItem,
     ProfilePublishedSummary,
-    // NavHeader,
-    // FooterComponent,
+    CustomSVG,
   },
   data() {
     return {
