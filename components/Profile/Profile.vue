@@ -18,17 +18,12 @@
     </v-carousel>
     <!-- <NavHeader /> -->
     <div class="profile__container">
-      <div class="profile__header">
-        <!-- <div class="header__title">{{ $t('profile.title') }}</div>
+      <!-- <div class="profile__header">
+        <div class="header__title">{{ $t('profile.title') }}</div>
         <div class="header__subtitle">
           {{ $t('profile.subtitle') }}
-        </div> -->
-        <div class="header__description">
-          <p>{{ $t('profile.description[0]') }}</p>
-          <p>{{ $t('profile.description[1]') }}</p>
-          <p>{{ $t('profile.description[2]') }}</p>
         </div>
-      </div>
+      </div> -->
 
       <div class="profile__body">
         <div class="detail__container">
@@ -45,8 +40,8 @@
                 <CustomSVG
                   class="ml-n8 mb-n8 mt-n3"
                   :src="require('~/assets/name.svg')"
-                  :width="'30rem'"
-                  :height="'5rem'"
+                  :width="'38rem'"
+                  :height="'6rem'"
                   :color="themes.light.logo"
                   :cover="true"
                 ></CustomSVG>
@@ -73,6 +68,20 @@
                 :place="$t(`profile.vita.list.${index - 1}.place`)"
               />
             </div>
+          </div>
+        </div>
+        <div class="description__container">
+          <div class="profile__description text-h6">
+            <p>{{ $t('profile.description[0]') }}</p>
+            <p>{{ $t('profile.description[1]') }}</p>
+            <p>{{ $t('profile.description[2]') }}</p>
+          </div>
+          <div class="profile__image">
+            <v-img
+              :src="require('~/assets/images/profile/profile0.jpg')"
+              width="100%"
+              height="100%"
+            ></v-img>
           </div>
         </div>
         <div class="publication__container">
@@ -240,29 +249,35 @@ export default {
   padding: 140px;
 }
 
-.header__title {
+/* .header__title {
   font-weight: 800;
   font-size: 96px;
   line-height: 131px;
 
-  /* color: #6c756b; */
-}
+  color: #6c756b;
+} */
 
-.header__subtitle {
+/* .header__subtitle {
   font-weight: 500;
   font-size: 24px;
   line-height: 33px;
   color: #cca43b;
   margin-top: 15px;
-}
+} */
 
-.header__description {
-  font-weight: 300;
-  font-size: 24px;
+.profile__description {
+  /* font-weight: 300; */
+  /* font-size: 24px; */
   line-height: 33px;
   text-align: justify;
-  color: #868585;
-  margin-top: 40px;
+  /* color: #868585; */
+  /* margin-top: 40px; */
+  padding: 80px 80px 80px 140px;
+}
+
+.profile__image {
+  min-height: 45vw;
+  width: 30vw;
 }
 
 .vita__container {
@@ -276,7 +291,8 @@ export default {
   display: flex;
   flex: 1;
   padding: 80px;
-  background: rgba(178, 121, 168, 0.51);
+  background: #e5e5e5;
+  /* background: rgba(178, 121, 168, 0.51); */
 }
 
 .publication__title {
@@ -310,5 +326,10 @@ export default {
   line-height: 66px;
 
   /* color: #6c756b; */
+}
+
+.description__container {
+  display: flex;
+  align-items: center;
 }
 </style>

@@ -5,7 +5,7 @@
       <div class="circle" :style="backgroundComponentStyle" />
       <div class="line" :style="backgroundComponentStyle" />
     </div>
-    <div class="item__details" :style="titleStyle">
+    <div class="item__details">
       <div class="item__title">{{ title }}</div>
       <div class="item__subtitle">
         {{ `"${subtitle}"` }}
@@ -40,11 +40,6 @@ export default {
   computed: {
     themes() {
       return this.$vuetify.theme.themes
-    },
-    titleStyle() {
-      return {
-        color: this.themes.light.background,
-      }
     },
     backgroundComponentStyle() {
       return {
