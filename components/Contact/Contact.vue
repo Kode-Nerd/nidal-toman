@@ -1,8 +1,9 @@
 <template>
   <div :id="id" class="contact-wrapper">
     <v-carousel
+      style="margin-top: -48px"
       cycle
-      height="400"
+      height="100vh"
       hide-delimiter-background
       show-arrows-on-hover
     >
@@ -12,17 +13,17 @@
           height="100%"
         >
           <div class="fill-height carousel-dark">
-            <v-row class="fill-height" align="center" justify="center">
+            <!-- <v-row class="fill-height" align="center" justify="center">
               <v-col :offset="2" :cols="10">
                 <div class="display-3">{{ slide }}</div>
                 <div class="title">{{ sub[i] }}</div>
               </v-col>
-            </v-row>
+            </v-row> -->
           </div>
         </v-img>
       </v-carousel-item>
     </v-carousel>
-    <div class="contact-section__header">
+    <div :style="titleStyle" class="contact-section__header">
       <div class="contact__title">We available for you</div>
       <div class="contact__subtitle">
         Would you like more information or individual advice?
@@ -33,7 +34,15 @@
     <div class="contact-section__profile">
       <div class="contact-person">
         <div class="profile-container">
-          <div class="profile__pict"></div>
+          <div class="profile__pict">
+            <v-img
+              style="border-radius: 5px"
+              :src="require('~/assets/images/practice/profile.jpg')"
+              height="100%"
+              width="100%"
+              position="top"
+            ></v-img>
+          </div>
           <div class="profile__detail">
             <div class="profile__name">Dr. med. Nidal Toman</div>
             <div class="profile__title">
@@ -52,6 +61,12 @@
           </div>
         </div>
       </div> -->
+      <div class="contact-description text-h6 mt-10">
+        Our modern practice for aesthetic and cosmetic treatments is located in
+        the middle of Berlin City (West). The outpatient treatments are carried
+        out by Dr. Nidal Toman and his team on their own premises. You will feel
+        comfortable with us!
+      </div>
     </div>
 
     <div class="contact-section__detail">
@@ -117,6 +132,9 @@ export default {
     locale() {
       return this.$store.state.locale
     },
+    themes() {
+      return this.$vuetify.theme.themes
+    },
     slides() {
       return this.indexList.map((index) =>
         this.$t(`practice.content.title${index}`)
@@ -129,6 +147,11 @@ export default {
     },
     imagePaths() {
       return this.indexList.map((index) => `praxis${index}.jpg`)
+    },
+    titleStyle() {
+      return {
+        color: this.themes.light.primary4,
+      }
     },
   },
   methods: {
@@ -185,7 +208,7 @@ export default {
   font-weight: 800;
   font-size: 36px;
   line-height: 49px;
-  color: #6c756b;
+  /* color: #6c756b; */
 }
 
 .contact-detail__subtitle {
@@ -231,14 +254,22 @@ export default {
   font-size: 24px;
   line-height: 33px;
 
-  color: #868585;
+  position: absolute;
+  left: 30px;
+  top: 100px;
+  /* color: #868585; */
 }
 
 .contact__title {
   font-weight: 800;
   font-size: 96px;
   line-height: 131px;
-  color: #6c756b;
+  font-family: Butler;
+  /* color: #6c756b; */
+}
+
+.contact__subtitle {
+  margin-left: 500px;
 }
 
 .contact-section__profile {
@@ -276,6 +307,7 @@ export default {
 
 .profile__detail {
   margin-left: -35px;
+  z-index: 1;
 }
 
 .profile__pict {
@@ -290,6 +322,6 @@ export default {
 }
 
 .carousel-dark {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.3);
 }
 </style>
