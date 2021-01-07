@@ -43,7 +43,7 @@ export default {
     },
     backgroundComponentStyle() {
       return {
-        background: this.themes.light.background,
+        background: this.themes.light.primary,
       }
     },
   },

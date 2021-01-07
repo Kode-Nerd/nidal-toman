@@ -276,7 +276,6 @@ export default {
 }
 
 .profile__image {
-  min-height: 45vw;
   width: 30vw;
 }
 
@@ -330,6 +329,6 @@ export default {
 
 .description__container {
   display: flex;
-  align-items: center;
+  align-items: stretch;
 }
 </style>
