@@ -245,7 +245,6 @@ export default {
   align-items: stretch;
 }
 
-
 /* .header__title {
   font-weight: 800;
   font-size: 96px;
