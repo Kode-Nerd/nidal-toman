@@ -84,9 +84,9 @@
             ></v-img>
           </div>
         </div>
-        <div class="publication__container">
-          <div class="publication__header">
-            <div class="publication__title">
+        <div class="dark__container">
+          <div class="dark__header">
+            <div class="dark__title">
               {{ $t('profile.publication.label') }}
             </div>
           </div>
@@ -101,9 +101,9 @@
             />
           </div>
         </div>
-        <div class="book__container">
-          <div class="book__header">
-            <div class="book__title">{{ $t('profile.books.label') }}</div>
+        <div class="light__container">
+          <div class="light__header">
+            <div class="light__title">{{ $t('profile.books.label') }}</div>
           </div>
           <div>
             <ProfileBookItem
@@ -113,9 +113,9 @@
             />
           </div>
         </div>
-        <div class="publication__container">
-          <div class="publication__header">
-            <div class="publication__title">
+        <div class="dark__container">
+          <div class="dark__header">
+            <div class="dark__title">
               {{ $t('profile.summaries.label') }}
             </div>
           </div>
@@ -185,30 +185,6 @@ export default {
   margin-top: 0px;
 }
 
-.profile__subtitle {
-  display: flex;
-  align-items: center;
-  padding-right: 140px;
-  margin-left: -50px;
-}
-
-.vita__header {
-  /* margin-bottom: 40px; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 280px;
-}
-
-.vita__title {
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 66px;
-  text-align: justify;
-  transform: rotate(-90deg);
-  /* color: #6c756b; */
-}
-
 .line {
   height: 1px;
   width: 130px;
@@ -238,16 +214,37 @@ export default {
   padding: 100px 140px;
   background: #fcfcfc;
 }
-
 .profile-img {
   height: 570px;
   width: 420px;
   border-radius: 2px;
 }
-
 .profile__header {
   padding: 140px;
 }
+.profile__subtitle {
+  display: flex;
+  align-items: center;
+  padding-right: 140px;
+  margin-left: -50px;
+}
+.profile__description {
+  /* font-weight: 300; */
+  /* font-size: 24px; */
+  line-height: 33px;
+  text-align: justify;
+  /* color: #868585; */
+  /* margin-top: 40px; */
+  padding: 80px 80px 80px 140px;
+}
+.profile__image {
+  width: 30vw;
+}
+.description__container {
+  display: flex;
+  align-items: stretch;
+}
+
 
 /* .header__title {
   font-weight: 800;
@@ -265,27 +262,12 @@ export default {
   margin-top: 15px;
 } */
 
-.profile__description {
-  /* font-weight: 300; */
-  /* font-size: 24px; */
-  line-height: 33px;
-  text-align: justify;
-  /* color: #868585; */
-  /* margin-top: 40px; */
-  padding: 80px 80px 80px 140px;
-}
-
-.profile__image {
-  width: 30vw;
-}
-
 .vita__container {
   /* background: #e5e5e5; */
   display: flex;
   padding: 0px;
   /* padding: 80px 140px; */
 }
-
 .vita__subcontainer {
   display: flex;
   flex: 1;
@@ -293,8 +275,31 @@ export default {
   background: #e5e5e5;
   /* background: rgba(178, 121, 168, 0.51); */
 }
+.vita__header {
+  /* margin-bottom: 40px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+}
+.vita__title {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 66px;
+  text-align: justify;
+  transform: rotate(-90deg);
+  /* color: #6c756b; */
+}
 
-.publication__title {
+.dark__container {
+  background: #e5e5e5;
+  /* background: #6c756b; */
+  padding: 80px 140px;
+}
+.dark__header {
+  margin-bottom: 40px;
+}
+.dark__title {
   font-weight: 800;
   font-size: 48px;
   line-height: 66px;
@@ -302,33 +307,19 @@ export default {
 
   /* color: #6c756b; */
   /* color: #fff; */
-  margin-bottom: 40px;
 }
 
-.publication__container {
-  background: #e5e5e5;
-  /* background: #6c756b; */
+.light__container {
   padding: 80px 140px;
 }
-
-.book__container {
-  padding: 80px 140px;
-}
-
-.book__header {
+.light__header {
   margin-bottom: 40px;
 }
-
-.book__title {
+.light__title {
   font-weight: 800;
   font-size: 48px;
   line-height: 66px;
 
   /* color: #6c756b; */
-}
-
-.description__container {
-  display: flex;
-  align-items: stretch;
 }
 </style>
