@@ -130,6 +130,37 @@
             />
           </div>
         </div>
+        <div class="light__container">
+          <div class="light__header">
+            <div class="light__title">{{ $t('profile.posters.label') }}</div>
+          </div>
+          <div>
+            <ProfileBookItem
+              v-for="index in 12"
+              :key="`posters-${index}`"
+              :title="$t(`profile.posters.list.${index - 1}.title`)"
+              :author="$t(`profile.posters.list.${index - 1}.author`)"
+              :detail="$t(`profile.posters.list.${index - 1}.detail`)"
+            />
+          </div>
+        </div>
+        <div class="dark__container">
+          <div class="dark__header">
+            <div class="dark__title">
+              {{ $t('profile.conferences.label') }}
+            </div>
+          </div>
+          <div>
+            <ProfilePublicationItem
+              v-for="index in 24"
+              :key="`conferences-${index}`"
+              :title="$t(`profile.conferences.list.${index - 1}.title`)"
+              :subtitle="$t(`profile.conferences.list.${index - 1}.detail`)"
+              :detail="$t(`profile.conferences.list.${index - 1}.author`)"
+              :index="index < 10 ? `0${index}` : index"
+            />
+          </div>
+        </div>
       </div>
     </div>
     <!-- <FooterComponent /> -->
