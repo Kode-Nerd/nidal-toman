@@ -28,7 +28,7 @@ export default {
     },
     index: {
       type: Number,
-      default: '',
+      default: 0,
     },
   },
 }
