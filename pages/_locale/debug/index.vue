@@ -1,33 +1,32 @@
 <template>
-  <div v-if="true" />
-  <!-- <CustomSVG
-    v-else
-    :src="require('~/assets/main-logo.svg')"
-    width="300px"
-    height="120px"
-    :color="themes.light.logo"
-  /> -->
+  <div v-if="!debug" />
   <div v-else>
-    <v-img
-      contain
-      position="bottom right"
-      :src="require('~/assets/adobe.jpeg')"
-      height="100px"
-      width="300px"
-    ></v-img>
+    <CoverPicture :src="require('~/assets/images/practice/praxis1.jpg')" />
   </div>
 </template>
 
 <script>
-// import CustomSVG from '~/components/Global/CustomSVG'
+import CoverPicture from '~/components/Global/CoverPicture'
 export default {
   components: {
-    // CustomSVG,
+    CoverPicture,
+  },
+  data() {
+    return {
+      debug: false,
+    }
   },
   computed: {
     themes() {
       return this.$vuetify.theme.themes
     },
+  },
+  mounted() {
+    const isDebug = this.$route.query.debug === '1'
+    console.log({ isDebug })
+    if (isDebug) {
+      this.debug = true
+    }
   },
 }
 </script>
