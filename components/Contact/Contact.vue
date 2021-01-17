@@ -1,35 +1,13 @@
 <template>
-  <div :id="id" class="contact-wrapper">
-    <v-carousel
-      style="margin-top: -48px"
-      cycle
-      height="100vh"
-      hide-delimiter-background
-      show-arrows-on-hover
-    >
-      <v-carousel-item v-for="(slide, i) in slides" :key="i">
-        <v-img
-          :src="require(`~/assets/images/practice/${imagePaths[i]}`)"
-          height="100%"
-        >
-          <div class="fill-height carousel-dark">
-            <!-- <v-row class="fill-height" align="center" justify="center">
-              <v-col :offset="2" :cols="10">
-                <div class="display-3">{{ slide }}</div>
-                <div class="title">{{ sub[i] }}</div>
-              </v-col>
-            </v-row> -->
-          </div>
-        </v-img>
-      </v-carousel-item>
-    </v-carousel>
-    <div :style="titleStyle" class="contact-section__header">
+  <div :id="id" style="margin-top: -48px" class="contact-wrapper">
+    <CoverPicture :src="require('~/assets/images/interiors/interior1.jpg')" />
+    <!-- <div :style="titleStyle" class="contact-section__header">
       <div class="contact__title">We available for you</div>
       <div class="contact__subtitle">
         Would you like more information or individual advice?
       </div>
       <div class="contact__subtitle">We look forward to helping you.</div>
-    </div>
+    </div> -->
 
     <div class="contact-section__profile">
       <div class="contact-person">
@@ -37,7 +15,7 @@
           <div class="profile__pict">
             <v-img
               style="border-radius: 5px"
-              :src="require('~/assets/images/practice/profile.jpg')"
+              :src="require('~/assets/images/profiles/profile-1.jpg')"
               height="100%"
               width="100%"
               position="top"
@@ -114,18 +92,19 @@
 
 <script>
 import Map from './Map'
+import CoverPicture from '~/components/Global/CoverPicture'
 import MessageIcon from '~/assets/icons/message.svg'
 import { finalpath } from '~/helpers'
 
 export default {
   components: {
     Map,
+    CoverPicture,
   },
   data() {
     return {
       MessageIcon,
       id: 'contact',
-      indexList: [1, 2, 3, 4, 5, 6],
     }
   },
   computed: {
@@ -134,19 +113,6 @@ export default {
     },
     themes() {
       return this.$vuetify.theme.themes
-    },
-    slides() {
-      return this.indexList.map((index) =>
-        this.$t(`practice.content.title${index}`)
-      )
-    },
-    sub() {
-      return this.indexList.map((index) =>
-        this.$t(`practice.content.subtitle${index}`)
-      )
-    },
-    imagePaths() {
-      return this.indexList.map((index) => `praxis${index}.jpg`)
     },
     titleStyle() {
       return {

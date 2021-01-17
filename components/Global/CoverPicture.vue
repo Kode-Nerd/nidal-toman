@@ -8,7 +8,8 @@
         width="100%"
         height="100%"
         @load="showCover"
-      ></v-img>
+        ><slot
+      /></v-img>
     </div>
     <div v-if="src" class="border" :class="{ borderZero }"></div>
   </div>

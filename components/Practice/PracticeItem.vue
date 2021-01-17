@@ -1,7 +1,7 @@
 <template>
   <div v-rellax="{ speed }" class="practice-item__container">
     <div class="practice-item__image">
-      <img :src="require(`~/assets/images/practice/${imagePath}`)" />
+      <img :src="require(`~/assets/images/interiors/${imagePath}`)" />
     </div>
     <div class="practice-item__body">
       <div class="item__index">{{ index }}</div>

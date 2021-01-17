@@ -1,22 +1,6 @@
 <template>
-  <div :id="id" class="wrapper">
-    <v-carousel
-      style="margin-top: -48px"
-      cycle
-      height="100vh"
-      hide-delimiter-background
-      show-arrows-on-hover
-    >
-      <v-carousel-item v-for="(imagePath, i) in imagePaths" :key="i">
-        <v-img
-          :src="require(`~/assets/images/profile/${imagePaths[i]}`)"
-          height="100%"
-          :position="i === 2 ? 'top' : 'center'"
-        >
-        </v-img>
-      </v-carousel-item>
-    </v-carousel>
-    <!-- <NavHeader /> -->
+  <div :id="id" style="margin-top: -48px" class="wrapper">
+    <CoverPicture :src="require('~/assets/images/treatments/treatment1.jpg')" />
     <div class="profile__container">
       <!-- <div class="profile__header">
         <div class="header__title">{{ $t('profile.title') }}</div>
@@ -32,10 +16,7 @@
           </div>
           <div class="profile__subtitle">
             <div>
-              <div
-                class="subtitle__name text-h4 font-weight-bold"
-                :style="titleStyle"
-              >
+              <div class="subtitle__name">
                 <div class="line" :style="backgroundComponentStyle" />
                 <CustomSVG
                   class="ml-n8 mb-n8 mt-n3"
@@ -78,7 +59,7 @@
           </div>
           <div class="profile__image">
             <v-img
-              :src="require('~/assets/images/profile/profile0.jpg')"
+              :src="require('~/assets/images/profiles/profile0.jpg')"
               width="100%"
               height="100%"
             ></v-img>
@@ -173,7 +154,8 @@ import ProfileBookItem from './ProfileBookItem'
 import ProfilePublicationItem from './ProfilePublicationItem'
 import ProfilePublishedSummary from './ProfilePublishedSummary'
 import CustomSVG from '~/components/Global/CustomSVG'
-import ProfileImage from '~/assets/images/profile/profile_dr-nidal-toman.png'
+import CoverPicture from '~/components/Global/CoverPicture'
+import ProfileImage from '~/assets/images/profiles/profile-2.png'
 
 export default {
   components: {
@@ -182,30 +164,22 @@ export default {
     ProfilePublicationItem,
     ProfilePublishedSummary,
     CustomSVG,
+    CoverPicture,
   },
   data() {
     return {
       id: 'profile',
       ProfileImage,
-      indexList: [1, 2, 3, 4],
     }
   },
   computed: {
     themes() {
       return this.$vuetify.theme.themes
     },
-    titleStyle() {
-      return {
-        color: this.themes.light.primary3,
-      }
-    },
     backgroundComponentStyle() {
       return {
         background: this.themes.light.primary3,
       }
-    },
-    imagePaths() {
-      return this.indexList.map((index) => `profile${index}.jpg`)
     },
   },
 }

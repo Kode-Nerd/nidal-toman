@@ -1,7 +1,7 @@
 <template>
   <div v-if="!debug" />
   <div v-else>
-    <CoverPicture :src="require('~/assets/images/practice/praxis1.jpg')" />
+    <CoverPicture :src="require('~/assets/images/interiors/interior1.jpg')" />
   </div>
 </template>
 
