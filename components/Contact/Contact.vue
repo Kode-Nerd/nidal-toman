@@ -1,6 +1,19 @@
 <template>
   <div :id="id" style="margin-top: -48px" class="contact-wrapper">
-    <CoverPicture :src="require('~/assets/images/interiors/interior1.jpg')" />
+    <CoverPicture :src="require('~/assets/images/interiors/interior2.jpg')">
+      <div class="scroll">
+        <span
+          class="pointer text-h5 font-weight-light"
+          @click="alert('clicked')"
+        >
+          Scroll Down
+        </span>
+        <CustomSVG
+          size="1.5rem"
+          :src="require('bootstrap-icons/icons/chevron-down.svg')"
+        />
+      </div>
+    </CoverPicture>
     <!-- <div :style="titleStyle" class="contact-section__header">
       <div class="contact__title">We available for you</div>
       <div class="contact__subtitle">
@@ -93,6 +106,7 @@
 <script>
 import Map from './Map'
 import CoverPicture from '~/components/Global/CoverPicture'
+import CustomSVG from '~/components/Global/CustomSVG'
 import MessageIcon from '~/assets/icons/message.svg'
 import { finalpath } from '~/helpers'
 
@@ -100,6 +114,7 @@ export default {
   components: {
     Map,
     CoverPicture,
+    CustomSVG,
   },
   data() {
     return {
@@ -129,6 +144,20 @@ export default {
 </script>
 
 <style>
+.scroll {
+  padding: 36px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1;
+}
+.scroll .pointer {
+  cursor: pointer;
+}
+
 .submit-button {
   background: #cca43b;
   border-radius: 2px;
