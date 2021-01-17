@@ -1,7 +1,9 @@
 <template>
   <div :id="id" style="margin-top: -48px" class="wrapper">
-    <CoverPicture :src="require('~/assets/images/treatments/treatment1.jpg')" />
-    <div class="profile__container">
+    <CoverPicture :src="require('~/assets/images/treatments/treatment1.jpg')">
+      <CoverScroll target="#top-profile" />
+    </CoverPicture>
+    <div id="top-profile" class="profile__container">
       <!-- <div class="profile__header">
         <div class="header__title">{{ $t('profile.title') }}</div>
         <div class="header__subtitle">
@@ -155,6 +157,7 @@ import ProfilePublicationItem from './ProfilePublicationItem'
 import ProfilePublishedSummary from './ProfilePublishedSummary'
 import CustomSVG from '~/components/Global/CustomSVG'
 import CoverPicture from '~/components/Global/CoverPicture'
+import CoverScroll from '~/components/Global/CoverScroll'
 import ProfileImage from '~/assets/images/profiles/profile-2.png'
 
 export default {
@@ -165,6 +168,7 @@ export default {
     ProfilePublishedSummary,
     CustomSVG,
     CoverPicture,
+    CoverScroll,
   },
   data() {
     return {
