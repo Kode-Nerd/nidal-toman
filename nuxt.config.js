@@ -90,11 +90,12 @@ export default {
         },
         light: {
           primary: '#6C756B', // dark green
-          primary2: '#B279A7', // violet
+          primary2: '#F06C9B', // pink
           primary3: '#D2AF69', // gold
-          primary4: '#5E0B15', // brown
+          primary4: '#18110C', // black
+          darkBackground: "#EAE8E4", // gray
+          lightBackground: "F6F5F3", // light gray
           background: '#FFFFFF', // white
-          darkBackground: "#E5E5E5", // gray
           text: colors.blueGrey.darken3,
           logo: '#D5A35A', // gold logo
           // alternatives
