@@ -11,7 +11,7 @@
         ><slot
       /></v-img>
     </div>
-    <div v-if="src" class="border" :class="{ borderZero }"></div>
+    <div v-if="src" class="border" :class="{ borderZero, borderNone }"></div>
   </div>
 </template>
 
@@ -30,12 +30,16 @@ export default {
   data() {
     return {
       borderZero: false,
+      borderNone: false,
     }
   },
   methods: {
     showCover() {
       setTimeout(() => {
         this.borderZero = true
+        setTimeout(() => {
+          this.borderNone = true
+        }, 1500)
       }, 500)
     },
   },
@@ -88,5 +92,8 @@ export default {
   border-width: 0px;
   border-color: white;
   transition: 1500ms ease;
+}
+.borderNone {
+  display: none;
 }
 </style>
