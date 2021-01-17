@@ -83,6 +83,7 @@ export default {
   position: absolute;
   top: 0px;
   left: 0px;
+  box-sizing: border-box;
   border-style: solid;
   border-width: 50vh 50vw;
   border-color: white;
@@ -91,7 +92,8 @@ export default {
   border-style: solid;
   border-width: 0px;
   border-color: white;
-  transition: 1500ms ease;
+  transition: 1500ms;
+  transition-timing-function: ease-in-out;
 }
 .borderNone {
   display: none;
