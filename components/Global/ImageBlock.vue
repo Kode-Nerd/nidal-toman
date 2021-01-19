@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="container"
-    :style="containerStyle"
-  >
+  <div class="container" :style="containerStyle">
     <img class="image" :src="src" alt="no-image" />
   </div>
 </template>
