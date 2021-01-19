@@ -1,11 +1,7 @@
 <template>
   <div
     class="container"
-    :style="{
-      height,
-      backgroundImage: `url(${src})`,
-      backgroundSize: 'contain',
-    }"
+    :style="containerStyle"
   >
     <img class="image" :src="src" alt="no-image" />
   </div>
