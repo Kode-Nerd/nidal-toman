@@ -28,6 +28,7 @@ export default {
   plugins: [
     '~/plugins/i18n.js',
     { src: '~~/node_modules/vue-rellax/lib/nuxt-plugin', ssr: false },
+    { src: '@/plugins/vue-awesome-swiper', mode: 'client' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
