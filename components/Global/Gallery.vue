@@ -1,0 +1,50 @@
+<template>
+  <div>
+    <div class="gallery-title">
+      <div :style="titleStyle">
+        <span class="text-h4">{{ $t('contact.gallery') }}</span>
+      </div>
+    </div>
+    <Album class="mt-6" :list="interiors" />
+    <Album class="mt-6" :list="treatments" />
+  </div>
+</template>
+
+<script>
+import Album from '~/components/Global/Album'
+export default {
+  components: {
+    Album,
+  },
+  computed: {
+    themes() {
+      return this.$vuetify.theme.themes
+    },
+    interiors() {
+      const list = [1, 2, 13, 3, 5, 4, 12, 6, 11, 7, 9, 8, 10, 14]
+      const interior = list.map((item) =>
+        require(`~/assets/images/interiors_min/interior${item}.jpg`)
+      )
+      return interior
+    },
+    treatments() {
+      const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+      const treatment = list.map((item) =>
+        require(`~/assets/images/treatments_min/treatment${item}.jpg`)
+      )
+      return treatment
+    },
+    titleStyle() {
+      return {
+        borderBottom: `1px solid ${this.themes.light.primary}`,
+      }
+    },
+  },
+}
+</script>
+
+<style scoped>
+.gallery-title {
+  padding: 0px 48px;
+}
+</style>

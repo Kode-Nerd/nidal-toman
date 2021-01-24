@@ -30,6 +30,7 @@ export default {
 
 <style scoped>
 .container {
+  padding: 0px;
   display: inline-block;
 }
 .image {

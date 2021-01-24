@@ -1,15 +1,16 @@
 <template>
   <div v-if="!debug" />
   <div v-else>
-    <CoverPicture :src="require('~/assets/images/interiors/interior1.jpg')" />
+    <Gallery />
   </div>
 </template>
 
 <script>
-import CoverPicture from '~/components/Global/CoverPicture'
+import Gallery from '~/components/Global/Gallery'
 export default {
+  layout: 'debug',
   components: {
-    CoverPicture,
+    Gallery,
   },
   data() {
     return {
@@ -23,7 +24,7 @@ export default {
   },
   mounted() {
     const isDebug = this.$route.query.debug === '1'
-    console.log({ isDebug })
+
     if (isDebug) {
       this.debug = true
     }
@@ -31,4 +32,4 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped></style>
