@@ -32,7 +32,7 @@ export default {
         loopFillGroupWithBlank: true,
         grabCursor: true,
         autoplay: {
-          delay: 5000,
+          delay: 20000,
           disableOnInteraction: false,
         },
         navigation: {

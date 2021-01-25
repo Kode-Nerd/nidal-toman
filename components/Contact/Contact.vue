@@ -11,84 +11,128 @@
       <div class="contact__subtitle">We look forward to helping you.</div>
     </div> -->
 
-    <div id="top-contact" class="contact-section__profile">
-      <div class="contact-person">
-        <div class="profile-container">
-          <div class="profile__pict">
-            <v-img
-              style="border-radius: 5px"
-              :src="require('~/assets/images/profiles/profile-1.jpg')"
-              height="100%"
-              width="100%"
-              position="top"
-            ></v-img>
-          </div>
-          <div class="profile__detail">
-            <div class="profile__name">Dr. med. Nidal Toman</div>
-            <div class="profile__title">
-              Specialist in aesthetic & plastic surgery
+    <div id="top-contact">
+      <div class="section">
+        <Title>{{ $t('contact.title') }}</Title>
+        <v-row class="mt-6">
+          <v-col :cols="9">
+            <p class="text-h6 font-weight-light">{{ $t('contact.text') }}</p>
+          </v-col>
+          <v-col :cols="3">
+            <div class="d-flex justify-space-between">
+              <span class="text-h6 font-weight-light"
+                >{{ $t('contact.detail.tel') }}:</span
+              >
+              <span class="text-h6 font-weight-light"
+                >(+49) 030 21 300 8000</span
+              >
             </div>
-          </div>
-        </div>
-        <div class="profile__link" @click="gotoProfile">know more</div>
+            <div class="d-flex justify-space-between">
+              <v-row>
+                <v-col>
+                  <span class="text-h6 font-weight-light"
+                    >{{ $t('contact.detail.addr') }}:</span
+                  >
+                </v-col>
+                <v-col style="text-align: right" :cols="7">
+                  <span class="text-h6 font-weight-light"
+                    >Uhlandstrasse 33, DE-10719 Berlin, Germany.</span
+                  >
+                </v-col>
+              </v-row>
+            </div>
+            <div class="d-flex justify-end">
+              <span
+                class="font-weight-light link"
+                :style="primary3TextColor"
+                @click="$vuetify.goTo('#map', scrollOptions)"
+                >{{ $t('contact.detail.map') }} ></span
+              >
+            </div>
+          </v-col>
+        </v-row>
       </div>
-      <!-- <div class="contact-person">
-        <div class="profile-container">
-          <div class="profile__pict"></div>
-          <div class="profile__detail">
-            <div class="profile__name">Ms. Haase</div>
-            <div class="profile__title">Management assistant</div>
-          </div>
+      <div class="section d-flex align-stretch" :style="lightBackground">
+        <div class="form-cover">
+          <v-img
+            :src="require('~/assets/images/interiors/interior1.jpg')"
+            width="100%"
+            height="100%"
+          ></v-img>
         </div>
-      </div> -->
-      <div class="contact-description text-h6 mt-10">
-        Our modern practice for aesthetic and cosmetic treatments is located in
-        the middle of Berlin City (West). The outpatient treatments are carried
-        out by Dr. Nidal Toman and his team on their own premises. You will feel
-        comfortable with us!
+        <div class="form">
+          <Title>{{ $t('contact.form') }}</Title>
+          <v-row id="contact-form" class="contact-address-container">
+            <v-col>
+              <form class="d-flex flex-column">
+                <input
+                  v-model="form.name"
+                  class="contact-input-text"
+                  :style="isNotValidStyle"
+                  :placeholder="$t('contact.formDetail.name') + '*'"
+                />
+                <input
+                  v-model="form.email"
+                  class="contact-input-text"
+                  :style="isNotValidStyle"
+                  :placeholder="$t('contact.formDetail.email') + '*'"
+                />
+                <input
+                  v-model="form.no"
+                  class="contact-input-text"
+                  :style="isNotValidStyle"
+                  :placeholder="$t('contact.formDetail.no') + '*'"
+                />
+                <textarea
+                  v-model="form.detail"
+                  class="contact-input-text text-area-style"
+                  :style="isNotValidStyle"
+                  :placeholder="$t('contact.formDetail.detail')"
+                />
+                <span class="text-caption font-weight-light my-3 ml-2">
+                  {{ $t('contact.formDetail.statement') }}
+                </span>
+                <span
+                  v-if="isNotValid"
+                  class="text-subtitle-2 ml-2"
+                  :style="validatorStyle"
+                >
+                  *{{ $t('contact.formDetail.valid') }}
+                </span>
+                <v-checkbox
+                  v-model="form.check"
+                  class="ml-2"
+                  :label="$t('contact.formDetail.check') + '*'"
+                ></v-checkbox>
+                <div
+                  class="d-flex flex-column align-self-center"
+                  :style="submitButton"
+                >
+                  <v-btn
+                    dark
+                    :disabled="sendingEmail"
+                    :loading="sendingEmail"
+                    elevation="2"
+                    x-large
+                    :color="themes.light.background"
+                    :text="true"
+                    :ripple="false"
+                    @click="sendEmail"
+                    >{{ $t('contact.formDetail.send') }}</v-btn
+                  >
+                </div>
+              </form>
+            </v-col>
+          </v-row>
+        </div>
       </div>
+      <div class="section gallery-top">
+        <Title>{{ $t('contact.gallery') }}</Title>
+      </div>
+      <Gallery />
+      <div class="section gallery-bottom"></div>
+      <Map id="map" />
     </div>
-
-    <div class="contact-section__detail">
-      <!-- <div class="message-container">
-        <img :src="MessageIcon" alt="Message" />
-      </div> -->
-
-      <v-row id="contact-form" class="contact-address-container">
-        <v-col>
-          <div class="contact-detail__title">Contact Us</div>
-          <div class="contact-detail__subtitle">
-            You can make appointments with us using our contact form or by
-            telephone.
-          </div>
-
-          <div class="contact-detail__etc">
-            <div class="detail-info">Uhlandstrasse 33 10719 Berlin</div>
-            <div class="detail-info">(+49) 030 21 300 8000</div>
-            <div class="detail-info">info@nidal-toman.de</div>
-            <div class="detail-info">www.nidal-toman.de</div>
-          </div>
-        </v-col>
-
-        <v-col>
-          <form class="contact-form">
-            <input class="contact-input-text" placeholder="Your name" />
-            <input class="contact-input-text" placeholder="Your email" />
-            <input class="contact-input-text" placeholder="Your phone number" />
-            <input
-              class="contact-input-text"
-              placeholder="Reason Contactin use"
-            />
-            <textarea
-              class="contact-input-text text-area-style"
-              placeholder="Message"
-            />
-            <button class="submit-button">Submit</button>
-          </form>
-        </v-col>
-      </v-row>
-    </div>
-    <Map />
   </div>
 </template>
 
@@ -96,6 +140,8 @@
 import Map from './Map'
 import CoverPicture from '~/components/Global/CoverPicture'
 import CoverScroll from '~/components/Global/CoverScroll'
+import Gallery from '~/components/Global/Gallery'
+import Title from '~/components/Contact/Title'
 import MessageIcon from '~/assets/icons/message.svg'
 import { finalpath } from '~/helpers'
 
@@ -104,11 +150,22 @@ export default {
     Map,
     CoverPicture,
     CoverScroll,
+    Gallery,
+    Title,
   },
   data() {
     return {
       MessageIcon,
       id: 'contact',
+      isNotValid: false,
+      sendingEmail: false,
+      form: {
+        name: '',
+        email: '',
+        no: '',
+        detail: '',
+        check: false,
+      },
     }
   },
   computed: {
@@ -123,41 +180,107 @@ export default {
         color: this.themes.light.primary4,
       }
     },
+    primary3TextColor() {
+      return {
+        color: this.themes.light.primary3,
+      }
+    },
+    lightBackground() {
+      return {
+        background: this.themes.light.lightBackground,
+      }
+    },
+    scrollOptions() {
+      return {
+        duration: 1000,
+        offset: 48,
+        easing: 'easeInOutQuint',
+      }
+    },
+    submitButton() {
+      return {
+        background: this.themes.light.primary4,
+        width: '30%',
+      }
+    },
+    validatorStyle() {
+      return {
+        color: this.themes.light.primary2,
+      }
+    },
+    isNotValidStyle() {
+      return {
+        borderColor: this.isNotValid ? this.themes.light.primary2 : undefined,
+      }
+    },
   },
   methods: {
     gotoProfile() {
       this.$router.push({ path: finalpath(this.locale, 'profile') })
     },
+    sendEmail() {
+      if (
+        !this.form.name ||
+        !this.form.email ||
+        !this.form.no ||
+        !this.form.detail ||
+        !this.form.check
+      ) {
+        this.isNotValid = true
+        return
+      }
+
+      this.sendingEmail = true
+      setTimeout(() => {
+        this.form.name = ''
+        this.form.email = ''
+        this.form.no = ''
+        this.form.detail = ''
+        this.form.check = false
+        this.isNotValid = false
+        this.sendingEmail = false
+      }, 3000)
+    },
   },
 }
 </script>
 
-<style>
-.submit-button {
-  background: #cca43b;
-  border-radius: 2px;
-  height: 40px;
-  font-size: 14px;
-  line-height: 19px;
-  /* color: #6c756b; */
-  color: #ffffff;
-  margin-top: 22px;
+<style scoped>
+.link {
+  cursor: pointer;
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
+.section {
+  padding: 60px;
+}
+.section.gallery-top {
+  padding-bottom: 36px;
+}
+.section.gallery-bottom {
+  padding-top: 0px;
+}
+
+.form-cover {
+  width: 50vw;
+}
+
+.form {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.contact-address-container {
+  padding: 36px 0px;
 }
 
 .contact-input-text {
-  border: 0.5px solid #a2a2a2;
+  border-bottom: 0.5px solid #6c756b;
   box-sizing: border-box;
-  border-radius: 2px;
   height: 42px;
   font-size: 14px;
   line-height: 19px;
-  color: #a2a2a2;
-  padding: 0px 20px 0px 20px;
+  color: #6c756b;
+  padding: 0px 20px;
   outline: none;
 }
 
@@ -166,19 +289,22 @@ export default {
   height: 100px;
 }
 
-.contact-input-text:not(:first-child) {
-  margin-top: 10px;
+.contact-input-text:hover {
+  border-color: #d2af69;
 }
 
-.contact-input-text:hover {
-  border-color: #cca43b;
+/* old styles */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-detail__title {
   font-weight: 800;
   font-size: 36px;
   line-height: 49px;
-  /* color: #6c756b; */
+  color: #6c756b;
 }
 
 .contact-detail__subtitle {
@@ -213,11 +339,6 @@ export default {
   background: #cca43b;
 }
 
-.contact-address-container {
-  padding: 60px;
-  background: #fff;
-}
-
 .contact-section__header {
   padding: 70px 140px 0px 140px;
   font-weight: 300;
@@ -227,7 +348,7 @@ export default {
   position: absolute;
   left: 30px;
   top: 100px;
-  /* color: #868585; */
+  color: #868585;
 }
 
 .contact__title {
@@ -235,7 +356,7 @@ export default {
   font-size: 96px;
   line-height: 131px;
   font-family: Butler;
-  /* color: #6c756b; */
+  color: #6c756b;
 }
 
 .contact__subtitle {
@@ -289,9 +410,5 @@ export default {
 
 .contact-person:not(:first-child) {
   margin-top: 110px;
-}
-
-.carousel-dark {
-  background: rgba(0, 0, 0, 0.3);
 }
 </style>

@@ -1,10 +1,5 @@
 <template>
   <div>
-    <div class="gallery-title">
-      <div :style="titleStyle">
-        <span class="text-h4">{{ $t('contact.gallery') }}</span>
-      </div>
-    </div>
     <Album class="mt-6" :list="interiors" />
     <Album class="mt-6" :list="treatments" />
   </div>
