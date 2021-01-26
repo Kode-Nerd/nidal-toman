@@ -47,7 +47,7 @@ export default {
     '@aceforth/nuxt-optimized-images'
   ],
   optimizedImages: {
-    optimizeImages: true
+    optimizeImages: false
   },
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
