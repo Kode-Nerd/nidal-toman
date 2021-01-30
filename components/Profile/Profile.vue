@@ -1,16 +1,9 @@
 <template>
-  <div :id="id" style="margin-top: -48px" class="wrapper">
+  <div :id="id" class="wrapper">
     <CoverPicture :src="require('~/assets/images/treatments/treatment1.jpg')">
       <CoverScroll target="#top-profile" />
     </CoverPicture>
     <div id="top-profile" class="profile__container">
-      <!-- <div class="profile__header">
-        <div class="header__title">{{ $t('profile.title') }}</div>
-        <div class="header__subtitle">
-          {{ $t('profile.subtitle') }}
-        </div>
-      </div> -->
-
       <div class="profile__body">
         <div class="section">
           <Section title right>
@@ -305,66 +298,6 @@ export default {
 }
 
 .wrapper {
-  margin-top: 0px;
-}
-
-.line {
-  height: 1px;
-  width: 130px;
-  background: #6c756b;
-  margin: 0px 20px;
-  margin-left: -150px;
-}
-
-.subtitle__name {
-  font-weight: 800;
-  font-size: 36px;
-  line-height: 49px;
-  text-align: justify;
-
-  /* color: #6c756b; */
-  margin-bottom: 30px;
-
-  display: flex;
-  align-items: center;
-}
-
-.detail__container {
-  display: flex;
-}
-
-.profile__photo {
-  padding: 100px 140px;
-  background: #fcfcfc;
-}
-.profile-img {
-  height: 570px;
-  width: 420px;
-  border-radius: 2px;
-}
-.profile__header {
-  padding: 140px;
-}
-.profile__subtitle {
-  display: flex;
-  align-items: center;
-  padding-right: 140px;
-  margin-left: -50px;
-}
-.profile__description {
-  /* font-weight: 300; */
-  /* font-size: 24px; */
-  line-height: 33px;
-  text-align: justify;
-  /* color: #868585; */
-  /* margin-top: 40px; */
-  padding: 80px 80px 80px 140px;
-}
-.profile__image {
-  width: 30vw;
-}
-.description__container {
-  display: flex;
-  align-items: stretch;
+  margin-top: -48px;
 }
 </style>
