@@ -12,64 +12,66 @@
       </div> -->
 
       <div class="profile__body">
-        <div class="detail__container">
-          <div class="profile__photo">
-            <img :src="ProfileImage" class="profile-img" />
-          </div>
-          <div class="profile__subtitle">
-            <div>
-              <div class="subtitle__name">
-                <div class="line" :style="backgroundComponentStyle" />
-                <CustomSVG
-                  class="ml-n8 mb-n8 mt-n3"
-                  :src="require('~/assets/name.svg')"
-                  :width="'38rem'"
-                  :height="'6rem'"
-                  :color="themes.light.logo"
-                  :cover="true"
-                ></CustomSVG>
-                <!-- <div>{{ $t('profile.title') }}</div> -->
-              </div>
-              <div class="text-h5 sutitle__description">
-                {{ $t('profile.profileDescription') }}
-              </div>
-            </div>
+        <div class="section">
+          <Section title right>
+            <p
+              v-for="(text, index) in contentExtractor(
+                $t('profile.description[0]')
+              )"
+              :key="index"
+              class="text-h4 text-justify font-weight-light my-12"
+              v-html="text"
+            ></p>
+          </Section>
+          <div class="image-left">
+            <ImageBlock
+              :src="require('~/assets/images/profiles/profile.jpg')"
+              height="90vh"
+            />
           </div>
         </div>
-        <div class="vita__container">
-          <div class="vita__header">
-            <div class="vita__title">{{ $t('profile.vita.label') }}</div>
-          </div>
-          <div class="vita__subcontainer">
-            <div>
-              <ProfileVitaItem
-                v-for="index in 7"
-                :key="`vita-${index}`"
-                :title="$t(`profile.vita.list.${index - 1}.title`)"
-                :subtitle="$t(`profile.vita.list.${index - 1}.subtitle`)"
-                :year="$t(`profile.vita.list.${index - 1}.year`)"
-                :place="$t(`profile.vita.list.${index - 1}.place`)"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="description__container">
-          <div class="profile__description text-h6">
-            <p>{{ $t('profile.description[0]') }}</p>
-            <p>{{ $t('profile.description[1]') }}</p>
-            <p>{{ $t('profile.description[2]') }}</p>
-          </div>
-          <div class="profile__image">
-            <v-img
-              :src="require('~/assets/images/profiles/profile0.jpg')"
-              width="100%"
-              height="100%"
-            ></v-img>
+        <div class="section" :style="lightBackground">
+          <Section>
+            <p
+              v-for="(text, index) in contentExtractor(
+                $t('profile.description[1]')
+              )"
+              :key="index"
+              class="text-h4 text-justify font-weight-light my-12"
+              v-html="text"
+            ></p>
+          </Section>
+          <div class="image-right">
+            <ImageBlock
+              :src="require('~/assets/images/profiles/profile-2.png')"
+              height="50vh"
+            />
           </div>
         </div>
-        <div class="dark__container">
-          <div class="dark__header">
-            <div class="dark__title">
+        <div class="section">
+          <Section right>
+            <span class="apposthrope font-weight-bold font-italic">"</span>
+            <p
+              v-for="(text, index) in contentExtractor(
+                $t('profile.description[2]')
+              )"
+              :key="index"
+              class="text-h4 text-justify font-weight-light mb-8"
+              v-html="text"
+            ></p>
+            <span class="apposthrope font-weight-bold font-italic">"</span>
+          </Section>
+          <div class="image-left">
+            <ImageBlock
+              :src="require('~/assets/images/treatments/treatment4.jpg')"
+              height="90vh"
+            />
+          </div>
+        </div>
+
+        <div class="history-container" :style="lightBackground">
+          <div class="history-header">
+            <div class="history-title">
               {{ $t('profile.publication.label') }}
             </div>
           </div>
@@ -84,21 +86,31 @@
             />
           </div>
         </div>
-        <div class="light__container">
-          <div class="light__header">
-            <div class="light__title">{{ $t('profile.books.label') }}</div>
-          </div>
-          <div>
-            <ProfileBookItem
-              :title="$t(`profile.books.list[0].title`)"
-              :author="$t(`profile.books.list[0].author`)"
-              :detail="$t(`profile.books.list[0].detail`)"
-            />
-          </div>
+
+        <div class="section">
+          <Section right width="75%">
+            <div class="history-header">
+              <div class="history-title">{{ $t('profile.books.label') }}</div>
+            </div>
+            <div>
+              <ProfileBookItem
+                :title="$t(`profile.books.list[0].title`)"
+                :author="$t(`profile.books.list[0].author`)"
+                :detail="$t(`profile.books.list[0].detail`)"
+              />
+            </div>
+            <div class="image-left">
+              <ImageBlock
+                :src="require('~/assets/images/treatments/treatment7.jpg')"
+                height="50vh"
+              />
+            </div>
+          </Section>
         </div>
-        <div class="dark__container">
-          <div class="dark__header">
-            <div class="dark__title">
+
+        <div class="history-container" :style="lightBackground">
+          <div class="history-header">
+            <div class="history-title">
               {{ $t('profile.summaries.label') }}
             </div>
           </div>
@@ -113,9 +125,35 @@
             />
           </div>
         </div>
-        <div class="light__container">
-          <div class="light__header">
-            <div class="light__title">{{ $t('profile.posters.label') }}</div>
+
+        <div class="vita__container">
+          <div>
+            <v-img
+              :src="require('~/assets/images/treatments/treatment2.jpg')"
+              height="100%"
+              width="30vw"
+            ></v-img>
+          </div>
+          <div class="vita__subcontainer">
+            <div class="vita__header">
+              <div class="vita__title">{{ $t('profile.vita.label') }}</div>
+            </div>
+            <div>
+              <ProfileVitaItem
+                v-for="index in 7"
+                :key="`vita-${index}`"
+                :title="$t(`profile.vita.list.${index - 1}.title`)"
+                :subtitle="$t(`profile.vita.list.${index - 1}.subtitle`)"
+                :year="$t(`profile.vita.list.${index - 1}.year`)"
+                :place="$t(`profile.vita.list.${index - 1}.place`)"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="history-container" :style="lightBackground">
+          <div class="history-header">
+            <div class="history-title">{{ $t('profile.posters.label') }}</div>
           </div>
           <div>
             <ProfileBookItem
@@ -127,9 +165,9 @@
             />
           </div>
         </div>
-        <div class="dark__container">
-          <div class="dark__header">
-            <div class="dark__title">
+        <div class="history-container">
+          <div class="history-header">
+            <div class="history-title">
               {{ $t('profile.conferences.label') }}
             </div>
           </div>
@@ -153,12 +191,15 @@
 <script>
 import ProfileVitaItem from './ProfileVitaItem'
 import ProfileBookItem from './ProfileBookItem'
+import Section from './Section'
 import ProfilePublicationItem from './ProfilePublicationItem'
 import ProfilePublishedSummary from './ProfilePublishedSummary'
-import CustomSVG from '~/components/Global/CustomSVG'
+import ImageBlock from '~/components/Global/ImageBlock'
 import CoverPicture from '~/components/Global/CoverPicture'
 import CoverScroll from '~/components/Global/CoverScroll'
 import ProfileImage from '~/assets/images/profiles/profile-2.png'
+
+import { contentExtractor } from '~/helpers'
 
 export default {
   components: {
@@ -166,9 +207,10 @@ export default {
     ProfileBookItem,
     ProfilePublicationItem,
     ProfilePublishedSummary,
-    CustomSVG,
+    ImageBlock,
     CoverPicture,
     CoverScroll,
+    Section,
   },
   data() {
     return {
@@ -185,11 +227,83 @@ export default {
         background: this.themes.light.primary3,
       }
     },
+    lightBackground() {
+      return {
+        background: this.themes.light.lightBackground,
+      }
+    },
+  },
+  methods: {
+    contentExtractor(input) {
+      return contentExtractor(input)
+    },
   },
 }
 </script>
 
 <style scoped>
+.section {
+  position: relative;
+}
+
+.image-left {
+  position: absolute;
+  bottom: -7vh;
+  left: 84px;
+  z-index: 1;
+}
+
+.image-right {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  right: 84px;
+  z-index: 1;
+}
+
+.apposthrope {
+  font-size: 75px;
+  font-family: Avenir;
+  color: #868686;
+}
+
+.history-container {
+  padding: 140px;
+}
+.history-header {
+  margin-bottom: 40px;
+}
+.history-title {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 66px;
+  text-align: justify;
+}
+
+.vita__container {
+  display: flex;
+  align-items: stretch;
+  padding: 0px;
+}
+.vita__subcontainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 84px;
+}
+.vita__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+}
+.vita__title {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 66px;
+  text-align: justify;
+}
+
 .wrapper {
   margin-top: 0px;
 }
@@ -252,82 +366,5 @@ export default {
 .description__container {
   display: flex;
   align-items: stretch;
-}
-
-/* .header__title {
-  font-weight: 800;
-  font-size: 96px;
-  line-height: 131px;
-
-  color: #6c756b;
-} */
-
-/* .header__subtitle {
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 33px;
-  color: #cca43b;
-  margin-top: 15px;
-} */
-
-.vita__container {
-  /* background: #e5e5e5; */
-  display: flex;
-  padding: 0px;
-  /* padding: 80px 140px; */
-}
-.vita__subcontainer {
-  display: flex;
-  flex: 1;
-  padding: 80px;
-  background: #e5e5e5;
-  /* background: rgba(178, 121, 168, 0.51); */
-}
-.vita__header {
-  /* margin-bottom: 40px; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 280px;
-}
-.vita__title {
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 66px;
-  text-align: justify;
-  transform: rotate(-90deg);
-  /* color: #6c756b; */
-}
-
-.dark__container {
-  background: #e5e5e5;
-  /* background: #6c756b; */
-  padding: 80px 140px;
-}
-.dark__header {
-  margin-bottom: 40px;
-}
-.dark__title {
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 66px;
-  text-align: justify;
-
-  /* color: #6c756b; */
-  /* color: #fff; */
-}
-
-.light__container {
-  padding: 80px 140px;
-}
-.light__header {
-  margin-bottom: 40px;
-}
-.light__title {
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 66px;
-
-  /* color: #6c756b; */
 }
 </style>
