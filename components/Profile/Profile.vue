@@ -129,11 +129,12 @@
 
         <div class="vita__container">
           <div>
-            <v-img
+            <ProfilePicture
               :src="require('~/assets/images/treatments/treatment2.jpg')"
               height="100%"
               width="30vw"
-            ></v-img>
+              vertical
+            ></ProfilePicture>
           </div>
           <div class="vita__subcontainer">
             <div class="vita__header">
