@@ -17,10 +17,12 @@
             ></p>
           </Section>
           <div class="image-left">
-            <ImageBlock
+            <ProfilePicture
               :src="require('~/assets/images/profiles/profile.jpg')"
               height="90vh"
-            />
+              width="60vh"
+              vertical
+            ></ProfilePicture>
           </div>
         </div>
         <div class="section" :style="lightBackground">
@@ -35,10 +37,12 @@
             ></p>
           </Section>
           <div class="image-right">
-            <ImageBlock
-              :src="require('~/assets/images/profiles/profile-2.png')"
+            <ProfilePicture
+              :src="ProfileImage"
               height="50vh"
-            />
+              width="40vh"
+              vertical
+            ></ProfilePicture>
           </div>
         </div>
         <div class="section">
@@ -55,10 +59,12 @@
             <span class="apposthrope font-weight-bold font-italic">"</span>
           </Section>
           <div class="image-left">
-            <ImageBlock
+            <ProfilePicture
               :src="require('~/assets/images/treatments/treatment4.jpg')"
               height="90vh"
-            />
+              width="60vh"
+              vertical
+            ></ProfilePicture>
           </div>
         </div>
 
@@ -75,7 +81,7 @@
               :title="$t(`profile.publication.list.${index - 1}.title`)"
               :subtitle="$t(`profile.publication.list.${index - 1}.subtitle`)"
               :detail="$t(`profile.publication.list.${index - 1}.detail`)"
-              :index="index < 10 ? `0${index}` : index"
+              :index="index < 10 ? `0${index}` : `${index}`"
             />
           </div>
         </div>
@@ -93,10 +99,12 @@
               />
             </div>
             <div class="image-left">
-              <ImageBlock
+              <ProfilePicture
                 :src="require('~/assets/images/treatments/treatment7.jpg')"
                 height="50vh"
-              />
+                width="33vh"
+                vertical
+              ></ProfilePicture>
             </div>
           </Section>
         </div>
@@ -114,7 +122,7 @@
               :title="$t(`profile.summaries.list.${index - 1}.title`)"
               :author="$t(`profile.summaries.list.${index - 1}.author`)"
               :detail="$t(`profile.summaries.list.${index - 1}.detail`)"
-              :index="index < 10 ? `0${index}` : index"
+              :index="index < 10 ? `0${index}` : `${index}`"
             />
           </div>
         </div>
@@ -171,7 +179,7 @@
               :title="$t(`profile.conferences.list.${index - 1}.title`)"
               :subtitle="$t(`profile.conferences.list.${index - 1}.detail`)"
               :detail="$t(`profile.conferences.list.${index - 1}.author`)"
-              :index="index < 10 ? `0${index}` : index"
+              :index="index < 10 ? `0${index}` : `${index}`"
             />
           </div>
         </div>
@@ -184,10 +192,10 @@
 <script>
 import ProfileVitaItem from './ProfileVitaItem'
 import ProfileBookItem from './ProfileBookItem'
+import ProfilePicture from './ProfilePicture'
 import Section from './Section'
 import ProfilePublicationItem from './ProfilePublicationItem'
 import ProfilePublishedSummary from './ProfilePublishedSummary'
-import ImageBlock from '~/components/Global/ImageBlock'
 import CoverPicture from '~/components/Global/CoverPicture'
 import CoverScroll from '~/components/Global/CoverScroll'
 import ProfileImage from '~/assets/images/profiles/profile-2.png'
@@ -198,9 +206,9 @@ export default {
   components: {
     ProfileVitaItem,
     ProfileBookItem,
+    ProfilePicture,
     ProfilePublicationItem,
     ProfilePublishedSummary,
-    ImageBlock,
     CoverPicture,
     CoverScroll,
     Section,

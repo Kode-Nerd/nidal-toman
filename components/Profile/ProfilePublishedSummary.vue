@@ -27,8 +27,8 @@ export default {
       default: '',
     },
     index: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: '00',
     },
   },
 }
