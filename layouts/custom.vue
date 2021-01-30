@@ -43,7 +43,7 @@ export default {
     },
     textDefaultStyle() {
       return {
-        color: this.themes.light.primary,
+        color: this.themes.light.primary4,
       }
     },
   },
