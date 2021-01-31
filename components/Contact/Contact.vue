@@ -45,7 +45,11 @@
           </v-col>
         </v-row>
       </div>
-      <div class="section d-flex align-stretch" :style="lightBackground">
+      <div
+        id="contact-form"
+        class="section d-flex align-stretch"
+        :style="lightBackground"
+      >
         <div class="form-cover">
           <v-img
             :src="require('~/assets/images/interiors/interior1.jpg')"
@@ -55,7 +59,7 @@
         </div>
         <div class="form">
           <Title>{{ $t('contact.form') }}</Title>
-          <v-row id="contact-form" class="contact-address-container">
+          <v-row class="contact-address-container">
             <v-col>
               <form class="d-flex flex-column">
                 <input
