@@ -69,6 +69,9 @@ export default {
 
 <style scoped>
 .scroll {
+  position: absolute;
+  top: 0px;
+  left: 0px;
   padding: 36px;
   width: 100%;
   height: 100%;
