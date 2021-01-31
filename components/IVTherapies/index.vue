@@ -105,22 +105,25 @@
               $t('ivtherapies.footers[0].title')
             )"
             :key="index"
-            class="text-h4 font-weight-bold text-center mr-3"
+            class="text-h4 font-weight-bold text-center"
             v-html="text"
           ></span>
-          <p class="text-h5 font-weight-light text-center">
+          <p class="text-h5 font-weight-light text-center mt-4">
             {{ $t('ivtherapies.footers[0].text') }}
           </p>
-          <v-btn
-            elevation="2"
-            :color="themes.light.primary4"
-            large
-            dark
-            :ripple="false"
-            @click="goto('https://b-lance.me')"
-          >
-            <span>{{ $t('ivtherapies.footers[0].button') }}</span>
-          </v-btn>
+          <div class="d-flex flex-column align-center button">
+            <v-btn
+              elevation="2"
+              :color="themes.light.primary4"
+              large
+              dark
+              block
+              :ripple="false"
+              @click="goto('https://b-lance.me')"
+            >
+              <span>{{ $t('ivtherapies.footers[0].button') }}</span>
+            </v-btn>
+          </div>
         </div>
         <div class="d-flex flex-column align-center footer-comp">
           <p class="text-h4 font-weight-bold text-center">
@@ -129,17 +132,20 @@
           <p class="text-h5 font-weight-light text-center">
             {{ $t('ivtherapies.footers[1].text') }}
           </p>
-          <v-btn
-            elevation="2"
-            :color="themes.light.primary4"
-            large
-            outlined
-            dark
-            :ripple="false"
-            @click="gotoContact"
-          >
-            <span>{{ $t('ivtherapies.footers[1].button') }}</span>
-          </v-btn>
+          <div class="d-flex flex-column align-center button">
+            <v-btn
+              elevation="2"
+              :color="themes.light.primary4"
+              outlined
+              large
+              dark
+              block
+              :ripple="false"
+              @click="gotoContact"
+            >
+              <span>{{ $t('ivtherapies.footers[1].button') }}</span>
+            </v-btn>
+          </div>
         </div>
       </div>
     </div>
@@ -250,5 +256,9 @@ export default {
 
 .footer-comp {
   width: 21%;
+}
+
+.button {
+  width: 85%;
 }
 </style>

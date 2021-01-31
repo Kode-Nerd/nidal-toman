@@ -101,18 +101,13 @@
                   class="ml-2"
                   :label="$t('contact.formDetail.check') + '*'"
                 ></v-checkbox>
-                <div
-                  class="d-flex flex-column align-self-center"
-                  :style="submitButton"
-                >
+                <div class="d-flex flex-column align-self-center submit-button">
                   <v-btn
                     dark
-                    :disabled="sendingEmail"
                     :loading="sendingEmail"
                     elevation="2"
                     x-large
-                    :color="themes.light.background"
-                    :text="true"
+                    :color="themes.light.primary4"
                     :ripple="false"
                     @click="sendEmail"
                     >{{ $t('contact.formDetail.send') }}</v-btn
@@ -196,7 +191,6 @@ export default {
     },
     submitButton() {
       return {
-        background: this.themes.light.primary4,
         width: '30%',
       }
     },
@@ -264,6 +258,10 @@ export default {
 .form {
   flex-grow: 1;
   padding: 0 24px;
+}
+
+.submit-button {
+  width: 30%;
 }
 
 .contact-address-container {
