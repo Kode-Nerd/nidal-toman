@@ -44,11 +44,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    '@aceforth/nuxt-optimized-images'
   ],
-  optimizedImages: {
-    optimizeImages: false
-  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
