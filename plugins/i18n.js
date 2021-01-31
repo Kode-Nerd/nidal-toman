@@ -19,6 +19,7 @@ export default ({ app, store }) => {
         privacy: { ...require('~/assets/locales/en/privacy.json') },
         infodesk: { ...require(`~/assets/locales/en/infodesk.json`) },
         contact: { ...require(`~/assets/locales/en/contact.json`) },
+        ivtherapies: { ...require(`~/assets/locales/en/ivtherapies.json`) },
       },
       de: {
         nav: { ...require('~/assets/locales/de/nav.json') },
@@ -30,6 +31,7 @@ export default ({ app, store }) => {
         privacy: { ...require('~/assets/locales/de/privacy.json') },
         infodesk: { ...require(`~/assets/locales/de/infodesk.json`) },
         contact: { ...require(`~/assets/locales/de/contact.json`) },
+        ivtherapies: { ...require(`~/assets/locales/de/ivtherapies.json`) },
       },
     },
   })

@@ -102,8 +102,7 @@ export default {
 
       return (
         rect.top <=
-          (window.innerHeight || document.documentElement.clientHeight) / 2 &&
-        rect.top >= 0
+        (window.innerHeight || document.documentElement.clientHeight) / 2
       )
     },
   },
