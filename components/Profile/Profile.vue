@@ -42,6 +42,7 @@
               height="50vh"
               width="40vh"
               vertical
+              :border="themes.light.lightBackground"
             ></ProfilePicture>
           </div>
         </div>
@@ -131,7 +132,7 @@
           <div>
             <ProfilePicture
               :src="require('~/assets/images/treatments/treatment2.jpg')"
-              height="100%"
+              height="100vh"
               width="30vw"
               vertical
             ></ProfilePicture>
@@ -295,9 +296,7 @@ export default {
 }
 .vita__header {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 280px;
 }
 .vita__title {
   font-weight: 800;

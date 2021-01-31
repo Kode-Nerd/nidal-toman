@@ -1,5 +1,5 @@
 <template>
-  <div ref="profpict" class="profpict-container">
+  <div ref="profpict" class="profpict-container" :style="profpictstyle">
     <v-img
       :src="src"
       :height="height"
@@ -68,6 +68,14 @@ export default {
     },
     noborder() {
       return this.ready && this.inView
+    },
+    profpictstyle() {
+      const style = {
+        width: this.width,
+        height: this.height,
+      }
+
+      return style
     },
   },
   mounted() {
