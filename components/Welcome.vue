@@ -81,7 +81,10 @@
           ></v-img>
         </div>
         <div :style="figure2" class="d-flex flex-column align-center">
-          <span :style="[titleStyle]" class="text-h4 mb-n3 font-weight-light">
+          <span
+            :style="[titleStyle, { color: themes.light.darkBackground }]"
+            class="text-h4 mb-n3 font-weight-light"
+          >
             {{ $t('welcome.infusion') }}
           </span>
           <v-img
@@ -300,7 +303,8 @@ export default {
     },
     maleFemaleStyle() {
       return {
-        color: this.themes.light.primary3,
+        // color: this.themes.light.primary3,
+        visibility: 'hidden',
       }
     },
     discoverTextStyle() {
