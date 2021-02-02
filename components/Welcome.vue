@@ -9,7 +9,7 @@
       <v-row class="welcome-main-logo">
         <v-col cols="2"></v-col>
         <v-col cols="2">
-          <CustomSVG
+          <!-- <CustomSVG
             :style="mainLogoStyle"
             :src="require('~/assets/main-logo.svg')"
             :width="mainLogoWidth"
@@ -17,10 +17,10 @@
             :color="themes.light.logo"
             position="top"
           >
-            <div v-if="showPos">
-              {{ welcomeMainLeftPos }} | {{ innerWidth }} | {{ userAgent }}
-            </div>
-          </CustomSVG>
+          </CustomSVG> -->
+          <div v-if="showPos" :style="mainLogoStyle">
+            {{ welcomeMainLeftPos }} | {{ innerWidth }} | {{ userAgent }}
+          </div>
         </v-col>
         <v-col :style="localeStyle" cols="2">
           <v-row justify="end">
@@ -35,30 +35,38 @@
           :slider-color="themes.light.primary3"
           :custom-slider="true"
         />
-        <div :style="welcomeBannerStyle">
-          <div class="d-flex flex-column">
-            <span :style="[titleStyle]" class="text-h4 font-weight-light">
+        <div :style="[welcomeBannerStyle, welcomeBannerOpacityStyle]">
+          <div class="d-flex flex-column align-center">
+            <!-- <span :style="[titleStyle]" class="text-h4 font-weight-light">
               {{ $t('welcome.title1') }}
-            </span>
+            </span> -->
             <CustomSVG
-              class="ml-n10 mb-n8 mt-4"
-              :src="require('~/assets/name.svg')"
-              :width="'45rem'"
-              :height="'5rem'"
-              :color="themes.light.logo"
+              :src="require('~/assets/main-logo.svg')"
+              :width="mainLogoWidth"
+              :height="mainLogoHeight"
+              :color="themes.light.primary3"
               :cover="true"
             ></CustomSVG>
             <!-- <span :style="nameStyle" class="text-h3 mt-3">
               {{ $t('welcome.title2') }}
             </span> -->
-            <v-col cols="8">
-              <v-row>
-                <span class="text-h5 font-weight-light mb-8">
-                  {{ $t('welcome.title3') }}
-                </span>
-              </v-row>
-            </v-col>
-            <span class="text-h6 font-weight-thin">
+            <span
+              :style="{ color: themes.light.darkBackground }"
+              class="text-h5 font-weight-bold text-center text-uppercase"
+            >
+              {{ $t('welcome.title') }}
+            </span>
+            <!-- <span class="text-h6 font-weight-thin">
+              {{ $t('welcome.philosophy') }}
+            </span> -->
+          </div>
+        </div>
+        <div :style="[welcomeBannerStyle, philosophyOpacityStyle]">
+          <div class="d-flex flex-column align-center">
+            <span
+              :style="{ color: themes.light.darkBackground }"
+              class="text-h4"
+            >
               {{ $t('welcome.philosophy') }}
             </span>
           </div>
@@ -201,13 +209,14 @@ export default {
       welcomeMainLeftPos: 0,
       welcomeBannerLeftPos: 0,
       bannerOpacity: 1,
-      figure1LeftPos: 0,
+      philosophyOpacity: 0,
+      figure1RightPos: 0,
       figure2LeftPos: 0,
-      mainLogoWidthSize: 65,
+      mainLogoWidthSize: 75,
       figureWomanRightPos: 0,
       figureManRightPos: 0,
       moreInfoOpacity: 0,
-      figure2MoreInfoRightPos: 45,
+      figure2MoreInfoRightPos: 0,
       atStart: true,
       atEnd: false,
       innerWidth: 0,
@@ -321,10 +330,20 @@ export default {
     welcomeBannerStyle() {
       return {
         width: '30%',
+        transform: 'translate(-50%, -50%)',
         position: 'absolute',
-        left: `${24 + this.welcomeBannerLeftPos}px`,
-        bottom: '10%',
+        left: `calc(25% + ${this.welcomeBannerLeftPos}px)`,
+        top: '50%',
+      }
+    },
+    welcomeBannerOpacityStyle() {
+      return {
         opacity: this.bannerOpacity,
+      }
+    },
+    philosophyOpacityStyle() {
+      return {
+        opacity: this.philosophyOpacity,
       }
     },
     leftMainLogoPos() {
@@ -348,7 +367,7 @@ export default {
       return {
         position: 'absolute',
         bottom: '0px',
-        right: `${100 - this.figure1LeftPos}vw`,
+        right: `${100 - this.figure1RightPos}vw`,
       }
     },
     figure2() {
@@ -356,14 +375,14 @@ export default {
         width: '100vh',
         position: 'absolute',
         bottom: '5vh',
-        left: `${this.figure2LeftPos + 200}vw`,
+        left: `${this.figure2LeftPos + 250}vw`,
       }
     },
     figure2MoreInfoStyle() {
       return {
         position: 'absolute',
         bottom: '2%',
-        right: `${this.figure2MoreInfoRightPos}%`,
+        right: `${this.figure2MoreInfoRightPos + 30}%`,
       }
     },
     figure2LogoStyle() {
@@ -547,6 +566,7 @@ export default {
     animateAll(deltaX, deltaY) {
       this.animateMainContainer(deltaX, deltaY)
       this.animateWelcomeBanner(deltaX, deltaY)
+      this.animatePhilosophyOpacity(deltaX, deltaY)
       this.animateFigureOne(deltaX, deltaY)
       this.animateFigureTwo(deltaX, deltaY)
       this.animateFigureWoman(deltaX, deltaY)
@@ -642,7 +662,7 @@ export default {
       // animating opacity
       if (
         leftPosMain <= -window.innerWidth / 12 &&
-        leftPosMain >= -window.innerWidth / 6
+        leftPosMain > -window.innerWidth / 6
       ) {
         this.bannerOpacity -= (deltaY / (5 * window.innerWidth)) * 12
       }
@@ -653,39 +673,71 @@ export default {
         this.bannerOpacity = 0
       }
     },
+    animatePhilosophyOpacity(deltaX, deltaY) {
+      const leftPosMain = this.welcomeMainLeftPos
+
+      // animating opacity
+      if (
+        leftPosMain <= -window.innerWidth / 6 &&
+        leftPosMain >= -window.innerWidth / 4
+      ) {
+        this.philosophyOpacity += (deltaY / (5 * window.innerWidth)) * 12
+      }
+
+      if (
+        leftPosMain < -window.innerWidth / 4 &&
+        leftPosMain > -window.innerWidth / 3
+      ) {
+        this.philosophyOpacity = 1
+      }
+
+      if (
+        leftPosMain <= -window.innerWidth / 3 &&
+        leftPosMain >= (-window.innerWidth * 5) / 12
+      ) {
+        this.philosophyOpacity -= (deltaY / (5 * window.innerWidth)) * 12
+      }
+
+      if (leftPosMain >= -window.innerWidth / 6) {
+        this.philosophyOpacity = 0
+      }
+      if (leftPosMain <= (-window.innerWidth * 5) / 12) {
+        this.philosophyOpacity = 0
+      }
+    },
     animateFigureOne(deltaX, deltaY) {
       const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figure1LeftPos -= deltaY / 60
+        this.figure1RightPos -= (deltaY * 50) / window.innerWidth
       }
 
       // to avoid offset set by wheel event
       if (leftPosMain >= 0) {
-        this.figure1LeftPos = 0
+        this.figure1RightPos = 0
       }
       if (leftPosMain <= -window.innerWidth) {
-        this.figure1LeftPos = -119
+        this.figure1RightPos = -250
       }
     },
     animateFigureTwo(deltaX, deltaY) {
       const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figure2LeftPos -= deltaY / 30
+        this.figure2LeftPos -= (deltaY * 70) / window.innerWidth
       }
 
       // to animate "Discover More"
       if (leftPosMain <= 0 && leftPosMain >= (-window.innerWidth / 3) * 2) {
-        this.figure2MoreInfoRightPos -= deltaY / 100
+        this.figure2MoreInfoRightPos -= (deltaY * 10) / window.innerWidth
       }
 
       // to avoid offset set by wheel event
       if (leftPosMain >= 0) {
         this.figure2LeftPos = 0
-        this.figure2MoreInfoRightPos = 45
+        this.figure2MoreInfoRightPos = 0
       }
       if (leftPosMain <= -window.innerWidth) {
-        this.figure2LeftPos = -237
-        this.figure2MoreInfoRightPos = -2.5
+        this.figure2LeftPos = -350
+        this.figure2MoreInfoRightPos = -50
       }
     },
 
