@@ -386,15 +386,15 @@ export default {
       return {
         position: 'absolute',
         bottom: '2%',
-        right: `${this.figure2MoreInfoRightPos + 30}%`,
+        right: `${this.figure2MoreInfoRightPos + 42}%`,
       }
     },
     figure2LogoStyle() {
       return {
         position: 'absolute',
         bottom: '7%',
-        right: `calc(50vh - 45vh)`,
-        // right: `${this.figure2MoreInfoRightPos - 3}%`,
+        // right: `calc(50vh - 45vh)`,
+        right: `${this.figure2MoreInfoRightPos + 42}%`,
         opacity: '70%',
       }
     },
@@ -731,7 +731,8 @@ export default {
 
       // to animate "Discover More"
       if (leftPosMain <= 0 && leftPosMain >= (-window.innerWidth / 3) * 2) {
-        this.figure2MoreInfoRightPos -= (deltaY * 10) / window.innerWidth
+        this.figure2MoreInfoRightPos -=
+          (deltaY * 10 * 3) / (2 * window.innerWidth)
       }
 
       // to avoid offset set by wheel event
@@ -741,6 +742,8 @@ export default {
       }
       if (leftPosMain <= -window.innerWidth) {
         this.figure2LeftPos = -350
+      }
+      if (leftPosMain <= (-2 * window.innerWidth) / 3) {
         this.figure2MoreInfoRightPos = -50
       }
     },
