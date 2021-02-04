@@ -328,7 +328,7 @@ export default {
     localeStyle() {
       return {
         opacity: this.bannerOpacity,
-        zIndex: this.bannerOpacity === 0 ? -1 : 5,
+        zIndex: this.bannerOpacity === 0 ? -1 : 6,
       }
     },
     welcomeBannerStyle() {
