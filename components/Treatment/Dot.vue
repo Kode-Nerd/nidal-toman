@@ -104,6 +104,7 @@ div:focus {
   border: solid 0px;
   transform: translate(-50%, -50%);
   position: absolute;
+  cursor: pointer;
 }
 
 .outer__dot.hover {
