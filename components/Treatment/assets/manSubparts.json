@@ -1,49 +1,49 @@
 {
   "face_and_head": [
     {
-      "name": "Face Lift",
+      "name": "faceLift",
       "query": "face_lift",
       "x": "55%",
       "y": "30%",
       "active": false
     },
     {
-      "name": "Neck Lift",
+      "name": "neckLift",
       "query": "neck_lift",
       "x": "82%",
       "y": "40%",
       "active": false
     },
     {
-      "name": "Eyelid Correction",
+      "name": "eyelid",
       "query": "eyelid_correction",
       "x": "84%",
       "y": "50%",
       "active": false
     },
     {
-      "name": "Rhinoplasty",
+      "name": "rhinoplasty",
       "query": "rhinoplasty",
       "x": "42%",
       "y": "38%",
       "active": false
     },
     {
-      "name": "Ear Correction",
+      "name": "ear",
       "query": "ear_correction",
       "x": "70%",
       "y": "65%",
       "active": false
     },
     {
-      "name": "Chin Correction",
+      "name": "chin",
       "query": "chin_correction",
       "x": "70%",
       "y": "65%",
       "active": false
     },
     {
-      "name": "Migraine Theraphy",
+      "name": "migraineTheraphy",
       "query": "migraine_theraphy",
       "x": "70%",
       "y": "65%",
