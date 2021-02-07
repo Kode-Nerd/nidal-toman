@@ -69,6 +69,10 @@ import TreatmentDetail from '../TreatmentDetail/TreatmentDetail'
 import MainNavigation from './MainNavigation'
 import VerticalNavigation from './VerticalNavigation'
 import Dot from './Dot'
+import womanParts from './assets/womanParts.json'
+import manParts from './assets/manParts.json'
+import womanSubparts from './assets/womanSubparts.json'
+import manSubparts from './assets/manSubparts.json'
 import { finalpath } from '~/helpers'
 
 export default {
@@ -79,135 +83,18 @@ export default {
     Dot,
   },
   data() {
+    console.log({
+      womanParts,
+      manParts,
+      womanSubparts,
+      manSubparts,
+    })
     return {
       ready: false,
-      womanParts: [
-        {
-          name: 'faceHeadSurgery',
-          query: 'face_and_head',
-          x: '55%',
-          y: '26%',
-          active: false,
-        },
-        {
-          name: 'chestArea',
-          query: 'chest_area',
-          x: '40%',
-          y: '36%',
-          active: false,
-        },
-        {
-          name: 'bodyArea',
-          query: 'body',
-          x: '42%',
-          y: '46%',
-          active: false,
-        },
-        {
-          name: 'arms',
-          query: 'arms',
-          x: '65%',
-          y: '40%',
-          active: false,
-        },
-        {
-          name: 'legs',
-          query: 'legs',
-          x: '45%',
-          y: '60%',
-          active: false,
-        },
-      ],
-      manParts: [
-        {
-          name: 'Face and Head',
-          query: 'face_and_head',
-          x: '55%',
-          y: '30%',
-          active: false,
-        },
-        {
-          name: 'Chest Area',
-          query: 'chest_area',
-          x: '82%',
-          y: '40%',
-          active: false,
-        },
-        {
-          name: 'Body',
-          query: 'body',
-          x: '84%',
-          y: '50%',
-          active: false,
-        },
-        {
-          name: 'Arms',
-          query: 'arms',
-          x: '42%',
-          y: '38%',
-          active: false,
-        },
-        {
-          name: 'Leg',
-          query: 'leg',
-          x: '70%',
-          y: '65%',
-          active: false,
-        },
-      ],
-      womanSubparts: {
-        face_and_head: [
-          {
-            name: 'Face Lift',
-            query: 'face_lift',
-            x: '55%',
-            y: '30%',
-            active: false,
-          },
-          {
-            name: 'Neck Lift',
-            query: 'neck_lift',
-            x: '82%',
-            y: '40%',
-            active: false,
-          },
-          {
-            name: 'Eyelid Correction',
-            query: 'eyelid_correction',
-            x: '84%',
-            y: '50%',
-            active: false,
-          },
-          {
-            name: 'Rhinoplasty',
-            query: 'rhinoplasty',
-            x: '42%',
-            y: '38%',
-            active: false,
-          },
-          {
-            name: 'Ear Correction',
-            query: 'ear_correction',
-            x: '70%',
-            y: '65%',
-            active: false,
-          },
-          {
-            name: 'Chin Correction',
-            query: 'chin_correction',
-            x: '70%',
-            y: '65%',
-            active: false,
-          },
-          {
-            name: 'Migraine Theraphy',
-            query: 'migraine_theraphy',
-            x: '70%',
-            y: '65%',
-            active: false,
-          },
-        ],
-      },
+      womanParts,
+      manParts,
+      womanSubparts,
+      manSubparts,
     }
   },
   computed: {
