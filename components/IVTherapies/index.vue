@@ -154,7 +154,7 @@
 
 <script>
 import CoverScroll from '~/components/Global/CoverScroll'
-import Section from '~/components/Profile/Section'
+import Section from '~/components/Profile/PSection'
 import ProfilePicture from '~/components/Profile/ProfilePicture'
 
 import { contentExtractor, finalpath } from '~/helpers'

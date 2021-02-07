@@ -24,7 +24,7 @@ export default ({ app, store }) => {
       de: {
         nav: { ...require('~/assets/locales/de/nav.json') },
         welcome: { ...require(`~/assets/locales/de/welcome.json`) },
-        treatments: { ...require(`~/assets/locales/de/treatment.json`) },
+        treatments: { ...require(`~/assets/locales/de/treatments.json`) },
         practice: { ...require(`~/assets/locales/de/practice.json`) },
         profile: { ...require('~/assets/locales/de/profile.json') },
         imprint: { ...require('~/assets/locales/de/imprint.json') },
