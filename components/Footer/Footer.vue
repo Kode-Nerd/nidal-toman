@@ -1,5 +1,5 @@
 <template>
-  <div class="footer__container">
+  <div class="footer__container" :style="darkBackground">
     <div class="footer__row">
       <CustomSVG
         class="ml-n8 mt-n8"
@@ -93,6 +93,11 @@ export default {
     mainLogoHeight() {
       return `${0.6 * this.mainLogoWidthSize}vh`
     },
+    darkBackground() {
+      return {
+        background: this.themes.light.primary4,
+      }
+    },
   },
   methods: {
     gotoContact() {
@@ -107,7 +112,6 @@ export default {
 
 <style scoped>
 .footer__container {
-  background: #363636;
   padding: 50px 100px;
 }
 
