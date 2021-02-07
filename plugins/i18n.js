@@ -12,7 +12,7 @@ export default ({ app, store }) => {
       en: {
         nav: { ...require('~/assets/locales/en/nav.json') },
         welcome: { ...require(`~/assets/locales/en/welcome.json`) },
-        treatments: { ...require(`~/assets/locales/en/treatment.json`) },
+        treatments: { ...require(`~/assets/locales/en/treatments.json`) },
         practice: { ...require(`~/assets/locales/en/practice.json`) },
         profile: { ...require('~/assets/locales/en/profile.json') },
         imprint: { ...require('~/assets/locales/en/imprint.json') },

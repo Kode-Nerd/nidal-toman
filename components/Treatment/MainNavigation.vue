@@ -9,7 +9,7 @@
       @mouseleave="part.active = false"
       @click="openDetail(part.query)"
     >
-      <div class="item__title">{{ part.name }}</div>
+      <div class="item__title">{{ $t(`treatment.${part.name}.title`) }}</div>
       <div class="item__line"></div>
     </div>
   </div>
