@@ -2,9 +2,12 @@
   "general": "General Information",
   "engagement": "Engagement",
   "additional": "Additional Information",
-  "faceHeadSurgery": {
+  "procedures": "Procedures",
+  "surgeries": "Surgeries",
+  "nonsurgeries": "Non-surgical Procedures",
+  "face_and_head": {
     "title": "Face and Head",
-    "faceLift": {
+    "face_lift": {
       "title": "Face Lift",
       "general": {
         "title": "Allgemeines zum Face-Lift",
@@ -62,7 +65,7 @@
         }
       }
     },
-    "neckLift": {
+    "neck_lift": {
       "title": "Hals-Lift",
       "general": {
         "title": "Allgemeines zum Hals-Lift",
@@ -124,7 +127,7 @@
         }
       }
     },
-    "eyelid": {
+    "eyelid_correction": {
       "title": "Lidkorrektur",
       "general": {
         "title": "Allgemeines zur Lidkorrektur",
@@ -266,7 +269,7 @@
         }
       }
     },
-    "ear": {
+    "ear_correction": {
       "title": "Ohrkorrektur",
       "general": {
         "title": "Allgemeines zur Ohrkorrektur",
@@ -328,7 +331,7 @@
         }
       }
     },
-    "chin": {
+    "chin_correction": {
       "title": "Kinnkorrektur",
       "general": {
         "title": "Allgemeines zur Kinnkorrektur",
@@ -391,9 +394,9 @@
       }
     }
   },
-  "chestArea": {
+  "chest_area": {
     "title": "Chest Area",
-    "breastAugmentation": {
+    "breast_augmentation": {
       "title": "Breast augmentation",
       "general": {
         "title": "Allgemeines zur Brustvergrößerung",
@@ -451,7 +454,7 @@
         }
       }
     },
-    "breastReduction": {
+    "breast_reduction": {
       "title": "Brustverkleinerung",
       "general": {
         "title": "Allgemeines zur Brustverkleinerung",
@@ -513,7 +516,7 @@
         }
       }
     },
-    "breastLift": {
+    "breast_lift": {
       "title": "Bruststraffung",
       "general": {
         "title": "Allgemeines zur Bruststraffung",
@@ -571,7 +574,7 @@
         }
       }
     },
-    "breastAsymetric": {
+    "breast_asymetric": {
       "title": "Brustasymmetriekorrektur",
       "general": {
         "title": "Allgemeines zur Brustasymmetriekorrektur",
@@ -629,7 +632,7 @@
         }
       }
     },
-    "breastReconstruction": {
+    "breast_reconstruction": {
       "title": "Brustrekonstruktion",
       "general": {
         "title": "Allgemeines zur Brustrekonstruktion",
@@ -700,7 +703,7 @@
         }
       }
     },
-    "breastReductionMan": {
+    "breast_reduction_man": {
       "title": "Brustverkleinerung",
       "general": {
         "title": "Allgemeines zur Brustverkleinerung",
@@ -763,9 +766,9 @@
       }
     }
   },
-  "bodyArea": {
+  "body": {
     "title": "Body Area",
-    "breastReconstruction": {
+    "breast_reconstruction": {
       "title": "Fettabsaugung",
       "general": {
         "title": "Allgemeines zur Fettabsaugung",
@@ -827,7 +830,7 @@
         }
       }
     },
-    "tummyTuck": {
+    "tummy_tuck": {
       "title": "Bauchdeckenstraffung",
       "general": {
         "title": "Allgemeines zur Bauchdeckenstraffung",
@@ -889,7 +892,7 @@
         }
       }
     },
-    "upperArmThighLift": {
+    "upper_arm_thigh_lift": {
       "title": "Oberarm- & Oberschenkellift",
       "general": {
         "title": "Allgemeines zum Oberarm-& Oberschenkellift",
@@ -951,7 +954,7 @@
         }
       }
     },
-    "brazilianButtLift": {
+    "brazilian_butt_lift": {
       "title": "Brazilian Butt-Lift",
       "general": {
         "title": "Allgemeines zum Brazilian Butt-Lift",
@@ -1009,7 +1012,7 @@
         }
       }
     },
-    "scarCorrection": {
+    "scar_correction": {
       "title": "Narbenkorrektur",
       "general": {
         "title": "Allgemeines zur Narbenkorrektur",
@@ -1071,7 +1074,7 @@
         }
       }
     },
-    "sweatGlandSuction": {
+    "sweat_gland_suction": {
       "title": "Schweissdrüsenabsaugung",
       "general": {
         "title": "Allgemeines zur Schweissdrüsenabsaugung",
@@ -1140,8 +1143,8 @@
   "legs": {
     "title": "Legs"
   },
-  "outpatientTreatment": {
-    "wringkleTreatment": {
+  "outpatient_treatment": {
+    "wringkle_treatment": {
       "title": "Faltenbehandlung",
       "general": {
         "title": "Allgemeines zur Faltenbehandlung",
@@ -1213,7 +1216,7 @@
         }
       }
     },
-    "wringkleInjection": {
+    "wringkle_injection": {
       "title": "Faltenunterspritzung",
       "general": {
         "title": "Allgemeines zur Faltenunterspritzung",
@@ -1301,7 +1304,7 @@
         }
       }
     },
-    "lipInjection": {
+    "lip_injection": {
       "title": "Lippenunterspritzung",
       "general": {
         "title": "Allgemeines zur Lippenunterspritzung",
@@ -1367,7 +1370,7 @@
         }
       }
     },
-    "vampireLift": {
+    "vampire_lift": {
       "title": "Vampir-Lift",
       "general": {
         "title": "Allgemeines zum Vampir-Lift",
@@ -1452,7 +1455,7 @@
         }
       }
     },
-    "prpTherapy": {
+    "prp_therapy": {
       "title": "PRP-Therapie",
       "general": {
         "title": "PRP-Therapie",
@@ -1514,7 +1517,7 @@
         }
       }
     },
-    "antiStress": {
+    "anti_stress": {
       "title": "Anti-Stress Infusionstherapie",
       "general": {
         "title": "Allgemeines zur Anti-Stress Infusionstherapie",
@@ -1564,7 +1567,7 @@
         }
       }
     },
-    "fatAway": {
+    "fat_away": {
       "title": "Fett-Weg-Spritze",
       "general": {
         "title": "Allgemeines zur Fett-Weg-Spritze",

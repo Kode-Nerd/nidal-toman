@@ -7,7 +7,9 @@
       :class="{ active: subpart.active }"
       @click="setActive(index)"
     >
-      <div class="item__title">{{ subpart.name }}</div>
+      <div class="item__title">
+        {{ $t(`treatments.${figurePart}.${subpart.query}.title`) }}
+      </div>
     </div>
   </div>
 </template>
@@ -23,6 +25,14 @@ export default {
     },
   },
   computed: {
+    figurePart: {
+      get() {
+        return this.$store.state.figurePart
+      },
+      set(val) {
+        this.$store.commit('SET_FIGURE_PART', val)
+      },
+    },
     figureSubpart: {
       get() {
         return this.$store.state.figureSubpart

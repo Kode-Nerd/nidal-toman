@@ -10,7 +10,7 @@
       class="treatment__sub-nav"
       :class="{ z__index__1: visibleTreatmentDetail }"
     >
-      <span class="text-h5 ml-n6">Surgeries</span>
+      <span class="text-h5 ml-n6">{{ $t('treatments.surgeries') }}</span>
       <VerticalNavigation
         class="mt-3"
         tab-justify="left"
@@ -83,12 +83,6 @@ export default {
     Dot,
   },
   data() {
-    console.log({
-      womanParts,
-      manParts,
-      womanSubparts,
-      manSubparts,
-    })
     return {
       ready: false,
       womanParts,
@@ -154,6 +148,12 @@ export default {
 
         this.visibleTreatmentDetail = false
         this.figurePart = ''
+        this.womanParts.forEach((part) => {
+          part.active = false
+        })
+        this.manParts.forEach((part) => {
+          part.active = false
+        })
       },
       deep: true,
       immediate: true,

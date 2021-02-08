@@ -13,11 +13,7 @@
 
       <transition name="fade">
         <div v-if="isOpen" class="card__content">
-          As a smoker, you should stop smoking at least 4 weeks before your
-          appointment to avoid the risk of wound edge necrosis. You should be on
-          pain relievers such as B. Avoid aspirin, as these delay blood
-          clotting. If you wear your hair very short, you may want to let it
-          grow out a little to better hide the surgical scars.
+          <slot />
         </div>
       </transition>
     </div>

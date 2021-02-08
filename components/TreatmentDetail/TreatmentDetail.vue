@@ -1,33 +1,81 @@
 <template>
-  <div class="treat-detail-container">
-    <div class="treat-detail__button-container">
-      <img :src="icons.closeIcon" alt="close" @click="closeDetail" />
-    </div>
-    <div class="treat-detail__title">{{ subpart.name }}</div>
-    <div class="d-flex treat-detail-nav__container">
-      <ButtonNav
-        v-for="item in items"
-        :key="`${item.value}-${activeTab === item.value}`"
-        :title="item.label"
-        :value="item.value"
-        :is-active="activeTab === item.value"
-      />
-    </div>
+  <div class="d-flex align-stretch detail-container">
+    <div
+      class="treat-detail-container"
+      :class="{ closed: showingList }"
+      :style="lightBackground"
+    >
+      <div v-if="!showingList" class="d-flex flex-column full-height">
+        <div class="treat-detail__button-container">
+          <img :src="icons.closeIcon" alt="close" @click="closeDetail" />
+        </div>
+        <div class="treat-detail__title">
+          {{ $t(`treatments.${figurePart}.${subpart.query}.title`) }}
+        </div>
+        <div class="d-flex treat-detail-nav__container">
+          <ButtonNav
+            v-for="item in items"
+            :key="`${item.value}-${activeTab === item.value}`"
+            :title="item.label"
+            :value="item.value"
+            :is-active="activeTab === item.value"
+          />
+        </div>
 
-    <div class="treat-detail__content">
-      <div v-if="activeTab === 'additional'">
-        <ExpandedCardInfo
-          :index="0"
-          title="How i do preparation for operation"
-        />
+        <div class="treat-detail__content">
+          <div v-if="activeTab === 'additional'">
+            <ExpandedCardInfo
+              v-for="(content, index) in MasterContent[figurePart][
+                subpart.query
+              ].additional.content"
+              :key="index"
+              :index="index"
+              :title="
+                $t(
+                  `treatments.${figurePart}.${subpart.query}.additional.content[${index}].title`
+                )
+              "
+              >{{
+                $t(
+                  `treatments.${figurePart}.${subpart.query}.additional.content[${index}].subtitle`
+                )
+              }}</ExpandedCardInfo
+            >
+          </div>
+          <div v-if="activeTab === 'general'">
+            {{
+              $t(`treatments.${figurePart}.${subpart.query}.general.content`)
+            }}
+          </div>
+          <div v-if="activeTab === 'engagement'">
+            {{
+              $t(`treatments.${figurePart}.${subpart.query}.engagement.content`)
+            }}
+          </div>
+        </div>
       </div>
-      <div v-if="activeTab !== 'additional'">
-        The natural aging process inevitably leads to reduced skin elasticity
-        with more or less pronounced wrinkling. The face lift is certainly the
-        most invasive but also the most effective method to achieve a visual
-        rejuvenation by tightening the entire face or neck region. The
-        anatomical characteristics that determine our facial expressions require
-        special surgical techniques. Essentially, this procedure uses
+    </div>
+    <div
+      class="d-flex justify-center align-center side-button"
+      :style="darkBackground"
+      @click="showingList = !showingList"
+    >
+      <span
+        v-if="!showingList"
+        class="text-h6 font-weight-light side-button-text"
+        >{{ $t('treatments.procedures') }}</span
+      >
+      <img v-else :src="icons.right" alt="right" />
+    </div>
+    <div
+      class="d-flex flex-column subpart-list"
+      :class="{ closed: !showingList }"
+      :style="background"
+    >
+      <div v-if="showingList">
+        <div class="treat-detail__button-container">
+          <img :src="icons.closeIcon" alt="close" @click="closeDetail" />
+        </div>
       </div>
     </div>
   </div>
@@ -35,12 +83,14 @@
 
 <script>
 // assets
+import ChevronRight from 'bootstrap-icons/icons/chevron-right.svg'
 import CloseIcon from '../../assets/icons/close-icon.svg'
 import BurgerMenuIcon from '../../assets/icons/burger-menu.svg'
 
 // components
 import ExpandedCardInfo from '../ExpandedCardInfo'
 import TreatmentDetailButtonNav from './TreatmentDetailButtonNav'
+import MasterContent from '~/assets/locales/en/treatments.json'
 
 export default {
   components: {
@@ -57,17 +107,49 @@ export default {
   },
   data() {
     return {
-      icons: { closeIcon: CloseIcon, burgerMenu: BurgerMenuIcon },
+      icons: {
+        closeIcon: CloseIcon,
+        burgerMenu: BurgerMenuIcon,
+        right: ChevronRight,
+      },
       items: [
-        { label: 'General Information', value: 'general' },
-        { label: 'Engagment', value: 'engagment' },
-        { label: 'Additional Information', value: 'additional' },
+        { label: this.$t('treatments.general'), value: 'general' },
+        { label: this.$t('treatments.engagement'), value: 'engagement' },
+        { label: this.$t('treatments.additional'), value: 'additional' },
       ],
+      showingList: false,
+      MasterContent,
     }
   },
   computed: {
+    themes() {
+      return this.$vuetify.theme.themes
+    },
+    figurePart: {
+      get() {
+        return this.$store.state.figurePart
+      },
+      set(val) {
+        this.$store.commit('SET_FIGURE_PART', val)
+      },
+    },
     activeTab() {
       return this.$store.state.activeTab
+    },
+    darkBackground() {
+      return {
+        background: this.themes.light.darkBackground,
+      }
+    },
+    lightBackground() {
+      return {
+        background: this.themes.light.lightBackground,
+      }
+    },
+    background() {
+      return {
+        background: this.themes.light.background,
+      }
     },
   },
   methods: {
@@ -80,15 +162,52 @@ export default {
 }
 </script>
 
-<style>
-.treat-detail-container {
-  position: relative;
-  width: 100%;
-  padding: 60px;
-  box-shadow: 0px 2px 10px rgba(185, 185, 185, 0.25);
-  height: 100vh;
+<style scoped>
+.full-height {
+  height: 100%;
+}
+.detail-container {
+  /* box-shadow: 0px 2px 10px rgba(185, 185, 185, 0.25); */
   z-index: 2;
-  background: #fff;
+  width: 100%;
+  height: calc(100vh - 48px);
+}
+.side-button {
+  z-index: 1;
+  width: 7%;
+  transition: 200ms;
+  cursor: pointer;
+}
+.side-button:hover {
+  width: 8%;
+  transition: 200ms;
+}
+.side-button-text {
+  transform: rotate(-90deg);
+}
+
+.subpart-list {
+  flex-grow: 1;
+  position: relative;
+  padding: 60px;
+}
+.subpart-list.closed {
+  flex-grow: 0;
+  padding: 0px;
+  width: 0% !important;
+}
+
+.treat-detail-container {
+  flex-grow: 1;
+  position: relative;
+  padding: 60px;
+  transition: flex-grow 500ms;
+}
+.treat-detail-container.closed {
+  flex-grow: 0;
+  padding: 0px;
+  width: 0% !important;
+  transition: flex-grow 500ms;
 }
 
 .treat-detail__title {
@@ -100,7 +219,8 @@ export default {
 }
 
 .treat-detail-nav__container {
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
+  margin-bottom: 50px;
 }
 
 .treat-detail__button-container {
@@ -119,10 +239,9 @@ export default {
 }
 
 .treat-detail__content {
-  margin-top: 50px;
   font-size: 18px;
   line-height: 26px;
   text-align: justify;
-  color: #828282;
+  overflow: scroll;
 }
 </style>

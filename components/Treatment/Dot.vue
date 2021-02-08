@@ -11,7 +11,11 @@
   >
     <div :style="innerDot" class="inner__dot">
       <v-fade-transition>
-        <Tooltip v-if="showingTooltip" :name="name" :query="query" />
+        <Tooltip
+          v-if="showingTooltip"
+          :name="$t(`treatments.${query}.title`)"
+          :query="query"
+        />
       </v-fade-transition>
     </div>
   </div>
