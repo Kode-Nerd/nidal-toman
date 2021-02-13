@@ -2,38 +2,38 @@
   "face_and_head": [
     {
       "query": "face_lift",
-      "x": "55%",
-      "y": "30%",
+      "x": "59%",
+      "y": "28%",
       "active": false
     },
     {
       "query": "neck_lift",
-      "x": "82%",
-      "y": "40%",
+      "x": "50%",
+      "y": "32%",
       "active": false
     },
     {
       "query": "eyelid_correction",
-      "x": "84%",
-      "y": "50%",
+      "x": "52%",
+      "y": "27.5%",
       "active": false
     },
     {
       "query": "rhinoplasty",
-      "x": "42%",
-      "y": "38%",
+      "x": "55%",
+      "y": "29%",
       "active": false
     },
     {
       "query": "ear_correction",
-      "x": "70%",
-      "y": "65%",
+      "x": "48%",
+      "y": "27%",
       "active": false
     },
     {
       "query": "chin_correction",
-      "x": "70%",
-      "y": "65%",
+      "x": "55%",
+      "y": "31.5%",
       "active": false
     }
   ],

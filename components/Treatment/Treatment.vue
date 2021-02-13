@@ -56,6 +56,13 @@
                 v-bind="{ ...part, part }"
               />
             </div>
+            <div v-if="visibleTreatmentDetail">
+              <Dot
+                v-for="(part, index) in womanSubparts[figurePart]"
+                :key="index"
+                v-bind="{ ...part, part }"
+              />
+            </div>
           </v-img>
         </div>
         <div v-if="isMale" class="figure__man" :class="detailClass">
