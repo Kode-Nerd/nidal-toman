@@ -36,5 +36,81 @@
       "y": "65%",
       "active": false
     }
+  ],
+  "chest_area": [
+    {
+      "query": "breast_augmentation",
+      "x": "55%",
+      "y": "30%",
+      "active": false
+    },
+    {
+      "query": "breast_reduction",
+      "x": "82%",
+      "y": "40%",
+      "active": false
+    },
+    {
+      "query": "breast_lift",
+      "x": "84%",
+      "y": "50%",
+      "active": false
+    },
+    {
+      "query": "breast_asymetric",
+      "x": "42%",
+      "y": "38%",
+      "active": false
+    },
+    {
+      "query": "breast_reconstruction",
+      "x": "70%",
+      "y": "65%",
+      "active": false
+    },
+    {
+      "query": "breast_reduction_man",
+      "x": "70%",
+      "y": "65%",
+      "active": false
+    }
+  ],
+  "body": [
+    {
+      "query": "breast_reconstruction",
+      "x": "55%",
+      "y": "30%",
+      "active": false
+    },
+    {
+      "query": "tummy_tuck",
+      "x": "82%",
+      "y": "40%",
+      "active": false
+    },
+    {
+      "query": "upper_arm_thigh_lift",
+      "x": "84%",
+      "y": "50%",
+      "active": false
+    },
+    {
+      "query": "brazilian_butt_lift",
+      "x": "42%",
+      "y": "38%",
+      "active": false
+    },
+    {
+      "query": "scar_correction",
+      "x": "70%",
+      "y": "65%",
+      "active": false
+    },
+    {
+      "query": "sweat_gland_suction",
+      "x": "70%",
+      "y": "65%",
+      "active": false
+    }
   ]
 }
