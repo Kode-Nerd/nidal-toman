@@ -235,17 +235,17 @@ export default {
         this.isFemale &&
         !this.womanSubparts[this.figurePart][this.figureSubpart].active
       ) {
-        this.womanSubparts[this.figurePart][this.figureSubpart] = false
+        this.womanSubparts[this.figurePart][this.figureSubpart].active = false
         this.figureSubpart = 0
-        this.omanSubparts[0].active = true
+        this.womanSubparts[this.figurePart][0].active = true
       }
       if (
         this.isMale &&
         !this.manSubparts[this.figurePart][this.figureSubpart].active
       ) {
-        this.manSubparts[this.figurePart][this.figureSubpart] = false
+        this.manSubparts[this.figurePart][this.figureSubpart].active = false
         this.figureSubpart = 0
-        this.manSubparts[0].active = true
+        this.manSubparts[this.figurePart][0].active = true
       }
     },
   },
