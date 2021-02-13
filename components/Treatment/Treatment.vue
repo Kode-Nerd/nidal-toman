@@ -5,6 +5,14 @@
       <MainNavigation v-if="isFemale" :parts="womanParts" />
       <MainNavigation v-if="isMale" :parts="manParts" />
     </div>
+    <div class="treatment__back-button" @click="goBack">
+      <div class="pa-8">
+        <CustomSVG
+          size="3rem"
+          :src="require('bootstrap-icons/icons/arrow-left.svg')"
+        />
+      </div>
+    </div>
     <div
       v-if="!visibleTreatmentDetail"
       class="treatment__info d-flex flex-column align-start"
@@ -79,6 +87,7 @@ import womanParts from './assets/womanParts.json'
 import manParts from './assets/manParts.json'
 import womanSubparts from './assets/womanSubparts.json'
 import manSubparts from './assets/manSubparts.json'
+import CustomSVG from '~/components/Global/CustomSVG'
 import { finalpath } from '~/helpers'
 
 export default {
@@ -86,6 +95,7 @@ export default {
     TreatmentDetail,
     MainNavigation,
     Dot,
+    CustomSVG,
   },
   data() {
     return {
@@ -185,6 +195,17 @@ export default {
         query: { id: 'procedures' },
       })
     },
+    closeDetail() {
+      const { figure } = this.$route.query
+      this.$router.push({ query: { figure } })
+    },
+    goBack() {
+      if (this.visibleTreatmentDetail) {
+        this.closeDetail()
+      } else {
+        this.gotoProcedure()
+      }
+    },
   },
 }
 </script>
@@ -205,6 +226,19 @@ export default {
 .treatment__main {
   width: 100%;
   display: flex;
+}
+
+.treatment__back-button {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  z-index: 1;
+  transition: left 200ms;
+}
+.treatment__back-button:hover {
+  left: -10px;
+  transition: left 200ms;
 }
 
 .treatment__image {
