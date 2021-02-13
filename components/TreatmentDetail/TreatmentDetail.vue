@@ -235,7 +235,7 @@ export default {
         this.isFemale &&
         !this.womanSubparts[this.figurePart][this.figureSubpart].active
       ) {
-        this.this.womanSubparts[this.figureSubpart] = false
+        this.this.womanSubparts[this.figurePart][this.figureSubpart] = false
         this.figureSubpart = 0
         this.this.womanSubparts[0].active = true
       }
@@ -243,7 +243,7 @@ export default {
         this.isMale &&
         !this.manSubparts[this.figurePart][this.figureSubpart].active
       ) {
-        this.this.manSubparts[this.figureSubpart] = false
+        this.this.manSubparts[this.figurePart][this.figureSubpart] = false
         this.figureSubpart = 0
         this.this.manSubparts[0].active = true
       }
