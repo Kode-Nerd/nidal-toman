@@ -9,8 +9,20 @@
         <div class="treat-detail__button-container">
           <img :src="icons.closeIcon" alt="close" @click="closeDetail" />
         </div>
-        <div class="treat-detail__title">
-          {{ $t(`treatments.${figurePart}.${subpart.query}.title`) }}
+        <div class="treat-detail__title d-flex flex-column align-start">
+          <span>
+            {{ $t(`treatments.${figurePart}.${subpart.query}.title`) }}
+          </span>
+          <v-btn
+            class="text-lowercase"
+            text
+            small
+            :color="themes.light.primary3"
+            :ripple="false"
+            @click="showingList = !showingList"
+          >
+            {{ $t('treatments.changeArea') }}
+          </v-btn>
         </div>
         <div class="d-flex treat-detail-nav__container">
           <ButtonNav
@@ -58,7 +70,7 @@
     <div
       class="d-flex justify-center align-center side-button"
       :style="darkBackground"
-      @click="showingList = !showingList"
+      @click="toogleList"
     >
       <span
         v-if="!showingList"
@@ -76,6 +88,38 @@
         <div class="treat-detail__button-container">
           <img :src="icons.closeIcon" alt="close" @click="closeDetail" />
         </div>
+        <div class="treat-detail__title d-flex flex-column align-start">
+          <span>
+            {{ $t(`treatments.${figurePart}.title`) }}
+            {{ $t('treatments.procedures') }}
+          </span>
+          <v-btn
+            class="text-lowercase"
+            text
+            small
+            :color="themes.light.primary3"
+            :ripple="false"
+            @click="closeDetail"
+          >
+            {{ $t('treatments.changeArea') }}
+          </v-btn>
+        </div>
+        <div>
+          <span class="text-h5">{{ $t('treatments.surgeries') }}</span>
+          <VerticalNavigation
+            class="mt-3 mb-6"
+            tab-justify="left"
+            :subparts="womanSubparts[figurePart]"
+            @close-list="toogleList"
+          />
+          <span class="text-h5">{{ $t('treatments.nonsurgeries') }}</span>
+          <VerticalNavigation
+            class="mt-3"
+            tab-justify="left"
+            :subparts="womanSubparts[figurePart]"
+            @close-list="toogleList"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -86,16 +130,20 @@
 import ChevronRight from 'bootstrap-icons/icons/chevron-right.svg'
 import CloseIcon from '../../assets/icons/close-icon.svg'
 import BurgerMenuIcon from '../../assets/icons/burger-menu.svg'
-
-// components
 import ExpandedCardInfo from '../ExpandedCardInfo'
 import TreatmentDetailButtonNav from './TreatmentDetailButtonNav'
+import womanSubparts from '~/components/Treatment/assets/womanSubparts.json'
+import manSubparts from '~/components/Treatment/assets/manSubparts.json'
+
+// components
+import VerticalNavigation from '~/components/Treatment/VerticalNavigation'
 import MasterContent from '~/assets/locales/en/treatments.json'
 
 export default {
   components: {
     ButtonNav: TreatmentDetailButtonNav,
     ExpandedCardInfo,
+    VerticalNavigation,
   },
   props: {
     subpart: {
@@ -119,6 +167,8 @@ export default {
       ],
       showingList: false,
       MasterContent,
+      womanSubparts,
+      manSubparts,
     }
   },
   computed: {
@@ -132,6 +182,22 @@ export default {
       set(val) {
         this.$store.commit('SET_FIGURE_PART', val)
       },
+    },
+    figureSubpart: {
+      get() {
+        return this.$store.state.figureSubpart
+      },
+      set(val) {
+        this.$store.commit('SET_FIGURE_SUBPART', val)
+      },
+    },
+    isFemale() {
+      const { figure } = this.$route.query
+      return figure === 'female'
+    },
+    isMale() {
+      const { figure } = this.$route.query
+      return figure === 'male'
     },
     activeTab() {
       return this.$store.state.activeTab
@@ -152,11 +218,35 @@ export default {
       }
     },
   },
+  mounted() {
+    this.checkActiveSubpart()
+  },
   methods: {
     closeDetail() {
       const { figure } = this.$route.query
 
       this.$router.push({ query: { figure } })
+    },
+    toogleList() {
+      this.showingList = !this.showingList
+    },
+    checkActiveSubpart() {
+      if (
+        this.isFemale &&
+        !this.womanSubparts[this.figurePart][this.figureSubpart].active
+      ) {
+        this.this.womanSubparts[this.figureSubpart] = false
+        this.figureSubpart = 0
+        this.this.womanSubparts[0].active = true
+      }
+      if (
+        this.isMale &&
+        !this.manSubparts[this.figurePart][this.figureSubpart].active
+      ) {
+        this.this.manSubparts[this.figureSubpart] = false
+        this.figureSubpart = 0
+        this.this.manSubparts[0].active = true
+      }
     },
   },
 }
@@ -214,7 +304,6 @@ export default {
   font-weight: 600;
   font-size: 36px;
   line-height: 49px;
-  color: #6c756b;
   margin-bottom: 50px;
 }
 

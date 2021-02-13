@@ -3,8 +3,9 @@
     <div
       v-for="(subpart, index) in subparts"
       :key="index"
-      class="item__container"
+      class="item__container font-weight-light"
       :class="{ active: subpart.active }"
+      :style="subpart.active ? activeColor : normalColor"
       @click="setActive(index)"
     >
       <div class="item__title">
@@ -25,6 +26,9 @@ export default {
     },
   },
   computed: {
+    themes() {
+      return this.$vuetify.theme.themes
+    },
     figurePart: {
       get() {
         return this.$store.state.figurePart
@@ -40,6 +44,18 @@ export default {
       set(val) {
         this.$store.commit('SET_FIGURE_SUBPART', val)
       },
+    },
+    activeColor() {
+      return {
+        borderColor: this.themes.light.primary3,
+        color: this.themes.light.primary3,
+      }
+    },
+    normalColor() {
+      return {
+        borderColor: this.themes.light.border,
+        color: this.themes.light.border,
+      }
     },
   },
   mounted() {
@@ -68,6 +84,7 @@ export default {
       })
       this.subparts[index].active = true
       this.figureSubpart = index
+      this.$emit('close-list')
     },
   },
 }
@@ -82,7 +99,7 @@ export default {
   display: flex;
   align-items: center;
   padding: 8px 15px;
-  border-left: 1px solid #c4c4c4;
+  border-left: 1px solid;
   cursor: pointer;
 }
 
@@ -95,7 +112,7 @@ export default {
 }
 
 .active {
-  border-left: 3px solid #c4c4c4;
+  border-left: 3px solid;
   transition: 50ms;
 }
 </style>

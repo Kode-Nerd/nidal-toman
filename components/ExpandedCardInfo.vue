@@ -69,6 +69,7 @@ export default {
   font-size: 18px;
   line-height: 25px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .card__wrapper {
@@ -107,10 +108,14 @@ export default {
   margin-top: 20px;
 }
 
-.fade-enter-active,
-.fade-leave-active {
+.fade-enter-active {
   transition: opacity 0.8s;
 }
+
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }

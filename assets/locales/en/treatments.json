@@ -5,6 +5,8 @@
   "procedures": "Procedures",
   "surgeries": "Surgeries",
   "nonsurgeries": "Non-surgical Procedures",
+  "changeArea": "change areas",
+  "changeProcedure": "change procedure",
   "face_and_head": {
     "title": "Face and Head",
     "face_lift": {

@@ -1,5 +1,9 @@
 <template>
-  <div :class="btnClass" @click="setActiveTab({ activeTab: value })">
+  <div
+    :class="btnClass"
+    :style="isActive ? active : normal"
+    @click="setActiveTab({ activeTab: value })"
+  >
     {{ title }}
   </div>
 </template>
@@ -22,13 +26,28 @@ export default {
       type: Boolean,
     },
   },
-  data() {
-    return {
-      btnClass: {
+  computed: {
+    themes() {
+      return this.$vuetify.theme.themes
+    },
+    btnClass() {
+      return {
         'treatment-details__nav': true,
         isActive: !!this.isActive,
-      },
-    }
+      }
+    },
+    active() {
+      return {
+        borderColor: this.themes.light.primary3,
+        color: this.themes.light.primary3,
+      }
+    },
+    normal() {
+      return {
+        borderColor: this.themes.light.border,
+        color: this.themes.light.border,
+      }
+    },
   },
   methods: {
     ...mapMutations({
@@ -41,7 +60,6 @@ export default {
 <style>
 .treatment-details__nav {
   padding: 10px 0px;
-  color: #6c756b;
   cursor: pointer;
   white-space: nowrap;
   font-size: 24px;
@@ -62,6 +80,7 @@ export default {
 
 .isActive {
   font-weight: 700 !important;
-  border-bottom: solid 2px #cca43b;
+  border-bottom: solid 2px;
+  transition: font-weight 500ms;
 }
 </style>

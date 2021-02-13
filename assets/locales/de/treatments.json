@@ -5,6 +5,8 @@
   "procedures": "Abläufe",
   "surgeries": "Operationen",
   "nonsurgeries": "Nicht-chirurgische Eingriffe",
+  "changeArea": "änderungsbereiche",
+  "changeProcedure": "wechselvorgang",
   "faceHeadSurgery": {
     "title": "Face and Head",
     "faceLift": {
