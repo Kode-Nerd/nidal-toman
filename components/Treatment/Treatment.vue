@@ -78,7 +78,14 @@
         </div>
       </div>
       <div v-if="visibleTreatmentDetail" class="right__detail">
-        <TreatmentDetail :subpart="womanSubparts[figurePart][figureSubpart]" />
+        <TreatmentDetail
+          v-if="isFemale"
+          :subpart="womanSubparts[figurePart][figureSubpart]"
+        />
+        <TreatmentDetail
+          v-if="isMale"
+          :subpart="manSubparts[figurePart][figureSubpart]"
+        />
       </div>
     </div>
   </div>
