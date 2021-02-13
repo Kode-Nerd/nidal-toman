@@ -5,17 +5,21 @@
       <MainNavigation v-if="isFemale" :parts="womanParts" />
       <MainNavigation v-if="isMale" :parts="manParts" />
     </div>
-    <div
-      v-if="visibleTreatmentDetail"
-      class="treatment__sub-nav"
-      :class="{ z__index__1: visibleTreatmentDetail }"
-    >
-      <span class="text-h5 ml-n6">{{ $t('treatments.surgeries') }}</span>
-      <VerticalNavigation
-        class="mt-3"
-        tab-justify="left"
-        :subparts="womanSubparts[figurePart]"
-      />
+    <div class="treatment__info d-flex flex-column align-start">
+      <span class="text-h3">{{ $t('treatments.virtual') }}</span>
+      <v-btn
+        class="text-lowercase"
+        text
+        small
+        :color="themes.light.primary3"
+        :ripple="false"
+        @click="gotoProcedure"
+      >
+        {{ $t('treatments.changeGender') }}
+      </v-btn>
+      <span class="mt-8 text-h6 font-weight-light">{{
+        $t('treatments.virtualDesc')
+      }}</span>
     </div>
 
     <div class="treatment__main">
@@ -67,7 +71,6 @@
 <script>
 import TreatmentDetail from '../TreatmentDetail/TreatmentDetail'
 import MainNavigation from './MainNavigation'
-import VerticalNavigation from './VerticalNavigation'
 import Dot from './Dot'
 import womanParts from './assets/womanParts.json'
 import manParts from './assets/manParts.json'
@@ -79,7 +82,6 @@ export default {
   components: {
     TreatmentDetail,
     MainNavigation,
-    VerticalNavigation,
     Dot,
   },
   data() {
@@ -92,6 +94,9 @@ export default {
     }
   },
   computed: {
+    themes() {
+      return this.$vuetify.theme.themes
+    },
     visibleTreatmentDetail: {
       get() {
         return this.$store.state.visibleTreatmentDetail
@@ -162,16 +167,21 @@ export default {
   beforeMount() {
     const { figure } = this.$route.query
     if (!figure || (figure !== 'male' && figure !== 'female')) {
-      this.$router.push({
-        path: finalpath(this.locale, '/'),
-        query: { id: 'procedures' },
-      })
+      this.gotoProcedure()
 
       return
     }
 
     this.figure = figure
     this.ready = true
+  },
+  methods: {
+    gotoProcedure() {
+      this.$router.push({
+        path: finalpath(this.locale, '/'),
+        query: { id: 'procedures' },
+      })
+    },
   },
 }
 </script>
@@ -202,14 +212,11 @@ export default {
   width: 50%;
 }
 
-.treatment__sub-nav {
+.treatment__info {
   position: absolute;
-  top: 60px;
-  left: 37vw;
-}
-.z__index__1 {
-  z-index: 1;
-  transition: z-index 1000ms;
+  top: 15vh;
+  left: 5vw;
+  width: 30vw;
 }
 
 .treatment__main-nav {
