@@ -89,27 +89,31 @@
       "active": false
     },
     {
-      "query": "upper_arm_thigh_lift",
-      "x": "84%",
-      "y": "50%",
-      "active": false
-    },
-    {
-      "query": "brazilian_butt_lift",
-      "x": "42%",
-      "y": "38%",
-      "active": false
-    },
-    {
       "query": "scar_correction",
       "x": "70%",
       "y": "65%",
       "active": false
-    },
+    }
+  ],
+  "arms": [
     {
       "query": "sweat_gland_suction",
       "x": "70%",
       "y": "65%",
+      "active": false
+    },
+    {
+      "query": "upper_arm_thigh_lift",
+      "x": "84%",
+      "y": "50%",
+      "active": false
+    }
+  ],
+  "legs": [
+    {
+      "query": "brazilian_butt_lift",
+      "x": "42%",
+      "y": "38%",
       "active": false
     }
   ]
