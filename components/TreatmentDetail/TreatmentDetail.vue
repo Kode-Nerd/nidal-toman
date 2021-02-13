@@ -21,7 +21,7 @@
             :ripple="false"
             @click="showingList = !showingList"
           >
-            {{ $t('treatments.changeArea') }}
+            {{ $t('treatments.changeProcedure') }}
           </v-btn>
         </div>
         <div class="d-flex treat-detail-nav__container">
