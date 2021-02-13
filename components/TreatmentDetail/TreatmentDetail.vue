@@ -231,19 +231,17 @@ export default {
       this.showingList = !this.showingList
     },
     checkActiveSubpart() {
-      if (
-        this.isFemale &&
-        !this.womanSubparts[this.figurePart][this.figureSubpart].active
-      ) {
-        this.womanSubparts[this.figurePart][this.figureSubpart].active = false
+      if (this.isFemale) {
+        this.womanSubparts[this.figurePart].forEach((subpart) => {
+          subpart.active = false
+        })
         this.figureSubpart = 0
         this.womanSubparts[this.figurePart][0].active = true
       }
-      if (
-        this.isMale &&
-        !this.manSubparts[this.figurePart][this.figureSubpart].active
-      ) {
-        this.manSubparts[this.figurePart][this.figureSubpart].active = false
+      if (this.isMale) {
+        this.manSubparts[this.figurePart].forEach((subpart) => {
+          subpart.active = false
+        })
         this.figureSubpart = 0
         this.manSubparts[this.figurePart][0].active = true
       }
