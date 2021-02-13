@@ -166,7 +166,7 @@ export default {
         chest__area: this.figurePart === 'chest_area',
         body: this.figurePart === 'body',
         arms: this.figurePart === 'arms',
-        leg: this.figurePart === 'leg',
+        leg: this.figurePart === 'legs',
       }
     },
   },
