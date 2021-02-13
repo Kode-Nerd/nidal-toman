@@ -11,7 +11,11 @@
         ><slot
       /></v-img>
     </div>
-    <div v-if="src" class="border" :class="{ borderZero, borderNone }"></div>
+    <div
+      v-if="src"
+      class="border-cover"
+      :class="{ borderZero, borderNone }"
+    ></div>
   </div>
 </template>
 
@@ -77,7 +81,7 @@ export default {
   transition-timing-function: ease-in-out;
 }
 
-.border {
+.border-cover {
   width: 100vw;
   height: 100vh;
   position: absolute;

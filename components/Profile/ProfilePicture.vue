@@ -6,7 +6,11 @@
       :width="width"
       @load="ready = true"
     ></v-img>
-    <div :style="borderStyle" class="border" :class="{ noborder }"></div>
+    <div
+      :style="borderStyle"
+      class="border-profile"
+      :class="{ noborder }"
+    ></div>
   </div>
 </template>
 
@@ -114,7 +118,7 @@ export default {
   position: relative;
 }
 
-.border {
+.border-profile {
   position: absolute;
   top: 0px;
   left: 0px;
