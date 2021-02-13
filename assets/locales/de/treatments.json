@@ -10,9 +10,10 @@
   "changeGender": "geschlecht ändern",
   "virtual": "Virtuelle Konsultation",
   "virtualDesc": "Bitte klicken Sie auf den Bereich, der Sie interessiert, um die von Dr. Nidal Toman angebotenen chirurgischen und nicht-chirurgischen Verfahren anzuzeigen. Alternativ können Sie auch ein Gebiet aus der Liste auswählen.",
-  "faceHeadSurgery": {
+  "face_and_head": {
     "title": "Face and Head",
-    "faceLift": {
+    "face_lift": {
+      "title": "Face Lift",
       "general": {
         "title": "Allgemeines zum Face-Lift",
         "content": "Der natürliche Alterungsprozess führt zwangsläufig zu einer verminderten Hautelastizität mit mehr oder weniger ausgeprägter Faltenbildung.\n\nDas Face-Lift ist sicherlich die invasivste aber auch effektivste Methode, durch Straffung der gesamten Gesichts-, bzw. Halsregion eine optische Verjüngung zu erzielen. Die anatomischen Besonderheiten, die unsere Mimik bestimmen, erfordern spezielle Operationstechniken. Im wesentlichen werden bei diesem Eingriff Verschiebelappen von Wangen und Hals mit Inzisionen im Bereich der Haarlinien und um das Ohr herum verwandt. Das sogenannte große Face-lift schließt dabei eine Straffung aller Strukturen ein, d.h. also Haut und oberflächliches muskulo-aponeurotisches System (SMAS). Dieses besteht aus einer bindegewebsdurchzogenen Fettschicht und reicht von der Schläfe bis zum Hals."
@@ -69,7 +70,7 @@
         }
       }
     },
-    "neckLift": {
+    "neck_lift": {
       "title": "Hals-Lift",
       "general": {
         "title": "Allgemeines zum Hals-Lift",
@@ -131,7 +132,7 @@
         }
       }
     },
-    "eyelid": {
+    "eyelid_correction": {
       "title": "Lidkorrektur",
       "general": {
         "title": "Allgemeines zur Lidkorrektur",
@@ -273,7 +274,7 @@
         }
       }
     },
-    "ear": {
+    "ear_correction": {
       "title": "Ohrkorrektur",
       "general": {
         "title": "Allgemeines zur Ohrkorrektur",
@@ -335,7 +336,7 @@
         }
       }
     },
-    "chin": {
+    "chin_correction": {
       "title": "Kinnkorrektur",
       "general": {
         "title": "Allgemeines zur Kinnkorrektur",
@@ -772,7 +773,7 @@
   },
   "body": {
     "title": "Body Area",
-    "breast_reconstruction": {
+    "liposuction": {
       "title": "Fettabsaugung",
       "general": {
         "title": "Allgemeines zur Fettabsaugung",
