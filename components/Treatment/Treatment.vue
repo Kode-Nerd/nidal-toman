@@ -5,7 +5,10 @@
       <MainNavigation v-if="isFemale" :parts="womanParts" />
       <MainNavigation v-if="isMale" :parts="manParts" />
     </div>
-    <div class="treatment__info d-flex flex-column align-start">
+    <div
+      v-if="!visibleTreatmentDetail"
+      class="treatment__info d-flex flex-column align-start"
+    >
       <span class="text-h3">{{ $t('treatments.virtual') }}</span>
       <v-btn
         class="text-lowercase"
