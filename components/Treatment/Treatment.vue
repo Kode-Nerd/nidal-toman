@@ -13,6 +13,11 @@
         />
       </div>
     </div>
+    <div class="treatment__legal d-flex align-center">
+      <SocialMedia :small="true" />
+      <div class="mx-1" />
+      <Legal />
+    </div>
     <div
       v-if="!visibleTreatmentDetail"
       class="treatment__info d-flex flex-column align-start"
@@ -88,6 +93,8 @@ import manParts from './assets/manParts.json'
 import womanSubparts from './assets/womanSubparts.json'
 import manSubparts from './assets/manSubparts.json'
 import CustomSVG from '~/components/Global/CustomSVG'
+import SocialMedia from '~/components/Global/SocialMedia'
+import Legal from '~/components/Global/Legal'
 import { finalpath } from '~/helpers'
 
 export default {
@@ -96,6 +103,8 @@ export default {
     MainNavigation,
     Dot,
     CustomSVG,
+    SocialMedia,
+    Legal,
   },
   data() {
     return {
@@ -254,6 +263,12 @@ export default {
   top: 15vh;
   left: 5vw;
   width: 30vw;
+}
+
+.treatment__legal {
+  position: absolute;
+  bottom: 24px;
+  right: 36px;
 }
 
 .treatment__main-nav {

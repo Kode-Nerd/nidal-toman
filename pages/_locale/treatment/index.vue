@@ -9,6 +9,7 @@ export default {
   components: {
     Treatment,
   },
+  layout: 'customNoFooter',
   head() {
     return {
       title: 'Dr. Nidal Toman',
