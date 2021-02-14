@@ -92,14 +92,14 @@
   "arms": [
     {
       "query": "sweat_gland_suction",
-      "x": "70%",
-      "y": "65%",
+      "x": "57%",
+      "y": "39%",
       "active": false
     },
     {
       "query": "upper_arm_thigh_lift",
-      "x": "84%",
-      "y": "50%",
+      "x": "70%",
+      "y": "43%",
       "active": false
     }
   ],
