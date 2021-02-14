@@ -6,7 +6,7 @@
     :class="{ hover: part.active }"
     @click="toggleTooltip(part)"
     @blur="hideTooltip(part)"
-    @mouseover="part.active = true"
+    @mouseover="mouseover(part)"
     @mouseleave="mouseleave(part)"
   >
     <div :style="innerDot" class="inner__dot">
@@ -15,6 +15,7 @@
           v-if="showingTooltip"
           :name="$t(`treatments.${query}.title`)"
           :query="query"
+          @close-tooltip="closeTooltip"
         />
       </v-fade-transition>
     </div>
@@ -57,6 +58,14 @@ export default {
         return {}
       },
     },
+    index: {
+      type: Number,
+      default: -1,
+    },
+    forSubpart: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -79,17 +88,36 @@ export default {
   },
   methods: {
     toggleTooltip(part) {
-      this.showingTooltip = !this.showingTooltip
-      part.active = this.showingTooltip
+      if (!this.forSubpart) {
+        this.showingTooltip = !this.showingTooltip
+        part.active = this.showingTooltip
+      } else {
+        this.setSubpart()
+      }
     },
     hideTooltip(part) {
-      this.showingTooltip = false
-      part.active = false
-    },
-    mouseleave(part) {
-      if (!this.showingTooltip) {
+      if (!this.forSubpart) {
+        this.closeTooltip()
         part.active = false
       }
+    },
+    mouseover(part) {
+      if (!this.forSubpart) {
+        part.active = true
+      }
+    },
+    mouseleave(part) {
+      if (!this.forSubpart && !this.showingTooltip) {
+        part.active = false
+      }
+    },
+    closeTooltip() {
+      this.showingTooltip = false
+    },
+    setSubpart() {
+      this.$emit('reset-active-parts', this.index)
+      this.part.active = true
+      this.$emit('close-list')
     },
   },
 }

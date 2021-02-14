@@ -23,7 +23,7 @@ export default {
   methods: {
     openDetail(query) {
       const { figure } = this.$route.query
-
+      this.$emit('close-tooltip')
       this.$router.push({ query: { figure, part: query } })
     },
   },

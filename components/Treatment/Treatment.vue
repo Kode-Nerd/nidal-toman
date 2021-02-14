@@ -53,6 +53,7 @@
               <Dot
                 v-for="(part, index) in womanParts"
                 :key="index"
+                :index="index"
                 v-bind="{ ...part, part }"
               />
             </div>
@@ -60,7 +61,10 @@
               <Dot
                 v-for="(part, index) in womanSubparts[figurePart]"
                 :key="index"
+                :index="index"
                 v-bind="{ ...part, part }"
+                for-subpart
+                @reset-active-parts="resetActiveParts"
               />
             </div>
           </v-img>
@@ -228,6 +232,19 @@ export default {
       } else {
         this.gotoProcedure()
       }
+    },
+    resetActiveParts(val) {
+      if (this.isFemale) {
+        this.womanSubparts[this.figurePart].forEach((subpart) => {
+          subpart.active = false
+        })
+      }
+      if (this.isMale) {
+        this.manSubparts[this.figurePart].forEach((subpart) => {
+          subpart.active = false
+        })
+      }
+      this.figureSubpart = val
     },
   },
 }
