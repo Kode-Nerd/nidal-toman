@@ -40,7 +40,14 @@
 
     <div class="treatment__main">
       <div class="treatment__image">
-        <div v-if="isFemale" class="figure__woman" :class="detailClass">
+        <div
+          v-if="isFemale"
+          id="female"
+          ref="female"
+          class="figure__woman"
+          :class="detailClass"
+          @click="showCursorPos"
+        >
           <v-img
             style="overflow: visible"
             contain
@@ -57,7 +64,7 @@
                 v-bind="{ ...part, part }"
               />
             </div>
-            <div v-if="visibleTreatmentDetail">
+            <div v-else>
               <Dot
                 v-for="(part, index) in womanSubparts[figurePart]"
                 :key="index"
@@ -69,7 +76,14 @@
             </div>
           </v-img>
         </div>
-        <div v-if="isMale" class="figure__man" :class="detailClass">
+        <div
+          v-if="isMale"
+          id="male"
+          ref="male"
+          class="figure__man"
+          :class="detailClass"
+          @click="showCursorPos"
+        >
           <v-img
             style="overflow: visible"
             contain
@@ -83,6 +97,16 @@
                 v-for="(part, index) in manParts"
                 :key="index"
                 v-bind="{ ...part, part }"
+              />
+            </div>
+            <div v-else>
+              <Dot
+                v-for="(part, index) in manSubparts[figurePart]"
+                :key="index"
+                :index="index"
+                v-bind="{ ...part, part }"
+                for-subpart
+                @reset-active-parts="resetActiveParts"
               />
             </div>
           </v-img>
@@ -245,6 +269,37 @@ export default {
         })
       }
       this.figureSubpart = val
+    },
+    // debug method using debug query equals 1
+    showCursorPos(e) {
+      const isDebug = this.$route.query.debug === '1'
+
+      if (!isDebug) {
+        return
+      }
+
+      if (this.isFemale) {
+        const x =
+          e.pageX -
+          this.$refs.female.offsetLeft +
+          this.$refs.female.clientWidth / 2
+        const y = e.pageY - this.$refs.female.offsetTop - 48
+        const finalX = x / this.$refs.female.clientWidth
+        const finalY = y / this.$refs.female.clientHeight
+
+        console.log({ finalX, finalY })
+        alert(`x: ${Math.round(finalX * 100)}% y: ${Math.round(finalY * 100)}%`)
+      }
+      if (this.isMale) {
+        const x =
+          e.pageX - this.$refs.male.offsetLeft + this.$refs.male.clientWidth / 2
+        const y = e.pageY - this.$refs.male.offsetTop - 48
+        const finalX = x / this.$refs.male.clientWidth
+        const finalY = y / this.$refs.male.clientHeight
+
+        console.log({ finalX, finalY })
+        alert(`x: ${Math.round(finalX * 100)}% y: ${Math.round(finalY * 100)}%`)
+      }
     },
   },
 }
