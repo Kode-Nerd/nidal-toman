@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-stretch detail-container">
+  <div class="d-flex align-stretch detail-container font-weight-light">
     <div
       class="treat-detail-container"
       :class="{ closed: showingList }"
@@ -10,8 +10,15 @@
           <img :src="icons.closeIcon" alt="close" @click="closeDetail" />
         </div>
         <div class="treat-detail__title d-flex flex-column align-start">
-          <span>
+          <span v-if="!isOutpatient">
             {{ $t(`treatments.${figurePart}.${subpart.query}.title`) }}
+          </span>
+          <span v-else>
+            {{
+              $t(
+                `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.title`
+              )
+            }}
           </span>
           <v-btn
             class="text-lowercase"
@@ -24,7 +31,8 @@
             {{ $t('treatments.changeProcedure') }}
           </v-btn>
         </div>
-        <div class="d-flex treat-detail-nav__container">
+
+        <div v-if="!isOutpatient" class="d-flex treat-detail-nav__container">
           <ButtonNav
             v-for="item in items"
             :key="`${item.value}-${activeTab === item.value}`"
@@ -33,8 +41,17 @@
             :is-active="activeTab === item.value"
           />
         </div>
+        <div v-else class="d-flex treat-detail-nav__container">
+          <ButtonNav
+            v-for="item in outpatientItems"
+            :key="`${item.value}-${activeTab === item.value}`"
+            :title="item.label"
+            :value="item.value"
+            :is-active="activeTab === item.value"
+          />
+        </div>
 
-        <div class="treat-detail__content">
+        <div v-if="!isOutpatient" class="treat-detail__content">
           <div v-if="activeTab === 'additional'">
             <ExpandedCardInfo
               v-for="(content, index) in MasterContent[figurePart][
@@ -62,6 +79,41 @@
           <div v-if="activeTab === 'engagement'">
             {{
               $t(`treatments.${figurePart}.${subpart.query}.engagement.content`)
+            }}
+          </div>
+        </div>
+        <div v-else class="treat-detail__content">
+          <div v-if="activeTab === 'faq'">
+            <ExpandedCardInfo
+              v-for="(content, index) in MasterContent.outpatient_treatment[
+                outpatient[figureSubpart].query
+              ].faq.content"
+              :key="index"
+              :index="index"
+              :title="
+                $t(
+                  `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.faq.content[${index}].title`
+                )
+              "
+              >{{
+                $t(
+                  `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.faq.content[${index}].subtitle`
+                )
+              }}</ExpandedCardInfo
+            >
+          </div>
+          <div v-if="activeTab === 'general'">
+            {{
+              $t(
+                `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content`
+              )
+            }}
+          </div>
+          <div v-if="activeTab === 'treatment'">
+            {{
+              $t(
+                `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.treatment.content`
+              )
             }}
           </div>
         </div>
@@ -167,6 +219,11 @@ export default {
         { label: this.$t('treatments.engagement'), value: 'engagement' },
         { label: this.$t('treatments.additional'), value: 'additional' },
       ],
+      outpatientItems: [
+        { label: this.$t('treatments.general'), value: 'general' },
+        { label: this.$t('treatments.treatment'), value: 'treatment' },
+        { label: this.$t('treatments.faq'), value: 'faq' },
+      ],
       showingList: true,
       MasterContent,
       womanSubparts,
@@ -212,6 +269,10 @@ export default {
       const { figure } = this.$route.query
       return figure === 'male'
     },
+    isOutpatient() {
+      const { outpatient } = this.$route.query
+      return outpatient === '1'
+    },
     activeTab() {
       return this.$store.state.activeTab
     },
@@ -230,11 +291,44 @@ export default {
         background: this.themes.light.background,
       }
     },
+    outpatientDetail: {
+      get() {
+        return this.$store.state.outpatientDetail
+      },
+      set(val) {
+        this.$store.commit('SET_OUTPATIENTDETAIL', val)
+      },
+    },
   },
   mounted() {
     this.checkActiveSubpart()
+    this.checkOutpatient()
   },
   methods: {
+    checkOutpatient() {
+      if (this.isOutpatient) {
+        this.outpatientDetail = true
+        if (this.isFemale) {
+          this.womanSubparts[this.figurePart].forEach((subpart) => {
+            subpart.active = false
+          })
+        }
+
+        if (this.isMale) {
+          this.manSubparts[this.figurePart].forEach((subpart) => {
+            subpart.active = false
+          })
+        }
+
+        this.figureSubpart = 0
+        this.outpatient[0].active = true
+      } else {
+        this.outpatientDetail = false
+        this.outpatient.forEach((subpart) => {
+          subpart.active = false
+        })
+      }
+    },
     closeDetail() {
       const { figure } = this.$route.query
 
@@ -258,6 +352,9 @@ export default {
         this.figureSubpart = 0
         this.manSubparts[this.figurePart][0].active = true
       }
+      this.$store.commit('SET_ACTIVE_TAB_TREATMENT_DETAIL', {
+        activeTab: 'general',
+      })
     },
   },
 }
