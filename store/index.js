@@ -26,6 +26,7 @@ export const state = () => ({
   visibleTreatmentDetail: false,
   figurePart: '',
   figureSubpart: 0,
+  outpatientDetail: false,
 })
 
 export const mutations = {
@@ -61,5 +62,8 @@ export const mutations = {
   },
   SET_FIGURE_SUBPART(state, val) {
     state.figureSubpart = val
+  },
+  SET_OUTPATIENTDETAIL(state, val) {
+    state.outpatientDetail = val
   },
 }

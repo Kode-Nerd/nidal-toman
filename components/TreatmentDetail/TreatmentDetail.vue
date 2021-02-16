@@ -116,7 +116,8 @@
           <VerticalNavigation
             class="mt-3"
             tab-justify="left"
-            :subparts="subparts"
+            :subparts="outpatient"
+            outpatient
             @close-list="toogleList"
           />
         </div>
@@ -134,6 +135,7 @@ import ExpandedCardInfo from '../ExpandedCardInfo'
 import TreatmentDetailButtonNav from './TreatmentDetailButtonNav'
 import womanSubparts from '~/components/Treatment/assets/womanSubparts.json'
 import manSubparts from '~/components/Treatment/assets/manSubparts.json'
+import outpatient from '~/components/Treatment/assets/outpatient.json'
 
 // components
 import VerticalNavigation from '~/components/Treatment/VerticalNavigation'
@@ -169,6 +171,7 @@ export default {
       MasterContent,
       womanSubparts,
       manSubparts,
+      outpatient,
     }
   },
   computed: {

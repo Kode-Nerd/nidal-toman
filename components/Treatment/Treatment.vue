@@ -136,6 +136,7 @@ import womanParts from './assets/womanParts.json'
 import manParts from './assets/manParts.json'
 import womanSubparts from './assets/womanSubparts.json'
 import manSubparts from './assets/manSubparts.json'
+import outpatient from './assets/outpatient.json'
 import CustomSVG from '~/components/Global/CustomSVG'
 import SocialMedia from '~/components/Global/SocialMedia'
 import Legal from '~/components/Global/Legal'
@@ -152,16 +153,26 @@ export default {
   },
   data() {
     return {
+      figure: '',
       ready: false,
       womanParts,
       manParts,
       womanSubparts,
       manSubparts,
+      outpatient,
     }
   },
   computed: {
     themes() {
       return this.$vuetify.theme.themes
+    },
+    outpatientDetail: {
+      get() {
+        return this.$store.state.outpatientDetail
+      },
+      set(val) {
+        this.$store.commit('SET_OUTPATIENTDETAIL', val)
+      },
     },
     visibleTreatmentDetail: {
       get() {
@@ -225,6 +236,31 @@ export default {
         this.manParts.forEach((part) => {
           part.active = false
         })
+      },
+      deep: true,
+      immediate: true,
+    },
+    '$route.query.outpatient': {
+      handler(val) {
+        if (val === '1') {
+          this.outpatientDetail = true
+          if (this.isFemale) {
+            this.womanSubparts[this.figurePart].forEach((subpart) => {
+              subpart.active = false
+            })
+          }
+
+          if (this.isMale) {
+            this.manSubparts[this.figurePart].forEach((subpart) => {
+              subpart.active = false
+            })
+          }
+        } else {
+          this.outpatientDetail = false
+          this.outpatient.forEach((subpart) => {
+            subpart.active = false
+          })
+        }
       },
       deep: true,
       immediate: true,

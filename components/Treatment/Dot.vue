@@ -87,11 +87,16 @@ export default {
     },
   },
   methods: {
+    closeOutpatient() {
+      const { figure, part } = this.$route.query
+      this.$router.push({ query: { figure, part } })
+    },
     toggleTooltip(part) {
       if (!this.forSubpart) {
         this.showingTooltip = !this.showingTooltip
         part.active = this.showingTooltip
       } else {
+        this.closeOutpatient()
         this.setSubpart()
       }
     },

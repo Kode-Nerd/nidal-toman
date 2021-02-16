@@ -1,5 +1,5 @@
 <template>
-  <div class="main-navigation__container">
+  <div class="main-navigation__container" :style="normalColor">
     <div
       v-for="(part, index) in parts"
       :key="index"
@@ -9,7 +9,12 @@
       @mouseleave="part.active = false"
       @click="openDetail(part.query)"
     >
-      <div class="item__title">{{ $t(`treatments.${part.query}.title`) }}</div>
+      <div
+        class="item__title font-weight-light"
+        :style="part.active ? activeColor : normalColor"
+      >
+        {{ $t(`treatments.${part.query}.title`) }}
+      </div>
       <div class="item__line"></div>
     </div>
   </div>
@@ -23,6 +28,23 @@ export default {
       default() {
         return []
       },
+    },
+  },
+  computed: {
+    themes() {
+      return this.$vuetify.theme.themes
+    },
+    normalColor() {
+      return {
+        borderColor: this.themes.light.border,
+        color: this.themes.light.border,
+      }
+    },
+    activeColor() {
+      return {
+        borderColor: this.themes.light.primary4,
+        color: this.themes.light.primary4,
+      }
     },
   },
   methods: {
@@ -72,6 +94,6 @@ export default {
 }
 
 .active .item__title {
-  font-weight: 700;
+  /* font-weight: 700; */
 }
 </style>

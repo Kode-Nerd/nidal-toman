@@ -9,7 +9,11 @@
       @click="setActive(index)"
     >
       <div class="item__title">
-        {{ $t(`treatments.${figurePart}.${subpart.query}.title`) }}
+        {{
+          !outpatient
+            ? $t(`treatments.${figurePart}.${subpart.query}.title`)
+            : $t(`treatments.outpatient_treatment.${subpart.query}.title`)
+        }}
       </div>
     </div>
   </div>
@@ -24,10 +28,22 @@ export default {
         return []
       },
     },
+    outpatient: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     themes() {
       return this.$vuetify.theme.themes
+    },
+    outpatientDetail: {
+      get() {
+        return this.$store.state.outpatientDetail
+      },
+      set(val) {
+        this.$store.commit('SET_OUTPATIENTDETAIL', val)
+      },
     },
     figurePart: {
       get() {
@@ -58,32 +74,26 @@ export default {
       }
     },
   },
-  mounted() {
-    const isEmpty = this.subparts.length === 0
-
-    if (isEmpty) {
-      return
-    }
-
-    let isNew = true
-
-    this.subparts.forEach((subpart) => {
-      if (subpart.active) {
-        isNew = false
-      }
-    })
-
-    if (isNew) {
-      this.subparts[0].active = true
-    }
-  },
   methods: {
+    openOutpatient() {
+      const { figure, part } = this.$route.query
+      this.$router.push({ query: { figure, part, outpatient: '1' } })
+    },
+    closeOutpatient() {
+      const { figure, part } = this.$route.query
+      this.$router.push({ query: { figure, part } })
+    },
     setActive(index) {
       this.subparts.forEach((subpart) => {
         subpart.active = false
       })
       this.subparts[index].active = true
       this.figureSubpart = index
+      if (this.outpatient) {
+        this.openOutpatient()
+      } else {
+        this.closeOutpatient()
+      }
       this.$emit('close-list')
     },
   },
