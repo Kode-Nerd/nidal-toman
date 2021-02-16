@@ -320,6 +320,9 @@ export default {
           })
         }
 
+        this.outpatient.forEach((subpart) => {
+          subpart.active = false
+        })
         this.figureSubpart = 0
         this.outpatient[0].active = true
       } else {
