@@ -22,7 +22,9 @@
       v-if="!visibleTreatmentDetail"
       class="treatment__info d-flex flex-column align-start"
     >
-      <span class="text-h3">{{ $t('treatments.virtual') }}</span>
+      <span class="text-h3 font-weight-bold">{{
+        $t('treatments.virtual')
+      }}</span>
       <v-btn
         class="text-lowercase"
         text
@@ -279,10 +281,11 @@ export default {
       }
 
       if (this.isFemale) {
-        const x =
-          e.pageX -
-          this.$refs.female.offsetLeft +
-          this.$refs.female.clientWidth / 2
+        const x = this.visibleTreatmentDetail
+          ? e.pageX - this.$refs.female.offsetLeft
+          : e.pageX -
+            this.$refs.female.offsetLeft +
+            this.$refs.female.clientWidth / 2
         const y = e.pageY - this.$refs.female.offsetTop - 48
         const finalX = x / this.$refs.female.clientWidth
         const finalY = y / this.$refs.female.clientHeight
@@ -291,8 +294,11 @@ export default {
         alert(`x: ${Math.round(finalX * 100)}% y: ${Math.round(finalY * 100)}%`)
       }
       if (this.isMale) {
-        const x =
-          e.pageX - this.$refs.male.offsetLeft + this.$refs.male.clientWidth / 2
+        const x = this.visibleTreatmentDetail
+          ? e.pageX - this.$refs.male.offsetLeft
+          : e.pageX -
+            this.$refs.male.offsetLeft +
+            this.$refs.male.clientWidth / 2
         const y = e.pageY - this.$refs.male.offsetTop - 48
         const finalX = x / this.$refs.male.clientWidth
         const finalY = y / this.$refs.male.clientHeight
