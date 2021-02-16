@@ -109,14 +109,14 @@
           <VerticalNavigation
             class="mt-3 mb-6"
             tab-justify="left"
-            :subparts="womanSubparts[figurePart]"
+            :subparts="subparts"
             @close-list="toogleList"
           />
           <span class="text-h5">{{ $t('treatments.nonsurgeries') }}</span>
           <VerticalNavigation
             class="mt-3"
             tab-justify="left"
-            :subparts="womanSubparts[figurePart]"
+            :subparts="subparts"
             @close-list="toogleList"
           />
         </div>
@@ -165,7 +165,7 @@ export default {
         { label: this.$t('treatments.engagement'), value: 'engagement' },
         { label: this.$t('treatments.additional'), value: 'additional' },
       ],
-      showingList: false,
+      showingList: true,
       MasterContent,
       womanSubparts,
       manSubparts,
@@ -174,6 +174,16 @@ export default {
   computed: {
     themes() {
       return this.$vuetify.theme.themes
+    },
+    subparts() {
+      if (this.isFemale) {
+        return this.womanSubparts[this.figurePart]
+      }
+      if (this.isMale) {
+        return this.manSubparts[this.figurePart]
+      }
+
+      return []
     },
     figurePart: {
       get() {
