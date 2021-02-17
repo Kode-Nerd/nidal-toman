@@ -32,23 +32,35 @@
           </v-btn>
         </div>
 
-        <div v-if="!isOutpatient" class="d-flex treat-detail-nav__container">
-          <ButtonNav
-            v-for="item in items"
-            :key="`${item.value}-${activeTab === item.value}`"
-            :title="item.label"
-            :value="item.value"
-            :is-active="activeTab === item.value"
-          />
+        <div v-if="!isOutpatient" class="treat-detail-nav__container">
+          <swiper style="margin: 0" :options="swiperOption">
+            <swiper-slide
+              v-for="(item, index) in items"
+              :key="index"
+              style="width: auto"
+            >
+              <ButtonNav
+                :title="item.label"
+                :value="item.value"
+                :is-active="activeTab === item.value"
+              />
+            </swiper-slide>
+          </swiper>
         </div>
-        <div v-else class="d-flex treat-detail-nav__container">
-          <ButtonNav
-            v-for="item in outpatientItems"
-            :key="`${item.value}-${activeTab === item.value}`"
-            :title="item.label"
-            :value="item.value"
-            :is-active="activeTab === item.value"
-          />
+        <div v-else class="treat-detail-nav__container">
+          <swiper style="margin: 0" :options="swiperOption">
+            <swiper-slide
+              v-for="(item, index) in outpatientItems"
+              :key="index"
+              style="width: auto"
+            >
+              <ButtonNav
+                :title="item.label"
+                :value="item.value"
+                :is-active="activeTab === item.value"
+              />
+            </swiper-slide>
+          </swiper>
         </div>
 
         <div v-if="!isOutpatient" class="treat-detail__content">
@@ -209,6 +221,11 @@ export default {
   },
   data() {
     return {
+      swiperOption: {
+        slidesPerView: 'auto',
+        spaceBetween: 30,
+        grabCursor: true,
+      },
       icons: {
         closeIcon: CloseIcon,
         burgerMenu: BurgerMenuIcon,
@@ -300,6 +317,33 @@ export default {
       },
     },
   },
+  watch: {
+    showingList: {
+      handler(val) {
+        if (!this.outpatientDetail) {
+          setTimeout(() => {
+            this.$store.commit('SET_ACTIVE_TAB_TREATMENT_DETAIL', {
+              activeTab: 'engagement',
+            })
+            this.$store.commit('SET_ACTIVE_TAB_TREATMENT_DETAIL', {
+              activeTab: 'general',
+            })
+          }, 500)
+        } else {
+          setTimeout(() => {
+            this.$store.commit('SET_ACTIVE_TAB_TREATMENT_DETAIL', {
+              activeTab: 'treatment',
+            })
+            this.$store.commit('SET_ACTIVE_TAB_TREATMENT_DETAIL', {
+              activeTab: 'general',
+            })
+          }, 500)
+        }
+      },
+      deep: true,
+      immediate: true,
+    },
+  },
   mounted() {
     this.checkActiveSubpart()
     this.checkOutpatient()
@@ -389,18 +433,22 @@ export default {
 
 .subpart-list {
   flex-grow: 1;
+  width: 0%;
   position: relative;
   padding: 60px;
+  transition: flex-grow 500ms;
 }
 .subpart-list.closed {
   flex-grow: 0;
   padding: 0px;
   width: 0% !important;
+  transition: flex-grow 500ms;
 }
 
 .treat-detail-container {
   flex-grow: 1;
   position: relative;
+  width: 0%;
   padding: 60px;
   transition: flex-grow 500ms;
 }
