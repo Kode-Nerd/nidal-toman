@@ -12,15 +12,15 @@
                 $t('profile.description[0]')
               )"
               :key="index"
-              class="text-h4 text-justify font-weight-light my-12"
+              class="text-h5 text-justify font-weight-light my-12"
               v-html="text"
             ></p>
           </Section>
           <div class="image-left">
             <ProfilePicture
               :src="require('~/assets/images/profiles/profile.jpg')"
-              height="90vh"
-              width="60vh"
+              height="72vh"
+              width="48vh"
               vertical
             ></ProfilePicture>
           </div>
@@ -32,7 +32,7 @@
                 $t('profile.description[1]')
               )"
               :key="index"
-              class="text-h4 text-justify font-weight-light my-12"
+              class="text-h5 text-justify font-weight-light my-12"
               v-html="text"
             ></p>
           </Section>
@@ -54,7 +54,7 @@
                 $t('profile.description[2]')
               )"
               :key="index"
-              class="text-h4 text-justify font-weight-light mb-8"
+              class="text-h5 text-justify font-weight-light mb-8"
               v-html="text"
             ></p>
             <span class="apposthrope font-weight-bold font-italic">"</span>
@@ -62,8 +62,8 @@
           <div class="image-left">
             <ProfilePicture
               :src="require('~/assets/images/treatments/treatment4.jpg')"
-              height="90vh"
-              width="60vh"
+              height="72vh"
+              width="48vh"
               vertical
             ></ProfilePicture>
           </div>
