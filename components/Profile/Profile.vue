@@ -19,8 +19,8 @@
           <div class="image-left">
             <ProfilePicture
               :src="require('~/assets/images/profiles/profile.jpg')"
-              height="45vw"
-              width="30vw"
+              height="42vw"
+              width="28vw"
               vertical
             ></ProfilePicture>
           </div>
@@ -39,8 +39,8 @@
           <div class="image-right">
             <ProfilePicture
               :src="ProfileImage"
-              height="35vw"
-              width="28vw"
+              height="30vw"
+              width="24vw"
               vertical
               :border="themes.light.lightBackground"
             ></ProfilePicture>
@@ -253,7 +253,7 @@ export default {
 
 .image-left {
   position: absolute;
-  bottom: -3vw;
+  bottom: -4vw;
   left: 160px;
   z-index: 1;
 }
