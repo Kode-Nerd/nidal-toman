@@ -38,7 +38,7 @@ export default {
     },
     width: {
       type: String,
-      default: '60%',
+      default: '50%',
     },
   },
   computed: {
@@ -60,7 +60,7 @@ export default {
 }
 
 .section {
-  padding: 140px 84px;
+  padding: 160px;
   width: 100vw;
 }
 

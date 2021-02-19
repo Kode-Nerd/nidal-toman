@@ -18,7 +18,7 @@
     <div id="top-ivtherapies">
       <div class="section">
         <Section width="100%">
-          <p class="text-h2 font-weight-bold my-12">
+          <p class="text-h4 font-weight-bold my-12">
             {{ $t('ivtherapies.texts[0].title') }}
           </p>
           <p
@@ -26,12 +26,12 @@
               $t('ivtherapies.texts[0].text')
             )"
             :key="index"
-            class="text-h4 font-weight-light my-12"
+            class="text-h6 font-weight-light my-12"
             v-html="text"
           ></p>
           <div class="d-flex justify-end">
             <a
-              class="text-h6 font-weight-light text-uppercase text-decoration-none"
+              class="text-subtitle-1 font-weight-light text-uppercase text-decoration-none"
               :style="linkStyle"
               href="https://b-lance.me"
               target="_blank"
@@ -43,7 +43,7 @@
       <div :style="parallaxStyle" class="parallax-section"></div>
       <div class="section" :style="lightBackground">
         <Section width="100%">
-          <p class="text-h3 font-weight-bold my-12">
+          <p class="text-h4 font-weight-bold my-12">
             {{ $t('ivtherapies.texts[1].title') }}
           </p>
           <p
@@ -51,12 +51,12 @@
               $t('ivtherapies.texts[1].text')
             )"
             :key="index"
-            class="text-h4 font-weight-light my-12"
+            class="text-h6 font-weight-light my-12"
             v-html="text"
           ></p>
           <div class="d-flex justify-end">
             <a
-              class="text-h6 font-weight-light text-uppercase text-decoration-none"
+              class="text-subtitle-1 font-weight-light text-uppercase text-decoration-none"
               :style="linkStyle"
               href="https://b-lance.me"
               target="_blank"
@@ -67,7 +67,7 @@
       </div>
       <div class="section">
         <Section right>
-          <p class="text-h3 font-weight-bold my-12">
+          <p class="text-h4 font-weight-bold my-12">
             {{ $t('ivtherapies.texts[2].title') }}
           </p>
           <p
@@ -75,12 +75,12 @@
               $t('ivtherapies.texts[2].text')
             )"
             :key="index"
-            class="text-h4 font-weight-light my-12"
+            class="text-h6 font-weight-light my-12"
             v-html="text"
           ></p>
           <div class="d-flex justify-end">
             <a
-              class="text-h6 font-weight-light text-uppercase text-decoration-none"
+              class="text-subtitle-1 font-weight-light text-uppercase text-decoration-none"
               :style="linkStyle"
               href="https://b-lance.me"
               target="_blank"
@@ -91,63 +91,73 @@
         <div class="image-left">
           <ProfilePicture
             :src="require('~/assets/images/treatments/treatment12.jpg')"
-            height="90vh"
-            width="60vh"
+            height="45vw"
+            width="30vw"
             vertical
           ></ProfilePicture>
         </div>
       </div>
 
-      <div
-        class="d-flex justify-center full-width end-page"
-        :style="lightBackground"
-      >
-        <div class="d-flex flex-column align-center footer-comp mr-12">
-          <span
-            v-for="(text, index) in contentExtractor(
-              $t('ivtherapies.footers[0].title')
-            )"
-            :key="index"
-            class="text-h4 font-weight-bold text-center"
-            v-html="text"
-          ></span>
-          <p class="text-h5 font-weight-light text-center mt-4">
-            {{ $t('ivtherapies.footers[0].text') }}
-          </p>
-          <div class="d-flex flex-column align-center button">
-            <v-btn
-              elevation="2"
-              :color="themes.light.primary4"
-              large
-              dark
-              block
-              :ripple="false"
-              @click="goto('https://b-lance.me')"
-            >
-              <span>{{ $t('ivtherapies.footers[0].button') }}</span>
-            </v-btn>
+      <div class="full-width end-page" :style="lightBackground">
+        <div class="d-flex justify-center">
+          <div class="d-flex flex-column align-center footer-comp mr-12">
+            <span
+              v-for="(text, index) in contentExtractor(
+                $t('ivtherapies.footers[0].title')
+              )"
+              :key="index"
+              class="text-h6 font-weight-bold text-center"
+              v-html="text"
+            ></span>
+          </div>
+          <div class="d-flex flex-column align-center footer-comp">
+            <p class="text-h6 font-weight-bold text-center">
+              {{ $t('ivtherapies.footers[1].title') }}
+            </p>
           </div>
         </div>
-        <div class="d-flex flex-column align-center footer-comp">
-          <p class="text-h4 font-weight-bold text-center">
-            {{ $t('ivtherapies.footers[1].title') }}
-          </p>
-          <p class="text-h5 font-weight-light text-center">
-            {{ $t('ivtherapies.footers[1].text') }}
-          </p>
-          <div class="d-flex flex-column align-center button">
-            <v-btn
-              elevation="2"
-              :color="themes.light.primary4"
-              outlined
-              large
-              dark
-              block
-              :ripple="false"
-              @click="gotoContact"
-            >
-              <span>{{ $t('ivtherapies.footers[1].button') }}</span>
-            </v-btn>
+        <div class="d-flex justify-center">
+          <div class="d-flex flex-column align-center footer-comp mr-12">
+            <p class="text-h6 font-weight-light text-center">
+              {{ $t('ivtherapies.footers[0].text') }}
+            </p>
+          </div>
+          <div class="d-flex flex-column align-center footer-comp">
+            <p class="text-h6 font-weight-light text-center">
+              {{ $t('ivtherapies.footers[1].text') }}
+            </p>
+          </div>
+        </div>
+        <div class="d-flex justify-center">
+          <div class="d-flex flex-column align-center footer-comp mr-12">
+            <div class="d-flex flex-column align-center button">
+              <v-btn
+                elevation="2"
+                :color="themes.light.primary4"
+                large
+                dark
+                block
+                :ripple="false"
+                @click="goto('https://b-lance.me')"
+              >
+                <span>{{ $t('ivtherapies.footers[0].button') }}</span>
+              </v-btn>
+            </div>
+          </div>
+          <div class="d-flex flex-column align-center footer-comp">
+            <div class="d-flex flex-column align-center button">
+              <v-btn
+                elevation="2"
+                :color="themes.light.primary4"
+                outlined
+                large
+                block
+                :ripple="false"
+                @click="gotoContact"
+              >
+                <span>{{ $t('ivtherapies.footers[1].button') }}</span>
+              </v-btn>
+            </div>
           </div>
         </div>
       </div>
@@ -248,13 +258,13 @@ export default {
 
 .image-left {
   position: absolute;
-  bottom: -7vh;
-  left: 84px;
+  bottom: -3vw;
+  left: 160px;
   z-index: 1;
 }
 
 .end-page {
-  padding: 140px 84px;
+  padding: 160px;
 }
 
 .full-width {
@@ -262,7 +272,7 @@ export default {
 }
 
 .footer-comp {
-  width: 21%;
+  width: 25%;
 }
 
 .button {
