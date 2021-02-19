@@ -1,6 +1,9 @@
 <template>
   <div :id="id" class="wrapper">
-    <CoverPicture :src="require('~/assets/_ivtherapies.jpeg')">
+    <CoverPicture
+      video
+      :src="require('~/assets/Mental_Balance_Edited+Compressed.mp4')"
+    >
       <v-row :style="logoContainer" justify="center" align="center">
         <v-img
           :style="logoStyle"
@@ -179,8 +182,12 @@ export default {
     },
     logoContainer() {
       return {
-        width: '100%',
-        height: '100%',
+        position: 'absolute',
+        transform: 'translate(-50%, -50%)',
+        top: '50%',
+        left: '50%',
+        width: '100vw',
+        height: '100vh',
       }
     },
     logoStyle() {

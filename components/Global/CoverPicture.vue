@@ -3,6 +3,7 @@
     <div v-if="!src" class="no-image">No image source</div>
     <div v-else class="cover" :class="{ coverOut: borderZero }">
       <v-img
+        v-if="!video"
         :position="position"
         :src="src"
         width="100%"
@@ -10,6 +11,11 @@
         @load="showCover"
         ><slot
       /></v-img>
+      <video v-else id="myVideo" autoplay muted loop @loadeddata="showVideo">
+        <source :src="src" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+      <slot v-if="video" />
     </div>
     <div
       v-if="src"
@@ -30,6 +36,10 @@ export default {
       type: String,
       default: '',
     },
+    video: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -38,6 +48,12 @@ export default {
     }
   },
   methods: {
+    showVideo(e) {
+      const video = document.getElementById('myVideo')
+      if (video.readyState === 4) {
+        this.showCover()
+      }
+    },
     showCover() {
       setTimeout(() => {
         this.borderZero = true
@@ -51,6 +67,11 @@ export default {
 </script>
 
 <style scoped>
+#myVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .fullscreen {
   position: relative;
   width: 100vw;
