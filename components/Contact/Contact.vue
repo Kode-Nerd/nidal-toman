@@ -242,7 +242,7 @@ export default {
 }
 
 .section {
-  padding: 60px;
+  padding: 160px 60px;
 }
 .section.gallery-top {
   padding-bottom: 36px;
