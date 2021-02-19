@@ -12,15 +12,15 @@
                 $t('profile.description[0]')
               )"
               :key="index"
-              class="text-h5 text-justify font-weight-light my-12"
+              class="text-h6 text-justify font-weight-light my-12"
               v-html="text"
             ></p>
           </Section>
           <div class="image-left">
             <ProfilePicture
               :src="require('~/assets/images/profiles/profile.jpg')"
-              height="72vh"
-              width="48vh"
+              height="45vw"
+              width="30vw"
               vertical
             ></ProfilePicture>
           </div>
@@ -32,15 +32,15 @@
                 $t('profile.description[1]')
               )"
               :key="index"
-              class="text-h5 text-justify font-weight-light my-12"
+              class="text-h6 text-justify font-weight-light my-12"
               v-html="text"
             ></p>
           </Section>
           <div class="image-right">
             <ProfilePicture
               :src="ProfileImage"
-              height="50vh"
-              width="40vh"
+              height="35vw"
+              width="28vw"
               vertical
               :border="themes.light.lightBackground"
             ></ProfilePicture>
@@ -54,7 +54,7 @@
                 $t('profile.description[2]')
               )"
               :key="index"
-              class="text-h5 text-justify font-weight-light mb-8"
+              class="text-h6 text-justify font-weight-light mb-8"
               v-html="text"
             ></p>
             <span class="apposthrope font-weight-bold font-italic">"</span>
@@ -62,15 +62,15 @@
           <div class="image-left">
             <ProfilePicture
               :src="require('~/assets/images/treatments/treatment4.jpg')"
-              height="72vh"
-              width="48vh"
+              height="45vw"
+              width="30vw"
               vertical
             ></ProfilePicture>
           </div>
         </div>
 
         <div class="history-container" :style="lightBackground">
-          <div class="history-header">
+          <div class="history-header text-h3 font-weight-bold">
             <div class="history-title">
               {{ $t('profile.publication.label') }}
             </div>
@@ -88,8 +88,8 @@
         </div>
 
         <div class="section">
-          <Section right width="75%">
-            <div class="history-header">
+          <Section right width="65%">
+            <div class="history-header text-h3 font-weight-bold">
               <div class="history-title">{{ $t('profile.books.label') }}</div>
             </div>
             <div>
@@ -111,7 +111,7 @@
         </div>
 
         <div class="history-container" :style="lightBackground">
-          <div class="history-header">
+          <div class="history-header text-h3 font-weight-bold">
             <div class="history-title">
               {{ $t('profile.summaries.label') }}
             </div>
@@ -132,14 +132,16 @@
           <div>
             <ProfilePicture
               :src="require('~/assets/images/treatments/treatment2.jpg')"
-              height="100vh"
-              width="30vw"
+              height="100%"
+              width="33vw"
               vertical
             ></ProfilePicture>
           </div>
           <div class="vita__subcontainer">
             <div class="vita__header">
-              <div class="vita__title">{{ $t('profile.vita.label') }}</div>
+              <div class="vita__title text-h3 font-weight-bold">
+                {{ $t('profile.vita.label') }}
+              </div>
             </div>
             <div>
               <ProfileVitaItem
@@ -155,7 +157,7 @@
         </div>
 
         <div class="history-container" :style="lightBackground">
-          <div class="history-header">
+          <div class="history-header text-h3 font-weight-bold">
             <div class="history-title">{{ $t('profile.posters.label') }}</div>
           </div>
           <div>
@@ -169,7 +171,7 @@
           </div>
         </div>
         <div class="history-container">
-          <div class="history-header">
+          <div class="history-header text-h3 font-weight-bold">
             <div class="history-title">
               {{ $t('profile.conferences.label') }}
             </div>
@@ -251,8 +253,8 @@ export default {
 
 .image-left {
   position: absolute;
-  bottom: -7vh;
-  left: 84px;
+  bottom: -3vw;
+  left: 160px;
   z-index: 1;
 }
 
@@ -260,7 +262,7 @@ export default {
   position: absolute;
   transform: translateY(-50%);
   top: 50%;
-  right: 84px;
+  right: 160px;
   z-index: 1;
 }
 
@@ -271,14 +273,14 @@ export default {
 }
 
 .history-container {
-  padding: 140px;
+  padding: 160px;
 }
 .history-header {
   margin-bottom: 40px;
 }
 .history-title {
-  font-weight: 800;
-  font-size: 48px;
+  /* font-weight: 800;
+  font-size: 48px; */
   line-height: 66px;
   text-align: justify;
 }
@@ -292,15 +294,15 @@ export default {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 84px;
+  padding: 160px;
 }
 .vita__header {
   display: flex;
   align-items: center;
 }
 .vita__title {
-  font-weight: 800;
-  font-size: 48px;
+  /* font-weight: 800;
+  font-size: 48px; */
   line-height: 66px;
   text-align: justify;
 }
