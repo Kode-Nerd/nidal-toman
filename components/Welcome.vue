@@ -51,8 +51,8 @@
               {{ $t('welcome.title2') }}
             </span> -->
             <span
-              :style="{ color: themes.light.darkBackground }"
-              class="text-h5 font-weight-bold text-center text-uppercase"
+              :style="{ color: themes.light.lightPrimary3 }"
+              class="text-h5 font-weight-medium text-center text-uppercase"
             >
               {{ $t('welcome.title') }}
             </span>
@@ -64,7 +64,7 @@
         <div :style="[welcomeBannerStyle, philosophyOpacityStyle]">
           <div class="d-flex flex-column align-center">
             <span
-              :style="{ color: themes.light.darkBackground }"
+              :style="{ color: themes.light.lightPrimary3 }"
               class="text-h4"
             >
               {{ $t('welcome.philosophy') }}
@@ -82,7 +82,7 @@
         </div>
         <div :style="figure2" class="d-flex flex-column align-center">
           <span
-            :style="[titleStyle, { color: themes.light.darkBackground }]"
+            :style="[titleStyle, { color: themes.light.lightPrimary3 }]"
             class="text-h4 mb-n3 font-weight-light"
           >
             {{ $t('welcome.infusion') }}
