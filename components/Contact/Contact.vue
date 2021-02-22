@@ -104,6 +104,7 @@
                 <div class="d-flex flex-column align-self-center submit-button">
                   <v-btn
                     dark
+                    tile
                     :loading="sendingEmail"
                     elevation="2"
                     x-large
