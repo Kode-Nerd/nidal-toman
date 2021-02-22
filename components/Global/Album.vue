@@ -2,7 +2,7 @@
   <swiper class="swiper" :options="swiperOption">
     <swiper-slide v-for="(item, i) in list" :key="i">
       <!-- SLIDE -->
-      <ImageBlock :src="item" height="30vh" />
+      <ImageBlock :src="item" height="55vh" />
     </swiper-slide>
     <div slot="button-prev" class="swiper-button-prev"></div>
     <div slot="button-next" class="swiper-button-next"></div>

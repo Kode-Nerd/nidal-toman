@@ -7,8 +7,8 @@
     <div id="top-contact">
       <div class="section">
         <Title>{{ $t('contact.title') }}</Title>
-        <v-row class="mt-6">
-          <v-col :cols="9">
+        <v-row class="mt-6" justify="space-between">
+          <v-col :cols="8">
             <p class="text-h6 font-weight-light">{{ $t('contact.text') }}</p>
           </v-col>
           <v-col :cols="3">
@@ -242,7 +242,7 @@ export default {
 }
 
 .section {
-  padding: 160px 60px;
+  padding: 48px 60px 160px 60px;
 }
 .section.gallery-top {
   padding-bottom: 36px;
