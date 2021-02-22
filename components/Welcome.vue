@@ -24,7 +24,7 @@
         </v-col>
         <v-col :style="localeStyle" cols="2">
           <v-row justify="end">
-            <Locale custom-class="mr-4" />
+            <Locale :custom-style="localeStyleTop" custom-class="mr-4" />
           </v-row>
         </v-col>
         <v-col cols="6"></v-col>
@@ -175,7 +175,7 @@
             height="80vh"
           ></v-img>
         </div>
-        <div :style="[moreInfoStyle, secondLocaleStyle]">
+        <div :style="[moreInfoStyle, secondLocaleStyle, localeStyleTop]">
           <Locale />
         </div>
         <div class="d-flex align-center" :style="[moreInfoStyle, legalStyle]">
@@ -329,6 +329,15 @@ export default {
       return {
         opacity: this.bannerOpacity,
         zIndex: this.bannerOpacity === 0 ? -1 : 6,
+      }
+    },
+    localeStyleTop() {
+      return {
+        position: 'absolute',
+        top: '0px',
+        height: '48px',
+        display: 'flex',
+        alignItems: 'center',
       }
     },
     welcomeBannerStyle() {

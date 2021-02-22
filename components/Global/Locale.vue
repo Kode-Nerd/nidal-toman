@@ -1,5 +1,5 @@
 <template>
-  <div :class="customClass">
+  <div :style="customStyle" :class="customClass">
     <nuxt-link
       :style="locale === 'en' ? localeActive : textStyle"
       :to="
@@ -28,6 +28,12 @@ export default {
     customClass: {
       type: String,
       default: '',
+    },
+    customStyle: {
+      type: Object,
+      default() {
+        return {}
+      },
     },
   },
   computed: {
