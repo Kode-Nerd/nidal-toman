@@ -38,7 +38,7 @@ export default {
     },
     width: {
       type: String,
-      default: '50%',
+      default: '55%',
     },
   },
   computed: {
@@ -56,11 +56,11 @@ export default {
 
 <style scoped>
 .title {
-  margin-bottom: 84px;
+  margin-bottom: 0px;
 }
 
 .section {
-  padding: 160px;
+  padding: 80px 160px;
   width: 100vw;
 }
 

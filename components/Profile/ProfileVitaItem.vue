@@ -6,11 +6,11 @@
       <div class="line" :style="backgroundComponentStyle" />
     </div>
     <div class="item__details">
-      <div class="item__title">{{ title }}</div>
-      <div class="item__subtitle">
+      <div class="item__title font-weight-medium">{{ title }}</div>
+      <div class="item__subtitle font-weight-light">
         {{ `"${subtitle}"` }}
       </div>
-      <div class="item__place">
+      <div class="item__place font-weight-light">
         {{ place }}
       </div>
     </div>
@@ -79,7 +79,7 @@ export default {
 }
 
 .item__title {
-  font-weight: 800;
+  /* font-weight: 800; */
   font-size: 24px;
   line-height: 33px;
   text-align: justify;
@@ -88,7 +88,7 @@ export default {
 }
 
 .item__subtitle {
-  font-weight: 500;
+  /* font-weight: 500; */
   font-size: 18px;
   line-height: 25px;
   text-align: justify;
@@ -97,7 +97,7 @@ export default {
 }
 
 .item__place {
-  font-weight: 500;
+  /* font-weight: 500; */
   font-size: 18px;
   line-height: 25px;
   text-align: justify;

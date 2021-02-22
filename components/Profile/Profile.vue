@@ -12,7 +12,8 @@
                 $t('profile.description[0]')
               )"
               :key="index"
-              class="text-h6 text-justify font-weight-light my-12"
+              class="text-h6 text-justify font-weight-light"
+              :class="{ 'my-12': index === 0 }"
               v-html="text"
             ></p>
           </Section>
@@ -32,7 +33,7 @@
                 $t('profile.description[1]')
               )"
               :key="index"
-              class="text-h6 text-justify font-weight-light my-12"
+              class="text-h6 text-justify font-weight-light my-6"
               v-html="text"
             ></p>
           </Section>
@@ -128,7 +129,34 @@
           </div>
         </div>
 
-        <div class="vita__container">
+        <div class="section">
+          <Section width="60%">
+            <div class="vita__header">
+              <div class="vita__title text-h3 font-weight-bold">
+                {{ $t('profile.vita.label') }}
+              </div>
+            </div>
+            <div>
+              <ProfileVitaItem
+                v-for="index in 7"
+                :key="`vita-${index}`"
+                :title="$t(`profile.vita.list.${index - 1}.title`)"
+                :subtitle="$t(`profile.vita.list.${index - 1}.subtitle`)"
+                :year="$t(`profile.vita.list.${index - 1}.year`)"
+                :place="$t(`profile.vita.list.${index - 1}.place`)"
+              />
+            </div>
+          </Section>
+          <div class="image-right">
+            <ProfilePicture
+              :src="require('~/assets/images/treatments/treatment2.jpg')"
+              height="39vw"
+              width="26vw"
+              vertical
+            ></ProfilePicture>
+          </div>
+        </div>
+        <!-- <div class="vita__container">
           <div>
             <ProfilePicture
               :src="require('~/assets/images/treatments/treatment2.jpg')"
@@ -154,7 +182,7 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="history-container" :style="lightBackground">
           <div class="history-header text-h3 font-weight-bold">
@@ -253,7 +281,7 @@ export default {
 
 .image-left {
   position: absolute;
-  bottom: -4vw;
+  bottom: -3vw;
   left: 160px;
   z-index: 1;
 }

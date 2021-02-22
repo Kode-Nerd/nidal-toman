@@ -1,10 +1,10 @@
 <template>
   <div class="book-item__container">
-    <div class="book__title">{{ title }}</div>
-    <div class="book__detail">
+    <div class="book__title font-weight-medium">{{ title }}</div>
+    <div class="book__detail font-weight-light">
       {{ author }}
     </div>
-    <div class="book__detail">
+    <div class="book__detail font-weight-light">
       {{ detail }}
     </div>
   </div>
@@ -31,7 +31,7 @@ export default {
 
 <style scoped>
 .book__title {
-  font-weight: 800;
+  /* font-weight: 800; */
   font-size: 24px;
   line-height: 33px;
 
@@ -39,7 +39,7 @@ export default {
 }
 
 .book__detail {
-  font-weight: 300;
+  /* font-weight: 300; */
   font-size: 18px;
   line-height: 25px;
   text-align: justify;
