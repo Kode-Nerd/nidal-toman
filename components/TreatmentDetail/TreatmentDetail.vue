@@ -95,6 +95,48 @@
               $t(`treatments.${figurePart}.${subpart.query}.engagement.content`)
             }}
           </div>
+          <div v-if="activeTab === 'summary'">
+            <div
+              v-for="(summary, index) in summaries"
+              :key="index"
+              class="d-flex flex-column my-6"
+            >
+              <span class="text-h4 font-weight-bold mb-3">
+                {{
+                  $t(
+                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
+                  )
+                }}
+              </span>
+              <span class="text-h6 font-weight-light">
+                {{
+                  $t(
+                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.detail`
+                  )
+                }}
+              </span>
+            </div>
+            <div
+              v-for="(summary, index) in summaries2"
+              :key="index"
+              class="d-flex flex-column my-6"
+            >
+              <span class="text-h4 font-weight-bold mb-3">
+                {{
+                  $t(
+                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
+                  )
+                }}
+              </span>
+              <span class="text-h6 font-weight-light">
+                {{
+                  $t(
+                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.subtitle`
+                  )
+                }}
+              </span>
+            </div>
+          </div>
         </div>
         <div v-else class="treat-detail__content">
           <div v-if="activeTab === 'faq'">
@@ -266,12 +308,16 @@ export default {
         { label: this.$t('treatments.general'), value: 'general' },
         { label: this.$t('treatments.engagement'), value: 'engagement' },
         { label: this.$t('treatments.additional'), value: 'additional' },
+        { label: this.$t('treatments.summary'), value: 'summary' },
       ],
       outpatientItems: [
         { label: this.$t('treatments.general'), value: 'general' },
         { label: this.$t('treatments.treatment'), value: 'treatment' },
         { label: this.$t('treatments.faq'), value: 'faq' },
+        { label: this.$t('treatments.summary'), value: 'summary' },
       ],
+      summaries: ['duration', 'durationInClinic', 'anasthesia'],
+      summaries2: ['postTreatment', 'sociable'],
       showingList: true,
       MasterContent,
       womanSubparts,
