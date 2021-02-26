@@ -5,11 +5,18 @@
       <MainNavigation v-if="isFemale" :parts="womanParts" />
       <MainNavigation v-if="isMale" :parts="manParts" />
     </div>
-    <div class="treatment__back-button" @click="goBack">
-      <div class="pa-8">
+    <div
+      class="treatment__back-button__pos treatment__back-button__border"
+      :style="backButtonStyle"
+    ></div>
+    <div
+      class="treatment__back-button__pos treatment__back-button"
+      @click="goBack"
+    >
+      <div class="px-8 py-4">
         <CustomSVG
           size="3rem"
-          :src="require('bootstrap-icons/icons/arrow-left.svg')"
+          :src="require('~/assets/icons/arrow-left.svg')"
         />
       </div>
     </div>
@@ -26,7 +33,7 @@
         $t('treatments.virtual')
       }}</span>
       <v-btn
-        class="text-lowercase"
+        class="text-h6 text-lowercase ml-n2"
         text
         small
         :color="themes.light.primary3"
@@ -217,6 +224,11 @@ export default {
         leg: this.figurePart === 'legs',
       }
     },
+    backButtonStyle() {
+      return {
+        borderColor: this.themes.light.darkBackground,
+      }
+    },
   },
   watch: {
     '$route.query.part': {
@@ -365,10 +377,18 @@ export default {
   display: flex;
 }
 
-.treatment__back-button {
+.treatment__back-button__pos {
   position: absolute;
   top: 0px;
   left: 0px;
+}
+.treatment__back-button__border {
+  border-width: 1px;
+  border-style: solid;
+  width: 112px;
+  height: 80px;
+}
+.treatment__back-button {
   cursor: pointer;
   z-index: 1;
   transition: left 200ms;

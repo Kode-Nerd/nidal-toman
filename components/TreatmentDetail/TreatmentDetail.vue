@@ -21,7 +21,7 @@
             }}
           </span>
           <v-btn
-            class="text-lowercase"
+            class="text-h6 text-lowercase ml-n2"
             text
             small
             :color="themes.light.primary3"
@@ -158,7 +158,7 @@
             {{ $t('treatments.procedures') }}
           </span>
           <v-btn
-            class="text-lowercase"
+            class="text-h6 text-lowercase ml-n2"
             text
             small
             :color="themes.light.primary3"
