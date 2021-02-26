@@ -54,6 +54,7 @@ export default {
 } */
 
 .tooltip__detail {
+  background: #f4f4f4;
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
@@ -64,6 +65,7 @@ export default {
 
 .treatment__detail {
   cursor: pointer;
+  color: #d2af69;
 }
 
 .tooltip__arrow {
@@ -78,10 +80,10 @@ export default {
 
 .tooltip__arrow::after {
   content: '';
+  background: #f4f4f4;
   position: absolute;
   width: 20px;
   height: 20px;
-  background: white;
   transform: translateX(-10%) translateY(-50%) rotate(45deg);
   top: 0;
   left: 10%;
