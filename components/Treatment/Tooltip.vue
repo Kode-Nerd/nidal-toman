@@ -1,8 +1,9 @@
 <template>
   <div class="tooltip">
-    <div class="tooltip__content">{{ name }}</div>
+    <!-- <div class="tooltip__content">{{ name }}</div> -->
     <div class="tooltip__detail" @click="openDetail(query)">
-      <span class="treatment__detail">see details</span>
+      <span>{{ name }}</span>
+      <span class="treatment__detail">{{ $t('treatments.detail') }}</span>
     </div>
     <div class="tooltip__arrow"></div>
   </div>
@@ -46,18 +47,19 @@ export default {
   background: #fff;
 }
 
-.tooltip__content {
+/* .tooltip__content {
   padding: 15px 20px;
   background: #f4f4f4;
   border-radius: 6px 6px 0px 0px;
-}
+} */
 
 .tooltip__detail {
   padding: 15px 20px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  border-radius: 6px;
 }
 
 .treatment__detail {
