@@ -177,14 +177,16 @@
         <div class="d-flex flex-column">
           <span
             :style="footerTitleStyle"
-            class="text-h4 font-weight-bold my-5"
+            class="text-h5 font-weight-bold my-5"
             >{{ $t('treatments.footerTitle') }}</span
           >
           <div class="d-flex justify-space-between">
             <div class="contact-button">
-              <span :style="footerSubStyle" class="text-h6 font-weight-light">{{
-                $t('treatments.footerSub')
-              }}</span>
+              <span
+                :style="footerSubStyle"
+                class="text-subtitle-1 font-weight-light"
+                >{{ $t('treatments.footerSub') }}</span
+              >
             </div>
             <div class="contact-button">
               <v-btn
