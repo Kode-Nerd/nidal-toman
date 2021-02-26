@@ -46,6 +46,7 @@
               />
             </swiper-slide>
           </swiper>
+          <div class="section" :style="borderColor"></div>
         </div>
         <div v-else class="treat-detail-nav__container">
           <swiper style="margin: 0" :options="swiperOption">
@@ -61,6 +62,7 @@
               />
             </swiper-slide>
           </swiper>
+          <div class="section" :style="borderColor"></div>
         </div>
 
         <div v-if="!isOutpatient" class="treat-detail__content">
@@ -127,6 +129,34 @@
                 `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.treatment.content`
               )
             }}
+          </div>
+        </div>
+        <div class="section" :style="background"></div>
+        <div class="d-flex flex-column">
+          <span
+            :style="footerTitleStyle"
+            class="text-h4 font-weight-bold my-5"
+            >{{ $t('treatments.footerTitle') }}</span
+          >
+          <div class="d-flex justify-space-between">
+            <div class="contact-button">
+              <span :style="footerSubStyle" class="text-h6 font-weight-light">{{
+                $t('treatments.footerSub')
+              }}</span>
+            </div>
+            <div class="contact-button">
+              <v-btn
+                dark
+                tile
+                elevation="2"
+                x-large
+                block
+                :color="themes.light.primary4"
+                :ripple="false"
+                @click="gotoContact"
+                >{{ $t('treatments.contact') }}</v-btn
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -204,6 +234,7 @@ import outpatient from '~/components/Treatment/assets/outpatient.json'
 // components
 import VerticalNavigation from '~/components/Treatment/VerticalNavigation'
 import MasterContent from '~/assets/locales/en/treatments.json'
+import { finalpath } from '~/helpers'
 
 export default {
   components: {
@@ -249,6 +280,14 @@ export default {
     }
   },
   computed: {
+    locale: {
+      set(val) {
+        this.$store.commit('SET_LOCALE', val)
+      },
+      get() {
+        return this.$store.state.locale
+      },
+    },
     themes() {
       return this.$vuetify.theme.themes
     },
@@ -308,6 +347,11 @@ export default {
         background: this.themes.light.background,
       }
     },
+    borderColor() {
+      return {
+        background: this.themes.light.border,
+      }
+    },
     outpatientDetail: {
       get() {
         return this.$store.state.outpatientDetail
@@ -315,6 +359,16 @@ export default {
       set(val) {
         this.$store.commit('SET_OUTPATIENTDETAIL', val)
       },
+    },
+    footerTitleStyle() {
+      return {
+        color: this.themes.light.footerTitle,
+      }
+    },
+    footerSubStyle() {
+      return {
+        color: this.themes.light.footerSub,
+      }
     },
   },
   watch: {
@@ -403,6 +457,12 @@ export default {
         activeTab: 'general',
       })
     },
+    gotoContact() {
+      this.$router.push({
+        path: finalpath(this.locale, 'contact'),
+        hash: '#contact-form',
+      })
+    },
   },
 }
 </script>
@@ -468,7 +528,7 @@ export default {
 
 .treat-detail-nav__container {
   /* overflow-x: scroll; */
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .treat-detail__button-container {
@@ -491,5 +551,15 @@ export default {
   line-height: 26px;
   text-align: justify;
   overflow: scroll;
+  flex-grow: 1;
+}
+
+.contact-button {
+  width: 40%;
+}
+.section {
+  margin-left: -4%;
+  width: 108%;
+  height: 1px;
 }
 </style>

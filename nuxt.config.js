@@ -97,6 +97,8 @@ export default {
           text: colors.blueGrey.darken3,
           logo: '#D5A35A', // gold logo
           border: '#C4C4C4', // darker gray
+          footerTitle: '#494949', // black cool
+          footerSub: '#868585', // light black
           // alternatives
           tmpprimary: '#6C756B', // dark green
           tmpprimary2: '#B279A7', // violet

@@ -12,6 +12,9 @@
   "changeGender": "geschlecht ändern",
   "virtual": "Virtuelle Konsultation",
   "virtualDesc": "Bitte klicken Sie auf den Bereich, der Sie interessiert, um die von Dr. Nidal Toman angebotenen chirurgischen und nicht-chirurgischen Verfahren anzuzeigen. Alternativ können Sie auch ein Gebiet aus der Liste auswählen.",
+  "footerTitle": "Buchen Sie einen kostenlosen Beratungs- oder Behandlungstermin.",
+  "footerSub": "Sie können Ihren Termin in unserer Klinik per E-Mail oder telefonisch buchen.",
+  "contact": "Kontakt",
   "face_and_head": {
     "title": "Face and Head",
     "face_lift": {
