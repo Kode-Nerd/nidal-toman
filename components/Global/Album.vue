@@ -47,8 +47,8 @@ export default {
 
 <style scoped>
 .swiper-slide {
-  width: unset;
-  height: unset;
+  width: auto;
+  height: auto;
   /* background: #ccc; */
 }
 .swiper-button-prev {

@@ -86,14 +86,24 @@
             >
           </div>
           <div v-if="activeTab === 'general'">
-            {{
-              $t(`treatments.${figurePart}.${subpart.query}.general.content`)
-            }}
+            <p
+              v-for="(text, index) in contentExtractor(
+                $t(`treatments.${figurePart}.${subpart.query}.general.content`)
+              )"
+              :key="index"
+              v-html="text"
+            ></p>
           </div>
           <div v-if="activeTab === 'engagement'">
-            {{
-              $t(`treatments.${figurePart}.${subpart.query}.engagement.content`)
-            }}
+            <p
+              v-for="(text, index) in contentExtractor(
+                $t(
+                  `treatments.${figurePart}.${subpart.query}.engagement.content`
+                )
+              )"
+              :key="index"
+              v-html="text"
+            ></p>
           </div>
           <div v-if="activeTab === 'summary'">
             <div
@@ -159,18 +169,68 @@
             >
           </div>
           <div v-if="activeTab === 'general'">
-            {{
-              $t(
-                `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content`
-              )
-            }}
+            <p
+              v-for="(text, index) in contentExtractor(
+                $t(
+                  `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content`
+                )
+              )"
+              :key="index"
+              v-html="text"
+            ></p>
           </div>
           <div v-if="activeTab === 'treatment'">
-            {{
-              $t(
-                `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.treatment.content`
-              )
-            }}
+            <p
+              v-for="(text, index) in contentExtractor(
+                $t(
+                  `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.treatment.content`
+                )
+              )"
+              :key="index"
+              v-html="text"
+            ></p>
+          </div>
+          <div v-if="activeTab === 'summary'">
+            <div
+              v-for="(summary, index) in summaries"
+              :key="index"
+              class="d-flex flex-column my-6"
+            >
+              <span class="text-h4 font-weight-bold mb-3">
+                {{
+                  $t(
+                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
+                  )
+                }}
+              </span>
+              <span class="text-h6 font-weight-light">
+                {{
+                  $t(
+                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.detail`
+                  )
+                }}
+              </span>
+            </div>
+            <div
+              v-for="(summary, index) in summaries2"
+              :key="index"
+              class="d-flex flex-column my-6"
+            >
+              <span class="text-h4 font-weight-bold mb-3">
+                {{
+                  $t(
+                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
+                  )
+                }}
+              </span>
+              <span class="text-h6 font-weight-light">
+                {{
+                  $t(
+                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.subtitle`
+                  )
+                }}
+              </span>
+            </div>
           </div>
         </div>
         <div class="section" :style="background"></div>
@@ -278,7 +338,7 @@ import outpatient from '~/components/Treatment/assets/outpatient.json'
 // components
 import VerticalNavigation from '~/components/Treatment/VerticalNavigation'
 import MasterContent from '~/assets/locales/en/treatments.json'
-import { finalpath } from '~/helpers'
+import { finalpath, contentExtractor } from '~/helpers'
 
 export default {
   components: {
@@ -510,6 +570,9 @@ export default {
         path: finalpath(this.locale, 'contact'),
         hash: '#contact-form',
       })
+    },
+    contentExtractor(input) {
+      return contentExtractor(input)
     },
   },
 }
