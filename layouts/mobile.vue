@@ -1,35 +1,12 @@
 <template>
   <v-app v-if="ready" id="app" :style="textDefaultStyle" :dark="false">
-    <v-main v-if="!isMobile">
-      <TopNav
-        :nav-style="[topNavStyle, tabsStyle]"
-        :background="themes.light.background"
-        backopacity="B3"
-        :show-logo="true"
-      />
-      <div :style="spacerStyle" />
-      <nuxt />
-      <Footer />
-    </v-main>
-    <v-main v-else> <MobileMaintenance /> </v-main>
+    <nuxt />
   </v-app>
 </template>
 
 <script>
-import Vue from 'vue'
-import VueRellax from 'vue-rellax'
-import TopNav from '@/components/Global/TopNav'
-import Footer from '@/components/Footer/Footer'
-import MobileMaintenance from '@/components/Global/MobileMaintenance'
-
-Vue.use(VueRellax)
-
 export default {
-  components: {
-    TopNav,
-    Footer,
-    MobileMaintenance,
-  },
+  components: {},
   computed: {
     ready: {
       set(val) {
@@ -47,16 +24,6 @@ export default {
         return this.$store.state.userAgent
       },
     },
-    isMobile() {
-      return this.userAgent.includes('mobile')
-    },
-    topNavStyle() {
-      return {
-        position: 'fixed',
-        right: '0px',
-        top: '0px',
-      }
-    },
     themes() {
       return this.$vuetify.theme.themes
     },
@@ -71,13 +38,6 @@ export default {
         borderColor: this.themes.light.primary,
         borderWidth: '1px',
         width: '60%',
-      }
-    },
-    spacerStyle() {
-      return {
-        background: this.themes.light.background,
-        height: '48px',
-        width: '100%',
       }
     },
   },

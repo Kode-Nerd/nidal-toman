@@ -65,7 +65,7 @@ export default {
     tabsStyle() {
       return {
         borderBottomStyle: 'solid',
-        borderColor: this.themes.light.primary1,
+        borderColor: this.themes.light.primary,
         borderWidth: '1px',
         width: '60%',
       }
