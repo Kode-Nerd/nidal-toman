@@ -7,7 +7,7 @@
             class="ml-3"
             :src="require('~/assets/mini-logo.svg')"
             size="80px"
-            :color="themes.light.logo"
+            :color="themes.light.primary3"
           ></CustomSVG>
         </nuxt-link>
       </div>

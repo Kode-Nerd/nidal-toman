@@ -6,7 +6,7 @@
         :src="require('~/assets/name.svg')"
         :width="'38rem'"
         :height="'5rem'"
-        :color="themes.light.logo"
+        :color="themes.light.primary3"
         cover
       ></CustomSVG>
       <span class="text-h6 font-weight-light text-uppercase">{{
