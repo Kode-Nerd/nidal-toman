@@ -2,7 +2,7 @@
   <div class="tooltip">
     <!-- <div class="tooltip__content">{{ name }}</div> -->
     <div class="tooltip__detail" @click="openDetail(query)">
-      <span>{{ name }}</span>
+      <span class="font-weight-bold">{{ name }}</span>
       <span class="treatment__detail">{{ $t('treatments.detail') }}</span>
     </div>
     <div class="tooltip__arrow"></div>

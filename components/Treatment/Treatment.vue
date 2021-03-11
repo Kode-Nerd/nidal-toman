@@ -33,12 +33,12 @@
         $t('treatments.virtual')
       }}</span>
       <v-btn
-        class="text-h6 text-lowercase ml-n2"
+        class="text-body-2 text-lowercase ml-n3"
         text
         small
         :color="themes.light.primary3"
         :ripple="false"
-        @click="gotoProcedure"
+        @click="changeGender"
       >
         {{ $t('treatments.changeGender') }}
       </v-btn>
@@ -279,22 +279,41 @@ export default {
     },
   },
   beforeMount() {
-    const { figure } = this.$route.query
-    if (!figure || (figure !== 'male' && figure !== 'female')) {
-      this.gotoProcedure()
-
-      return
-    }
-
-    this.figure = figure
-    this.ready = true
+    this.prechecking()
   },
   methods: {
+    prechecking() {
+      const { figure } = this.$route.query
+      if (!figure || (figure !== 'male' && figure !== 'female')) {
+        this.gotoProcedure()
+
+        return
+      }
+
+      this.figure = figure
+      this.ready = true
+    },
     gotoProcedure() {
       this.$router.push({
         path: finalpath(this.locale, '/'),
         query: { id: 'procedures' },
       })
+    },
+    changeGender() {
+      let figure
+      const destination = {
+        path: finalpath(this.locale, 'treatment'),
+      }
+      if (this.isMale) {
+        figure = 'female'
+        destination.query = { figure }
+      }
+      if (this.isFemale) {
+        figure = 'male'
+        destination.query = { figure }
+      }
+      this.$router.push(destination)
+      this.figure = figure
     },
     closeDetail() {
       const { figure } = this.$route.query
