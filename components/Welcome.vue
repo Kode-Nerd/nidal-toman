@@ -481,19 +481,6 @@ export default {
     },
   },
   watch: {
-    currentID(val) {
-      const fromIndex = this.sectionID.indexOf(this.fromID)
-      const currentIndex = this.sectionID.indexOf(val)
-
-      if (this.fromID !== `#${this.id}`) {
-        if (fromIndex < currentIndex) {
-          this.welcomeMainLeftPos = 0
-        }
-        if (fromIndex > currentIndex) {
-          this.welcomeMainLeftPos = -window.innerWidth
-        }
-      }
-    },
     welcomeMainLeftPos(val) {
       if (val <= -window.innerWidth) {
         const proceduresIndex = this.labels.indexOf('procedures')
@@ -521,24 +508,6 @@ export default {
       }
       this.animateAll(0, deltaY)
     },
-    '$route.query': {
-      handler(val, old) {
-        if (!old) {
-          return
-        }
-
-        const innerWidth = window.innerWidth
-        let deltaY = 5 * innerWidth
-
-        if (val.id !== 'procedures') {
-          deltaY = -deltaY
-        }
-
-        this.animateAll(0, deltaY)
-      },
-      deep: true,
-      immediate: true,
-    },
   },
   mounted() {
     if (this.$route.query.pos === 'true') {
@@ -549,7 +518,7 @@ export default {
     let deltaY = 0
 
     if (this.$route.query && this.$route.query.id === 'procedures') {
-      deltaY = 5 * innerWidth
+      deltaY = innerWidth / this.speedRatio
     }
 
     this.animateAll(0, deltaY)
