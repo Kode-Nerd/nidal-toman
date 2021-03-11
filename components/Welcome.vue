@@ -215,6 +215,7 @@ export default {
       atEnd: false,
       innerWidth: 0,
       showPos: false,
+      speedRatio: 1 / 20,
     }
   },
   computed: {
@@ -637,7 +638,7 @@ export default {
     animateMainContainer(deltaX, deltaY) {
       let leftPos = this.welcomeMainLeftPos
       if (leftPos <= 0 && leftPos >= -window.innerWidth) {
-        this.welcomeMainLeftPos -= deltaY / 5
+        this.welcomeMainLeftPos -= deltaY * this.speedRatio
 
         // to avoid offset set by wheel event
         leftPos = this.welcomeMainLeftPos
@@ -652,7 +653,7 @@ export default {
     animateWelcomeBanner(deltaX, deltaY) {
       const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain >= -window.innerWidth) {
-        this.welcomeBannerLeftPos += deltaY / 5
+        this.welcomeBannerLeftPos += deltaY * this.speedRatio
       }
 
       // to avoid offset set by wheel event
@@ -668,7 +669,8 @@ export default {
         leftPosMain <= -window.innerWidth / 12 &&
         leftPosMain > -window.innerWidth / 6
       ) {
-        this.bannerOpacity -= (deltaY / (5 * window.innerWidth)) * 12
+        this.bannerOpacity -=
+          (deltaY * this.speedRatio) / (window.innerWidth / 12)
       }
       if (leftPosMain >= -window.innerWidth / 12) {
         this.bannerOpacity = 1
@@ -685,7 +687,8 @@ export default {
         leftPosMain <= -window.innerWidth / 6 &&
         leftPosMain >= -window.innerWidth / 4
       ) {
-        this.philosophyOpacity += (deltaY / (5 * window.innerWidth)) * 12
+        this.philosophyOpacity +=
+          (deltaY * this.speedRatio) / (window.innerWidth / 12)
       }
 
       if (
@@ -699,7 +702,8 @@ export default {
         leftPosMain <= -window.innerWidth / 3 &&
         leftPosMain >= (-window.innerWidth * 5) / 12
       ) {
-        this.philosophyOpacity -= (deltaY / (5 * window.innerWidth)) * 12
+        this.philosophyOpacity -=
+          (deltaY * this.speedRatio) / (window.innerWidth / 12)
       }
 
       if (leftPosMain >= -window.innerWidth / 6) {
@@ -712,7 +716,8 @@ export default {
     animateFigureOne(deltaX, deltaY) {
       const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figure1RightPos -= (deltaY * 50) / window.innerWidth
+        this.figure1RightPos -=
+          (deltaY * this.speedRatio * 250) / window.innerWidth
       }
 
       // to avoid offset set by wheel event
@@ -726,13 +731,14 @@ export default {
     animateFigureTwo(deltaX, deltaY) {
       const leftPosMain = this.welcomeMainLeftPos
       if (leftPosMain <= 0 && leftPosMain > -window.innerWidth) {
-        this.figure2LeftPos -= (deltaY * 70) / window.innerWidth
+        this.figure2LeftPos -=
+          (deltaY * this.speedRatio * 350) / window.innerWidth
       }
 
       // to animate "Discover More"
       if (leftPosMain <= 0 && leftPosMain >= (-window.innerWidth / 3) * 2) {
         this.figure2MoreInfoRightPos -=
-          (deltaY * 10 * 3) / (2 * window.innerWidth)
+          (deltaY * this.speedRatio * 50) / ((2 * window.innerWidth) / 3)
       }
 
       // to avoid offset set by wheel event
@@ -754,7 +760,7 @@ export default {
         leftPosMain <= -window.innerWidth / 2 &&
         leftPosMain >= -window.innerWidth
       ) {
-        this.figureWomanRightPos += deltaY / 5
+        this.figureWomanRightPos += deltaY * this.speedRatio
       }
 
       // to avoid offset set by wheel event
@@ -770,7 +776,8 @@ export default {
         leftPosMain <= (-window.innerWidth / 12) * 11 &&
         leftPosMain >= -window.innerWidth
       ) {
-        this.moreInfoOpacity += (deltaY / (5 * window.innerWidth)) * 12
+        this.moreInfoOpacity +=
+          (deltaY * this.speedRatio) / (window.innerWidth / 12)
       }
       if (leftPosMain >= (-window.innerWidth / 12) * 11) {
         this.moreInfoOpacity = 0
