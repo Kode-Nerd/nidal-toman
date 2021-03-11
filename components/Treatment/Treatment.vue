@@ -381,12 +381,12 @@ export default {
 <style scoped>
 .__blank {
   width: 100%;
-  height: calc(100vh - 48px);
+  height: calc(100vh - 60px);
 }
 
 .treatment__container {
   width: 100%;
-  height: calc(100vh - 48px);
+  height: calc(100vh - 60px);
   position: relative;
   overflow: hidden;
 }
