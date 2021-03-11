@@ -73,7 +73,7 @@ export default {
     spacerStyle() {
       return {
         background: this.themes.light.background,
-        height: '48px',
+        height: '60px',
         width: '100%',
       }
     },
