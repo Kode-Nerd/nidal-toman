@@ -460,12 +460,53 @@
         </div>
         <div class="section" :style="background"></div>
         <div class="d-flex flex-column">
+          <div
+            v-if="!showContact"
+            class="align-self-center pt-2 pointer"
+            @click="showContact = true"
+            @mouseover="hover = true"
+            @mouseleave="hover = false"
+          >
+            <CustomSVG
+              v-if="!hover"
+              size="1.5rem"
+              :src="require('bootstrap-icons/icons/chevron-up.svg')"
+              :color="color"
+            />
+            <CustomSVG
+              v-else
+              size="1.5rem"
+              :src="require('bootstrap-icons/icons/chevron-double-up.svg')"
+              :color="color"
+            />
+          </div>
+          <div
+            v-else
+            class="align-self-center pt-2 pointer"
+            @click="showContact = false"
+            @mouseover="hover = true"
+            @mouseleave="hover = false"
+          >
+            <CustomSVG
+              v-if="!hover"
+              size="1.5rem"
+              :src="require('bootstrap-icons/icons/chevron-down.svg')"
+              :color="color"
+            />
+            <CustomSVG
+              v-else
+              size="1.5rem"
+              :src="require('bootstrap-icons/icons/chevron-double-down.svg')"
+              :color="color"
+            />
+          </div>
           <span
+            v-if="showContact"
             :style="footerTitleStyle"
             class="text-h5 font-weight-bold my-5"
             >{{ $t('treatments.footerTitle') }}</span
           >
-          <div class="d-flex justify-space-between">
+          <div v-if="showContact" class="d-flex justify-space-between">
             <div class="contact-button">
               <span
                 :style="footerSubStyle"
@@ -559,10 +600,11 @@ import TreatmentDetailButtonNav from './TreatmentDetailButtonNav'
 import womanSubparts from '~/components/Treatment/assets/womanSubparts.json'
 import manSubparts from '~/components/Treatment/assets/manSubparts.json'
 import outpatient from '~/components/Treatment/assets/outpatient.json'
+import MasterContent from '~/assets/locales/en/treatments.json'
 
 // components
 import VerticalNavigation from '~/components/Treatment/VerticalNavigation'
-import MasterContent from '~/assets/locales/en/treatments.json'
+import CustomSVG from '~/components/Global/CustomSVG'
 import { finalpath, contentExtractor } from '~/helpers'
 
 export default {
@@ -570,6 +612,7 @@ export default {
     ButtonNav: TreatmentDetailButtonNav,
     ExpandedCardInfo,
     VerticalNavigation,
+    CustomSVG,
   },
   props: {
     subpart: {
@@ -586,6 +629,8 @@ export default {
         spaceBetween: 30,
         grabCursor: true,
       },
+      hover: false,
+      showContact: false,
       icons: {
         closeIcon: CloseIcon,
         burgerMenu: BurgerMenuIcon,
@@ -849,6 +894,7 @@ export default {
   position: relative;
   width: 0%;
   padding: 60px;
+  padding-bottom: 20px;
   transition: flex-grow 500ms;
 }
 .treat-detail-container.closed {
@@ -862,7 +908,7 @@ export default {
   font-weight: 600;
   font-size: 36px;
   line-height: 49px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .treat-detail-nav__container {
@@ -900,5 +946,8 @@ export default {
   margin-left: -4%;
   width: 108%;
   height: 1px;
+}
+.pointer {
+  cursor: pointer;
 }
 </style>
