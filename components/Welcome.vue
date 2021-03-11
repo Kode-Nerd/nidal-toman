@@ -9,22 +9,13 @@
       <v-row class="welcome-main-logo">
         <v-col cols="2"></v-col>
         <v-col cols="2">
-          <!-- <CustomSVG
-            :style="mainLogoStyle"
-            :src="require('~/assets/main-logo.svg')"
-            :width="mainLogoWidth"
-            :height="mainLogoHeight"
-            :color="themes.light.logo"
-            position="top"
-          >
-          </CustomSVG> -->
           <div v-if="showPos" :style="mainLogoStyle">
             {{ welcomeMainLeftPos }} | {{ innerWidth }} | {{ userAgent }}
           </div>
         </v-col>
         <v-col :style="localeStyle" cols="2">
           <v-row justify="end">
-            <Locale :custom-style="localeStyleTop" custom-class="mr-4" />
+            <Locale :custom-style="localeStyleTop" custom-class="mr-9 mt-3" />
           </v-row>
         </v-col>
         <v-col cols="6"></v-col>
@@ -175,7 +166,7 @@
             height="80vh"
           ></v-img>
         </div>
-        <div :style="[moreInfoStyle, secondLocaleStyle, localeStyleTop]">
+        <div :style="[moreInfoStyle, localeStyleTop, secondLocaleStyle]">
           <Locale />
         </div>
         <div class="d-flex align-center" :style="[moreInfoStyle, legalStyle]">
@@ -476,7 +467,7 @@ export default {
     secondLocaleStyle() {
       return {
         position: 'absolute',
-        top: '24px',
+        top: '12px',
         right: '36px',
         zIndex: 5,
       }

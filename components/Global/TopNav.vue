@@ -14,7 +14,7 @@
       <SocialMedia :small="true" />
       <v-spacer />
     </div>
-    <v-tabs v-model="tab" v-bind="bindObj">
+    <v-tabs v-model="tab" v-bind="bindObj" class="wrapper__tab">
       <v-tabs-slider v-if="customSlider" :color="sliderColor"></v-tabs-slider>
       <v-tab
         v-for="label in showLabels"
@@ -25,7 +25,11 @@
         >{{ $t(`nav.${label}`) }}</v-tab
       >
     </v-tabs>
-    <div v-if="!backgroundIsTransparent" :style="localeStyle">
+    <div
+      v-if="!backgroundIsTransparent"
+      :style="localeStyle"
+      class="wrapper__tab"
+    >
       <Locale />
     </div>
   </div>
@@ -142,9 +146,10 @@ export default {
     backgroundSupportStyle() {
       return {
         background: this.finalColor(this.backopacity, this.background),
-        height: '48px',
+        height: '60px',
         width: '100%',
         position: 'fixed',
+        padding: '0px 24px',
         top: '0px',
         zIndex: 5,
         display: 'flex',
@@ -288,5 +293,8 @@ export default {
 }
 .tab-right {
   justify-content: flex-end !important;
+}
+.wrapper__tab {
+  padding: 12px 24px 0px 24px;
 }
 </style>
