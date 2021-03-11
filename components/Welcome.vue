@@ -512,7 +512,7 @@ export default {
       }
       const innerWidth = window.innerWidth
       let deltaY = 0
-      const delta = 5 * innerWidth
+      const delta = innerWidth / this.speedRatio
       if (val === 'welcome') {
         deltaY = -delta
       }
