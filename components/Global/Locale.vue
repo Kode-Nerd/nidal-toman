@@ -56,7 +56,7 @@ export default {
       }
 
       return {
-        color: this.themes.light.text,
+        color: this.themes.light.border,
       }
     },
     localeActive() {

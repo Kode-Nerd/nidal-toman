@@ -25,11 +25,7 @@
         >{{ $t(`nav.${label}`) }}</v-tab
       >
     </v-tabs>
-    <div
-      v-if="!backgroundIsTransparent"
-      :style="localeStyle"
-      class="wrapper__tab"
-    >
+    <div v-if="!backgroundIsTransparent" class="locale__nav">
       <Locale />
     </div>
   </div>
@@ -296,5 +292,15 @@ export default {
 }
 .wrapper__tab {
   padding: 12px 24px 0px 24px;
+}
+.locale__nav {
+  z-index: 5;
+  position: fixed;
+  top: 12px;
+  padding: 0px 24px;
+  right: 24px;
+  height: 48px;
+  display: flex;
+  align-items: center;
 }
 </style>
