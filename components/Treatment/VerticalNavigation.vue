@@ -15,6 +15,12 @@
             : $t(`treatments.outpatient_treatment.${subpart.query}.title`)
         }}
       </div>
+      <span
+        v-if="subpart.active"
+        class="treatment__detail"
+        @click="$emit('close-list')"
+        >{{ $t('treatments.detail') }}</span
+      >
     </div>
   </div>
 </template>
@@ -94,7 +100,6 @@ export default {
       } else {
         this.closeOutpatient()
       }
-      this.$emit('close-list')
     },
   },
 }
@@ -124,5 +129,10 @@ export default {
 .active {
   border-left: 3px solid;
   transition: 50ms;
+}
+
+.treatment__detail {
+  cursor: pointer;
+  color: #d2af69;
 }
 </style>
