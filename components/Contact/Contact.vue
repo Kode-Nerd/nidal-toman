@@ -26,28 +26,29 @@
                   <span class="text-h6 font-weight-light"
                     >{{ $t('contact.detail.addr') }}:</span
                   >
+                  <br />
+                  <div class="mt-8">
+                    <span
+                      class="font-weight-light link"
+                      :style="primary3TextColor"
+                      @click="$vuetify.goTo('#map', scrollOptions)"
+                      >{{ $t('contact.detail.map') }} ></span
+                    >
+                  </div>
                 </v-col>
                 <v-col style="text-align: right" :cols="7">
                   <span class="text-h6 font-weight-light"
-                    >Uhlandstrasse 33, DE-10719 Berlin, Germany.</span
+                    >Uhlandstrasse 33,<br />DE-10719 Berlin, Germany.</span
                   >
                 </v-col>
               </v-row>
-            </div>
-            <div class="d-flex justify-end">
-              <span
-                class="font-weight-light link"
-                :style="primary3TextColor"
-                @click="$vuetify.goTo('#map', scrollOptions)"
-                >{{ $t('contact.detail.map') }} ></span
-              >
             </div>
           </v-col>
         </v-row>
       </div>
       <div
         id="contact-form"
-        class="section d-flex align-stretch"
+        class="contact-section d-flex align-stretch"
         :style="lightBackground"
       >
         <div class="form-cover">
@@ -243,7 +244,10 @@ export default {
 }
 
 .section {
-  padding: 48px 60px 160px 60px;
+  padding: 84px 60px 160px 60px;
+}
+.contact-section {
+  padding: 200px 60px;
 }
 .section.gallery-top {
   padding-bottom: 36px;

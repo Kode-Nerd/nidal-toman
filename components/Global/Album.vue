@@ -27,7 +27,7 @@ export default {
     return {
       swiperOption: {
         slidesPerView: 'auto',
-        spaceBetween: 30,
+        spaceBetween: 36,
         loop: true,
         loopFillGroupWithBlank: true,
         grabCursor: true,

@@ -1,7 +1,7 @@
 <template>
   <div class="title">
-    <div :style="titleStyle">
-      <span class="text-h4"><slot /></span>
+    <div class="pb-4" :style="titleStyle">
+      <span class="text-h3"><slot /></span>
     </div>
   </div>
 </template>
@@ -14,7 +14,8 @@ export default {
     },
     titleStyle() {
       return {
-        borderBottom: `1px solid ${this.themes.light.primary}`,
+        borderBottom: `1px solid ${this.themes.light.titleColor}`,
+        color: this.themes.light.titleColor,
       }
     },
   },
