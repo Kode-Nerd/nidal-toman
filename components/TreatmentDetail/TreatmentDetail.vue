@@ -21,7 +21,7 @@
             }}
           </span>
           <v-btn
-            class="text-h6 text-lowercase ml-n2"
+            class="text-body-2 text-lowercase ml-n3"
             text
             small
             :color="themes.light.primary3"
@@ -441,7 +441,7 @@
               :key="index"
               class="d-flex flex-column my-6"
             >
-              <span class="text-h4 font-weight-bold mb-3">
+              <span class="text-h5 font-weight-bold mb-3">
                 {{
                   $t(
                     `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
@@ -471,13 +471,13 @@
               v-if="!hover"
               size="1.5rem"
               :src="require('bootstrap-icons/icons/chevron-up.svg')"
-              :color="color"
+              :color="themes.light.primary4"
             />
             <CustomSVG
               v-else
               size="1.5rem"
               :src="require('bootstrap-icons/icons/chevron-double-up.svg')"
-              :color="color"
+              :color="themes.light.primary4"
             />
           </div>
           <div
@@ -491,13 +491,13 @@
               v-if="!hover"
               size="1.5rem"
               :src="require('bootstrap-icons/icons/chevron-down.svg')"
-              :color="color"
+              :color="themes.light.primary4"
             />
             <CustomSVG
               v-else
               size="1.5rem"
               :src="require('bootstrap-icons/icons/chevron-double-down.svg')"
-              :color="color"
+              :color="themes.light.primary4"
             />
           </div>
           <span
@@ -532,16 +532,28 @@
       </div>
     </div>
     <div
-      class="d-flex justify-center align-center side-button"
+      class="d-flex flex-column justify-center align-center side-button"
       :style="darkBackground"
       @click="toogleList"
     >
-      <span
+      <div v-if="!showingList" class="d-flex">
+        <span class="text-h6 font-weight-light side-button-text">{{
+          $t('treatments.procedures')
+        }}</span>
+      </div>
+      <CustomSVG
         v-if="!showingList"
-        class="text-h6 font-weight-light side-button-text"
-        >{{ $t('treatments.procedures') }}</span
-      >
-      <img v-else :src="icons.right" alt="right" />
+        class="mt-12"
+        size="1.5rem"
+        :src="icons.left"
+        :color="themes.light.primary4"
+      />
+      <CustomSVG
+        v-else
+        size="1.5rem"
+        :src="icons.right"
+        :color="themes.light.primary4"
+      />
     </div>
     <div
       class="d-flex flex-column subpart-list"
@@ -558,7 +570,7 @@
             {{ $t('treatments.procedures') }}
           </span>
           <v-btn
-            class="text-h6 text-lowercase ml-n2"
+            class="text-body-2 text-lowercase ml-n3"
             text
             small
             :color="themes.light.primary3"
@@ -593,6 +605,7 @@
 <script>
 // assets
 import ChevronRight from 'bootstrap-icons/icons/chevron-right.svg'
+import ChevronLeft from 'bootstrap-icons/icons/chevron-left.svg'
 import CloseIcon from '../../assets/icons/close-icon.svg'
 import BurgerMenuIcon from '../../assets/icons/burger-menu.svg'
 import ExpandedCardInfo from '../ExpandedCardInfo'
@@ -635,6 +648,7 @@ export default {
         closeIcon: CloseIcon,
         burgerMenu: BurgerMenuIcon,
         right: ChevronRight,
+        left: ChevronLeft,
       },
       items: [
         { label: this.$t('treatments.general'), value: 'general' },
