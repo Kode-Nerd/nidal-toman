@@ -213,7 +213,7 @@
               :key="index"
               class="d-flex flex-column my-6"
             >
-              <span class="text-h4 font-weight-bold mb-3">
+              <span class="text-h5 font-weight-bold mb-3">
                 {{
                   $t(
                     `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
@@ -233,7 +233,7 @@
               :key="index"
               class="d-flex flex-column my-6"
             >
-              <span class="text-h4 font-weight-bold mb-3">
+              <span class="text-h5 font-weight-bold mb-3">
                 {{
                   $t(
                     `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
@@ -421,7 +421,7 @@
               :key="index"
               class="d-flex flex-column my-6"
             >
-              <span class="text-h4 font-weight-bold mb-3">
+              <span class="text-h5 font-weight-bold mb-3">
                 {{
                   $t(
                     `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
