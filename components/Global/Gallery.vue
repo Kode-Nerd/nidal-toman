@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Album class="mt-9" :list="interiors" />
-    <Album class="mt-9" :list="treatments" />
+    <Album class="mt-16" :list="interiors" />
+    <Album class="mt-16" :list="treatments" />
   </div>
 </template>
 

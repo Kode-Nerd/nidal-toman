@@ -17,7 +17,7 @@
       </div>
       <span
         v-if="subpart.active"
-        class="treatment__detail"
+        class="treatment__detail ml-4"
         @click="$emit('close-list')"
         >{{ $t('treatments.detail') }}</span
       >
@@ -133,6 +133,9 @@ export default {
 
 .treatment__detail {
   cursor: pointer;
+  color: #c4c4c4;
+}
+.treatment__detail:hover {
   color: #d2af69;
 }
 </style>
