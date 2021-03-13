@@ -134,6 +134,7 @@
               <v-btn
                 elevation="2"
                 :color="themes.light.primary4"
+                tile
                 large
                 dark
                 block
@@ -149,6 +150,7 @@
               <v-btn
                 elevation="2"
                 :color="themes.light.primary4"
+                tile
                 outlined
                 large
                 block
