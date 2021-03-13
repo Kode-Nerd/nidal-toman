@@ -91,9 +91,9 @@
         <div class="image-left">
           <ProfilePicture
             :src="require('~/assets/images/treatments/treatment12.jpg')"
-            height="45vw"
-            width="30vw"
-            vertical
+            height="81vh"
+            width="54vh"
+            horizontal
           ></ProfilePicture>
         </div>
       </div>

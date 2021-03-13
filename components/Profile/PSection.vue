@@ -56,11 +56,11 @@ export default {
 
 <style scoped>
 .title {
-  margin-bottom: 0px;
+  margin-bottom: 5vh;
 }
 
 .section {
-  padding: 80px 160px;
+  padding: 25vh 160px;
   width: 100vw;
 }
 

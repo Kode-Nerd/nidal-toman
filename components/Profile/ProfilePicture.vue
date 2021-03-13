@@ -6,11 +6,7 @@
       :width="width"
       @load="ready = true"
     ></v-img>
-    <div
-      :style="borderStyle"
-      class="border-profile"
-      :class="{ noborder }"
-    ></div>
+    <div :style="borderStyle" class="border-profile"></div>
   </div>
 </template>
 
@@ -46,33 +42,25 @@ export default {
   },
   data() {
     return {
-      inView: false,
+      // inView: false,
       ready: false,
+      borderWidth: '0px',
     }
   },
   computed: {
     borderStyle() {
       const style = {
-        width: this.width,
-        height: this.height,
+        width: `calc(${this.width} + 2px)`,
+        height: `calc(${this.height} + 2px)`,
         borderColor: this.border,
-      }
-
-      if (this.horizontal && this.vertical) {
-        style.borderWidth = `calc(${this.height} / 2) calc(${this.width} / 2)`
-      } else if (this.horizontal) {
-        style.borderWidth = `0px calc(${this.width} / 2)`
-      } else if (this.vertical) {
-        style.borderWidth = `calc(${this.height} / 2) 0px`
-      } else {
-        style.borderWidth = '0px'
+        borderWidth: this.borderWidth,
       }
 
       return style
     },
-    noborder() {
-      return this.ready && this.inView
-    },
+    // noborder() {
+    //   return this.ready && this.inView
+    // },
     profpictstyle() {
       const style = {
         width: this.width,
@@ -83,19 +71,40 @@ export default {
     },
   },
   mounted() {
-    document.addEventListener(
-      'scroll',
-      () => {
-        if (this.isInViewport()) {
-          this.inView = true
-        }
-      },
-      {
-        passive: true,
-      }
-    )
+    this.initBorderWidth()
+    document.addEventListener('scroll', this.isInViewport, {
+      passive: true,
+    })
   },
   methods: {
+    initBorderWidth() {
+      if (this.horizontal && this.vertical) {
+        this.borderWidth = `calc(${this.height} / 3) calc(${this.width} / 3)`
+      } else if (this.horizontal) {
+        this.borderWidth = `0px calc(${this.width} / 3)`
+      } else if (this.vertical) {
+        this.borderWidth = `calc(${this.height} / 3) 0px`
+      } else {
+        this.borderWidth = '0px'
+      }
+    },
+    setBorderWidth(diffY, totalY) {
+      /* 
+        targetScrollY <=> borderWidth
+        diffScrollY <=> X ???
+      */
+      if (this.horizontal && this.vertical) {
+        this.borderWidth = `calc(${diffY / totalY} * ${this.height} / 3) calc(${
+          diffY / totalY
+        } * ${this.width} / 3)`
+      } else if (this.horizontal) {
+        this.borderWidth = `0px calc(${diffY / totalY} * ${this.width} / 3)`
+      } else if (this.vertical) {
+        this.borderWidth = `calc(${diffY / totalY} * ${this.height} / 3) 0px`
+      } else {
+        this.borderWidth = '0px'
+      }
+    },
     isInViewport() {
       const el = this.$refs.profpict
       if (!el) {
@@ -103,11 +112,23 @@ export default {
       }
 
       const rect = el.getBoundingClientRect()
+      const innerHeight =
+        window.innerHeight || document.documentElement.clientHeight
 
-      return (
-        rect.top <=
-        (window.innerHeight || document.documentElement.clientHeight) / 2
-      )
+      const start = (2 * innerHeight) / 3
+      const end = innerHeight / 3
+
+      let diffY = start - end // initial value
+      const totalY = diffY
+
+      if (rect.top <= start && rect.top >= end) {
+        diffY = rect.top - end
+      }
+      if (rect.top < end) {
+        diffY = 0
+      }
+
+      this.setBorderWidth(diffY, totalY)
     },
   },
 }
@@ -119,16 +140,17 @@ export default {
 }
 
 .border-profile {
+  transform: translate(-50%, -50%);
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 50%;
+  left: 50%;
   box-sizing: border-box;
   border-style: solid;
 }
 
-.noborder {
+/* .noborder {
   border-width: 0px !important;
   transition: 1500ms;
   transition-timing-function: ease-in-out;
-}
+} */
 </style>

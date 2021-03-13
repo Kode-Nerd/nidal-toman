@@ -13,16 +13,16 @@
               )"
               :key="index"
               class="text-h6 text-justify font-weight-light"
-              :class="{ 'my-12': index === 0 }"
+              :class="{ 'my-16': index === 0 }"
               v-html="text"
             ></p>
           </Section>
-          <div class="image-left">
+          <div class="image-left main">
             <ProfilePicture
               :src="require('~/assets/images/profiles/profile.jpg')"
-              height="42vw"
-              width="28vw"
-              vertical
+              height="81vh"
+              width="54vh"
+              horizontal
             ></ProfilePicture>
           </div>
         </div>
@@ -40,9 +40,9 @@
           <div class="image-right">
             <ProfilePicture
               :src="ProfileImage"
-              height="30vw"
-              width="24vw"
-              vertical
+              height="50vh"
+              width="40vh"
+              horizontal
               :border="themes.light.lightBackground"
             ></ProfilePicture>
           </div>
@@ -63,9 +63,9 @@
           <div class="image-left">
             <ProfilePicture
               :src="require('~/assets/images/treatments/treatment4.jpg')"
-              height="45vw"
-              width="30vw"
-              vertical
+              height="81vh"
+              width="54vh"
+              horizontal
             ></ProfilePicture>
           </div>
         </div>
@@ -105,7 +105,7 @@
                 :src="require('~/assets/images/treatments/treatment7.jpg')"
                 height="50vh"
                 width="33vh"
-                vertical
+                horizontal
               ></ProfilePicture>
             </div>
           </Section>
@@ -150,9 +150,9 @@
           <div class="image-right">
             <ProfilePicture
               :src="require('~/assets/images/treatments/treatment2.jpg')"
-              height="39vw"
-              width="26vw"
-              vertical
+              height="60vh"
+              width="40vh"
+              horizontal
             ></ProfilePicture>
           </div>
         </div>
@@ -162,7 +162,7 @@
               :src="require('~/assets/images/treatments/treatment2.jpg')"
               height="100%"
               width="33vw"
-              vertical
+              horizontal
             ></ProfilePicture>
           </div>
           <div class="vita__subcontainer">
@@ -281,9 +281,13 @@ export default {
 
 .image-left {
   position: absolute;
-  bottom: -3vw;
+  transform: translateY(-50%);
+  top: 50%;
   left: 160px;
   z-index: 1;
+}
+.image-left.main {
+  margin-top: 17vh;
 }
 
 .image-right {
