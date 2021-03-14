@@ -73,8 +73,11 @@
         </div>
         <div :style="figure2" class="d-flex flex-column align-center">
           <span
-            :style="[titleStyle, { color: themes.light.lightPrimary3 }]"
-            class="text-h4 mb-16 font-weight-light"
+            :style="[
+              titleStyle,
+              { color: themes.light.lightPrimary3, fontSize: '36px' },
+            ]"
+            class="mb-16 font-weight-light"
           >
             {{ $t('welcome.infusion') }}
           </span>
