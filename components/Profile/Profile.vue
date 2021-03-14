@@ -70,26 +70,28 @@
           </div>
         </div>
 
-        <div class="history-container" :style="lightBackground">
-          <div class="history-header text-h3 font-weight-bold">
-            <div class="history-title">
-              {{ $t('profile.publication.label') }}
+        <div class="section" :style="lightBackground">
+          <Section width="100%">
+            <div class="history-header text-h3 font-weight-bold">
+              <div class="history-title">
+                {{ $t('profile.publication.label') }}
+              </div>
             </div>
-          </div>
-          <div>
-            <ProfilePublicationItem
-              v-for="index in 9"
-              :key="`publication-${index}`"
-              :title="$t(`profile.publication.list.${index - 1}.title`)"
-              :subtitle="$t(`profile.publication.list.${index - 1}.subtitle`)"
-              :detail="$t(`profile.publication.list.${index - 1}.detail`)"
-              :index="index < 10 ? `0${index}` : `${index}`"
-            />
-          </div>
+            <div>
+              <ProfilePublicationItem
+                v-for="index in 9"
+                :key="`publication-${index}`"
+                :title="$t(`profile.publication.list.${index - 1}.title`)"
+                :subtitle="$t(`profile.publication.list.${index - 1}.subtitle`)"
+                :detail="$t(`profile.publication.list.${index - 1}.detail`)"
+                :index="index < 10 ? `0${index}` : `${index}`"
+              />
+            </div>
+          </Section>
         </div>
 
         <div class="section">
-          <Section right width="65%">
+          <Section right width="70%">
             <div class="history-header text-h3 font-weight-bold">
               <div class="history-title">{{ $t('profile.books.label') }}</div>
             </div>
@@ -111,22 +113,24 @@
           </Section>
         </div>
 
-        <div class="history-container" :style="lightBackground">
-          <div class="history-header text-h3 font-weight-bold">
-            <div class="history-title">
-              {{ $t('profile.summaries.label') }}
+        <div class="section" :style="lightBackground">
+          <Section width="100%">
+            <div class="history-header text-h3 font-weight-bold">
+              <div class="history-title">
+                {{ $t('profile.summaries.label') }}
+              </div>
             </div>
-          </div>
-          <div>
-            <ProfilePublishedSummary
-              v-for="index in 10"
-              :key="`published-summary-${index}`"
-              :title="$t(`profile.summaries.list.${index - 1}.title`)"
-              :author="$t(`profile.summaries.list.${index - 1}.author`)"
-              :detail="$t(`profile.summaries.list.${index - 1}.detail`)"
-              :index="index < 10 ? `0${index}` : `${index}`"
-            />
-          </div>
+            <div>
+              <ProfilePublishedSummary
+                v-for="index in 10"
+                :key="`published-summary-${index}`"
+                :title="$t(`profile.summaries.list.${index - 1}.title`)"
+                :author="$t(`profile.summaries.list.${index - 1}.author`)"
+                :detail="$t(`profile.summaries.list.${index - 1}.detail`)"
+                :index="index < 10 ? `0${index}` : `${index}`"
+              />
+            </div>
+          </Section>
         </div>
 
         <div class="section">
@@ -184,36 +188,40 @@
           </div>
         </div> -->
 
-        <div class="history-container" :style="lightBackground">
-          <div class="history-header text-h3 font-weight-bold">
-            <div class="history-title">{{ $t('profile.posters.label') }}</div>
-          </div>
-          <div>
-            <ProfileBookItem
-              v-for="index in 12"
-              :key="`posters-${index}`"
-              :title="$t(`profile.posters.list.${index - 1}.title`)"
-              :author="$t(`profile.posters.list.${index - 1}.author`)"
-              :detail="$t(`profile.posters.list.${index - 1}.detail`)"
-            />
-          </div>
-        </div>
-        <div class="history-container">
-          <div class="history-header text-h3 font-weight-bold">
-            <div class="history-title">
-              {{ $t('profile.conferences.label') }}
+        <div class="section" :style="lightBackground">
+          <Section width="100%">
+            <div class="history-header text-h3 font-weight-bold">
+              <div class="history-title">{{ $t('profile.posters.label') }}</div>
             </div>
-          </div>
-          <div>
-            <ProfilePublicationItem
-              v-for="index in 24"
-              :key="`conferences-${index}`"
-              :title="$t(`profile.conferences.list.${index - 1}.title`)"
-              :subtitle="$t(`profile.conferences.list.${index - 1}.detail`)"
-              :detail="$t(`profile.conferences.list.${index - 1}.author`)"
-              :index="index < 10 ? `0${index}` : `${index}`"
-            />
-          </div>
+            <div>
+              <ProfileBookItem
+                v-for="index in 12"
+                :key="`posters-${index}`"
+                :title="$t(`profile.posters.list.${index - 1}.title`)"
+                :author="$t(`profile.posters.list.${index - 1}.author`)"
+                :detail="$t(`profile.posters.list.${index - 1}.detail`)"
+              />
+            </div>
+          </Section>
+        </div>
+        <div class="section">
+          <Section width="100%">
+            <div class="history-header text-h3 font-weight-bold">
+              <div class="history-title">
+                {{ $t('profile.conferences.label') }}
+              </div>
+            </div>
+            <div>
+              <ProfilePublicationItem
+                v-for="index in 24"
+                :key="`conferences-${index}`"
+                :title="$t(`profile.conferences.list.${index - 1}.title`)"
+                :subtitle="$t(`profile.conferences.list.${index - 1}.detail`)"
+                :detail="$t(`profile.conferences.list.${index - 1}.author`)"
+                :index="index < 10 ? `0${index}` : `${index}`"
+              />
+            </div>
+          </Section>
         </div>
       </div>
     </div>
@@ -314,9 +322,6 @@ export default {
   color: #868686;
 }
 
-.history-container {
-  padding: 160px;
-}
 .history-header {
   margin-bottom: 40px;
 }

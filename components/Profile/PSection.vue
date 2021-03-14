@@ -46,8 +46,14 @@ export default {
       return this.$vuetify.theme.themes
     },
     profileText() {
+      let width = this.width
+
+      const innerWidth = window.innerWidth
+      if (innerWidth <= 1440) {
+        width = `calc(${this.width} + 7%)`
+      }
       return {
-        width: this.width,
+        width,
       }
     },
   },

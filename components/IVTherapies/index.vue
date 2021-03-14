@@ -261,8 +261,13 @@ export default {
 .image-left {
   position: absolute;
   bottom: -3vw;
-  left: 160px;
+  left: 200px;
   z-index: 1;
+}
+@media only screen and (max-width: 1440px) {
+  .image-left {
+    left: 80px;
+  }
 }
 
 .end-page {
