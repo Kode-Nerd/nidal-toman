@@ -785,6 +785,12 @@ export default {
             })
           }, 500)
         }
+
+        if (!val && !this.showContact) {
+          setTimeout(() => {
+            this.showContact = true
+          }, 5000)
+        }
       },
       deep: true,
       immediate: true,
