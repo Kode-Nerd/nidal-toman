@@ -789,7 +789,7 @@ export default {
         if (!val && !this.showContact) {
           setTimeout(() => {
             this.showContact = true
-          }, 5000)
+          }, 3000)
         }
       },
       deep: true,
