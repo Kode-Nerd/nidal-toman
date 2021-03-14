@@ -79,11 +79,11 @@ export default {
   methods: {
     initBorderWidth() {
       if (this.horizontal && this.vertical) {
-        this.borderWidth = `calc(${this.height} / 3) calc(${this.width} / 3)`
+        this.borderWidth = `calc(${this.height} / 6) calc(${this.width} / 6)`
       } else if (this.horizontal) {
-        this.borderWidth = `0px calc(${this.width} / 3)`
+        this.borderWidth = `0px calc(${this.width} / 6)`
       } else if (this.vertical) {
-        this.borderWidth = `calc(${this.height} / 3) 0px`
+        this.borderWidth = `calc(${this.height} / 6) 0px`
       } else {
         this.borderWidth = '0px'
       }
@@ -94,13 +94,13 @@ export default {
         diffScrollY <=> X ???
       */
       if (this.horizontal && this.vertical) {
-        this.borderWidth = `calc(${diffY / totalY} * ${this.height} / 3) calc(${
+        this.borderWidth = `calc(${diffY / totalY} * ${this.height} / 6) calc(${
           diffY / totalY
-        } * ${this.width} / 3)`
+        } * ${this.width} / 6)`
       } else if (this.horizontal) {
-        this.borderWidth = `0px calc(${diffY / totalY} * ${this.width} / 3)`
+        this.borderWidth = `0px calc(${diffY / totalY} * ${this.width} / 6)`
       } else if (this.vertical) {
-        this.borderWidth = `calc(${diffY / totalY} * ${this.height} / 3) 0px`
+        this.borderWidth = `calc(${diffY / totalY} * ${this.height} / 6) 0px`
       } else {
         this.borderWidth = '0px'
       }
