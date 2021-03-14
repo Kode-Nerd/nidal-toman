@@ -253,7 +253,7 @@ export default {
   padding-bottom: 36px;
 }
 .section.gallery-bottom {
-  padding-top: 0px;
+  padding-top: 160px;
 }
 
 .form-cover {
