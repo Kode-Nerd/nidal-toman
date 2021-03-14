@@ -9,7 +9,7 @@
         :color="themes.light.primary3"
         cover
       ></CustomSVG>
-      <span class="text-h6 font-weight-light text-uppercase">{{
+      <span class="text-body-2 font-weight-light text-uppercase">{{
         $t('profile.subtitle')
       }}</span>
     </div>
@@ -60,8 +60,13 @@ export default {
 }
 
 .section {
-  padding: 25vh 160px;
+  padding: 20vh 200px;
   width: 100vw;
+}
+@media only screen and (max-width: 1440px) {
+  .section {
+    padding: 20vh 80px;
+  }
 }
 
 .right {

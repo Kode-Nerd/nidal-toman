@@ -20,8 +20,8 @@
           <div class="image-left main">
             <ProfilePicture
               :src="require('~/assets/images/profiles/profile.jpg')"
-              height="81vh"
-              width="54vh"
+              height="78vh"
+              width="52vh"
               horizontal
             ></ProfilePicture>
           </div>
@@ -283,21 +283,31 @@ export default {
   position: absolute;
   transform: translateY(-50%);
   top: 50%;
-  left: 160px;
+  left: 200px;
   z-index: 1;
 }
 .image-left.main {
-  margin-top: 17vh;
+  transform: translateY(10%) !important;
+  top: auto !important;
+  bottom: 0px !important;
 }
 
 .image-right {
   position: absolute;
   transform: translateY(-50%);
   top: 50%;
-  right: 160px;
+  right: 200px;
   z-index: 1;
 }
 
+@media only screen and (max-width: 1440px) {
+  .image-left {
+    left: 80px;
+  }
+  .image-right {
+    right: 80px;
+  }
+}
 .apposthrope {
   font-size: 75px;
   font-family: Avenir;
