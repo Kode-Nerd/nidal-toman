@@ -74,7 +74,7 @@
         <div :style="figure2" class="d-flex flex-column align-center">
           <span
             :style="[titleStyle, { color: themes.light.lightPrimary3 }]"
-            class="text-h4 mb-n3 font-weight-light"
+            class="text-h4 mb-16 font-weight-light"
           >
             {{ $t('welcome.infusion') }}
           </span>
