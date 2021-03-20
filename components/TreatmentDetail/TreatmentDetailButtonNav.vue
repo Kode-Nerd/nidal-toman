@@ -74,9 +74,9 @@ export default {
   display: none;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .isActive {
   font-weight: 700 !important;

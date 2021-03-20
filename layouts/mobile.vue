@@ -1,12 +1,22 @@
 <template>
   <v-app v-if="ready" id="app" :style="textDefaultStyle" :dark="false">
-    <nuxt />
+    <BottomNav scroll-target="mobile-screen" />
+    <v-responsive id="mobile-screen" class="overflow-y-auto" height="100vh">
+      <nuxt />
+    </v-responsive>
   </v-app>
 </template>
 
 <script>
+import BottomNav from '~/components/Mobile/BottomNav'
+
 export default {
-  components: {},
+  components: {
+    BottomNav,
+  },
+  data() {
+    return {}
+  },
   computed: {
     ready: {
       set(val) {
@@ -24,6 +34,9 @@ export default {
         return this.$store.state.userAgent
       },
     },
+    isMobile() {
+      return this.userAgent.includes('mobile')
+    },
     themes() {
       return this.$vuetify.theme.themes
     },
@@ -32,19 +45,15 @@ export default {
         color: this.themes.light.primary4,
       }
     },
-    tabsStyle() {
-      return {
-        borderBottomStyle: 'solid',
-        borderColor: this.themes.light.primary,
-        borderWidth: '1px',
-        width: '60%',
-      }
-    },
   },
   mounted() {
     this.userAgent = navigator.userAgent.toLowerCase()
     this.$nextTick(() => {
-      this.ready = true
+      if (this.isMobile) {
+        this.ready = true
+      } else {
+        this.$router.push(this.$route.fullPath.replace(/^\/mobile/, ''))
+      }
     })
   },
   head() {
@@ -62,8 +71,4 @@ export default {
 }
 </script>
 
-<style>
-::-webkit-scrollbar {
-  display: none;
-}
-</style>
+<style></style>
