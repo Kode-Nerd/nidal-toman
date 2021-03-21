@@ -51,6 +51,15 @@ export default {
       },
     },
   },
+  watch: {
+    '$route.path': {
+      handler(val, old) {
+        this.checkActiveTab()
+      },
+      deep: true,
+      immediate: true,
+    },
+  },
   mounted() {
     this.checkActiveTab()
   },
