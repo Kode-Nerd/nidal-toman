@@ -1,5 +1,5 @@
 <template>
-  <div :style="customStyle" :class="customClass">
+  <div v-if="!isMobile" :style="customStyle" :class="customClass">
     <nuxt-link
       :style="locale === 'en' ? localeActive : textStyle"
       :to="
@@ -16,6 +16,37 @@
       >DE</nuxt-link
     >
   </div>
+  <v-menu v-else offset-y>
+    <template v-slot:activator="{ on, attrs }">
+      <v-btn color="primary3" text v-bind="attrs" v-on="on">
+        {{ locale }}
+      </v-btn>
+    </template>
+    <v-list>
+      <v-list-item>
+        <v-list-item-title class="text-uppercase">
+          <nuxt-link
+            :style="locale === 'en' ? localeActive : textStyle"
+            :to="
+              locale === 'de'
+                ? $route.fullPath.replace(/^\/[^\/]+/, '')
+                : $route.fullPath
+            "
+            >EN</nuxt-link
+          >
+        </v-list-item-title>
+      </v-list-item>
+      <v-list-item>
+        <v-list-item-title class="text-uppercase">
+          <nuxt-link
+            :style="locale === 'de' ? localeActive : textStyle"
+            :to="locale === 'en' ? '/de' + $route.fullPath : $route.fullPath"
+            >DE</nuxt-link
+          >
+        </v-list-item-title>
+      </v-list-item>
+    </v-list>
+  </v-menu>
 </template>
 
 <script>
@@ -34,6 +65,10 @@ export default {
       default() {
         return {}
       },
+    },
+    isMobile: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {

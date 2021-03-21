@@ -1,11 +1,33 @@
-export function finalpath(locale, path, def = 'en') {
+export function finalpath(locale, path, mobile = false) {
+  const def = 'en'
   const filteredpath = path.replace(/\//g, '')
   const result = path === '/' ? filteredpath : `${filteredpath}/`
-  if (locale === def) {
-    return `/${result}`
+  const defaultLocale = locale === def
+  let finalPath = ''
+  if (defaultLocale) {
+    finalPath = `/${result}`
+  } else {
+    finalPath = `/${locale}/${result}`
   }
 
-  return `/${locale}/${result}`
+  if (mobile) {
+    finalPath = insertMobilePath(finalPath, defaultLocale)
+  }
+  return finalPath
+}
+
+function insertMobilePath(path, locale) {
+  const splitted = path.split('/')
+  let insertIndex = -1
+  if (locale) {
+    insertIndex = 1
+  } else {
+    insertIndex = 2
+  }
+  splitted.splice(insertIndex, 0, 'mobile')
+  const finalPath = splitted.join('/')
+
+  return finalPath
 }
 
 export function contentExtractor(input) {

@@ -5,6 +5,29 @@ export const state = () => ({
   tab: 0,
   labels: ['welcome', 'ivtherapies', 'procedures', 'profile', 'contact'],
 
+  mobileLabels: [
+    {
+      icon: 'fas fa-heart',
+      label: 'mobileHome',
+    },
+    {
+      icon: 'fas fa-smile',
+      label: 'ivtherapies',
+    },
+    {
+      icon: 'fas fa-user-md',
+      label: 'procedures',
+    },
+    {
+      icon: 'fas fa-id-card-alt',
+      label: 'mobileProfile',
+    },
+    {
+      icon: 'fas fa-map-pin',
+      label: 'contact',
+    },
+  ],
+
   path: 'welcome',
   userAgent: '',
   ready: false,

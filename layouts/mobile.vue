@@ -1,6 +1,6 @@
 <template>
   <v-app v-if="ready" id="app" :style="textDefaultStyle" :dark="false">
-    <BottomNav scroll-target="mobile-screen" />
+    <BottomNav scroll-target="#mobile-screen" />
     <v-responsive id="mobile-screen" class="overflow-y-auto" height="100vh">
       <nuxt />
     </v-responsive>
@@ -13,9 +13,6 @@ import BottomNav from '~/components/Mobile/BottomNav'
 export default {
   components: {
     BottomNav,
-  },
-  data() {
-    return {}
   },
   computed: {
     ready: {
