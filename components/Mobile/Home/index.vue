@@ -1,7 +1,7 @@
 <template>
   <MobileView>
     <div class="d-flex justify-space-between header">
-      <SocialMedia :small="true" />
+      <SocialMedia small />
       <Locale is-mobile />
     </div>
     <MobileView class="justify-space-between align-center section">

@@ -1,7 +1,5 @@
 <template>
-  <div class="d-flex flex-column">
-    <IVTherapies />
-  </div>
+  <IVTherapies />
 </template>
 
 <script>
@@ -14,7 +12,7 @@ export default {
   layout: 'mobile',
   head() {
     return {
-      title: 'Home',
+      title: 'IV Therapies',
       meta: [
         {
           hid: 'description',

@@ -18,7 +18,12 @@
   </div>
   <v-menu v-else offset-y>
     <template v-slot:activator="{ on, attrs }">
-      <v-btn color="primary3" text v-bind="attrs" v-on="on">
+      <v-btn
+        :color="!mobileDark ? 'primary3' : 'background'"
+        text
+        v-bind="attrs"
+        v-on="on"
+      >
         {{ locale }}
       </v-btn>
     </template>
@@ -52,6 +57,10 @@
 <script>
 export default {
   props: {
+    mobileDark: {
+      type: Boolean,
+      default: false,
+    },
     darkStyle: {
       type: Boolean,
       default: false,

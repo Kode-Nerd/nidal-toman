@@ -1,5 +1,6 @@
 <template>
   <v-app v-if="ready" id="app" :style="textDefaultStyle" :dark="false">
+    <Header v-if="src" :src="src" scroll-target="#mobile-screen" />
     <BottomNav scroll-target="#mobile-screen" />
     <v-responsive id="mobile-screen" class="overflow-y-auto" height="100vh">
       <nuxt />
@@ -9,10 +10,12 @@
 
 <script>
 import BottomNav from '~/components/Mobile/BottomNav'
+import Header from '~/components/Mobile/Header'
 
 export default {
   components: {
     BottomNav,
+    Header,
   },
   computed: {
     ready: {
@@ -40,6 +43,32 @@ export default {
     textDefaultStyle() {
       return {
         color: this.themes.light.primary4,
+      }
+    },
+    src() {
+      const routePath = this.$route.path
+
+      /* eslint no-useless-escape: 0 */
+      const path = routePath.replace(/^\/de/, '').replace(/^\/mobile/, '')
+      const matched = path.match(/[^\/]+/g)
+
+      let label
+
+      if (!matched) {
+        label = 'mobileHome'
+      } else {
+        label = matched[0]
+      }
+
+      switch (label) {
+        case 'ivtherapies':
+          return require('~/assets/images/treatments/treatment1.jpg')
+        case 'mobileProfile':
+          return require('~/assets/images/treatments/treatment1.jpg')
+        case 'contact':
+          return require('~/assets/images/interiors/interior2.jpg')
+        default:
+          return null
       }
     },
   },
