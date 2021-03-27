@@ -1,7 +1,8 @@
 <template>
   <v-app v-if="ready" id="app" :style="textDefaultStyle" :dark="false">
     <Header v-if="src" :src="src" scroll-target="#mobile-screen" />
-    <BottomNav scroll-target="#mobile-screen" />
+    <!-- <BottomNav scroll-target="#mobile-screen" /> -->
+    <SideNav />
     <v-responsive id="mobile-screen" class="overflow-y-auto" height="100vh">
       <nuxt />
     </v-responsive>
@@ -9,12 +10,14 @@
 </template>
 
 <script>
-import BottomNav from '~/components/Mobile/BottomNav'
+// import BottomNav from '~/components/Mobile/BottomNav'
+import SideNav from '~/components/Mobile/SideNav'
 import Header from '~/components/Mobile/Header'
 
 export default {
   components: {
-    BottomNav,
+    // BottomNav,
+    SideNav,
     Header,
   },
   computed: {

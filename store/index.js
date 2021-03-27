@@ -9,24 +9,30 @@ export const state = () => ({
     {
       icon: 'fas fa-heart',
       label: 'mobileHome',
+      active: true,
     },
     {
       icon: 'fas fa-smile',
       label: 'ivtherapies',
+      active: false,
     },
     {
       icon: 'fas fa-user-md',
       label: 'procedures',
+      active: false,
     },
     {
       icon: 'fas fa-id-card-alt',
       label: 'mobileProfile',
+      active: false,
     },
     {
       icon: 'fas fa-map-pin',
       label: 'contact',
+      active: false,
     },
   ],
+  sideNav: false,
 
   path: 'welcome',
   userAgent: '',
@@ -88,5 +94,8 @@ export const mutations = {
   },
   SET_OUTPATIENTDETAIL(state, val) {
     state.outpatientDetail = val
+  },
+  SET_SIDENAV(state, val) {
+    state.sideNav = val
   },
 }

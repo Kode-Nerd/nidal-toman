@@ -14,6 +14,7 @@
       ></v-img>
     </template>
 
+    <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
     <CustomSVG
       class="ml-3"
       :src="require('~/assets/mini-logo.svg')"
@@ -21,7 +22,6 @@
       :color="themes.light.background"
     ></CustomSVG>
 
-    <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
     <!-- <v-app-bar-title>Title</v-app-bar-title> -->
 
     <v-spacer></v-spacer>
@@ -57,6 +57,14 @@ export default {
   computed: {
     themes() {
       return this.$vuetify.theme.themes
+    },
+    drawer: {
+      set(val) {
+        this.$store.commit('SET_SIDENAV', val)
+      },
+      get() {
+        return this.$store.state.sideNav
+      },
     },
   },
 }

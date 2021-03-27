@@ -1,7 +1,27 @@
 <template>
   <MobileView>
-    <div class="d-flex justify-space-between header">
-      <SocialMedia small />
+    <div ref="headerMobile" class="d-flex justify-space-between header">
+      <v-fab-transition>
+        <v-btn
+          v-show="!hidden"
+          elevation="2"
+          fab
+          fixed
+          top
+          left
+          small
+          icon
+          color="primary3"
+          @click="drawer = !drawer"
+          ><v-icon small>fas fa-bars</v-icon></v-btn
+        >
+      </v-fab-transition>
+      <div class="d-flex align-center">
+        <v-btn small icon color="primary3" @click="drawer = !drawer"
+          ><v-icon small>fas fa-bars</v-icon></v-btn
+        >
+        <SocialMedia small />
+      </div>
       <Locale is-mobile />
     </div>
     <MobileView class="justify-space-between align-center section">
@@ -107,6 +127,7 @@ export default {
     return {
       mainLogoWidthSize: 30,
       locales: ['en', 'de'],
+      hidden: true,
     }
   },
   computed: {
@@ -116,6 +137,14 @@ export default {
       },
       set(val) {
         this.$store.commit('SET_LOCALE', val)
+      },
+    },
+    drawer: {
+      set(val) {
+        this.$store.commit('SET_SIDENAV', val)
+      },
+      get() {
+        return this.$store.state.sideNav
       },
     },
     themes() {
@@ -149,9 +178,30 @@ export default {
       }
     },
   },
+  mounted() {
+    const pageComponent = document.getElementById('mobile-screen')
+    pageComponent.addEventListener('scroll', this.showingFAB, {
+      passive: true,
+    })
+  },
   methods: {
     finalpath(path) {
       return finalpath(this.locale, path, true)
+    },
+    showingFAB() {
+      const el = this.$refs.headerMobile
+      if (!el) {
+        return false
+      }
+
+      const rect = el.getBoundingClientRect()
+
+      if (rect.top < -60) {
+        this.hidden = false
+      }
+      if (rect.top >= -60) {
+        this.hidden = true
+      }
     },
   },
 }
