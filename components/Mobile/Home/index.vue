@@ -1,21 +1,21 @@
 <template>
   <MobileView>
+    <v-fab-transition>
+      <v-btn
+        v-show="!hidden"
+        elevation="2"
+        color="primary3"
+        dark
+        fab
+        fixed
+        top
+        left
+        small
+        @click="drawer = !drawer"
+        ><v-icon small>fas fa-bars</v-icon></v-btn
+      >
+    </v-fab-transition>
     <div ref="headerMobile" class="d-flex justify-space-between header">
-      <v-fab-transition>
-        <v-btn
-          v-show="!hidden"
-          elevation="2"
-          fab
-          fixed
-          top
-          left
-          small
-          icon
-          color="primary3"
-          @click="drawer = !drawer"
-          ><v-icon small>fas fa-bars</v-icon></v-btn
-        >
-      </v-fab-transition>
       <div class="d-flex align-center">
         <v-btn small icon color="primary3" @click="drawer = !drawer"
           ><v-icon small>fas fa-bars</v-icon></v-btn

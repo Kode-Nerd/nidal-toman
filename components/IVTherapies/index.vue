@@ -133,7 +133,7 @@
             <div class="d-flex flex-column align-center button">
               <v-btn
                 elevation="2"
-                :color="themes.light.primary4"
+                color="primary4"
                 tile
                 large
                 dark
@@ -149,7 +149,7 @@
             <div class="d-flex flex-column align-center button">
               <v-btn
                 elevation="2"
-                :color="themes.light.primary4"
+                color="primary4"
                 tile
                 outlined
                 large
