@@ -80,6 +80,49 @@
         >
       </div>
     </MobileView>
+    <MobileView class="section">
+      <MobileView class="align-center">
+        <span
+          v-for="(text, index) in contentExtractor(
+            $t('ivtherapies.footers[0].title')
+          )"
+          :key="index"
+          class="font-weight-bold text-center"
+          v-html="text"
+        ></span>
+        <p class="font-weight-light text-center mt-4">
+          {{ $t('ivtherapies.footers[0].text') }}
+        </p>
+        <v-btn
+          elevation="2"
+          color="primary4"
+          tile
+          dark
+          block
+          @click="goto('https://b-lance.me')"
+        >
+          <span>{{ $t('ivtherapies.footers[0].button') }}</span>
+        </v-btn>
+      </MobileView>
+      <MobileView class="align-center mt-8">
+        <p class="font-weight-bold text-center">
+          {{ $t('ivtherapies.footers[1].title') }}
+        </p>
+        <p class="font-weight-light text-center">
+          {{ $t('ivtherapies.footers[1].text') }}
+        </p>
+        <v-btn
+          elevation="2"
+          color="primary4"
+          tile
+          outlined
+          block
+          @click="gotoContact"
+        >
+          <span>{{ $t('ivtherapies.footers[1].button') }}</span>
+        </v-btn>
+      </MobileView>
+    </MobileView>
   </MobileView>
 </template>
 
