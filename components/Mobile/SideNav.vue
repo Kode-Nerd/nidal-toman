@@ -19,7 +19,7 @@
 
     <v-divider></v-divider>
 
-    <v-list>
+    <v-list shaped>
       <v-list-item
         v-for="(item, index) in mobileLabels"
         :key="index"
@@ -94,7 +94,12 @@ export default {
     },
     goto(label) {
       this.path = label
-      const labelSet = label === 'mobileHome' ? '/' : label
+      const labelSet =
+        label === 'mobileHome'
+          ? '/'
+          : label === 'mobileProfile'
+          ? 'profile'
+          : label
       this.$router.push({ path: finalpath(this.locale, labelSet, true) })
     },
     checkActiveTab() {
@@ -108,6 +113,8 @@ export default {
 
       if (!matched) {
         label = 'mobileHome'
+      } else if (matched[0] === 'profile') {
+        label = 'mobileProfile'
       } else {
         label = matched[0]
       }

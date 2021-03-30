@@ -66,7 +66,7 @@ export default {
       switch (label) {
         case 'ivtherapies':
           return require('~/assets/images/treatments/treatment1.jpg')
-        case 'mobileProfile':
+        case 'profile':
           return require('~/assets/images/treatments/treatment1.jpg')
         case 'contact':
           return require('~/assets/images/interiors/interior2.jpg')
