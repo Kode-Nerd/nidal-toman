@@ -87,7 +87,7 @@
               @click="openDialog('books', index)"
             >
               <v-list-item-avatar>
-                <v-icon>fas fa-file</v-icon>
+                <v-icon>fas fa-book</v-icon>
               </v-list-item-avatar>
 
               <v-list-item-content>
@@ -117,7 +117,7 @@
               @click="openDialog('summaries', index)"
             >
               <v-list-item-avatar>
-                <v-icon>fas fa-file</v-icon>
+                <v-icon>fas fa-file-alt</v-icon>
               </v-list-item-avatar>
 
               <v-list-item-content>
@@ -139,15 +139,34 @@
       <span class="font-weight-bold">{{ $t('profile.vita.label') }}</span>
     </MobileView>
     <MobileView class="list-section">
-      <ProfileVitaItem
-        v-for="index in 7"
-        :key="`vita-${index}`"
-        :title="$t(`profile.vita.list.${index - 1}.title`)"
-        :subtitle="$t(`profile.vita.list.${index - 1}.subtitle`)"
-        :year="$t(`profile.vita.list.${index - 1}.year`)"
-        :place="$t(`profile.vita.list.${index - 1}.place`)"
-      />
+      <v-list flat three-line>
+        <v-list-item-group v-model="selectedItem.vita" color="primary3">
+          <template v-for="index in 7">
+            <v-list-item
+              :key="`summaries-${index}`"
+              @click="openDialog('vita', index)"
+            >
+              <v-list-item-content>
+                <v-list-item-title
+                  ><span class="font-weight-bold">{{
+                    $t(`profile.vita.list.${index - 1}.year`)
+                  }}</span>
+                  ::
+                  {{
+                    $t(`profile.vita.list.${index - 1}.title`)
+                  }}</v-list-item-title
+                >
+                <v-list-item-subtitle
+                  v-html="$t(`profile.vita.list.${index - 1}.subtitle`)"
+                ></v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-divider v-if="index !== 7" :key="index" inset></v-divider>
+          </template>
+        </v-list-item-group>
+      </v-list>
     </MobileView>
+
     <MobileView id="mobile-posters" class="list-section title">
       <span class="font-weight-bold">{{ $t('profile.posters.label') }}</span>
     </MobileView>
@@ -160,7 +179,7 @@
               @click="openDialog('posters', index)"
             >
               <v-list-item-avatar>
-                <v-icon>fas fa-file</v-icon>
+                <v-icon>fas fa-portrait</v-icon>
               </v-list-item-avatar>
 
               <v-list-item-content>
@@ -192,7 +211,7 @@
               @click="openDialog('conferences', index)"
             >
               <v-list-item-avatar>
-                <v-icon>fas fa-file</v-icon>
+                <v-icon>fas fa-comment-alt</v-icon>
               </v-list-item-avatar>
 
               <v-list-item-content>
@@ -264,6 +283,20 @@
             $t(`profile.summaries.list.${selectedItem.summaries}.detail`)
           }}</span>
         </MobileView>
+        <MobileView v-if="detailList === 'vita'" class="section">
+          <p class="text-h4 font-weight-bold text-center">
+            {{ $t(`profile.vita.list.${selectedItem.vita}.year`) }}
+          </p>
+          <p class="text-h6 font-weight-bold">
+            "{{ $t(`profile.vita.list.${selectedItem.vita}.title`) }}"
+          </p>
+          <span class="font-weight-light font-italic mb-3"
+            >--{{ $t(`profile.vita.list.${selectedItem.vita}.subtitle`) }}</span
+          >
+          <span class="font-weight-light">{{
+            $t(`profile.vita.list.${selectedItem.vita}.place`)
+          }}</span>
+        </MobileView>
         <MobileView v-if="detailList === 'posters'" class="section">
           <p class="text-h6 font-weight-bold">
             "{{ $t(`profile.posters.list.${selectedItem.posters}.title`) }}"
@@ -299,14 +332,12 @@
 
 <script>
 import MobileView from '~/components/Mobile/View'
-import ProfileVitaItem from '~/components/Profile/ProfileVitaItem'
 
 import { contentExtractor, finalpath } from '~/helpers'
 
 export default {
   components: {
     MobileView,
-    ProfileVitaItem,
   },
   data() {
     return {
@@ -314,6 +345,7 @@ export default {
         publication: -1,
         books: -1,
         summaries: -1,
+        vita: -1,
         posters: -1,
         conferences: -1,
       },
