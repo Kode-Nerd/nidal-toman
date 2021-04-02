@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Album class="mt-16" :list="interiors" />
-    <Album class="mt-16" :list="treatments" />
+    <Album :mobile="mobile" class="mt-16" :list="interiors" />
+    <Album :mobile="mobile" class="mt-16" :list="treatments" />
   </div>
 </template>
 
@@ -10,6 +10,12 @@ import Album from '~/components/Global/Album'
 export default {
   components: {
     Album,
+  },
+  props: {
+    mobile: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     themes() {

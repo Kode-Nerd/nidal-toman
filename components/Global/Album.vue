@@ -1,11 +1,12 @@
 <template>
   <swiper class="swiper" :options="swiperOption">
-    <swiper-slide v-for="(item, i) in list" :key="i">
+    <swiper-slide v-for="(item, i) in list" :key="i" :class="{ mobile }">
       <!-- SLIDE -->
-      <ImageBlock :src="item" height="55vh" />
+      <ImageBlock :mobile="mobile" :src="item" height="55vh" />
     </swiper-slide>
-    <div slot="button-prev" class="swiper-button-prev"></div>
-    <div slot="button-next" class="swiper-button-next"></div>
+    <div v-if="!mobile" slot="button-prev" class="swiper-button-prev"></div>
+    <div v-if="!mobile" slot="button-next" class="swiper-button-next"></div>
+    <div v-if="mobile" slot="pagination" class="swiper-pagination"></div>
   </swiper>
 </template>
 
@@ -22,12 +23,16 @@ export default {
         return []
       },
     },
+    mobile: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       swiperOption: {
         slidesPerView: 'auto',
-        spaceBetween: 36,
+        spaceBetween: !this.mobile ? 36 : 0,
         loop: true,
         loopFillGroupWithBlank: true,
         grabCursor: true,
@@ -39,6 +44,12 @@ export default {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
+        pagination: this.mobile
+          ? {
+              el: '.swiper-pagination',
+              dynamicBullets: true,
+            }
+          : undefined,
       },
     }
   },
@@ -51,10 +62,18 @@ export default {
   height: auto;
   /* background: #ccc; */
 }
+.swiper-slide.mobile {
+  width: 100vw !important;
+  height: 100vw !important;
+  /* background: #ccc; */
+}
 .swiper-button-prev {
   color: black;
 }
 .swiper-button-next {
   color: black;
+}
+.swiper-pagination-bullet-active {
+  background: #d2af69 !important;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="container" :style="containerStyle">
-    <img class="image" :src="src" alt="no-image" />
+  <div class="container" :style="!mobile ? containerStyle : mobileStyle">
+    <img class="image" :class="{ mobile }" :src="src" alt="no-image" />
   </div>
 </template>
 
@@ -15,6 +15,10 @@ export default {
       type: String,
       default: '100px',
     },
+    mobile: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     containerStyle() {
@@ -22,6 +26,14 @@ export default {
         height: this.height,
         backgroundImage: `url(${this.src})`,
         backgroundSize: 'contain',
+      }
+    },
+    mobileStyle() {
+      return {
+        height: '100vw',
+        width: '100vw',
+        backgroundImage: `url(${this.src})`,
+        backgroundSize: 'cover',
       }
     },
   },
@@ -37,5 +49,10 @@ export default {
   height: 100%;
   object-fit: contain;
   visibility: hidden;
+}
+.image.mobile {
+  height: 100vw;
+  width: 100vw;
+  object-fit: cover;
 }
 </style>

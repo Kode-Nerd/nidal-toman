@@ -16,6 +16,7 @@
     "statement": "I know that my data will be stored electronically. I agree to the processing of the data collected about me for the purpose of processing and responding to my inquiry. I am aware that I can revoke this consent at any time with effect for the future. For further information, please refer to our privacy policy.",
     "check": "Yes, I have read and agree to the privacy statement.",
     "send": "Send",
-    "valid": "Please make sure you entered all the required field and accept privacy statement."
+    "valid": "Please make sure you entered all the required field and accept privacy statement.",
+    "required": "Required."
   }
 }

@@ -16,6 +16,7 @@
     "statement": "Ich weiß, dass meine Daten elektronisch gespeichert werden. Ich bin mit der Verarbeitung der über mich gesammelten Daten zum Zwecke der Verarbeitung und Beantwortung meiner Anfrage einverstanden. Mir ist bekannt, dass ich diese Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen kann. Weitere Informationen finden Sie in unseren Datenschutzbestimmungen.",
     "check": "Ja, ich habe die Datenschutzerklärung gelesen und bin damit einverstanden.",
     "send": "Senden",
-    "valid": "Bitte stellen Sie sicher, dass Sie alle erforderlichen Felder eingegeben haben, und akzeptieren Sie die Datenschutzerklärung."
+    "valid": "Bitte stellen Sie sicher, dass Sie alle erforderlichen Felder eingegeben haben, und akzeptieren Sie die Datenschutzerklärung.",
+    "required": "Erforderlich."
   }
 }

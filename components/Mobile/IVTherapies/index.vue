@@ -167,12 +167,12 @@ a {
   text-decoration: none;
 }
 .section {
-  padding: 10vh 10vw;
+  padding: 10vh 5vw;
 }
 .post {
   padding: 10px 5vw;
 }
 .post.content {
-  padding: 10px 10vw 10vh 10vw;
+  padding: 10px 5vw 10vh 5vw;
 }
 </style>
