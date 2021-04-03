@@ -73,7 +73,7 @@ export default {
 .swiper-button-next {
   color: black;
 }
-.swiper-pagination-bullet-active {
-  background: #d2af69 !important;
+.swiper-pagination >>> .swiper-pagination-bullet-active {
+  background-color: #d2af69;
 }
 </style>
