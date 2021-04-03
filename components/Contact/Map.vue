@@ -12,6 +12,8 @@
         styles: mapStyle,
       }"
       :zoom="15"
+      class="wrapper"
+      :class="{ mobile }"
     >
       <GMapMarker
         v-for="location in locations"
@@ -33,6 +35,12 @@
 
 <script>
 export default {
+  props: {
+    mobile: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       locations: [
@@ -64,6 +72,12 @@ export default {
 
 .GMap__Wrapper {
   width: 100%;
+  height: 100%;
+}
+.wrapper {
   height: 400px;
+}
+.mobile {
+  height: calc(100vh - 56px);
 }
 </style>

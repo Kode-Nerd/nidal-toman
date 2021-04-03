@@ -1,6 +1,7 @@
 <template>
   <v-app-bar
     absolute
+    style="z-index: 2"
     color="background"
     dark
     shrink-on-scroll

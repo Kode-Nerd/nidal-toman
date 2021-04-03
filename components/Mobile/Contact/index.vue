@@ -84,8 +84,33 @@
       <p class="text-h6">{{ $t('contact.gallery') }}</p>
     </MobileView>
     <Gallery mobile />
-    <MobileView class="section"></MobileView>
-    <Map />
+    <MobileView class="section">
+      <v-btn
+        dark
+        tile
+        block
+        elevation="2"
+        color="primary4"
+        @click="dialog = true"
+        >{{ $t('contact.detail.map') }}</v-btn
+      >
+    </MobileView>
+    <v-dialog
+      v-model="dialog"
+      fullscreen
+      hide-overlay
+      transition="dialog-bottom-transition"
+    >
+      <v-card>
+        <v-toolbar dark color="primary3">
+          <v-btn icon dark @click="dialog = false">
+            <v-icon>fas fa-times</v-icon>
+          </v-btn>
+          <v-toolbar-title>{{ $t('profile.details') }}</v-toolbar-title>
+        </v-toolbar>
+        <Map mobile />
+      </v-card>
+    </v-dialog>
   </MobileView>
 </template>
 
@@ -116,6 +141,7 @@ export default {
                   >`,
         },
       ],
+      dialog: false,
       isValid: true,
       sendingEmail: false,
       form: {
