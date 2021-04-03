@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Album :mobile="mobile" class="mt-16" :list="interiors" />
+    <Album :mobile="mobile" :class="{ 'mt-16': !mobile }" :list="interiors" />
     <Album :mobile="mobile" class="mt-16" :list="treatments" />
   </div>
 </template>

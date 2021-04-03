@@ -44,12 +44,10 @@ export default {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
-        pagination: this.mobile
-          ? {
-              el: '.swiper-pagination',
-              dynamicBullets: true,
-            }
-          : undefined,
+        pagination: {
+          el: '.swiper-pagination',
+          dynamicBullets: true,
+        },
       },
     }
   },
