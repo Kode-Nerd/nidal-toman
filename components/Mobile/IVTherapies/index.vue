@@ -1,7 +1,8 @@
 <template>
   <MobileView>
+    <MobileView class="top-section"> </MobileView>
     <MobileView class="section">
-      <p class="text-h6 font-weight-bold mt-16">
+      <p class="text-h6 font-weight-bold">
         {{ $t('ivtherapies.texts[0].title') }}
       </p>
       <p
@@ -166,13 +167,16 @@ export default {
 a {
   text-decoration: none;
 }
+.top-section {
+  padding: 64px 0px;
+}
 .section {
-  padding: 10vh 5vw;
+  padding: 5vh 5vw;
 }
 .post {
   padding: 10px 5vw;
 }
 .post.content {
-  padding: 10px 5vw 10vh 5vw;
+  padding: 10px 5vw 5vh 5vw;
 }
 </style>
