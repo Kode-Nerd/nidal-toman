@@ -33,7 +33,7 @@ export default {
         return this.$store.state.sideNav
       },
     },
-  }
+  },
 }
 </script>
 
