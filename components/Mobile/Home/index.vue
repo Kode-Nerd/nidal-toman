@@ -86,24 +86,51 @@
     </MobileView>
     <MobileView
       :style="lightBackground"
-      class="justify-center align-center section"
+      class="justify-center align-center section infusion procedure"
     >
-      <nuxt-link
-        :style="[{ color: themes.light.primary3 }]"
-        :to="finalpath('procedures')"
-      >
-        <div class="d-flex align-center">
-          <span>
-            {{ $t('welcome.procedure') }}
-          </span>
-          <CustomSVG
-            class="ml-2"
-            size="1.5rem"
-            :src="require('bootstrap-icons/icons/arrow-right.svg')"
-            :color="themes.light.primary3"
-          />
-        </div>
-      </nuxt-link>
+      <swiper ref="procedureCarousel" style="margin: 0" :options="swiperOption">
+        <swiper-slide :key="0">
+          <MobileView class="justify-center align-center full">
+            <v-img
+              contain
+              :src="require('~/assets/fig_3.png')"
+              width="80vw"
+            ></v-img>
+          </MobileView>
+        </swiper-slide>
+        <swiper-slide :key="1">
+          <MobileView class="justify-center align-center full">
+            <v-img
+              contain
+              :src="require('~/assets/fig_4.png')"
+              width="80vw"
+            ></v-img>
+          </MobileView>
+        </swiper-slide>
+        <swiper-slide :key="2">
+          <MobileView class="justify-center align-center full">
+            <nuxt-link
+              :style="[{ color: themes.light.primary3 }]"
+              :to="finalpath('procedures')"
+            >
+              <div class="d-flex align-center">
+                <span>
+                  {{ $t('welcome.procedure') }}
+                </span>
+                <CustomSVG
+                  class="ml-2"
+                  size="1.5rem"
+                  :src="require('bootstrap-icons/icons/arrow-right.svg')"
+                  :color="themes.light.primary3"
+                />
+              </div>
+            </nuxt-link>
+          </MobileView>
+        </swiper-slide>
+        <div slot="pagination" class="swiper-pagination"></div>
+      </swiper>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </MobileView>
   </MobileView>
 </template>
@@ -128,6 +155,20 @@ export default {
       mainLogoWidthSize: 30,
       locales: ['en', 'de'],
       hidden: true,
+      swiperOption: {
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        centeredSlides: true,
+        grabCursor: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          dynamicBullets: true,
+        },
+      },
     }
   },
   computed: {
@@ -220,5 +261,26 @@ a {
 }
 .section.infusion {
   position: relative;
+}
+.full {
+  height: 100vh;
+  width: 100vw;
+}
+.section.procedure {
+  padding: 0px;
+}
+
+.swiper-slide {
+  width: auto;
+  height: auto;
+}
+.swiper-button-prev {
+  color: #d2af69;
+}
+.swiper-button-next {
+  color: #d2af69;
+}
+.swiper-pagination >>> .swiper-pagination-bullet-active {
+  background-color: #d2af69;
 }
 </style>
