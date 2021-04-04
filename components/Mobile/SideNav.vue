@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="drawer" absolute temporary>
+  <v-navigation-drawer v-model="drawer" style="z-index: 11" absolute temporary>
     <v-list-item class="d-flex align-end">
       <CustomSVG
         :src="require('~/assets/mini-logo.svg')"
