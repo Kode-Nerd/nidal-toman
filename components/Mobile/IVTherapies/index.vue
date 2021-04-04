@@ -142,6 +142,9 @@ export default {
     }
   },
   computed: {
+    locale() {
+      return this.$store.state.locale
+    },
     themes() {
       return this.$vuetify.theme.themes
     },
@@ -155,8 +158,7 @@ export default {
     },
     gotoContact() {
       this.$router.push({
-        path: finalpath(this.locale, 'contact'.true),
-        hash: '#contact-form',
+        path: finalpath(this.locale, 'contact', true),
       })
     },
   },
