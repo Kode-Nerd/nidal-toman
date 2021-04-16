@@ -88,7 +88,7 @@
       :style="lightBackground"
       class="justify-center align-center section infusion procedure"
     >
-      <swiper ref="procedureCarousel" style="margin: 0" :options="swiperOption">
+      <swiper style="margin: 0" :options="swiperOption">
         <swiper-slide :key="0">
           <MobileView class="justify-center align-center full">
             <v-img
