@@ -1,9 +1,11 @@
 <template>
-  <div class="tooltip">
+  <div class="tooltip" :class="{ mobilewidth: isMobile }">
     <!-- <div class="tooltip__content">{{ name }}</div> -->
     <div class="tooltip__detail" @click="openDetail(query)">
       <span class="font-weight-bold">{{ name }}</span>
-      <span class="treatment__detail">{{ $t('treatments.detail') }}</span>
+      <span v-if="!isMobile" class="treatment__detail">{{
+        $t('treatments.detail')
+      }}</span>
     </div>
     <div class="tooltip__arrow"></div>
   </div>
@@ -21,6 +23,19 @@ export default {
       default: '',
     },
   },
+  data() {
+    return {
+      userAgent: '',
+    }
+  },
+  computed: {
+    isMobile() {
+      return this.userAgent.includes('mobile')
+    },
+  },
+  mounted() {
+    this.userAgent = navigator.userAgent.toLowerCase()
+  },
   methods: {
     openDetail(query) {
       const { figure } = this.$route.query
@@ -32,6 +47,9 @@ export default {
 </script>
 
 <style scoped>
+.mobilewidth {
+  width: auto !important;
+}
 .tooltip {
   width: 300px;
   position: absolute;
