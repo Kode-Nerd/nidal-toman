@@ -2,7 +2,6 @@
   <MobileView>
     <v-fab-transition>
       <v-btn
-        v-show="!hidden"
         elevation="2"
         color="primary3"
         dark
@@ -15,7 +14,22 @@
         ><v-icon small>fas fa-bars</v-icon></v-btn
       >
     </v-fab-transition>
-    <MobileView class="justify-center align-center relative">
+    <v-fab-transition>
+      <v-btn
+        v-show="figure"
+        elevation="2"
+        color="primary3"
+        dark
+        fab
+        fixed
+        top
+        right
+        small
+        @click="closeFigure"
+        ><v-icon small>fas fa-times</v-icon></v-btn
+      >
+    </v-fab-transition>
+    <MobileView v-if="!figure" class="justify-center align-center relative">
       <swiper ref="procedureCarousel" style="margin: 0" :options="swiperOption">
         <swiper-slide :key="0">
           <MobileView class="justify-center align-center full">
@@ -47,7 +61,7 @@
           tile
           block
           dark
-          @click="() => {}"
+          @click="gotoConsultation"
         >
           <span>{{ $t('welcome.discover2') }}</span>
         </v-btn>
@@ -58,6 +72,8 @@
 
 <script>
 import MobileView from '~/components/Mobile/View'
+import { finalpath } from '~/helpers'
+
 export default {
   components: {
     MobileView,
@@ -78,6 +94,8 @@ export default {
           dynamicBullets: true,
         },
       },
+
+      figure: '',
     }
   },
   computed: {
@@ -88,6 +106,42 @@ export default {
       get() {
         return this.$store.state.sideNav
       },
+    },
+    locale: {
+      set(val) {
+        this.$store.commit('SET_LOCALE', val)
+      },
+      get() {
+        return this.$store.state.locale
+      },
+    },
+  },
+  methods: {
+    finalpath(path) {
+      return finalpath(this.locale, path, true)
+    },
+    gotoConsultation() {
+      const activeIndex = this.$refs.procedureCarousel.$swiper.activeIndex
+
+      if (activeIndex === 0) {
+        this.$router.push({
+          path: this.finalpath('procedures'),
+          query: { figure: 'female' },
+        })
+        this.figure = 'female'
+      } else if (activeIndex === 1) {
+        this.$router.push({
+          path: this.finalpath('procedures'),
+          query: { figure: 'male' },
+        })
+        this.figure = 'male'
+      }
+    },
+    closeFigure() {
+      this.$router.push({
+        path: this.finalpath('procedures'),
+      })
+      this.figure = ''
     },
   },
 }

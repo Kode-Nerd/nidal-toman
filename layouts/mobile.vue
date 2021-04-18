@@ -3,7 +3,12 @@
     <Header v-if="src" :src="src" scroll-target="#mobile-screen" />
     <!-- <BottomNav scroll-target="#mobile-screen" /> -->
     <SideNav />
-    <v-responsive id="mobile-screen" class="overflow-y-auto" height="100vh">
+    <v-responsive
+      id="mobile-screen"
+      ref="mobileScreen"
+      class="overflow-y-auto"
+      height="100vh"
+    >
       <nuxt />
     </v-responsive>
   </v-app>
@@ -73,6 +78,15 @@ export default {
         default:
           return null
       }
+    },
+  },
+  watch: {
+    '$route.path': {
+      handler() {
+        // scroll to the top
+      },
+      deep: true,
+      immediate: true,
     },
   },
   mounted() {
