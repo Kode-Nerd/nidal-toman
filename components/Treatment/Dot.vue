@@ -103,7 +103,9 @@ export default {
     hideTooltip(part) {
       if (!this.forSubpart) {
         this.closeTooltip()
-        part.active = false
+        setTimeout(() => {
+          part.active = false
+        }, 1) // mobile detail purpose need to put timeout
       }
     },
     mouseover(part) {

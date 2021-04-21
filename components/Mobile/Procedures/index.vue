@@ -269,7 +269,30 @@ export default {
         return this.manParts.every((item) => !item.active)
       }
 
-      return false
+      return true
+    },
+  },
+  watch: {
+    '$route.query.part': {
+      handler(val) {
+        if (val) {
+          this.visibleTreatmentDetail = true
+          this.figurePart = val
+
+          return
+        }
+
+        this.visibleTreatmentDetail = false
+        this.figurePart = ''
+        this.womanParts.forEach((part) => {
+          part.active = false
+        })
+        this.manParts.forEach((part) => {
+          part.active = false
+        })
+      },
+      deep: true,
+      immediate: true,
     },
   },
   beforeMount() {
@@ -310,14 +333,34 @@ export default {
       this.ready = true
     },
     closeFigure() {
-      this.$router.push({
-        path: this.finalpath('procedures'),
-      })
-      this.figure = ''
+      if (!this.visibleTreatmentDetail) {
+        this.$router.push({
+          path: this.finalpath('procedures'),
+        })
+        this.figure = ''
+      } else {
+        const { figure } = this.$route.query
+
+        this.$router.push({ query: { figure } })
+      }
     },
     gotoDetails() {
-      // cant be triggered! find out!
-      console.log('triggered')
+      const { figure } = this.$route.query
+      let query = ''
+
+      if (this.isFemale) {
+        const active = this.womanParts.find((part) => part.active)
+        query = active.query
+      } else if (this.isMale) {
+        const active = this.manParts.find((part) => part.active)
+        query = active.query
+      }
+
+      if (!query) {
+        return
+      }
+
+      this.$router.push({ query: { figure, part: query } })
     },
     resetActiveParts(val) {
       if (this.isFemale) {
@@ -361,30 +404,25 @@ export default {
 
 .figure__woman.zoom__in {
   position: absolute;
-  transform: translate(0, 0);
-  width: 150vh;
-  height: 270vh;
+  width: 240vw;
+  height: 432vw;
   transition: 1000ms;
 }
 .figure__woman.zoom__in.face__head {
-  left: -30vh;
-  top: -30vh;
+  top: -10vh;
 }
 .figure__woman.zoom__in.chest__area {
-  left: -30vh;
-  top: -50vh;
+  top: -20vh;
 }
 .figure__woman.zoom__in.body {
-  left: -30vh;
-  top: -70vh;
+  top: -50vh;
 }
 .figure__woman.zoom__in.arms {
-  left: -40vh;
-  top: -70vh;
+  left: 10%;
+  top: -50vh;
 }
 .figure__woman.zoom__in.leg {
-  left: -30vh;
-  top: -100vh;
+  top: -80vh;
 }
 
 .figure__man {
@@ -399,30 +437,28 @@ export default {
 
 .figure__man.zoom__in {
   position: absolute;
-  transform: translate(0, 0);
-  width: 150vh;
-  height: 270vh;
+  width: 240vw;
+  height: 432vw;
   transition: 1000ms;
 }
 .figure__man.zoom__in.face__head {
-  left: -45vh;
-  top: -40vh;
+  left: 10%;
+  top: -20vh;
 }
 .figure__man.zoom__in.chest__area {
-  left: -55vh;
-  top: -55vh;
+  left: 10%;
+  top: -35vh;
 }
 .figure__man.zoom__in.body {
-  left: -65vh;
-  top: -70vh;
+  left: -10%;
+  top: -50vh;
 }
 .figure__man.zoom__in.arms {
-  left: -40vh;
   top: -40vh;
 }
 .figure__man.zoom__in.leg {
-  left: -70vh;
-  top: -120vh;
+  left: 10%;
+  top: -70vh;
 }
 
 .swiper-slide {
