@@ -187,26 +187,29 @@
             </span>
           </v-toolbar-title>
           <v-spacer />
-          <v-btn icon dark @click="subpartDialog = false">
+          <v-btn v-if="!showingList" icon dark @click="showingList = true">
             <v-icon>fas fa-chevron-right</v-icon>
           </v-btn>
         </v-toolbar>
-        <MobileView class="detail-section">
-          <span class="text-h5">{{ $t('treatments.surgeries') }}</span>
-          <VerticalNavigation
-            class="mt-3 mb-6"
-            tab-justify="left"
-            :subparts="subparts"
-            @close-list="toogleList"
-          />
-          <span class="text-h5">{{ $t('treatments.nonsurgeries') }}</span>
-          <VerticalNavigation
-            class="mt-3"
-            tab-justify="left"
-            :subparts="outpatient"
-            outpatient
-            @close-list="toogleList"
-          />
+        <MobileView>
+          <MobileView v-if="showingList" class="detail-section">
+            <span class="text-h5">{{ $t('treatments.surgeries') }}</span>
+            <VerticalNavigation
+              class="mt-3 mb-6"
+              tab-justify="left"
+              :subparts="subparts"
+              @close-list="toogleList"
+            />
+            <span class="text-h5">{{ $t('treatments.nonsurgeries') }}</span>
+            <VerticalNavigation
+              class="mt-3"
+              tab-justify="left"
+              :subparts="outpatient"
+              outpatient
+              @close-list="toogleList"
+            />
+          </MobileView>
+          <MobileView v-else class="detail-section"> Detail </MobileView>
         </MobileView>
       </v-card>
     </v-dialog>
@@ -252,6 +255,7 @@ export default {
       ready: false,
       figure: '',
       subpartDialog: false,
+      showingList: true,
       womanParts,
       manParts,
       womanSubparts,
@@ -457,6 +461,9 @@ export default {
           subpart.active = false
         })
       }
+    },
+    toogleList() {
+      this.showingList = !this.showingList
     },
     finalpath(path) {
       return finalpath(this.locale, path, true)
