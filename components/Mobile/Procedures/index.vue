@@ -404,6 +404,10 @@ export default {
   beforeMount() {
     this.prechecking()
   },
+  mounted() {
+    this.checkActiveSubpart()
+    this.checkOutpatient()
+  },
   methods: {
     prechecking() {
       const { figure } = this.$route.query
