@@ -26,8 +26,10 @@
         right
         small
         @click="closeFigure"
-        ><v-icon small>fas fa-times</v-icon></v-btn
       >
+        <v-icon v-if="!visibleTreatmentDetail" small>fas fa-times</v-icon>
+        <v-icon v-else small>fas fa-chevron-right</v-icon>
+      </v-btn>
     </v-fab-transition>
     <MobileView v-if="!figure" class="justify-center align-center relative">
       <swiper ref="procedureCarousel" style="margin: 0" :options="swiperOption">
@@ -152,14 +154,69 @@
         >
           <span>{{ $t('treatments.detail') }}</span>
         </v-btn>
+        <v-btn
+          v-show="visibleTreatmentDetail"
+          style="padding: 0"
+          elevation="2"
+          color="primary3"
+          tile
+          block
+          dark
+          @click="subpartDialog = true"
+        >
+          <span>{{ $t('treatments.detail') }}</span>
+        </v-btn>
       </MobileView>
     </MobileView>
+
+    <v-dialog
+      v-model="subpartDialog"
+      fullscreen
+      hide-overlay
+      transition="dialog-bottom-transition"
+    >
+      <v-card class="overflow-y-auto">
+        <v-toolbar dark color="primary3">
+          <v-btn icon dark @click="subpartDialog = false">
+            <v-icon>fas fa-times</v-icon>
+          </v-btn>
+          <v-toolbar-title>
+            <span>
+              {{ $t(`treatments.${figurePart}.title`) }}
+              {{ $t('treatments.procedures') }}
+            </span>
+          </v-toolbar-title>
+          <v-spacer />
+          <v-btn icon dark @click="subpartDialog = false">
+            <v-icon>fas fa-chevron-right</v-icon>
+          </v-btn>
+        </v-toolbar>
+        <MobileView class="detail-section">
+          <span class="text-h5">{{ $t('treatments.surgeries') }}</span>
+          <VerticalNavigation
+            class="mt-3 mb-6"
+            tab-justify="left"
+            :subparts="subparts"
+            @close-list="toogleList"
+          />
+          <span class="text-h5">{{ $t('treatments.nonsurgeries') }}</span>
+          <VerticalNavigation
+            class="mt-3"
+            tab-justify="left"
+            :subparts="outpatient"
+            outpatient
+            @close-list="toogleList"
+          />
+        </MobileView>
+      </v-card>
+    </v-dialog>
   </MobileView>
 </template>
 
 <script>
 import MobileView from '~/components/Mobile/View'
 import Dot from '~/components/Treatment/Dot'
+import VerticalNavigation from '~/components/Treatment/VerticalNavigation'
 
 import womanParts from '~/components/Treatment/assets/womanParts.json'
 import manParts from '~/components/Treatment/assets/manParts.json'
@@ -173,6 +230,7 @@ export default {
   components: {
     MobileView,
     Dot,
+    VerticalNavigation,
   },
   data() {
     return {
@@ -193,6 +251,7 @@ export default {
 
       ready: false,
       figure: '',
+      subpartDialog: false,
       womanParts,
       manParts,
       womanSubparts,
@@ -228,6 +287,16 @@ export default {
         this.$store.commit('SET_VISIBLE_TREATMENT_DETAIL', val)
       },
     },
+    subparts() {
+      if (this.isFemale) {
+        return this.womanSubparts[this.figurePart]
+      }
+      if (this.isMale) {
+        return this.manSubparts[this.figurePart]
+      }
+
+      return []
+    },
     figurePart: {
       get() {
         return this.$store.state.figurePart
@@ -249,6 +318,10 @@ export default {
     },
     isMale() {
       return this.figure === 'male'
+    },
+    isOutpatient() {
+      const { outpatient } = this.$route.query
+      return outpatient === '1'
     },
     detailClass() {
       return {
@@ -276,9 +349,13 @@ export default {
     '$route.query.part': {
       handler(val) {
         if (val) {
-          this.visibleTreatmentDetail = true
+          setTimeout(() => {
+            this.visibleTreatmentDetail = true
+          }, 100)
           this.figurePart = val
 
+          this.checkActiveSubpart()
+          this.checkOutpatient()
           return
         }
 
@@ -290,6 +367,31 @@ export default {
         this.manParts.forEach((part) => {
           part.active = false
         })
+      },
+      deep: true,
+      immediate: true,
+    },
+    '$route.query.outpatient': {
+      handler(val) {
+        if (val === '1') {
+          this.outpatientDetail = true
+          if (this.isFemale) {
+            this.womanSubparts[this.figurePart].forEach((subpart) => {
+              subpart.active = false
+            })
+          }
+
+          if (this.isMale) {
+            this.manSubparts[this.figurePart].forEach((subpart) => {
+              subpart.active = false
+            })
+          }
+        } else {
+          this.outpatientDetail = false
+          this.outpatient.forEach((subpart) => {
+            subpart.active = false
+          })
+        }
       },
       deep: true,
       immediate: true,
@@ -309,6 +411,52 @@ export default {
 
       this.figure = figure
       this.ready = true
+    },
+    checkActiveSubpart() {
+      if (this.isFemale) {
+        this.womanSubparts[this.figurePart].forEach((subpart) => {
+          subpart.active = false
+        })
+        this.figureSubpart = 0
+        this.womanSubparts[this.figurePart][0].active = true
+      }
+      if (this.isMale) {
+        this.manSubparts[this.figurePart].forEach((subpart) => {
+          subpart.active = false
+        })
+        this.figureSubpart = 0
+        this.manSubparts[this.figurePart][0].active = true
+      }
+      this.$store.commit('SET_ACTIVE_TAB_TREATMENT_DETAIL', {
+        activeTab: 'general',
+      })
+    },
+    checkOutpatient() {
+      if (this.isOutpatient) {
+        this.outpatientDetail = true
+        if (this.isFemale) {
+          this.womanSubparts[this.figurePart].forEach((subpart) => {
+            subpart.active = false
+          })
+        }
+
+        if (this.isMale) {
+          this.manSubparts[this.figurePart].forEach((subpart) => {
+            subpart.active = false
+          })
+        }
+
+        this.outpatient.forEach((subpart) => {
+          subpart.active = false
+        })
+        this.figureSubpart = 0
+        this.outpatient[0].active = true
+      } else {
+        this.outpatientDetail = false
+        this.outpatient.forEach((subpart) => {
+          subpart.active = false
+        })
+      }
     },
     finalpath(path) {
       return finalpath(this.locale, path, true)
@@ -390,6 +538,9 @@ export default {
 .bottom-button {
   height: 7vh;
   width: 100vw;
+}
+.detail-section {
+  padding: 5vw;
 }
 
 .figure__woman {
