@@ -51,18 +51,16 @@
         >
       </div>
     </MobileView>
-    <MobileView class="post">
-      <p class="text-h6 font-weight-bold">
-        {{ $t('ivtherapies.texts[2].title') }}
-      </p>
-    </MobileView>
     <v-img
       contain
       position="top center"
       :src="require('~/assets/images/treatments/treatment12.jpg')"
       width="100vw"
     ></v-img>
-    <MobileView class="post content">
+    <MobileView class="section">
+      <p class="text-h6 font-weight-bold">
+        {{ $t('ivtherapies.texts[2].title') }}
+      </p>
       <p
         v-for="(text, index) in contentExtractor(
           $t('ivtherapies.texts[2].text')
@@ -88,7 +86,7 @@
             $t('ivtherapies.footers[0].title')
           )"
           :key="index"
-          class="font-weight-bold text-center"
+          class="text-h6 font-weight-bold text-center"
           v-html="text"
         ></span>
         <p class="font-weight-light text-center mt-4">
@@ -106,7 +104,7 @@
         </v-btn>
       </MobileView>
       <MobileView class="align-center mt-8">
-        <p class="font-weight-bold text-center">
+        <p class="text-h6 font-weight-bold text-center">
           {{ $t('ivtherapies.footers[1].title') }}
         </p>
         <p class="font-weight-light text-center">
@@ -174,11 +172,5 @@ a {
 }
 .section {
   padding: 5vh 5vw;
-}
-.post {
-  padding: 10px 5vw;
-}
-.post.content {
-  padding: 10px 5vw 5vh 5vw;
 }
 </style>
