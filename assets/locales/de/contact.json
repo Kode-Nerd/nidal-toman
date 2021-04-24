@@ -1,7 +1,7 @@
 {
   "title": "Kontakt",
   "gallery": "Klinik",
-  "form": "Kontakt Formular",
+  "form": "Kontaktformular",
   "text": "Kommunikation, Vertrauen und gegenseitiges Verständnis sind für den Erfolg einer kosmetischen chirurgischen Behandlung unerlässlich. Auf dem Weg zu zufriedenstellenden Ergebnissen ist es für mich entscheidend, Ihre Wünsche und Erwartungen zu verstehen. Nur dann kann ich meine ehrliche Meinung über die Möglichkeiten teilen, bevor wir die Entscheidung für die Behandlung treffen können. Ich freue mich darauf, Sie in meiner Klinik persönlich kennenzulernen.",
   "detail": {
     "tel": "Tel",
@@ -9,8 +9,8 @@
     "map": "In Karten öffnen"
   },
   "formDetail": {
-    "name": "Dein name",
-    "email": "Email",
+    "name": "Ihr Name",
+    "email": "E-Mail",
     "no": "Telefonnummer",
     "detail": "Wie können wir Ihnen helfen?",
     "statement": "Ich weiß, dass meine Daten elektronisch gespeichert werden. Ich bin mit der Verarbeitung der über mich gesammelten Daten zum Zwecke der Verarbeitung und Beantwortung meiner Anfrage einverstanden. Mir ist bekannt, dass ich diese Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen kann. Weitere Informationen finden Sie in unseren Datenschutzbestimmungen.",
