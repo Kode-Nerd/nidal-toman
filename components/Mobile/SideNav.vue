@@ -28,12 +28,14 @@
         :color="item.active ? themes.light.primary3 : themes.light.primary4"
         @click="goto(item.label)"
       >
-        <v-list-item-icon>
+        <!-- <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon>
+        </v-list-item-icon> -->
 
         <v-list-item-content>
-          <v-list-item-title>{{ $t(`nav.${item.label}`) }}</v-list-item-title>
+          <v-list-item-title class="font-weight-light">{{
+            $t(`nav.${item.label}`)
+          }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
