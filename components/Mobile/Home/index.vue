@@ -25,7 +25,7 @@
       <Locale is-mobile />
     </div>
     <MobileView class="justify-space-between align-center section">
-      <MobileView class="align-center mb-4">
+      <MobileView class="align-center">
         <CustomSVG
           :src="require('~/assets/main-logo.svg')"
           :width="mainLogoWidth"
@@ -33,19 +33,19 @@
           :color="themes.light.primary3"
           cover
         ></CustomSVG>
-        <span
+        <!-- <span
           :style="{ color: themes.light.lightPrimary3 }"
           class="font-weight-medium text-center text-uppercase"
         >
           {{ $t('welcome.title') }}
-        </span>
+        </span> -->
       </MobileView>
       <v-img
         contain
         position="center"
         :src="require('~/assets/fig_2.png')"
-        width="32vh"
-        height="68vh"
+        width="24vh"
+        height="51vh"
       ></v-img>
     </MobileView>
     <MobileView
