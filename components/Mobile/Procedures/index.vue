@@ -102,6 +102,7 @@
                 v-bind="{ ...part, part }"
                 for-subpart
                 @reset-active-parts="resetActiveParts"
+                @open-detail="openDetail"
               />
             </div>
           </v-img>
@@ -136,6 +137,7 @@
                 v-bind="{ ...part, part }"
                 for-subpart
                 @reset-active-parts="resetActiveParts"
+                @open-detail="openDetail"
               />
             </div>
           </v-img>
@@ -465,6 +467,9 @@ export default {
           subpart.active = false
         })
       }
+    },
+    openDetail() {
+      this.subpartDialog = true
     },
     toogleList() {
       this.showingList = !this.showingList

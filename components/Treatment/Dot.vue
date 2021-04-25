@@ -125,6 +125,7 @@ export default {
       this.$emit('reset-active-parts', this.index)
       this.part.active = true
       this.$emit('close-list')
+      this.$emit('open-detail')
     },
   },
 }
