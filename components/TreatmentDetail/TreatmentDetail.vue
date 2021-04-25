@@ -957,6 +957,7 @@ export default {
   text-align: justify;
   overflow: scroll;
   flex-grow: 1;
+  padding: 0px 16px 16px 0px;
 }
 
 .contact-button {
