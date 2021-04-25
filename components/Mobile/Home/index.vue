@@ -55,7 +55,7 @@
     <div
       ref="section2"
       :style="lightBackground"
-      class="jd-flex flex-column justify-center align-center section"
+      class="d-flex flex-column justify-center align-center section"
       :class="{ section2: stick[1] }"
     >
       <span class="text-h6">
@@ -119,30 +119,22 @@
             ></v-img>
           </MobileView>
         </swiper-slide>
-        <swiper-slide :key="2">
-          <MobileView class="justify-center align-center full">
-            <nuxt-link
-              :style="[{ color: themes.light.primary3 }]"
-              :to="finalpath('procedures')"
-            >
-              <div class="d-flex align-center">
-                <span>
-                  {{ $t('welcome.procedure') }}
-                </span>
-                <CustomSVG
-                  class="ml-2"
-                  size="1.5rem"
-                  :src="require('bootstrap-icons/icons/arrow-right.svg')"
-                  :color="themes.light.primary3"
-                />
-              </div>
-            </nuxt-link>
-          </MobileView>
-        </swiper-slide>
         <div slot="pagination" class="swiper-pagination"></div>
       </swiper>
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
+      <MobileView class="discover-procedure">
+        <v-btn
+          elevation="2"
+          color="primary3"
+          tile
+          dark
+          block
+          @click="$router.push({ path: finalpath('procedures') })"
+        >
+          <span>{{ $t('welcome.procedure') }}</span>
+        </v-btn>
+      </MobileView>
     </div>
   </MobileView>
 </template>
@@ -343,6 +335,14 @@ a {
 .section4 {
   z-index: 3;
   position: fixed;
+}
+
+.discover-procedure {
+  z-index: 1;
+  position: absolute;
+  padding: 5vh 5vw;
+  width: 100vw;
+  bottom: 0px;
 }
 
 .swiper-slide {
