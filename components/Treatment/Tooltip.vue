@@ -38,6 +38,9 @@ export default {
   },
   methods: {
     openDetail(query) {
+      if (this.isMobile) {
+        return
+      }
       const { figure } = this.$route.query
       this.$emit('close-tooltip')
       this.$router.push({ query: { figure, part: query } })
