@@ -39,17 +39,26 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
+    <div class="d-flex align-center footer up">
+      <SocialMedia small />
+      <Locale is-mobile />
+    </div>
+    <div class="d-flex align-center footer down">
+      <Legal in-mobile />
+    </div>
   </v-navigation-drawer>
 </template>
 
 <script>
 import CustomSVG from '~/components/Global/CustomSVG'
+import Legal from '~/components/Global/Legal'
 
 import { finalpath } from '~/helpers'
 
 export default {
   components: {
     CustomSVG,
+    Legal,
   },
   computed: {
     locale() {
@@ -137,4 +146,16 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.footer {
+  padding: 0px 5vw;
+  height: 48px;
+  position: absolute;
+}
+.footer.up {
+  bottom: 64px;
+}
+.footer.down {
+  bottom: 16px;
+}
+</style>

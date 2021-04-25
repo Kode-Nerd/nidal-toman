@@ -1,5 +1,5 @@
 <template>
-  <div :class="customClass">
+  <div v-if="!inMobile" :class="customClass">
     <nuxt-link
       :style="path === 'imprint' ? linkActive : textStyle"
       :to="finalpath('imprint')"
@@ -18,6 +18,26 @@
       >{{ $t('nav.infodesk') }}</nuxt-link
     >
   </div>
+  <div v-else>
+    <div>
+      <nuxt-link
+        :style="path === 'imprint' ? linkActive : textStyle"
+        :to="finalpath('imprint')"
+        >{{ $t('nav.imprint') }}</nuxt-link
+      >
+      <span :style="dividerStyle" class="mx-1">|</span>
+      <nuxt-link
+        :style="path === 'infodesk' ? linkActive : textStyle"
+        :to="finalpath('infodesk')"
+        >{{ $t('nav.infodesk') }}</nuxt-link
+      >
+    </div>
+    <nuxt-link
+      :style="path === 'privacy' ? linkActive : textStyle"
+      :to="finalpath('privacy')"
+      >{{ $t('nav.privacy') }}</nuxt-link
+    >
+  </div>
 </template>
 
 <script>
@@ -32,6 +52,10 @@ export default {
     customClass: {
       type: String,
       default: '',
+    },
+    inMobile: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
@@ -77,7 +101,7 @@ export default {
   },
   methods: {
     finalpath(path) {
-      return finalpath(this.locale, path)
+      return finalpath(this.locale, path, this.inMobile)
     },
   },
 }

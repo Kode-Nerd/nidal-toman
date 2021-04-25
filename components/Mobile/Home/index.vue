@@ -20,9 +20,9 @@
         <v-btn small icon color="primary3" @click="drawer = !drawer"
           ><v-icon small>fas fa-bars</v-icon></v-btn
         >
-        <SocialMedia small />
+        <!-- <SocialMedia small /> -->
       </div>
-      <Locale is-mobile />
+      <!-- <Locale is-mobile /> -->
     </div>
     <div
       ref="section1"
@@ -142,8 +142,8 @@
 <script>
 import MobileView from '~/components/Mobile/View'
 import CustomSVG from '~/components/Global/CustomSVG'
-import SocialMedia from '~/components/Global/SocialMedia'
-import Locale from '~/components/Global/Locale'
+// import SocialMedia from '~/components/Global/SocialMedia'
+// import Locale from '~/components/Global/Locale'
 
 import { finalpath } from '~/helpers'
 
@@ -151,8 +151,8 @@ export default {
   components: {
     MobileView,
     CustomSVG,
-    SocialMedia,
-    Locale,
+    // SocialMedia,
+    // Locale,
   },
   data() {
     return {

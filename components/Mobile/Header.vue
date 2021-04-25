@@ -27,23 +27,23 @@
 
     <v-spacer></v-spacer>
 
-    <div class="d-flex align-center tools">
+    <!-- <div class="d-flex align-center tools">
       <SocialMedia :icon-color="themes.light.background" small />
       <Locale is-mobile mobile-dark />
-    </div>
+    </div> -->
   </v-app-bar>
 </template>
 
 <script>
 import CustomSVG from '~/components/Global/CustomSVG'
-import SocialMedia from '~/components/Global/SocialMedia'
-import Locale from '~/components/Global/Locale'
+// import SocialMedia from '~/components/Global/SocialMedia'
+// import Locale from '~/components/Global/Locale'
 
 export default {
   components: {
     CustomSVG,
-    SocialMedia,
-    Locale,
+    // SocialMedia,
+    // Locale,
   },
   props: {
     src: {
