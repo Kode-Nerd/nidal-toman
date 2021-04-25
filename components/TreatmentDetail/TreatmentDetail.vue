@@ -556,7 +556,7 @@
       />
     </div>
     <div
-      class="d-flex flex-column subpart-list"
+      class="d-flex flex-column subpart-list overflow-y-auto"
       :class="{ closed: !showingList }"
       :style="background"
     >
