@@ -592,7 +592,7 @@
           <VerticalNavigation
             class="mt-3"
             tab-justify="left"
-            :subparts="outpatient"
+            :subparts="outpatientFilters"
             outpatient
             @close-list="toogleList"
           />
@@ -682,6 +682,17 @@ export default {
     },
     themes() {
       return this.$vuetify.theme.themes
+    },
+    outpatientFilters() {
+      if (this.figurePart === 'face_and_head') {
+        return this.outpatient.filter((part) => part.query !== 'anti_stress')
+      } else if (this.figurePart === 'body') {
+        return this.outpatient.filter(
+          (part) => part.query === 'anti_stress' || part.query === 'fat_away'
+        )
+      } else {
+        return this.outpatient.filter((part) => part.query === 'fat_away')
+      }
     },
     subparts() {
       if (this.isFemale) {
