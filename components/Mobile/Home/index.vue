@@ -26,7 +26,7 @@
     </div>
     <div
       ref="section1"
-      class="d-flex flex-column justify-space-between align-center section"
+      class="d-flex flex-column justify-space-between align-center section mt-n12"
       :class="{ section1: stick[0] }"
     >
       <MobileView class="align-center">
