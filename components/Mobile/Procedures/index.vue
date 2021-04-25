@@ -192,27 +192,43 @@
           <v-btn v-if="!showingList" icon dark @click="showingList = true">
             <v-icon>fas fa-chevron-right</v-icon>
           </v-btn>
+          <template v-if="!showingList" v-slot:extension>
+            <v-tabs
+              v-model="detailTab"
+              background-color="primary3"
+              center-active
+              dark
+            >
+              <v-tab v-for="(item, index) in tabs" :key="index">{{
+                item.label
+              }}</v-tab>
+            </v-tabs>
+          </template>
         </v-toolbar>
-        <MobileView>
-          <MobileView v-if="showingList" class="detail-section">
-            <span class="text-h5">{{ $t('treatments.surgeries') }}</span>
-            <VerticalNavigation
-              class="mt-3 mb-6"
-              tab-justify="left"
-              :subparts="subparts"
-              @close-list="toogleList"
-            />
-            <span class="text-h5">{{ $t('treatments.nonsurgeries') }}</span>
-            <VerticalNavigation
-              class="mt-3"
-              tab-justify="left"
-              :subparts="outpatient"
-              outpatient
-              @close-list="toogleList"
-            />
-          </MobileView>
-          <MobileView v-else class="detail-section"> Detail </MobileView>
+        <MobileView v-if="showingList" class="detail-section">
+          <span class="text-h5">{{ $t('treatments.surgeries') }}</span>
+          <VerticalNavigation
+            class="mt-3 mb-6"
+            tab-justify="left"
+            :subparts="subparts"
+            @close-list="toogleList"
+          />
+          <span class="text-h5">{{ $t('treatments.nonsurgeries') }}</span>
+          <VerticalNavigation
+            class="mt-3"
+            tab-justify="left"
+            :subparts="outpatientFilters"
+            outpatient
+            @close-list="toogleList"
+          />
         </MobileView>
+        <v-tabs-items v-else v-model="detailTab">
+          <v-tab-item v-for="(item, index) in tabs" :key="index">
+            <v-card flat>
+              <v-card-text>test</v-card-text>
+            </v-card>
+          </v-tab-item>
+        </v-tabs-items>
       </v-card>
     </v-dialog>
   </MobileView>
@@ -263,9 +279,26 @@ export default {
       womanSubparts,
       manSubparts,
       outpatient,
+
+      detailTab: '',
+      items: [
+        { label: this.$t('treatments.general'), value: 'general' },
+        { label: this.$t('treatments.engagement'), value: 'engagement' },
+        { label: this.$t('treatments.additional'), value: 'additional' },
+        { label: this.$t('treatments.summary'), value: 'summary' },
+      ],
+      outpatientItems: [
+        { label: this.$t('treatments.general'), value: 'general' },
+        { label: this.$t('treatments.treatment'), value: 'treatment' },
+        { label: this.$t('treatments.faq'), value: 'faq' },
+        { label: this.$t('treatments.summary'), value: 'summary' },
+      ],
     }
   },
   computed: {
+    themes() {
+      return this.$vuetify.theme.themes
+    },
     drawer: {
       set(val) {
         this.$store.commit('SET_SIDENAV', val)
@@ -284,6 +317,23 @@ export default {
       set(val) {
         this.$store.commit('SET_OUTPATIENTDETAIL', val)
       },
+    },
+    outpatientFilters() {
+      if (this.figurePart === 'face_and_head') {
+        return this.outpatient.filter((part) => part.query !== 'anti_stress')
+      } else if (this.figurePart === 'body') {
+        return this.outpatient.filter(
+          (part) => part.query === 'anti_stress' || part.query === 'fat_away'
+        )
+      } else {
+        return this.outpatient.filter((part) => part.query === 'fat_away')
+      }
+    },
+    tabs() {
+      if (this.outpatientDetail) {
+        return this.outpatientItems
+      }
+      return this.items
     },
     visibleTreatmentDetail: {
       get() {
@@ -352,6 +402,13 @@ export default {
     },
   },
   watch: {
+    showingList: {
+      handler(val) {
+        this.detailTab = ''
+      },
+      deep: true,
+      immediate: true,
+    },
     '$route.query.part': {
       handler(val) {
         if (val) {
