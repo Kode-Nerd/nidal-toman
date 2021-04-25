@@ -223,9 +223,229 @@
           />
         </MobileView>
         <v-tabs-items v-else v-model="detailTab">
-          <v-tab-item v-for="(item, index) in tabs" :key="index">
+          <v-tab-item>
+            <v-card flat class="overflow-y-auto">
+              <v-card-text>
+                <p
+                  v-for="(text, index) in contentExtractor(
+                    $t(
+                      `treatments.${figurePart}.${subpart.query}.general.content`
+                    )
+                  )"
+                  :key="index"
+                  class="font-weight-light"
+                  v-html="text"
+                ></p>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+          <v-tab-item>
+            <v-card flat class="overflow-y-auto">
+              <v-card-text>
+                <div
+                  v-if="
+                    !contentIsArray(
+                      MasterContent[figurePart][subpart.query].engagement
+                        .content
+                    )
+                  "
+                >
+                  <p
+                    v-for="(text, index) in contentExtractor(
+                      $t(
+                        `treatments.${figurePart}.${subpart.query}.engagement.content`
+                      )
+                    )"
+                    :key="index"
+                    class="font-weight-light"
+                    v-html="text"
+                  ></p>
+                </div>
+                <!-- Custom Part -->
+                <div
+                  v-if="
+                    MasterContent[figurePart][subpart.query].engagement.list
+                  "
+                >
+                  <ul
+                    v-for="(subItem, id) in MasterContent[figurePart][
+                      subpart.query
+                    ].engagement.list"
+                    :key="id"
+                    class="d-flex flex-column mb-2 font-weight-light"
+                  >
+                    <li class="mb-2">
+                      {{
+                        $t(
+                          `treatments.${figurePart}.${subpart.query}.engagement.list[${id}].content`
+                        )
+                      }}
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  v-if="
+                    MasterContent[figurePart][subpart.query].engagement.extend
+                  "
+                >
+                  <p
+                    v-for="(text, index) in contentExtractor(
+                      $t(
+                        `treatments.${figurePart}.${subpart.query}.engagement.extend`
+                      )
+                    )"
+                    :key="index"
+                    class="font-weight-light"
+                    v-html="text"
+                  ></p>
+                </div>
+                <div
+                  v-if="
+                    !contentIsArray(
+                      MasterContent[figurePart][subpart.query].engagement
+                        .content
+                    ) && MasterContent[figurePart][subpart.query].engagement.sub
+                  "
+                >
+                  <div
+                    v-for="(subItem, id) in MasterContent[figurePart][
+                      subpart.query
+                    ].engagement.sub"
+                    :key="id"
+                    class="d-flex flex-column"
+                  >
+                    <span
+                      class="text-h6 font-weight-bold mb-4 font-weight-light"
+                    >
+                      {{
+                        $t(
+                          `treatments.${figurePart}.${subpart.query}.engagement.sub[${id}].title`
+                        )
+                      }}
+                    </span>
+                    <p
+                      v-for="(text, index) in contentExtractor(
+                        $t(
+                          `treatments.${figurePart}.${subpart.query}.engagement.sub[${id}].content`
+                        )
+                      )"
+                      :key="index"
+                      class="font-weight-light"
+                      v-html="text"
+                    ></p>
+                  </div>
+                </div>
+                <div
+                  v-if="
+                    contentIsArray(
+                      MasterContent[figurePart][subpart.query].engagement
+                        .content
+                    )
+                  "
+                >
+                  <div
+                    v-for="(subItem, id) in MasterContent[figurePart][
+                      subpart.query
+                    ].engagement.content"
+                    :key="id"
+                    class="d-flex flex-column"
+                  >
+                    <span class="text-h6 font-weight-bold mb-4">
+                      {{
+                        $t(
+                          `treatments.${figurePart}.${subpart.query}.engagement.content[${id}].title`
+                        )
+                      }}
+                    </span>
+                    <p
+                      v-for="(text, index) in contentExtractor(
+                        $t(
+                          `treatments.${figurePart}.${subpart.query}.engagement.content[${id}].content`
+                        )
+                      )"
+                      :key="index"
+                      class="font-weight-light"
+                      v-html="text"
+                    ></p>
+                  </div>
+                </div>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+          <v-tab-item>
             <v-card flat>
-              <v-card-text>test</v-card-text>
+              <v-card-text>
+                <v-expansion-panels>
+                  <v-expansion-panel
+                    v-for="(content, index) in MasterContent[figurePart][
+                      subpart.query
+                    ].additional.content"
+                    :key="index"
+                  >
+                    <v-expansion-panel-header class="font-weight-bold">
+                      {{ index + 1 }}.
+                      {{
+                        $t(
+                          `treatments.${figurePart}.${subpart.query}.additional.content[${index}].title`
+                        )
+                      }}
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content class="font-weight-light">
+                      {{
+                        $t(
+                          `treatments.${figurePart}.${subpart.query}.additional.content[${index}].subtitle`
+                        )
+                      }}
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-expansion-panels>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+          <v-tab-item>
+            <v-card flat class="overflow-y-auto">
+              <v-card-text>
+                <div
+                  v-for="(summary, index) in summaries"
+                  :key="index"
+                  class="d-flex flex-column my-6"
+                >
+                  <span class="text-h6 font-weight-bold mb-3">
+                    {{
+                      $t(
+                        `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
+                      )
+                    }}
+                  </span>
+                  <span class="font-weight-light">
+                    {{
+                      $t(
+                        `treatments.${figurePart}.${subpart.query}.summary.${summary}.detail`
+                      )
+                    }}
+                  </span>
+                </div>
+                <div
+                  v-for="(summary, index) in summaries2"
+                  :key="index"
+                  class="d-flex flex-column my-6"
+                >
+                  <span class="text-h6 font-weight-bold mb-3">
+                    {{
+                      $t(
+                        `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
+                      )
+                    }}
+                  </span>
+                  <span class="font-weight-light">
+                    {{
+                      $t(
+                        `treatments.${figurePart}.${subpart.query}.summary.${summary}.subtitle`
+                      )
+                    }}
+                  </span>
+                </div>
+              </v-card-text>
             </v-card>
           </v-tab-item>
         </v-tabs-items>
@@ -244,8 +464,9 @@ import manParts from '~/components/Treatment/assets/manParts.json'
 import womanSubparts from '~/components/Treatment/assets/womanSubparts.json'
 import manSubparts from '~/components/Treatment/assets/manSubparts.json'
 import outpatient from '~/components/Treatment/assets/outpatient.json'
+import MasterContent from '~/assets/locales/en/treatments.json'
 
-import { finalpath } from '~/helpers'
+import { finalpath, contentExtractor } from '~/helpers'
 
 export default {
   components: {
@@ -279,6 +500,7 @@ export default {
       womanSubparts,
       manSubparts,
       outpatient,
+      MasterContent,
 
       detailTab: '',
       items: [
@@ -293,6 +515,8 @@ export default {
         { label: this.$t('treatments.faq'), value: 'faq' },
         { label: this.$t('treatments.summary'), value: 'summary' },
       ],
+      summaries: ['duration', 'durationInClinic', 'anasthesia'],
+      summaries2: ['postTreatment', 'sociable'],
     }
   },
   computed: {
@@ -309,6 +533,12 @@ export default {
     },
     locale() {
       return this.$store.state.locale
+    },
+    subpart() {
+      if (this.isFemale) {
+        return this.womanSubparts[this.figurePart][this.figureSubpart]
+      }
+      return this.manSubparts[this.figurePart][this.figureSubpart]
     },
     outpatientDetail: {
       get() {
@@ -405,6 +635,13 @@ export default {
     showingList: {
       handler(val) {
         this.detailTab = ''
+      },
+      deep: true,
+      immediate: true,
+    },
+    subpartDialog: {
+      handler(val) {
+        this.showingList = true
       },
       deep: true,
       immediate: true,
@@ -595,6 +832,12 @@ export default {
         })
       }
       this.figureSubpart = val
+    },
+    contentIsArray(content) {
+      return Array.isArray(content)
+    },
+    contentExtractor(input) {
+      return contentExtractor(input)
     },
   },
 }
