@@ -183,9 +183,18 @@
             <v-icon>fas fa-times</v-icon>
           </v-btn>
           <v-toolbar-title>
-            <span>
+            <span v-if="showingList">
               {{ $t(`treatments.${figurePart}.title`) }}
               {{ $t('treatments.procedures') }}
+            </span>
+            <span v-else>
+              {{
+                !outpatientDetail
+                  ? $t(`treatments.${figurePart}.${subpart.query}.title`)
+                  : $t(
+                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.title`
+                    )
+              }}
             </span>
           </v-toolbar-title>
           <v-spacer />
