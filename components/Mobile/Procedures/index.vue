@@ -164,7 +164,7 @@
           dark
           @click="subpartDialog = true"
         >
-          <span>{{ $t('treatments.detail') }}</span>
+          <span>{{ $t('treatments.allDetail') }}</span>
         </v-btn>
       </MobileView>
     </MobileView>
