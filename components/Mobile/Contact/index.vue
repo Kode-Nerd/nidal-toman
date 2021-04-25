@@ -19,6 +19,17 @@
         </template>
       </v-list>
     </MobileView>
+    <MobileView class="section">
+      <v-btn
+        dark
+        tile
+        block
+        elevation="2"
+        color="primary4"
+        @click="dialog = true"
+        >{{ $t('contact.detail.map') }}</v-btn
+      >
+    </MobileView>
     <v-img
       :src="require('~/assets/images/interiors/interior1.jpg')"
       width="100vw"
@@ -84,17 +95,6 @@
       <p class="text-h6">{{ $t('contact.gallery') }}</p>
     </MobileView>
     <Gallery mobile />
-    <MobileView class="section">
-      <v-btn
-        dark
-        tile
-        block
-        elevation="2"
-        color="primary4"
-        @click="dialog = true"
-        >{{ $t('contact.detail.map') }}</v-btn
-      >
-    </MobileView>
     <v-dialog
       v-model="dialog"
       fullscreen
