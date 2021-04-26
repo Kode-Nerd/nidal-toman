@@ -2,7 +2,7 @@
   <MobileView>
     <v-fab-transition>
       <v-btn
-        v-show="!hidden"
+        v-show="false"
         elevation="2"
         color="primary3"
         dark

@@ -1,6 +1,26 @@
 <template>
   <MobileView>
-    <MobileView class="top-section"> </MobileView>
+    <!-- <MobileView class="top-section"> </MobileView> -->
+    <v-img
+      :src="require(`~/assets/B'LANCE-NT.png`)"
+      contain
+      width="100vw"
+      height="100vw"
+    >
+      <v-row class="fill-height ma-0 pa-3" align="start" justify="start">
+        <div style="height: 48px" class="d-flex align-center">
+          <v-btn small icon color="primary3" @click="drawer = !drawer"
+            ><v-icon small>fas fa-bars</v-icon></v-btn
+          >
+          <CustomSVG
+            class="ml-3"
+            :src="require('~/assets/mini-logo.svg')"
+            size="48px"
+            :color="themes.light.primary3"
+          ></CustomSVG>
+        </div>
+      </v-row>
+    </v-img>
     <MobileView class="section">
       <p class="text-h6 font-weight-bold">
         {{ $t('ivtherapies.texts[0].title') }}
@@ -127,12 +147,14 @@
 
 <script>
 import MobileView from '~/components/Mobile/View'
+import CustomSVG from '~/components/Global/CustomSVG'
 
 import { contentExtractor, finalpath } from '~/helpers'
 
 export default {
   components: {
     MobileView,
+    CustomSVG,
   },
   data() {
     return {
@@ -145,6 +167,14 @@ export default {
     },
     themes() {
       return this.$vuetify.theme.themes
+    },
+    drawer: {
+      set(val) {
+        this.$store.commit('SET_SIDENAV', val)
+      },
+      get() {
+        return this.$store.state.sideNav
+      },
     },
   },
   methods: {
