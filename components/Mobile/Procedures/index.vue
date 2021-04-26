@@ -551,6 +551,31 @@
         </v-tabs-items>
       </v-card>
     </v-dialog>
+    <v-dialog v-model="bookDialog" transition="dialog-bottom-transition">
+      <v-card>
+        <v-card-title :style="footerTitleStyle" class="text-h6 grey lighten-2">
+          {{ $t('treatments.footerTitle') }}
+        </v-card-title>
+        <v-card-text>
+          <MobileView>
+            <span
+              :style="footerSubStyle"
+              class="text-subtitle-1 font-weight-light my-4"
+              >{{ $t('treatments.footerSub') }}</span
+            >
+            <v-btn
+              dark
+              tile
+              elevation="2"
+              block
+              color="primary4"
+              @click="gotoContact"
+              >{{ $t('treatments.contact') }}</v-btn
+            >
+          </MobileView>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </MobileView>
 </template>
 
@@ -594,6 +619,7 @@ export default {
       ready: false,
       figure: '',
       subpartDialog: false,
+      bookDialog: false,
       showingList: true,
       womanParts,
       manParts,
@@ -730,11 +756,26 @@ export default {
 
       return true
     },
+    footerTitleStyle() {
+      return {
+        color: this.themes.light.footerTitle,
+      }
+    },
+    footerSubStyle() {
+      return {
+        color: this.themes.light.footerSub,
+      }
+    },
   },
   watch: {
     showingList: {
       handler(val) {
         this.detailTab = ''
+        if (!val) {
+          setTimeout(() => {
+            this.bookDialog = true
+          }, 3000)
+        }
       },
       deep: true,
       immediate: true,
@@ -919,6 +960,11 @@ export default {
       }
 
       this.$router.push({ query: { figure, part: query } })
+    },
+    gotoContact() {
+      this.$router.push({
+        path: this.finalpath('contact'),
+      })
     },
     resetActiveParts(val) {
       if (this.isFemale) {
