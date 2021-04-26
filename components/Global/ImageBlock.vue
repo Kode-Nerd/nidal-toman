@@ -34,6 +34,7 @@ export default {
         width: '100vw',
         backgroundImage: `url(${this.src})`,
         backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }
     },
   },

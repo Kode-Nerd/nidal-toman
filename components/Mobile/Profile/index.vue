@@ -1,6 +1,23 @@
 <template>
   <MobileView>
-    <MobileView class="top-section"> </MobileView>
+    <!-- <MobileView class="top-section"> </MobileView> -->
+    <CoverHeader
+      :src="require('~/assets/images/treatments/treatment1.jpg')"
+      :color="themes.light.background"
+    ></CoverHeader>
+    <MobileView class="mt-16 pa-4">
+      <CustomSVG
+        class="ml-n4 mb-n2"
+        :src="require('~/assets/name.svg')"
+        width="19rem"
+        height="2.5rem"
+        :color="themes.light.primary3"
+        cover
+      ></CustomSVG>
+      <span class="text-caption font-weight-light text-uppercase">{{
+        $t('profile.subtitle')
+      }}</span>
+    </MobileView>
     <v-img
       position="top center"
       :src="require('~/assets/images/profiles/profile.jpg')"
@@ -332,12 +349,16 @@
 
 <script>
 import MobileView from '~/components/Mobile/View'
+import CoverHeader from '~/components/Mobile/CoverHeader'
+import CustomSVG from '~/components/Global/CustomSVG'
 
 import { contentExtractor, finalpath } from '~/helpers'
 
 export default {
   components: {
     MobileView,
+    CoverHeader,
+    CustomSVG,
   },
   data() {
     return {
@@ -387,6 +408,11 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    themes() {
+      return this.$vuetify.theme.themes
+    },
   },
   methods: {
     contentExtractor(input) {

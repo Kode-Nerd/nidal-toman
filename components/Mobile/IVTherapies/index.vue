@@ -3,7 +3,7 @@
     <!-- <MobileView class="top-section"> </MobileView> -->
     <CoverHeader
       :src="require(`~/assets/B'LANCE-NT.png`)"
-      :color="themes.light.primary3"
+      contain
     ></CoverHeader>
     <MobileView class="section">
       <p class="text-h6 font-weight-bold">

@@ -1,8 +1,8 @@
 <template>
-  <v-img v-if="src" :src="src" contain width="100vw" height="100vw">
+  <v-img v-if="src" :src="src" :contain="contain" width="100vw" height="100vw">
     <v-row class="fill-height ma-0 pa-3" align="start" justify="start">
       <div style="height: 48px" class="d-flex align-center">
-        <v-btn small icon color="primary3" @click="drawer = !drawer"
+        <v-btn small icon :color="color" @click="drawer = !drawer"
           ><v-icon small>fas fa-bars</v-icon></v-btn
         >
         <CustomSVG
@@ -32,8 +32,12 @@ export default {
     color: {
       type: String,
       default() {
-        return this.$vuetify.theme.themes.primary3
+        return this.$vuetify.theme.themes.light.primary3
       },
+    },
+    contain: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {

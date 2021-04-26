@@ -1,6 +1,10 @@
 <template>
   <MobileView>
-    <MobileView class="top-section"></MobileView>
+    <!-- <MobileView class="top-section"></MobileView> -->
+    <CoverHeader
+      :src="require('~/assets/images/interiors/interior2.jpg')"
+      :color="themes.light.background"
+    ></CoverHeader>
     <MobileView class="section">
       <p class="text-h6">{{ $t('contact.title') }}</p>
       <p class="font-weight-light">{{ $t('contact.text') }}</p>
