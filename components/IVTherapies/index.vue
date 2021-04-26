@@ -1,10 +1,7 @@
 <template>
   <div :id="id" class="wrapper">
-    <CoverPicture
-      video
-      :src="require('~/assets/Mental_Balance_Edited+Compressed.mp4')"
-    >
-      <v-row :style="logoContainer" justify="center" align="center">
+    <CoverPicture :src="require(`~/assets/B'LANCE-NT.png`)">
+      <!-- <v-row :style="logoContainer" justify="center" align="center">
         <v-img
           :style="logoStyle"
           contain
@@ -12,8 +9,8 @@
           height="80vh"
         >
         </v-img>
-      </v-row>
-      <CoverScroll target="#top-ivtherapies" />
+      </v-row> -->
+      <CoverScroll target="#top-ivtherapies" :color="themes.light.primary4" />
     </CoverPicture>
     <div id="top-ivtherapies">
       <div class="section">
