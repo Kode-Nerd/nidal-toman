@@ -92,6 +92,7 @@
                 :key="index"
                 :index="index"
                 v-bind="{ ...part, part }"
+                is-mobile
               />
             </div>
             <div v-else>
@@ -127,6 +128,7 @@
                 v-for="(part, index) in manParts"
                 :key="index"
                 v-bind="{ ...part, part }"
+                is-mobile
               />
             </div>
             <div v-else>

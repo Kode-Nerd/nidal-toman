@@ -66,6 +66,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isMobile: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -109,7 +113,7 @@ export default {
       }
     },
     mouseover(part) {
-      if (!this.forSubpart) {
+      if (!this.forSubpart && !this.isMobile) {
         part.active = true
       }
     },
