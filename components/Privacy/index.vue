@@ -276,11 +276,11 @@
 </template>
 
 <script>
-// import Section from '~/components/Global/Section'
+import Section from '~/components/Global/Section'
 import { contentExtractor } from '~/helpers'
 export default {
   components: {
-    // Section,
+    Section,
   },
   computed: {
     themes() {
