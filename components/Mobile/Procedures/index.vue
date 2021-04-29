@@ -995,6 +995,7 @@ export default {
 .full {
   height: 93vh;
   width: 100vw;
+  overflow: hidden;
 }
 .relative {
   position: relative;
