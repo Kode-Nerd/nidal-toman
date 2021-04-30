@@ -1,13 +1,20 @@
 <template>
   <div class="fullscreen">
     <div v-if="!src" class="no-image">No image source</div>
-    <div v-else class="cover" :class="{ coverOut: borderZero }">
+    <div
+      v-else
+      :style="backgroundStyle"
+      class="cover"
+      :class="{ coverOut: borderZero }"
+    >
       <v-img
         v-if="!video"
+        :contain="contain"
+        class="center-image"
         :position="position"
         :src="src"
-        width="100%"
-        height="100%"
+        :width="coverWidth"
+        :height="coverHeight"
         @load="showCover"
         ><slot
       /></v-img>
@@ -40,12 +47,37 @@ export default {
       type: Boolean,
       default: false,
     },
+    contain: {
+      type: Boolean,
+      default: false,
+    },
+    coverWidth: {
+      type: String,
+      default: '100%',
+    },
+    coverHeight: {
+      type: String,
+      default: '100%',
+    },
+    customBackground: {
+      type: String,
+      default() {
+        return this.$vuetify.theme.themes.light.background
+      },
+    },
   },
   data() {
     return {
       borderZero: false,
       borderNone: false,
     }
+  },
+  computed: {
+    backgroundStyle() {
+      return {
+        background: this.customBackground,
+      }
+    },
   },
   methods: {
     showVideo(e) {
@@ -87,6 +119,12 @@ export default {
   align-items: center;
 }
 
+.center-image {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
 .cover {
   transform: translate(-50%, -50%);
   position: absolute;

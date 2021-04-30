@@ -1,6 +1,12 @@
 <template>
   <div :id="id" class="wrapper">
-    <CoverPicture :src="require(`~/assets/B'LANCE-NT.png`)">
+    <CoverPicture
+      :custom-background="themes.light.lightBackground"
+      contain
+      cover-width="80%"
+      cover-height="60%"
+      :src="require(`~/assets/B'LANCE-NT.png`)"
+    >
       <!-- <v-row :style="logoContainer" justify="center" align="center">
         <v-img
           :style="logoStyle"
