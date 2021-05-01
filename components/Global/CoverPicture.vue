@@ -16,13 +16,12 @@
         :width="coverWidth"
         :height="coverHeight"
         @load="showCover"
-        ><slot
-      /></v-img>
+      ></v-img>
       <video v-else id="myVideo" autoplay muted loop @loadeddata="showVideo">
         <source :src="src" type="video/mp4" />
         Your browser does not support HTML5 video.
       </video>
-      <slot v-if="video" />
+      <slot />
     </div>
     <div
       v-if="src"
