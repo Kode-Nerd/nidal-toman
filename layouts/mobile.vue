@@ -147,7 +147,8 @@ export default {
           })
         })
       } else {
-        this.$router.push(this.$route.fullPath.replace(/^\/mobile/, ''))
+        const finalpath = this.$route.fullPath.replace(/\/mobile/, '')
+        this.$router.push(finalpath)
       }
     })
   },
