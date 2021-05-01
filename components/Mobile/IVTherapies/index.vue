@@ -4,6 +4,9 @@
     <CoverHeader
       :src="require(`~/assets/B'LANCE-NT.png`)"
       contain
+      width="60%"
+      height="60%"
+      :background-color="themes.light.lightBackground"
     ></CoverHeader>
     <MobileView class="section">
       <p class="text-h6 font-weight-bold">

@@ -14,14 +14,20 @@
       </div>
     </v-row>
   </div>
-  <v-img
-    v-else-if="src"
-    :src="src"
-    :contain="contain"
-    width="100vw"
-    height="100vw"
-  >
-    <v-row class="fill-height ma-0 pa-3" align="start" justify="start">
+  <div v-else-if="src" :style="backgroundStyle" class="img__container">
+    <v-img
+      :src="src"
+      :contain="contain"
+      class="img__pos"
+      :width="width"
+      :height="height"
+    >
+    </v-img>
+    <v-row
+      class="fill-height ma-0 pa-3 img__pos fill__width"
+      align="start"
+      justify="start"
+    >
       <div style="height: 48px" class="d-flex align-center">
         <v-btn small icon :color="color" @click="drawer = !drawer"
           ><v-icon small>fas fa-bars</v-icon></v-btn
@@ -34,7 +40,7 @@
         ></CustomSVG>
       </div>
     </v-row>
-  </v-img>
+  </div>
   <div v-else>No src set.</div>
 </template>
 
@@ -64,6 +70,20 @@ export default {
       type: Boolean,
       default: false,
     },
+    width: {
+      type: String,
+      default: '100%',
+    },
+    height: {
+      type: String,
+      default: '100%',
+    },
+    backgroundColor: {
+      type: String,
+      default() {
+        return this.$vuetify.theme.themes.light.background
+      },
+    },
   },
   computed: {
     drawer: {
@@ -74,6 +94,11 @@ export default {
         return this.$store.state.sideNav
       },
     },
+    backgroundStyle() {
+      return {
+        background: this.backgroundColor,
+      }
+    },
   },
 }
 </script>
@@ -81,5 +106,19 @@ export default {
 <style scoped>
 .noimg {
   height: 48px;
+}
+.img__container {
+  position: relative;
+  width: 100vw;
+  height: 100vw;
+}
+.img__pos {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50vw;
+  top: 50vw;
+}
+.fill__width {
+  width: 100vw;
 }
 </style>
