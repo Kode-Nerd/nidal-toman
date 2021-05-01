@@ -2,14 +2,15 @@
   <v-app v-if="ready" id="app" :style="textDefaultStyle" :dark="false">
     <v-main v-if="!isMobile">
       <TopNav
+        v-if="!isHome"
         :nav-style="[topNavStyle, tabsStyle]"
         :background="themes.light.background"
         backopacity="B3"
         :show-logo="true"
       />
-      <div :style="spacerStyle" />
+      <div v-if="!isHome" :style="spacerStyle" />
       <nuxt />
-      <Footer />
+      <Footer v-if="!isProcedure" />
     </v-main>
     <v-main v-else> <MobileMaintenance /> </v-main>
   </v-app>
@@ -22,6 +23,8 @@ import TopNav from '@/components/Global/TopNav'
 import Footer from '@/components/Footer/Footer'
 import MobileMaintenance from '@/components/Global/MobileMaintenance'
 
+import { finalpath } from '~/helpers'
+
 Vue.use(VueRellax)
 
 export default {
@@ -31,6 +34,9 @@ export default {
     MobileMaintenance,
   },
   computed: {
+    locale() {
+      return this.$store.state.locale
+    },
     ready: {
       set(val) {
         this.$store.commit('SET_READY', val)
@@ -80,12 +86,50 @@ export default {
         width: '100%',
       }
     },
+    pathname() {
+      const { path: routepath } = this.$route
+      const pathname = routepath.replace(/^\/de/, '')
+
+      return pathname
+    },
+    isProcedure() {
+      return this.pathname.includes('treatment')
+    },
+    isHome() {
+      const filteredpath = this.pathname.replace(/^\//, '')
+
+      return !filteredpath
+    },
   },
   mounted() {
     this.userAgent = navigator.userAgent.toLowerCase()
     this.$nextTick(() => {
-      this.ready = true
+      if (this.isMobile) {
+        this.redirectIfMobile()
+      } else {
+        this.ready = true
+      }
     })
+  },
+  methods: {
+    finalpathmobile(path) {
+      return finalpath(this.locale, path, true)
+    },
+    redirectIfMobile() {
+      const { query } = this.$route
+      let pathname = ''
+      if (this.isProcedure) {
+        pathname = 'procedures'
+      } else {
+        pathname = this.pathname
+      }
+      const finalpath = this.finalpathmobile(pathname)
+
+      this.$router.push({
+        path: finalpath,
+        query,
+      })
+    },
   },
   head() {
     return {

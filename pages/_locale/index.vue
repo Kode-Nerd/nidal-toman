@@ -26,7 +26,6 @@ export default {
     // Profile,
     // Infodesk,
   },
-  layout: 'custom',
   head() {
     return {
       title: 'Home',
