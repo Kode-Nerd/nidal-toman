@@ -116,8 +116,12 @@ export default {
       return finalpath(this.locale, path, true)
     },
     redirectIfMobile() {
-      const { query } = this.$route
-      const pathname = this.isProcedure ? 'procedures' : this.pathname
+      let { query } = this.$route
+      let pathname = this.isProcedure ? 'procedures' : this.pathname
+      if (!pathname && query.id === 'procedures') {
+        pathname = 'procedures'
+        query = {}
+      }
       const finalpath = this.finalpathmobile(pathname)
 
       this.$router.push({
