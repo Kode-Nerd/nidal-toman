@@ -844,8 +844,10 @@ export default {
     this.prechecking()
   },
   mounted() {
-    this.checkActiveSubpart()
-    this.checkOutpatient()
+    if (this.$route.query.part) {
+      this.checkActiveSubpart()
+      this.checkOutpatient()
+    }
   },
   methods: {
     prechecking() {
