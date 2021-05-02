@@ -147,7 +147,10 @@ export default {
           })
         })
       } else {
-        const finalpath = this.$route.fullPath.replace(/\/mobile/, '')
+        let finalpath = this.$route.fullPath.replace(/\/mobile/, '')
+        if (finalpath.includes('procedures')) {
+          finalpath = finalpath.replace(/procedures/, 'treatment')
+        }
         this.$router.push(finalpath)
       }
     })
