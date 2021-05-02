@@ -117,12 +117,7 @@ export default {
     },
     redirectIfMobile() {
       const { query } = this.$route
-      let pathname = ''
-      if (this.isProcedure) {
-        pathname = 'procedures'
-      } else {
-        pathname = this.pathname
-      }
+      const pathname = this.isProcedure ? 'procedures' : this.pathname
       const finalpath = this.finalpathmobile(pathname)
 
       this.$router.push({
