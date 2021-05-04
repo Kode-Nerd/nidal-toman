@@ -329,12 +329,12 @@
           "detail": "örtliche Betäubung / Vollnarkose"
         },
         "postTreatment": {
-          "title": "Nachbehandlung",
-          "subtitle": "Verband für 10 Tage"
+          "title": "",
+          "subtitle": ""
         },
         "sociable": {
-          "title": "Gesellschaftsfähig",
-          "subtitle": "nach 10 Tagen"
+          "title": "",
+          "subtitle": ""
         }
       }
     },
@@ -576,8 +576,8 @@
           "subtitle": "6 Wochen Kompressions-BH, ggf. Stuttgarter Gürtel"
         },
         "sociable": {
-          "title": "Gesellschaftsfähig",
-          "subtitle": "nach 14 Tagen"
+          "title": "",
+          "subtitle": ""
         }
       }
     },
@@ -705,8 +705,8 @@
           "subtitle": "6 Wochen Kompressions-BH, ggf. Stuttgarter Gürtel"
         },
         "sociable": {
-          "title": "Gesellschaftsfähig",
-          "subtitle": "nach 14 Tagen"
+          "title": "",
+          "subtitle": ""
         }
       }
     },
@@ -767,8 +767,8 @@
           "subtitle": "6 Wochen Kompressions-BH, ggf. Stuttgarter Gürtel"
         },
         "sociable": {
-          "title": "Gesellschaftsfähig",
-          "subtitle": "nach 14 Tagen"
+          "title": "",
+          "subtitle": ""
         }
       }
     }
