@@ -118,6 +118,7 @@ export default {
     redirectIfMobile() {
       let { query } = this.$route
       let pathname = this.isProcedure ? 'procedures' : this.pathname
+      pathname = pathname.replace(/\//, '')
       if (!pathname && query.id === 'procedures') {
         pathname = 'procedures'
         query = {}
