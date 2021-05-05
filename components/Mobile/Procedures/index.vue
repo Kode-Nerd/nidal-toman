@@ -236,8 +236,8 @@
         <v-tabs-items v-else v-model="detailTab">
           <v-tab-item>
             <v-card flat class="overflow-y-auto">
-              <v-card-text>
-                <p
+              <v-card-text class="font-weight-light">
+                <!-- <p
                   v-for="(text, index) in contentExtractor(
                     !outpatientDetail
                       ? $t(
@@ -250,13 +250,144 @@
                   :key="index"
                   class="font-weight-light"
                   v-html="text"
-                ></p>
+                ></p> -->
+                <div
+                  v-if="
+                    !contentIsArray(
+                      MasterContent.outpatient_treatment[
+                        outpatient[figureSubpart].query
+                      ].general.content
+                    )
+                  "
+                >
+                  <p
+                    v-for="(text, index) in contentExtractor(
+                      $t(
+                        `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content`
+                      )
+                    )"
+                    :key="index"
+                    v-html="text"
+                  ></p>
+                </div>
+                <!-- Custom Part -->
+                <div
+                  v-if="
+                    MasterContent.outpatient_treatment[
+                      outpatient[figureSubpart].query
+                    ].general.list
+                  "
+                >
+                  <ul
+                    v-for="(subItem, id) in MasterContent.outpatient_treatment[
+                      outpatient[figureSubpart].query
+                    ].general.list"
+                    :key="id"
+                    class="d-flex flex-column mb-2"
+                  >
+                    <li class="mb-2">
+                      {{
+                        $t(
+                          `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.list[${id}].content`
+                        )
+                      }}
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  v-if="
+                    MasterContent.outpatient_treatment[
+                      outpatient[figureSubpart].query
+                    ].general.extend
+                  "
+                >
+                  <p
+                    v-for="(text, index) in contentExtractor(
+                      $t(
+                        `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.extend`
+                      )
+                    )"
+                    :key="index"
+                    v-html="text"
+                  ></p>
+                </div>
+                <div
+                  v-if="
+                    !contentIsArray(
+                      MasterContent.outpatient_treatment[
+                        outpatient[figureSubpart].query
+                      ].general.content
+                    ) &&
+                    MasterContent.outpatient_treatment[
+                      outpatient[figureSubpart].query
+                    ].general.sub
+                  "
+                >
+                  <div
+                    v-for="(subItem, id) in MasterContent.outpatient_treatment[
+                      outpatient[figureSubpart].query
+                    ].general.sub"
+                    :key="id"
+                    class="d-flex flex-column"
+                  >
+                    <span class="text-h4 font-weight-bold mb-4">
+                      {{
+                        $t(
+                          `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.sub[${id}].title`
+                        )
+                      }}
+                    </span>
+                    <p
+                      v-for="(text, index) in contentExtractor(
+                        $t(
+                          `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.sub[${id}].content`
+                        )
+                      )"
+                      :key="index"
+                      v-html="text"
+                    ></p>
+                  </div>
+                </div>
+                <div
+                  v-if="
+                    contentIsArray(
+                      MasterContent.outpatient_treatment[
+                        outpatient[figureSubpart].query
+                      ].general.content
+                    )
+                  "
+                >
+                  <div
+                    v-for="(subItem, id) in MasterContent.outpatient_treatment[
+                      outpatient[figureSubpart].query
+                    ].general.content"
+                    :key="id"
+                    class="d-flex flex-column"
+                  >
+                    <span class="text-h4 font-weight-bold mb-4">
+                      {{
+                        $t(
+                          `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content[${id}].title`
+                        )
+                      }}
+                    </span>
+                    <p
+                      v-for="(text, index) in contentExtractor(
+                        $t(
+                          `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content[${id}].content`
+                        )
+                      )"
+                      :key="index"
+                      v-html="text"
+                    ></p>
+                  </div>
+                </div>
               </v-card-text>
             </v-card>
           </v-tab-item>
           <v-tab-item>
             <v-card flat class="overflow-y-auto">
-              <v-card-text>
+              <v-card-text class="font-weight-light">
                 <div
                   v-if="
                     !contentIsArray(
@@ -280,7 +411,6 @@
                           )
                     )"
                     :key="index"
-                    class="font-weight-light"
                     v-html="text"
                   ></p>
                 </div>
@@ -301,7 +431,7 @@
                           outpatient[figureSubpart].query
                         ].treatment.list"
                     :key="id"
-                    class="d-flex flex-column mb-2 font-weight-light"
+                    class="d-flex flex-column mb-2"
                   >
                     <li class="mb-2">
                       {{
@@ -337,7 +467,6 @@
                           )
                     )"
                     :key="index"
-                    class="font-weight-light"
                     v-html="text"
                   ></p>
                 </div>
@@ -366,9 +495,7 @@
                     :key="id"
                     class="d-flex flex-column"
                   >
-                    <span
-                      class="text-h6 font-weight-bold mb-4 font-weight-light"
-                    >
+                    <span class="text-h6 font-weight-bold mb-4">
                       {{
                         !outpatientDetail
                           ? $t(
@@ -390,7 +517,6 @@
                             )
                       )"
                       :key="index"
-                      class="font-weight-light"
                       v-html="text"
                     ></p>
                   </div>
@@ -439,7 +565,6 @@
                             )
                       )"
                       :key="index"
-                      class="font-weight-light"
                       v-html="text"
                     ></p>
                   </div>
@@ -490,7 +615,7 @@
           </v-tab-item>
           <v-tab-item>
             <v-card flat class="overflow-y-auto">
-              <v-card-text>
+              <v-card-text class="font-weight-light">
                 <div
                   v-for="(summary, index) in summaries"
                   :key="index"
@@ -507,7 +632,7 @@
                           )
                     }}
                   </span>
-                  <span class="font-weight-light">
+                  <span>
                     {{
                       !outpatientDetail
                         ? $t(
@@ -535,7 +660,7 @@
                           )
                     }}
                   </span>
-                  <span class="font-weight-light">
+                  <span>
                     {{
                       !outpatientDetail
                         ? $t(

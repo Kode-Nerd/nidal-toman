@@ -271,7 +271,7 @@
               }}</ExpandedCardInfo
             >
           </div>
-          <div v-if="activeTab === 'general'">
+          <!-- <div v-if="activeTab === 'general'">
             <p
               v-for="(text, index) in contentExtractor(
                 $t(
@@ -281,6 +281,139 @@
               :key="index"
               v-html="text"
             ></p>
+          </div> -->
+          <div v-if="activeTab === 'general'">
+            <div
+              v-if="
+                !contentIsArray(
+                  MasterContent.outpatient_treatment[
+                    outpatient[figureSubpart].query
+                  ].general.content
+                )
+              "
+            >
+              <p
+                v-for="(text, index) in contentExtractor(
+                  $t(
+                    `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content`
+                  )
+                )"
+                :key="index"
+                v-html="text"
+              ></p>
+            </div>
+            <!-- Custom Part -->
+            <div
+              v-if="
+                MasterContent.outpatient_treatment[
+                  outpatient[figureSubpart].query
+                ].general.list
+              "
+            >
+              <ul
+                v-for="(subItem, id) in MasterContent.outpatient_treatment[
+                  outpatient[figureSubpart].query
+                ].general.list"
+                :key="id"
+                class="d-flex flex-column mb-2"
+              >
+                <li class="mb-2">
+                  {{
+                    $t(
+                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.list[${id}].content`
+                    )
+                  }}
+                </li>
+              </ul>
+            </div>
+            <div
+              v-if="
+                MasterContent.outpatient_treatment[
+                  outpatient[figureSubpart].query
+                ].general.extend
+              "
+            >
+              <p
+                v-for="(text, index) in contentExtractor(
+                  $t(
+                    `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.extend`
+                  )
+                )"
+                :key="index"
+                v-html="text"
+              ></p>
+            </div>
+            <div
+              v-if="
+                !contentIsArray(
+                  MasterContent.outpatient_treatment[
+                    outpatient[figureSubpart].query
+                  ].general.content
+                ) &&
+                MasterContent.outpatient_treatment[
+                  outpatient[figureSubpart].query
+                ].general.sub
+              "
+            >
+              <div
+                v-for="(subItem, id) in MasterContent.outpatient_treatment[
+                  outpatient[figureSubpart].query
+                ].general.sub"
+                :key="id"
+                class="d-flex flex-column"
+              >
+                <span class="text-h4 font-weight-bold mb-4">
+                  {{
+                    $t(
+                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.sub[${id}].title`
+                    )
+                  }}
+                </span>
+                <p
+                  v-for="(text, index) in contentExtractor(
+                    $t(
+                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.sub[${id}].content`
+                    )
+                  )"
+                  :key="index"
+                  v-html="text"
+                ></p>
+              </div>
+            </div>
+            <div
+              v-if="
+                contentIsArray(
+                  MasterContent.outpatient_treatment[
+                    outpatient[figureSubpart].query
+                  ].general.content
+                )
+              "
+            >
+              <div
+                v-for="(subItem, id) in MasterContent.outpatient_treatment[
+                  outpatient[figureSubpart].query
+                ].general.content"
+                :key="id"
+                class="d-flex flex-column"
+              >
+                <span class="text-h4 font-weight-bold mb-4">
+                  {{
+                    $t(
+                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content[${id}].title`
+                    )
+                  }}
+                </span>
+                <p
+                  v-for="(text, index) in contentExtractor(
+                    $t(
+                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content[${id}].content`
+                    )
+                  )"
+                  :key="index"
+                  v-html="text"
+                ></p>
+              </div>
+            </div>
           </div>
           <div v-if="activeTab === 'treatment'">
             <div

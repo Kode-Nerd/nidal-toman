@@ -828,8 +828,8 @@
           "subtitle": "12 Wochen nach der Operation Miederhosen, Stützstrümpfe oder Bandagen Tag und Nacht"
         },
         "sociable": {
-          "title": "Gesellschaftsfähig",
-          "subtitle": "nach 14 Tagen"
+          "title": "",
+          "subtitle": ""
         }
       }
     },
@@ -890,8 +890,8 @@
           "subtitle": "12 Wochen nach der Operation Miederhosen, Stützstrümpfe oder Bandagen Tag und Nacht"
         },
         "sociable": {
-          "title": "Gesellschaftsfähig",
-          "subtitle": "nach 14 Tagen"
+          "title": "",
+          "subtitle": ""
         }
       }
     },
@@ -1013,8 +1013,8 @@
           "detail": "Örtliche Betäubung oder Dämmerschlaf"
         },
         "postTreatment": {
-          "title": "Nachbehandlung",
-          "subtitle": "Tragen eines speziellen Verbandes"
+          "title": "",
+          "subtitle": ""
         },
         "sociable": {
           "title": "Gesellschaftsfähig",
@@ -1026,11 +1026,11 @@
       "title": "Oberarm- & Oberschenkellift",
       "general": {
         "title": "Allgemeines zum Oberarm-& Oberschenkellift",
-        "content": "Ein Blick in den Spiegel gleicht für viele Menschen einem Blick auf ihre Selbstakzeptanz. Fettpolster an unerwünschten Stellen geben meist Anlass, sich im eigenen Körper nicht mehr wohl zu fühlen. Mehr oder weniger ausgeprägte Deformitäten der Körpersilhouette können z.T. ernährungsbedingt sein, z.T. aber auch auf familiären Anlagen beruhen. Das wandelnde Schönheitsideal, z.T. von Medien geprägt, spielt sicherlich keine unwesentliche Rolle bei der Betrachtung der eigenen Körperkontur. Es herrscht jedoch allgemeiner Konsens darüber, dass ein wohl proportionierter Körper mit straffer Haut ohne Cellulite das Auge des jeweiligen Betrachters eher erfreut, als ausgeprägte Fettdepots auf welliger Haut mit Einziehungen durch traubenähnlich aneinander gereihte Fettzellpakete."
+        "content": "Ein Blick in den Spiegel gleicht für viele Menschen einem Blick auf ihre Selbstakzeptanz. Hautüberschüsse an unerwünschten Stellen geben meist Anlass, sich im eigenen Körper nicht mehr wohl zu fühlen. Mehr oder weniger ausgeprägte Deformitäten der Körpersilhouette können z.T. ernährungsbedingt sein, z.T. aber auch auf familiären Anlagen beruhen. Das wandelnde Schönheitsideal, z.T. von Medien geprägt, spielt sicherlich keine unwesentliche Rolle bei der Betrachtung der eigenen Körperkontur. Es herrscht jedoch allgemeiner Konsens darüber, dass ein wohl proportionierter Körper mit straffer Haut ohne Cellulite das Auge des jeweiligen Betrachters eher erfreut, als sichtbare Hautüberschüsse."
       },
       "engagement": {
         "title": "Der Eingriff",
-        "content": "Bei der Oberschenkelstraffung und der Oberarmstraffung wird auf möglichst wenig sichtbare Narbenverläufe in der Leistenbeuge bzw. an der Oberarminnenseite geachtet.\nDas übermäßige und erschlaffte Haut- und Fettgewebe wird exakt vermessen und operativ entfernt. Die dabei notwendigen Schritte werden so geführt, dass eine möglichst wenig auffällige Narbenbildung resultiert. Zusätzlich kann die ästhetische Körperkontur bei dem Eingriff durch gezielte Fettabsaugung angrenzender Bereiche verbessert werden.\nZusammenfassend ist zu betonen, dass die genannten Operationsmöglichkeiten keinesfalls eine Alternative zur Gewichtsreduktion bieten sollen, sondern lediglich den Körper harmonisch modellieren können, so dass insgesamt die Proportionen ästhetischer, schlanker und straffer wirken."
+        "content": "Bei der Oberschenkelstraffung und der Oberarmstraffung wird auf möglichst wenig sichtbare Narbenverläufe in der Leistenbeuge bzw. an der Oberarminnenseite geachtet.\nDas übermäßige und erschlaffte Haut- und Fettgewebe wird exakt vermessen und operativ entfernt. Zusätzlich kann die ästhetische Körperkontur durch gezielte Fettabsaugung angrenzender Bereiche verbessert werden.\nZusammenfassend ist zu betonen, dass die genannten Operationsmöglichkeiten keinesfalls eine Alternative zur Gewichtsreduktion bieten sollen, sondern lediglich den Körper harmonisch modellieren können, so dass insgesamt die Proportionen ästhetischer, schlanker und straffer wirken."
       },
       "additional": {
         "title": "Weitere Informationen",
@@ -1049,22 +1049,22 @@
           },
           {
             "title": "Welche Komplikationen können entstehen?",
-            "subtitle": "Da es sich um größere Wundflächen handelt, können Blutergüsse und Sekrete oder bakterielle Entzündungen die Heilung stören. Hautgefühl und Lymphabfluss regenerieren sich erst langsam im Verlauf von mehreren Monaten und können in der Narbenregion vermindert bleiben. Größere Blutverluste müssen durch Infusionen und eventuell auch Bluttransfusionen ausgeglichen werden. Thrombosen und Embolien sind extrem selten, könnten jedoch zur bedrohlichen Belastung von Kreislauf und Atmung führen. Auffällige Narben nach gestörter Wundheilung können meistens durch kleine Korrekturoperationen in örtlicher Betäubung verbessert werden."
+            "subtitle": "Da es sich um größere Wundflächen handelt, können Blutergüsse und Sekrete oder bakterielle Entzündungen die Heilung stören. Hautgefühl und Lymphabfluss regenerieren sich erst langsam im Verlauf von mehreren Monaten und können in der Narbenregion vermindert bleiben. Thrombosen und Embolien sind extrem selten, könnten jedoch zur bedrohlichen Belastung von Kreislauf und Atmung führen. Auffällige Narben nach gestörter Wundheilung können meistens durch kleine Korrekturoperationen in örtlicher Betäubung verbessert werden."
           },
           {
             "title": "Welche Nachbehandlung ist erforderlich?",
-            "subtitle": "Die Ausheilung ist durch eine Hautpflege, z.B. mit Panthenol-Salben und leichte Kompression mit Stützstrumpfhosen oder Bodies zu unterstützen. Diese sollten Sie bis zu 12 Wochen lang Tag und Nacht tragen. Resorbierbare Hautnähte lösen sich selbst auf, andere Fäden werden nach 2 Wochen entfernt."
+            "subtitle": "Sie sollten ein Kompressionsmoieder für bis zu 12 Wochen Tag und Nacht postoperativ tragen. Resorbierbare Hautnähte lösen sich selbst auf, andere Fäden werden nach 2 Wochen entfernt."
           },
           {
             "title": "Was ist nach dem Eingriff zu beachten?",
-            "subtitle": "In den ersten 6-8 Wochen sollten Sie sich vorsichtig bewegen und übermäßige ruckartige Spannungen der Nahtlinien vermeiden. Ihre Arbeitsfähigkeit ist meistens nach ca. 3 Wochen wiedererlangt. Sportliche Aktivitäten können nach 6 Wochen langsam gesteigert werden."
+            "subtitle": "In den ersten 6-8 Wochen sollten Sie sich vorsichtig bewegen und übermäßige ruckartige Spannungen der Nahtlinien vermeiden. Ihre Arbeitsfähigkeit ist meistens nach ca. 3 Wochen wiedererlangt. Sportliche Aktivitäten können nach 6 Wochen langsam begonnen werden."
           }
         ]
       },
       "summary": {
         "duration": {
           "title": "Dauer der OP",
-          "detail": "ca. 2 bis 3 Stunden (je nach Verfahren)"
+          "detail": "ca. 2 bis 4 Stunden (je nach Verfahren)"
         },
         "durationInClinic": {
           "title": "Dauer des Aufenthalts in der Klinik",
@@ -1072,15 +1072,15 @@
         },
         "anasthesia": {
           "title": "Anästhesie",
-          "detail": "Vollnarkose/ Allgemeinanästhesie"
+          "detail": "Vollnarkose"
         },
         "postTreatment": {
           "title": "Nachbehandlung",
-          "subtitle": "12 Wochen nach der Operation Miederhosen, Stützstrümpfe oder Bandagen Tag und Nacht"
+          "subtitle": "12 Wochen nach der Operation Kompressionsmieder Tag und Nacht."
         },
         "sociable": {
-          "title": "Gesellschaftsfähig",
-          "subtitle": "nach 14 Tagen"
+          "title": "",
+          "subtitle": ""
         }
       }
     }
@@ -1377,11 +1377,7 @@
       "title": "Vampir-Lift",
       "general": {
         "title": "Allgemeines zum Vampir-Lift",
-        "content": "Vor einem Vampire Lift führt Dr. med. Nidal Toman mit Ihnen ein ausführliches Beratungsgespräch. Hier erhalten Sie umfassende Informationen zur Behandlung und Antworten auf Ihre individuellen Fragen. Das für die Behandlung benötigte Eigenblut gewinnen wir aus einer geeigneten Vene. Das aufbereitete Blutplasma gelangt über feine Nadeln und durch spezielle Techniken in Ihr Unterhautgewebe. Je nach Behandlungsziel wird das Plasma ein- oder mehrschichtig injiziert. Im Regelfall verläuft die PRP-Therapie schmerzarm. Sind Sie schmerzempfindlich und/oder erfolgt der Eingriff an besonders sensiblen Körperpartien, sorgen wir mithilfe eines vorbereitenden Kühlens der Haut oder mit lokal aufzutragenden Betäubungscremes für einen weitgehend schmerzfreien Behandlungsverlauf.\nDas Vampire Lift dauert pro Behandlungseinheit etwa 20 Minuten und ist somit vergleichsweise wenig zeitaufwendig. Je nach gewünschtem Behandlungsumfang und individuellem Ansprechen auf die Maßnahme erstreckt sich ein Vampire Lift über 1 bis 4 aufeinanderfolgende Behandlungseinheiten im Abstand von jeweils 3 bis 4 Wochen.\nHäufig zeigen sich die optischen Behandlungserfolge bereits wenige Tage nach dem Vampire Lift. Da durch das Verfahren die Neubildung von Zellen angeregt wird, profitieren Sie meist längerfristig von der Therapie. Die optischen Effekte des Vampire Lifts bleiben bis zu mehreren Jahren bestehen."
-      },
-      "treatment": {
-        "title": "Die Behandlung",
-        "content": "Das Vampir Lift ist eine einfache und sichere Art die körpereigenen Regenerations- und Heilungskräfte zu unterstützen. Aus Ihrem Blut werden körpereigene Wachstumsfaktoren gewonnen. Diese werden anschließend durch Injektionen, wie bei einer Mesotherapie in die Haut eingebracht. Die konzentrierten Blutplättchen setzen Wachstumsfaktoren frei, die den Prozess der Regeneration der Haut steuern.\nDas Vampire Lift (auch als PRP-Therapie bzw. Platelet-Rich-Plasma-Therapie bezeichnet) ist ein junges Verfahren zur schonenden Hautverjüngung im Gesicht, am Hals und Dekolleté. Die Behandlungsmethode wurde in den USA entwickelt und fand hier besonders bei prominenten Schauspielerinnen und Sängerinnen raschen Anklang. Als „Vampire Lift“ wird das Verfahren bezeichnet, weil dem Patienten im Behandlungsvorfeld eine geringe Menge (ca. 20 ml) an Eigenblut entnommen wird. Aus diesem Eigenblut gewinnen wir blutplättchenreiches Plasma („Platelet-Rich-Plasma“), das in die zu regenerierenden Hautareale injiziert wird. Das Blutplasma sorgt dank enthaltener Wachstumsfaktoren nicht nur für eine Gewebsregeneration sondern fördert auch die Bildung neuer Zellen.\nBei einer Entscheidung für das Vampire Lift müssen Sie mit keinerlei Nebenwirkungen rechnen. Denn für die Behandlung kommt ausschließlich körpereigenes Füllmaterial (Blutplasma) zum Einsatz. Allergien und Unverträglichkeitsreaktionen können somit annähernd ausgeschlossen werden. Unangenehme Nachwirkungen der Behandlung können sich maximal durch leichte Schwellungen in den Injektionsbereichen ausdrücken. Entsprechende Symptome bilden sich aber innerhalb weniger Tage selbstständig wieder zurück. Da das Vampire Lift keine Hautschnitte erfordert, hinterlässt das Verfahren keinerlei Narbengewebe. Die im Blutplasma enthaltenen Wachstumsfaktoren sorgen für einen nachhaltigen Behandlungserfolg. Im Behandlungsanschluss müssen Sie keine Ausfallzeiten einplanen.",
+        "content": "Das Vampire Lift (auch als PRP-Therapie bzw. Platelet-Rich-Plasma-Therapie bezeichnet) ist ein junges Verfahren zur schonenden Hautverjüngung im Gesicht, am Hals und Dekolleté. Die Behandlungsmethode wurde in den USA entwickelt und fand hier besonders bei prominenten Schauspielerinnen und Sängerinnen raschen Anklang. Als „Vampire Lift“ wird das Verfahren bezeichnet, weil dem Patienten im Behandlungsvorfeld eine geringe Menge (ca. 20 ml) an Eigenblut entnommen wird. Aus diesem Eigenblut gewinnen wir blutplättchenreiches Plasma („Platelet-Rich-Plasma“), das in die zu regenerierenden Hautareale injiziert wird. Das blutplättchenreiche Plasma sorgt dank der enthaltenden Wachstumsfaktoren nicht nur für eine Geweberegeneration sondern fördert auch die Bildung neuer Zellen.\nBei einer Entscheidung für das Vampire Lift müssen Sie mit keinerlei Nebenwirkungen rechnen. Denn für die Behandlung kommt ausschließlich körpereigenes Füllmaterial (Blutplasma) zum Einsatz. Allergien und Unverträglichkeitsreaktionen können somit annähernd ausgeschlossen werden. Unangenehme Nachwirkungen der Behandlung können sich maximal durch leichte Schwellungen in den Injektionsbereichen ausdrücken. Entsprechende Symptome bilden sich aber innerhalb weniger Tage selbstständig wieder zurück. Da das Vampire Lift keine Hautschnitte erfordert, hinterlässt das Verfahren keinerlei Narbengewebe. Die im Blutplasma enthaltenen Wachstumsfaktoren sorgen für einen nachhaltigen Behandlungserfolg.",
         "list": [
           {
             "content": "Mit dieser Methode kann man auch Haarausfall (Alopezie) Behandeln."
@@ -1392,7 +1388,12 @@
           {
             "content": "Die Behandlung ist risikoarm. Allergien oder Unverträglichkeiten sind nahezu ausgeschlossen"
           }
-        ]
+        ],
+        "extend": "Das für die Behandlung benötigte Eigenblut gewinnen wir aus einer geeigneten Vene. Das aufbereitete Blutplasma gelangt über feine Nadeln und durch spezielle Techniken in Ihr Unterhautgewebe. Je nach Behandlungsziel wird das Plasma ein- oder mehrschichtig injiziert.\nDas Vampire Lift dauert pro Behandlungseinheit etwa 20 Minuten und ist somit vergleichsweise wenig zeitaufwendig. Je nach gewünschtem Behandlungsumfang und individuellem Ansprechen auf die Maßnahme erstreckt sich ein Vampire Lift über 1 bis 4 aufeinanderfolgende Behandlungseinheiten im Abstand von jeweils 3 bis 4 Wochen.\nHäufig zeigen sich die optischen Behandlungserfolge bereits wenige Tage nach dem Vampire Lift. Da durch das Verfahren die Neubildung von Zellen angeregt wird, profitieren Sie meist längerfristig von der Therapie."
+      },
+      "treatment": {
+        "title": "Die Behandlung",
+        "content": "Zunächst wird Ihnen aus einer Vene Blut abgenommen. Anschließend wird durch Zentrifugation das Blut aufgearbeitet. Hierbei werden die Thrombozyten (Blutplättchen),in welchen die Wachstumsfaktoren gespeichert sind, isoliert. Diese werden anschließend durch Injektionen, wie bei einer Mesotherapie in die Haut eingebracht. Die Thrombozyten setzen die Wachstumsfaktoren nach der Unterspritzung  in das Gewebe frei, welche dann den Prozess der Regeneration der Haut steuern."
       },
       "faq": {
         "title": "Weitere Informationen",
@@ -1503,20 +1504,20 @@
           "detail": "ca. 60 Minuten"
         },
         "areasOfApplication": {
-          "title": "Anwendungsbereiche",
-          "detail": "Gesicht | Hals | Kopf bei Haarausfall"
+          "title": "",
+          "detail": ""
         },
         "anasthesia": {
-          "title": "Anästhesie",
-          "detail": "Vollnarkose/ Allgemeinanästhesie"
+          "title": "",
+          "detail": ""
         },
         "postTreatment": {
-          "title": "Nachbehandlung",
-          "detail": "vtl. kurzzeitiges Kühlen"
+          "title": "",
+          "detail": ""
         },
         "sociable": {
-          "title": "Gesellschaftsfähig",
-          "subtitle": "spätestens nach 24 Stunden"
+          "title": "",
+          "subtitle": ""
         }
       }
     },
@@ -1563,6 +1564,10 @@
         "anasthesia": {
           "title": "Anästhesie",
           "detail": "keine"
+        },
+        "postTreatment": {
+          "title": "",
+          "detail": ""
         },
         "sociable": {
           "title": "Gesellschaftsfähig",
@@ -1617,6 +1622,10 @@
         "areasOfApplication": {
           "title": "Anwendungsbereiche",
           "detail": "Kinn | Ober- und Unterarme | Brust | Unterbauch | Hüfte"
+        },
+        "anasthesia": {
+          "title": "",
+          "detail": ""
         },
         "postTreatment": {
           "title": "Nachbehandlung",
