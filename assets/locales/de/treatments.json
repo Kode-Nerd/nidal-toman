@@ -1359,6 +1359,10 @@
           "title": "Behandlungsdauer",
           "detail": "30 – 60 Minuten"
         },
+        "areasOfApplication": {
+          "title": "",
+          "detail": ""
+        },
         "anasthesia": {
           "title": "Anästhesie",
           "detail": "Betäubung mit Anästhesiecreme oder Leitungsanästhesie"

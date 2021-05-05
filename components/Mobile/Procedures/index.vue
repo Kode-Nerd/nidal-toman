@@ -628,7 +628,7 @@
                             `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
                           )
                         : $t(
-                            `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
+                            `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.summary.${summary}.title`
                           )
                     }}
                   </span>
@@ -639,7 +639,7 @@
                             `treatments.${figurePart}.${subpart.query}.summary.${summary}.detail`
                           )
                         : $t(
-                            `treatments.${figurePart}.${subpart.query}.summary.${summary}.detail`
+                            `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.summary.${summary}.detail`
                           )
                     }}
                   </span>

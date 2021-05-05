@@ -557,14 +557,14 @@
               <span class="text-h5 font-weight-bold mb-3">
                 {{
                   $t(
-                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
+                    `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.summary.${summary}.title`
                   )
                 }}
               </span>
               <span class="text-h6 font-weight-light">
                 {{
                   $t(
-                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.detail`
+                    `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.summary.${summary}.detail`
                   )
                 }}
               </span>
