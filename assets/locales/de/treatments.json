@@ -394,7 +394,7 @@
     }
   },
   "chest_area": {
-    "title": "Chest Area",
+    "title": "Brustbereich",
     "breast_augmentation": {
       "title": "Brustvergrößerung",
       "general": {
@@ -770,7 +770,7 @@
     }
   },
   "body": {
-    "title": "Body Area",
+    "title": "Körper",
     "liposuction": {
       "title": "Fettabsaugung",
       "general": {
@@ -959,7 +959,7 @@
     }
   },
   "arms": {
-    "title": "Arms",
+    "title": "Arme",
     "sweat_gland_suction": {
       "title": "Schweissdrüsenabsaugung",
       "general": {
@@ -1086,7 +1086,7 @@
     }
   },
   "legs": {
-    "title": "Legs",
+    "title": "Beine",
     "brazilian_butt_lift": {
       "title": "Brazilian Butt-Lift",
       "general": {
