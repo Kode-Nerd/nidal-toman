@@ -21,7 +21,7 @@
   "detail": "siehe Details",
   "allDetail": "siehe alle Verfahren",
   "face_and_head": {
-    "title": "Gesicht und Kopf",
+    "title": "Gesicht",
     "face_lift": {
       "title": "Facelift",
       "general": {
@@ -396,7 +396,7 @@
     }
   },
   "chest_area": {
-    "title": "Brustbereich",
+    "title": "Brust",
     "breast_augmentation": {
       "title": "Brustvergrößerung",
       "general": {
@@ -772,7 +772,7 @@
     }
   },
   "body": {
-    "title": "Körper",
+    "title": "Bauch",
     "liposuction": {
       "title": "Fettabsaugung",
       "general": {
