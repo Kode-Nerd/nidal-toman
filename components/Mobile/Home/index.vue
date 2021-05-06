@@ -55,7 +55,7 @@
     <div
       ref="section2"
       :style="lightBackground"
-      class="d-flex flex-column justify-center align-center section"
+      class="d-flex flex-column justify-center align-center section philosophy"
       :class="{ section2: stick[1] }"
     >
       <span class="text-h6">
@@ -308,6 +308,9 @@ a {
 .section {
   padding: 10vh 10vw;
   min-height: 100vh;
+}
+.section.philosophy {
+  min-height: 50vh;
 }
 .section.infusion {
   position: relative;
