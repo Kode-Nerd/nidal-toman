@@ -123,6 +123,11 @@
       </swiper>
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
+      <span
+        class="text-h6 mb-4 text-uppercase text-center font-weight-light procedure-title"
+      >
+        {{ $t('welcome.procedure') }}
+      </span>
       <MobileView class="discover-procedure">
         <v-btn
           elevation="2"
@@ -132,7 +137,7 @@
           block
           @click="$router.push({ path: finalpath('procedures') })"
         >
-          <span>{{ $t('welcome.procedure') }}</span>
+          <span>{{ $t('welcome.discover3') }}</span>
         </v-btn>
       </MobileView>
     </div>
@@ -346,6 +351,13 @@ a {
   padding: 5vh 5vw;
   width: 100vw;
   bottom: 0px;
+}
+.procedure-title {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50vw;
+  top: 60px;
+  width: 100vw;
 }
 
 .swiper-slide {
