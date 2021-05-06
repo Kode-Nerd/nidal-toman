@@ -651,6 +651,7 @@
                     </span>
                     <span
                       v-else-if="
+                        outpatientDetail &&
                         MasterContent.outpatient_treatment[
                           outpatient[figureSubpart].query
                         ].summary[summary] &&
@@ -688,6 +689,7 @@
                     </span>
                     <span
                       v-else-if="
+                        outpatientDetail &&
                         MasterContent.outpatient_treatment[
                           outpatient[figureSubpart].query
                         ].summary[summary] &&
@@ -725,6 +727,7 @@
                     </span>
                     <span
                       v-else-if="
+                        outpatientDetail &&
                         MasterContent.outpatient_treatment[
                           outpatient[figureSubpart].query
                         ].summary[summary] &&
