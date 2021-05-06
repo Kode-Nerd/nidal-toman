@@ -6,7 +6,7 @@
       icon
       :ripple="false"
       :color="iconColor"
-      @click="openLink('https://instagram.com')"
+      @click="openLink('https://instagram.com/drnidaltoman?igshid=1aonsrn6m2b9c')"
       ><v-icon :small="small" :large="large">fab fa-instagram</v-icon></v-btn
     >
     <v-btn
@@ -24,7 +24,7 @@
       icon
       :ripple="false"
       :color="iconColor"
-      @click="openLink('https://facebook.com')"
+      @click="openLink('https://facebook.com/Drnidaltoman/')"
       ><v-icon :small="small" :large="large">fab fa-facebook</v-icon></v-btn
     >
   </div>
