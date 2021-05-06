@@ -211,42 +211,56 @@
             <div
               v-for="(summary, index) in summaries"
               :key="index"
-              class="d-flex flex-column my-6"
+              class="d-flex flex-column"
             >
-              <span class="text-h5 font-weight-bold mb-3">
-                {{
-                  $t(
-                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
-                  )
-                }}
-              </span>
-              <span class="text-h6 font-weight-light">
-                {{
-                  $t(
-                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.detail`
-                  )
-                }}
-              </span>
-            </div>
-            <div
-              v-for="(summary, index) in summaries2"
-              :key="index"
-              class="d-flex flex-column my-6"
-            >
-              <span class="text-h5 font-weight-bold mb-3">
-                {{
-                  $t(
-                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
-                  )
-                }}
-              </span>
-              <span class="text-h6 font-weight-light">
-                {{
-                  $t(
-                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.subtitle`
-                  )
-                }}
-              </span>
+              <div class="text-h6 font-weight-bold">
+                <span
+                  v-if="
+                    MasterContent[figurePart][subpart.query].summary[summary] &&
+                    MasterContent[figurePart][subpart.query].summary[summary]
+                      .title
+                  "
+                  class="mb-3"
+                >
+                  {{
+                    $t(
+                      `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
+                    )
+                  }}
+                </span>
+              </div>
+              <div>
+                <span
+                  v-if="
+                    MasterContent[figurePart][subpart.query].summary[summary] &&
+                    MasterContent[figurePart][subpart.query].summary[summary]
+                      .detail
+                  "
+                  class="mb-6"
+                >
+                  {{
+                    $t(
+                      `treatments.${figurePart}.${subpart.query}.summary.${summary}.detail`
+                    )
+                  }}
+                </span>
+              </div>
+              <div>
+                <span
+                  v-if="
+                    MasterContent[figurePart][subpart.query].summary[summary] &&
+                    MasterContent[figurePart][subpart.query].summary[summary]
+                      .subtitle
+                  "
+                  class="mb-6"
+                >
+                  {{
+                    $t(
+                      `treatments.${figurePart}.${subpart.query}.summary.${summary}.subtitle`
+                    )
+                  }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -552,42 +566,65 @@
             <div
               v-for="(summary, index) in summaries"
               :key="index"
-              class="d-flex flex-column my-6"
+              class="d-flex flex-column"
             >
-              <span class="text-h5 font-weight-bold mb-3">
-                {{
-                  $t(
-                    `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.summary.${summary}.title`
-                  )
-                }}
-              </span>
-              <span class="text-h6 font-weight-light">
-                {{
-                  $t(
-                    `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.summary.${summary}.detail`
-                  )
-                }}
-              </span>
-            </div>
-            <div
-              v-for="(summary, index) in summaries2"
-              :key="index"
-              class="d-flex flex-column my-6"
-            >
-              <span class="text-h5 font-weight-bold mb-3">
-                {{
-                  $t(
-                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.title`
-                  )
-                }}
-              </span>
-              <span class="text-h6 font-weight-light">
-                {{
-                  $t(
-                    `treatments.${figurePart}.${subpart.query}.summary.${summary}.subtitle`
-                  )
-                }}
-              </span>
+              <div class="text-h6 font-weight-bold">
+                <span
+                  v-if="
+                    MasterContent.outpatient_treatment[
+                      outpatient[figureSubpart].query
+                    ].summary[summary] &&
+                    MasterContent.outpatient_treatment[
+                      outpatient[figureSubpart].query
+                    ].summary[summary].title
+                  "
+                  class="mb-3"
+                >
+                  {{
+                    $t(
+                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.summary.${summary}.title`
+                    )
+                  }}
+                </span>
+              </div>
+              <div>
+                <span
+                  v-if="
+                    MasterContent.outpatient_treatment[
+                      outpatient[figureSubpart].query
+                    ].summary[summary] &&
+                    MasterContent.outpatient_treatment[
+                      outpatient[figureSubpart].query
+                    ].summary[summary].detail
+                  "
+                  class="mb-6"
+                >
+                  {{
+                    $t(
+                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.summary.${summary}.detail`
+                    )
+                  }}
+                </span>
+              </div>
+              <div>
+                <span
+                  v-if="
+                    MasterContent.outpatient_treatment[
+                      outpatient[figureSubpart].query
+                    ].summary[summary] &&
+                    MasterContent.outpatient_treatment[
+                      outpatient[figureSubpart].query
+                    ].summary[summary].subtitle
+                  "
+                  class="mb-6"
+                >
+                  {{
+                    $t(
+                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.summary.${summary}.subtitle`
+                    )
+                  }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -795,8 +832,14 @@ export default {
         { label: this.$t('treatments.faq'), value: 'faq' },
         { label: this.$t('treatments.summary'), value: 'summary' },
       ],
-      summaries: ['duration', 'durationInClinic', 'anasthesia'],
-      summaries2: ['postTreatment', 'sociable'],
+      summaries: [
+        'duration',
+        'areasOfApplication',
+        'durationInClinic',
+        'anasthesia',
+        'postTreatment',
+        'sociable',
+      ],
       showingList: true,
       MasterContent,
       womanSubparts,
