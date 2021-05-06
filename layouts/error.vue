@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="ready"
     id="error-container"
     class="d-flex flex-column justify-center align-center"
   >
@@ -15,6 +16,7 @@ export default {
   data() {
     return {
       dot: '',
+      ready: false,
     }
   },
   computed: {
@@ -30,6 +32,14 @@ export default {
     },
   },
   beforeCreate() {
+    const contactPageDetected = /kontakt/.test(this.$route.fullPath)
+
+    if (contactPageDetected) {
+      this.$router.push('/contact/')
+      return
+    }
+    this.ready = true
+
     const timer = setInterval(() => {
       this.dot += '.'
     }, 1000)

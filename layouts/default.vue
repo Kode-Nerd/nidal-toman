@@ -102,6 +102,7 @@ export default {
     },
   },
   mounted() {
+    // console.log('dari DESKTOP')
     this.userAgent = navigator.userAgent.toLowerCase()
     this.$nextTick(() => {
       if (this.isMobile) {

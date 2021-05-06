@@ -25,6 +25,7 @@
       height="100vh"
     >
       <nuxt />
+      <div class="bottom-gap"></div>
     </v-responsive>
   </v-app>
 </template>
@@ -119,6 +120,7 @@ export default {
     '$route.path': {
       handler() {
         // scroll to the top
+        // console.log('dari mobile watch pak le')
         if (this.document) {
           const el = document.getElementById('mobile-screen')
           if (!el) {
@@ -133,6 +135,7 @@ export default {
     },
   },
   mounted() {
+    // console.log('dari mobile pak le')
     this.document = document
     this.userAgent = navigator.userAgent.toLowerCase()
     this.$nextTick(() => {
@@ -185,4 +188,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.bottom-gap {
+  height: 60px;
+}
+</style>
