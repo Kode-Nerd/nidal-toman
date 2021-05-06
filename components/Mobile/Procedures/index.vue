@@ -53,10 +53,10 @@
         </swiper-slide>
         <div slot="pagination" class="swiper-pagination"></div>
       </swiper>
-      <span class="text-h6 text-center virtual-select">
+      <span class="text-h6 text-center font-weight-bold virtual-select">
         {{ $t('treatments.virtual') }}
       </span>
-      <span class="text-center virtual-select-desc">
+      <span class="text-center font-weight-light virtual-select-desc">
         {{ $t('treatments.virtualDescMobile') }}
       </span>
       <div class="swiper-button-prev"></div>
@@ -77,7 +77,7 @@
     </MobileView>
     <MobileView v-else>
       <MobileView class="full relative">
-        <span class="text-center virtual-select-tap">
+        <span class="text-center font-weight-light virtual-select-tap">
           {{ $t('treatments.virtualTap') }}
         </span>
         <div
