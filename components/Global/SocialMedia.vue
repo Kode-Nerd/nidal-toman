@@ -6,7 +6,9 @@
       icon
       :ripple="false"
       :color="iconColor"
-      @click="openLink('https://instagram.com/drnidaltoman?igshid=1aonsrn6m2b9c')"
+      @click="
+        openLink('https://instagram.com/drnidaltoman?igshid=1aonsrn6m2b9c')
+      "
       ><v-icon :small="small" :large="large">fab fa-instagram</v-icon></v-btn
     >
     <v-btn
