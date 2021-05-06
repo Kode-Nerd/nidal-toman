@@ -53,6 +53,12 @@
         </swiper-slide>
         <div slot="pagination" class="swiper-pagination"></div>
       </swiper>
+      <span class="text-h6 text-center virtual-select">
+        {{ $t('treatments.virtual') }}
+      </span>
+      <span class="text-center virtual-select-desc">
+        {{ $t('treatments.virtualDescMobile') }}
+      </span>
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
       <MobileView class="bottom-button">
@@ -71,6 +77,9 @@
     </MobileView>
     <MobileView v-else>
       <MobileView class="full relative">
+        <span class="text-center virtual-select-tap">
+          {{ $t('treatments.virtualTap') }}
+        </span>
         <div
           v-if="isFemale"
           id="female"
@@ -1133,6 +1142,27 @@ export default {
 }
 .detail-section {
   padding: 5vw;
+}
+.virtual-select {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 100vw;
+  top: 48px;
+  left: 50vw;
+}
+.virtual-select-desc {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 100vw;
+  top: 68px;
+  left: 50vw;
+}
+.virtual-select-tap {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 60vw;
+  top: 68px;
+  left: 50vw;
 }
 
 .figure__woman {
