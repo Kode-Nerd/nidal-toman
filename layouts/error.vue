@@ -32,6 +32,10 @@ export default {
     },
   },
   beforeCreate() {
+    const contactPageDetected = /kontakt/.test(this.$route.fullPath)
+    if (contactPageDetected) {
+      return
+    }
     this.ready = true
 
     const timer = setInterval(() => {
