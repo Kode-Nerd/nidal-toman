@@ -33,7 +33,7 @@
         $t('treatments.virtual')
       }}</span>
       <v-btn
-        class="text-body-2 text-lowercase ml-n3"
+        class="text-body-2 text-none ml-n3"
         text
         small
         :color="themes.light.primary3"
