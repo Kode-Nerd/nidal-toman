@@ -10,9 +10,11 @@
       />
       <div v-if="!isHome" :style="spacerStyle" />
       <nuxt />
-      <Footer v-if="!isProcedure" />
     </v-main>
     <v-main v-else> <MobileMaintenance /> </v-main>
+    <v-footer v-if="!isMobile && !isProcedure" color="primary4">
+      <Footer />
+    </v-footer>
   </v-app>
 </template>
 
@@ -102,26 +104,53 @@ export default {
     },
   },
   mounted() {
-    // console.log('dari DESKTOP')
     this.userAgent = navigator.userAgent.toLowerCase()
     this.$nextTick(() => {
+      this.checkContactEndpoint()
+      this.checkRedirecting()
+    })
+  },
+  methods: {
+    checkRedirecting() {
       if (this.isMobile) {
         this.redirectIfMobile()
       } else {
         this.ready = true
       }
-    })
-  },
-  methods: {
+    },
+    checkContactEndpoint() {
+      const contactPageDetected = /kontakt/.test(this.$route.fullPath)
+      const isGerman = /\/de\//.test(this.$route.fullPath)
+      const locale = isGerman ? 'de' : 'en'
+      if (contactPageDetected) {
+        const finalPath = finalpath(locale, 'contact')
+        const query = {}
+        this.$router.push({ path: finalPath, query })
+      }
+    },
     finalpathmobile(path) {
       return finalpath(this.locale, path, true)
     },
     redirectIfMobile() {
       let { query } = this.$route
       let pathname = this.isProcedure ? 'procedures' : this.pathname
-      pathname = pathname.replace(/\//, '')
-      if (!pathname && query.id === 'procedures') {
-        pathname = 'procedures'
+      // old
+      // pathname = pathname.replace(/\//, '')
+      // if (!pathname && query.id === 'procedures') {
+      //   pathname = 'procedures'
+      //   query = {}
+      // }
+
+      const pathnameSplit = pathname.split('/').filter((name) => name.length)
+
+      pathname = pathnameSplit[pathnameSplit.length - 1]
+      if (pathname.includes('kontakt')) {
+        pathname = 'contact'
+        query = {}
+      }
+
+      if (!pathname) {
+        pathname = query.id === 'procedures' ? 'procedures' : '/'
         query = {}
       }
       const finalpath = this.finalpathmobile(pathname)

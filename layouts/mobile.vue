@@ -120,7 +120,6 @@ export default {
     '$route.path': {
       handler() {
         // scroll to the top
-        // console.log('dari mobile watch pak le')
         if (this.document) {
           const el = document.getElementById('mobile-screen')
           if (!el) {
@@ -135,7 +134,6 @@ export default {
     },
   },
   mounted() {
-    // console.log('dari mobile pak le')
     this.document = document
     this.userAgent = navigator.userAgent.toLowerCase()
     this.$nextTick(() => {
