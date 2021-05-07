@@ -31,7 +31,7 @@ export default {
       }
     },
   },
-  beforeCreate() {
+  mounted() {
     const contactPageDetected = /kontakt/.test(this.$route.fullPath)
     if (contactPageDetected) {
       return
