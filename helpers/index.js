@@ -1,13 +1,21 @@
 export function finalpath(locale, path, mobile = false) {
   const def = 'en'
-  const filteredpath = path.replace(/\//g, '')
-  const result = path === '/' ? filteredpath : `${filteredpath}/`
   const defaultLocale = locale === def
   let finalPath = ''
-  if (defaultLocale) {
-    finalPath = `/${result}`
+  if (!path) {
+    if (defaultLocale) {
+      finalPath = '/'
+    } else {
+      finalPath = `/${locale}/`
+    }
   } else {
-    finalPath = `/${locale}/${result}`
+    const filteredpath = path.replace(/\//g, '')
+    const result = path === '/' ? filteredpath : `${filteredpath}/`
+    if (defaultLocale) {
+      finalPath = `/${result}`
+    } else {
+      finalPath = `/${locale}/${result}`
+    }
   }
 
   if (mobile) {
