@@ -23,6 +23,7 @@ const sendMail = (msg) => {
       from: sender,
       to: 'info@nidal-toman.de',
       cc: ['canbork@gmail.com'],
+      bcc: ['ramadhonimuhammad@gmail.com'],
       subject: 'New contact form message',
       html: msg
     }, (err, info) => {
