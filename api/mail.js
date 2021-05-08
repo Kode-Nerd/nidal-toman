@@ -21,7 +21,8 @@ const sendMail = (msg) => {
   return new Promise((resolve, reject) => {
     transporter.sendMail({
       from: sender,
-      to: 'canbork@gmail.com',
+      to: 'info@nidal-toman.de',
+      cc: ['canbork@gmail.com'],
       subject: 'New contact form message',
       html: msg
     }, (err, info) => {
