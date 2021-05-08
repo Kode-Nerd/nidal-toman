@@ -127,6 +127,11 @@
       <div class="section gallery-bottom"></div>
       <Map id="map" />
     </div>
+    <transition name="fade">
+      <v-alert v-model="alert.show" class="alert" :type="alert.type">{{
+        alert.text
+      }}</v-alert>
+    </transition>
   </div>
 </template>
 
@@ -153,6 +158,11 @@ export default {
       id: 'contact',
       isNotValid: false,
       sendingEmail: false,
+      alert: {
+        show: false,
+        type: '',
+        text: '',
+      },
       form: {
         name: '',
         email: '',
@@ -208,6 +218,20 @@ export default {
     },
   },
   methods: {
+    alertShow(text, type = 'success') {
+      this.alert = {
+        show: true,
+        type,
+        text,
+      }
+      setTimeout(() => {
+        this.alert = {
+          show: false,
+          type: '',
+          text: '',
+        }
+      }, 3000)
+    },
     gotoProfile() {
       this.$router.push({ path: finalpath(this.locale, 'profile') })
     },
@@ -224,21 +248,40 @@ export default {
       }
 
       this.sendingEmail = true
-      setTimeout(() => {
-        this.form.name = ''
-        this.form.email = ''
-        this.form.no = ''
-        this.form.detail = ''
-        this.form.check = false
-        this.isNotValid = false
-        this.sendingEmail = false
-      }, 3000)
+      const origin = window.location.origin
+      const url = new URL('/api/mail', origin)
+
+      this.$axios
+        .$post(url, this.form)
+        .then(() => {
+          this.alertShow('Mail sent!')
+          console.log('Mail sent!')
+        })
+        .catch((err) => {
+          this.alertShow(err, 'error')
+          console.log(err)
+        })
+        .finally(() => {
+          this.form.name = ''
+          this.form.email = ''
+          this.form.no = ''
+          this.form.detail = ''
+          this.form.check = false
+          this.isNotValid = false
+          this.sendingEmail = false
+        })
     },
   },
 }
 </script>
 
 <style scoped>
+.alert {
+  position: fixed;
+  top: 0px;
+  z-index: 10;
+}
+
 .link {
   cursor: pointer;
 }

@@ -115,6 +115,11 @@
         <Map mobile />
       </v-card>
     </v-dialog>
+    <transition name="fade">
+      <v-alert v-model="alert.show" class="alert" :type="alert.type">{{
+        alert.text
+      }}</v-alert>
+    </transition>
   </MobileView>
 </template>
 
@@ -131,6 +136,11 @@ export default {
   },
   data() {
     return {
+      alert: {
+        show: false,
+        type: '',
+        text: '',
+      },
       contacts: [
         {
           key: this.$t('contact.detail.tel'),
@@ -180,21 +190,39 @@ export default {
       }
 
       this.sendingEmail = true
-      setTimeout(() => {
-        this.form.name = ''
-        this.form.email = ''
-        this.form.no = ''
-        this.form.detail = ''
-        this.form.check = false
-        this.$refs.form.reset()
-        this.sendingEmail = false
-      }, 3000)
+      const origin = window.location.origin
+      const url = new URL('/api/mail', origin)
+
+      this.$axios
+        .$post(url, this.form)
+        .then(() => {
+          this.alertShow('Mail sent!')
+          console.log('Mail sent!')
+        })
+        .catch((err) => {
+          this.alertShow(err, 'error')
+          console.log(err)
+        })
+        .finally(() => {
+          this.form.name = ''
+          this.form.email = ''
+          this.form.no = ''
+          this.form.detail = ''
+          this.form.check = false
+          this.isNotValid = false
+          this.sendingEmail = false
+        })
     },
   },
 }
 </script>
 
 <style scoped>
+.alert {
+  position: fixed;
+  top: 0px;
+  z-index: 10;
+}
 .top-section {
   padding: 64px 0px;
 }
