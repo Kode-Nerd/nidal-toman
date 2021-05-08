@@ -38,6 +38,11 @@ export default {
     middleware: 'i18n',
   },
 
+  serverMiddleware: [
+    '~/api/mail.js',
+    { path: '/api/ping', handler: '~/api/hello.js' },
+  ],
+
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/eslint
