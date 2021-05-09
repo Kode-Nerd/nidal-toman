@@ -71,6 +71,7 @@ app.get('/', (req, res) => {
     process.env.OAUTH_CLIENT_ID,
     process.env.OAUTH_SECRET,
     process.env.OAUTH_REDIRECT_URL,
+    process.env.MAIL_SENDER,
     process.env.MAIL_TO,
     process.env.MAIL_CC,
     process.env.MAIL_BCC,
