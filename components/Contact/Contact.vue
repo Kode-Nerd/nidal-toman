@@ -248,8 +248,9 @@ export default {
       }
 
       this.sendingEmail = true
-      const origin = window.location.origin
-      const url = new URL('/api/mail', origin)
+      // const origin = window.location.origin
+      const tmpOrigin = 'https://nidal-toman.herokuapp.com'
+      const url = new URL('/api/mail', tmpOrigin)
 
       this.$axios
         .$post(url, this.form)
