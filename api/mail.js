@@ -1,6 +1,7 @@
 import express from 'express'
 const app = express()
 import nodemailer from 'nodemailer'
+import cors from 'cors'
 import { google } from 'googleapis'
 
 const OAuth2 = google.auth.OAuth2
@@ -69,6 +70,7 @@ const sendMail = async (msg, info) => {
   }
 }
 
+app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.get('/', (req, res) => {
