@@ -51,7 +51,7 @@ const sendMail = (msg, info) => {
       to: process.env.MAIL_TO || 'info@nidal-toman.de',
       cc: process.env.MAIL_CC,
       bcc: process.env.MAIL_BCC,
-      subject: info ? `${info.name} - ${info.mail}` : process.env.MAIL_SUBJECT || 'New Contact Form Submission' ,
+      subject: info ? `${info.name} - ${info.email}` : process.env.MAIL_SUBJECT || 'New Contact Form Submission' ,
       html: msg
     }, (err, info) => {
       if (err) {
@@ -67,6 +67,15 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.get('/', (req, res) => {
   // Validate, sanitize and send
+  console.log(
+    process.env.OAUTH_CLIENT_ID,
+    process.env.OAUTH_SECRET,
+    process.env.OAUTH_REDIRECT_URL,
+    process.env.MAIL_TO,
+    process.env.MAIL_CC,
+    process.env.MAIL_BCC,
+    process.env.MAIL_SUBJECT,
+  )
   res.send('Mail is ready!')
 })
 
@@ -81,7 +90,7 @@ app.post('/', async (req, res) => {
   `
 
   try {
-    const info = await sendMail(msg)
+    const info = await sendMail(msg, { name, email })
     console.log(info)
     res.send('Mail sent!')
   } catch (err) {
