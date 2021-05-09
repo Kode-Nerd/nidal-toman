@@ -177,6 +177,20 @@ export default {
     },
   },
   methods: {
+    alertShow(text, type = 'success') {
+      this.alert = {
+        show: true,
+        type,
+        text,
+      }
+      setTimeout(() => {
+        this.alert = {
+          show: false,
+          type: '',
+          text: '',
+        }
+      }, 3000)
+    },
     sendEmail() {
       if (
         !this.form.name ||
@@ -210,7 +224,7 @@ export default {
           this.form.no = ''
           this.form.detail = ''
           this.form.check = false
-          this.isNotValid = false
+          this.$refs.form.reset()
           this.sendingEmail = false
         })
     },
@@ -222,6 +236,7 @@ export default {
 .alert {
   position: fixed;
   top: 0px;
+  width: 100vw;
   z-index: 10;
 }
 .top-section {
