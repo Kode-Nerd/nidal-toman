@@ -1,30 +1,57 @@
 import express from 'express'
 const app = express()
 import nodemailer from 'nodemailer'
+import { google } from 'googleapis'
 
-const sender = 'chronobroker@gmail.com'
-const pass = 'CYNT2020'
-const sendMail = (msg) => {
+const OAuth2 = google.auth.OAuth2
+const oauth2Client = new OAuth2(
+  process.env.OAUTH_CLIENT_ID,
+  process.env.OAUTH_SECRET,
+  process.env.OAUTH_REDIRECT_URL,
+)
+
+oauth2Client.setCredentials({
+  refresh_token: process.env.OAUTH_REFRESH_TOKEN
+});
+const accessToken = oauth2Client.getAccessToken()
+
+const sender = process.env.MAIL_SENDER
+// const pass = process.env.MAIL_PASS
+const sendMail = (msg, info) => {
   // const transporter = nodemailer.createTransport({
   //   sendmail: true,
   //   newline: 'unix',
   //   path: '/usr/sbin/sendmail'
   // })
+  // const transporter = nodemailer.createTransport({
+  //   service: 'gmail',
+  //   auth: {
+  //     user: sender,
+  //     pass,
+  //   }
+  // })
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: "gmail",
     auth: {
-      user: sender,
-      pass,
+        type: "OAuth2",
+        user: sender, 
+        clientId: process.env.OAUTH_CLIENT_ID,
+        clientSecret: process.env.OAUTH_SECRET,
+        refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+        accessToken
+    },
+    tls: {
+      rejectUnauthorized: false
     }
   })
 
   return new Promise((resolve, reject) => {
     transporter.sendMail({
       from: sender,
-      to: 'info@nidal-toman.de',
-      cc: ['canbork@gmail.com'],
-      bcc: ['ramadhonimuhammad@gmail.com'],
-      subject: 'New contact form message',
+      to: process.env.MAIL_TO || 'info@nidal-toman.de',
+      cc: process.env.MAIL_CC,
+      bcc: process.env.MAIL_BCC,
+      subject: info ? `${info.name} - ${info.mail}` : process.env.MAIL_SUBJECT || 'New Contact Form Submission' ,
       html: msg
     }, (err, info) => {
       if (err) {
