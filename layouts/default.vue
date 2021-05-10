@@ -144,15 +144,15 @@ export default {
       const pathnameSplit = pathname.split('/').filter((name) => name.length)
 
       pathname = pathnameSplit[pathnameSplit.length - 1]
-      if (pathname.includes('kontakt')) {
-        pathname = 'contact'
-        query = {}
-      }
 
       if (!pathname) {
         pathname = query.id === 'procedures' ? 'procedures' : '/'
         query = {}
+      } else if (pathname.includes('kontakt')) {
+        pathname = 'contact'
+        query = {}
       }
+
       const finalpath = this.finalpathmobile(pathname)
 
       this.$router.push({
