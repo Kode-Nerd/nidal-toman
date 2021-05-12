@@ -1,7 +1,7 @@
 <template>
   <div class="main-navigation__container" :style="normalColor">
     <div
-      v-for="(part, index) in parts"
+      v-for="(part, index) in partsExtra"
       :key="index"
       class="item__container"
       :class="{ active: part.active }"
@@ -13,7 +13,11 @@
         class="item__title font-weight-light"
         :style="part.active ? activeColor : normalColor"
       >
-        {{ $t(`treatments.${part.query}.title`) }}
+        {{
+          part.query === 'anti_stress'
+            ? $t(`treatments.outpatient_treatment.anti_stress.title`)
+            : $t(`treatments.${part.query}.title`)
+        }}
       </div>
       <div class="item__line"></div>
     </div>
@@ -21,6 +25,8 @@
 </template>
 
 <script>
+import { finalpath } from '~/helpers'
+
 export default {
   props: {
     parts: {
@@ -30,9 +36,17 @@ export default {
       },
     },
   },
+  data() {
+    return {
+      partsExtra: [],
+    }
+  },
   computed: {
     themes() {
       return this.$vuetify.theme.themes
+    },
+    locale() {
+      return this.$store.state.locale
     },
     normalColor() {
       return {
@@ -47,8 +61,23 @@ export default {
       }
     },
   },
+  mounted() {
+    this.partsExtra = [
+      ...this.parts,
+      {
+        query: 'anti_stress',
+        active: false,
+      },
+    ]
+  },
   methods: {
     openDetail(query) {
+      if (query === 'anti_stress') {
+        const path = finalpath(this.locale, 'ivtherapies')
+
+        this.$router.push({ path })
+        return
+      }
       const { figure } = this.$route.query
 
       this.$router.push({ query: { figure, part: query } })
