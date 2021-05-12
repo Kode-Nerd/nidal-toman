@@ -16,7 +16,7 @@
           <span v-else>
             {{
               $t(
-                `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.title`
+                `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.title`
               )
             }}
           </span>
@@ -269,18 +269,18 @@
           <div v-if="activeTab === 'faq'">
             <ExpandedCardInfo
               v-for="(content, index) in MasterContent.outpatient_treatment[
-                outpatient[figureSubpart].query
+                outpatientFilters[figureSubpart].query
               ].faq.content"
               :key="index"
               :index="index"
               :title="
                 $t(
-                  `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.faq.content[${index}].title`
+                  `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.faq.content[${index}].title`
                 )
               "
               >{{
                 $t(
-                  `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.faq.content[${index}].subtitle`
+                  `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.faq.content[${index}].subtitle`
                 )
               }}</ExpandedCardInfo
             >
@@ -289,7 +289,7 @@
             <p
               v-for="(text, index) in contentExtractor(
                 $t(
-                  `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content`
+                  `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.general.content`
                 )
               )"
               :key="index"
@@ -301,7 +301,7 @@
               v-if="
                 !contentIsArray(
                   MasterContent.outpatient_treatment[
-                    outpatient[figureSubpart].query
+                    outpatientFilters[figureSubpart].query
                   ].general.content
                 )
               "
@@ -309,7 +309,7 @@
               <p
                 v-for="(text, index) in contentExtractor(
                   $t(
-                    `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content`
+                    `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.general.content`
                   )
                 )"
                 :key="index"
@@ -320,13 +320,13 @@
             <div
               v-if="
                 MasterContent.outpatient_treatment[
-                  outpatient[figureSubpart].query
+                  outpatientFilters[figureSubpart].query
                 ].general.list
               "
             >
               <ul
                 v-for="(subItem, id) in MasterContent.outpatient_treatment[
-                  outpatient[figureSubpart].query
+                  outpatientFilters[figureSubpart].query
                 ].general.list"
                 :key="id"
                 class="d-flex flex-column mb-2"
@@ -334,7 +334,7 @@
                 <li class="mb-2">
                   {{
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.list[${id}].content`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.general.list[${id}].content`
                     )
                   }}
                 </li>
@@ -343,14 +343,14 @@
             <div
               v-if="
                 MasterContent.outpatient_treatment[
-                  outpatient[figureSubpart].query
+                  outpatientFilters[figureSubpart].query
                 ].general.extend
               "
             >
               <p
                 v-for="(text, index) in contentExtractor(
                   $t(
-                    `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.extend`
+                    `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.general.extend`
                   )
                 )"
                 :key="index"
@@ -361,17 +361,17 @@
               v-if="
                 !contentIsArray(
                   MasterContent.outpatient_treatment[
-                    outpatient[figureSubpart].query
+                    outpatientFilters[figureSubpart].query
                   ].general.content
                 ) &&
                 MasterContent.outpatient_treatment[
-                  outpatient[figureSubpart].query
+                  outpatientFilters[figureSubpart].query
                 ].general.sub
               "
             >
               <div
                 v-for="(subItem, id) in MasterContent.outpatient_treatment[
-                  outpatient[figureSubpart].query
+                  outpatientFilters[figureSubpart].query
                 ].general.sub"
                 :key="id"
                 class="d-flex flex-column"
@@ -379,14 +379,14 @@
                 <span class="text-h4 font-weight-bold mb-4">
                   {{
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.sub[${id}].title`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.general.sub[${id}].title`
                     )
                   }}
                 </span>
                 <p
                   v-for="(text, index) in contentExtractor(
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.sub[${id}].content`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.general.sub[${id}].content`
                     )
                   )"
                   :key="index"
@@ -398,14 +398,14 @@
               v-if="
                 contentIsArray(
                   MasterContent.outpatient_treatment[
-                    outpatient[figureSubpart].query
+                    outpatientFilters[figureSubpart].query
                   ].general.content
                 )
               "
             >
               <div
                 v-for="(subItem, id) in MasterContent.outpatient_treatment[
-                  outpatient[figureSubpart].query
+                  outpatientFilters[figureSubpart].query
                 ].general.content"
                 :key="id"
                 class="d-flex flex-column"
@@ -413,14 +413,14 @@
                 <span class="text-h4 font-weight-bold mb-4">
                   {{
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content[${id}].title`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.general.content[${id}].title`
                     )
                   }}
                 </span>
                 <p
                   v-for="(text, index) in contentExtractor(
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.general.content[${id}].content`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.general.content[${id}].content`
                     )
                   )"
                   :key="index"
@@ -434,7 +434,7 @@
               v-if="
                 !contentIsArray(
                   MasterContent.outpatient_treatment[
-                    outpatient[figureSubpart].query
+                    outpatientFilters[figureSubpart].query
                   ].treatment.content
                 )
               "
@@ -442,7 +442,7 @@
               <p
                 v-for="(text, index) in contentExtractor(
                   $t(
-                    `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.treatment.content`
+                    `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.treatment.content`
                   )
                 )"
                 :key="index"
@@ -453,13 +453,13 @@
             <div
               v-if="
                 MasterContent.outpatient_treatment[
-                  outpatient[figureSubpart].query
+                  outpatientFilters[figureSubpart].query
                 ].treatment.list
               "
             >
               <ul
                 v-for="(subItem, id) in MasterContent.outpatient_treatment[
-                  outpatient[figureSubpart].query
+                  outpatientFilters[figureSubpart].query
                 ].treatment.list"
                 :key="id"
                 class="d-flex flex-column mb-2"
@@ -467,7 +467,7 @@
                 <li class="mb-2">
                   {{
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.treatment.list[${id}].content`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.treatment.list[${id}].content`
                     )
                   }}
                 </li>
@@ -476,14 +476,14 @@
             <div
               v-if="
                 MasterContent.outpatient_treatment[
-                  outpatient[figureSubpart].query
+                  outpatientFilters[figureSubpart].query
                 ].treatment.extend
               "
             >
               <p
                 v-for="(text, index) in contentExtractor(
                   $t(
-                    `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.treatment.extend`
+                    `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.treatment.extend`
                   )
                 )"
                 :key="index"
@@ -494,17 +494,17 @@
               v-if="
                 !contentIsArray(
                   MasterContent.outpatient_treatment[
-                    outpatient[figureSubpart].query
+                    outpatientFilters[figureSubpart].query
                   ].treatment.content
                 ) &&
                 MasterContent.outpatient_treatment[
-                  outpatient[figureSubpart].query
+                  outpatientFilters[figureSubpart].query
                 ].treatment.sub
               "
             >
               <div
                 v-for="(subItem, id) in MasterContent.outpatient_treatment[
-                  outpatient[figureSubpart].query
+                  outpatientFilters[figureSubpart].query
                 ].treatment.sub"
                 :key="id"
                 class="d-flex flex-column"
@@ -512,14 +512,14 @@
                 <span class="text-h4 font-weight-bold mb-4">
                   {{
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.treatment.sub[${id}].title`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.treatment.sub[${id}].title`
                     )
                   }}
                 </span>
                 <p
                   v-for="(text, index) in contentExtractor(
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.treatment.sub[${id}].content`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.treatment.sub[${id}].content`
                     )
                   )"
                   :key="index"
@@ -531,14 +531,14 @@
               v-if="
                 contentIsArray(
                   MasterContent.outpatient_treatment[
-                    outpatient[figureSubpart].query
+                    outpatientFilters[figureSubpart].query
                   ].treatment.content
                 )
               "
             >
               <div
                 v-for="(subItem, id) in MasterContent.outpatient_treatment[
-                  outpatient[figureSubpart].query
+                  outpatientFilters[figureSubpart].query
                 ].treatment.content"
                 :key="id"
                 class="d-flex flex-column"
@@ -546,14 +546,14 @@
                 <span class="text-h4 font-weight-bold mb-4">
                   {{
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.treatment.content[${id}].title`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.treatment.content[${id}].title`
                     )
                   }}
                 </span>
                 <p
                   v-for="(text, index) in contentExtractor(
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.treatment.content[${id}].content`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.treatment.content[${id}].content`
                     )
                   )"
                   :key="index"
@@ -572,17 +572,17 @@
                 <span
                   v-if="
                     MasterContent.outpatient_treatment[
-                      outpatient[figureSubpart].query
+                      outpatientFilters[figureSubpart].query
                     ].summary[summary] &&
                     MasterContent.outpatient_treatment[
-                      outpatient[figureSubpart].query
+                      outpatientFilters[figureSubpart].query
                     ].summary[summary].title
                   "
                   class="mb-3"
                 >
                   {{
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.summary.${summary}.title`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.summary.${summary}.title`
                     )
                   }}
                 </span>
@@ -591,17 +591,17 @@
                 <span
                   v-if="
                     MasterContent.outpatient_treatment[
-                      outpatient[figureSubpart].query
+                      outpatientFilters[figureSubpart].query
                     ].summary[summary] &&
                     MasterContent.outpatient_treatment[
-                      outpatient[figureSubpart].query
+                      outpatientFilters[figureSubpart].query
                     ].summary[summary].detail
                   "
                   class="mb-6"
                 >
                   {{
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.summary.${summary}.detail`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.summary.${summary}.detail`
                     )
                   }}
                 </span>
@@ -610,17 +610,17 @@
                 <span
                   v-if="
                     MasterContent.outpatient_treatment[
-                      outpatient[figureSubpart].query
+                      outpatientFilters[figureSubpart].query
                     ].summary[summary] &&
                     MasterContent.outpatient_treatment[
-                      outpatient[figureSubpart].query
+                      outpatientFilters[figureSubpart].query
                     ].summary[summary].subtitle
                   "
                   class="mb-6"
                 >
                   {{
                     $t(
-                      `treatments.outpatient_treatment.${outpatient[figureSubpart].query}.summary.${summary}.subtitle`
+                      `treatments.outpatient_treatment.${outpatientFilters[figureSubpart].query}.summary.${summary}.subtitle`
                     )
                   }}
                 </span>
@@ -862,10 +862,6 @@ export default {
     outpatientFilters() {
       if (this.figurePart === 'face_and_head') {
         return this.outpatient.filter((part) => part.query !== 'anti_stress')
-      } else if (this.figurePart === 'body') {
-        return this.outpatient.filter(
-          (part) => part.query === 'anti_stress' || part.query === 'fat_away'
-        )
       } else {
         return this.outpatient.filter((part) => part.query === 'fat_away')
       }
@@ -1010,7 +1006,7 @@ export default {
           subpart.active = false
         })
         this.figureSubpart = 0
-        this.outpatient[0].active = true
+        this.outpatientFilters[0].active = true
       } else {
         this.outpatientDetail = false
         this.outpatient.forEach((subpart) => {
