@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Home from '~/components/Mobile/Home'
+import Home from '~/components/Mobile/Home/Alt'
 
 export default {
   components: {
