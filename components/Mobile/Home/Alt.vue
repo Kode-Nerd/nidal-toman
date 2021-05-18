@@ -31,7 +31,7 @@
             </div>
           </div>
           <MobileView
-            class="justify-space-between align-center section main mt-n12"
+            class="justify-space-between align-center section relative main mt-n12"
           >
             <MobileView class="align-center">
               <CustomSVG
@@ -44,12 +44,18 @@
             </MobileView>
             <MobileView class="full-width align-end">
               <v-img
+                class="figure-shadow"
                 contain
                 position="center"
                 :src="require('~/assets/fig_2.png')"
                 width="32vh"
                 height="68vh"
               ></v-img>
+            </MobileView>
+            <MobileView class="justify-center align-center title-box">
+              <span class="font-weight-light">
+                {{ $t('welcome.title') }}
+              </span>
             </MobileView>
           </MobileView>
         </swiper-slide>
@@ -64,7 +70,7 @@
           </MobileView>
         </swiper-slide>
         <swiper-slide>
-          <MobileView class="justify-center align-center section infusion">
+          <MobileView class="justify-center align-center section relative">
             <span class="text-h6 mb-4 text-uppercase font-weight-light">
               {{ $t('welcome.infusion') }}
             </span>
@@ -75,6 +81,7 @@
               width="85vw"
             ></v-img>
             <v-img
+              class="figure-shadow"
               contain
               :src="require('~/assets/fig_1.png')"
               width="25vh"
@@ -100,7 +107,7 @@
         <swiper-slide>
           <MobileView
             :style="lightBackground"
-            class="justify-center align-center section infusion procedure"
+            class="justify-center align-center section relative procedure"
           >
             <swiper style="margin: 0" :options="swiperOption">
               <swiper-slide :key="0">
@@ -281,7 +288,7 @@ a {
   min-height: 50vh;
   height: auto;
 }
-.section.infusion {
+.section.relative {
   position: relative;
 }
 .full {
@@ -310,6 +317,18 @@ a {
   left: 50vw;
   top: 60px;
   width: 100vw;
+}
+.figure-shadow {
+  filter: drop-shadow(10px 10px 3px #00000050);
+  -webkit-filter: drop-shadow(10px 10x 3px #00000050);
+}
+.title-box {
+  width: 55vw;
+  height: 20vw;
+  position: absolute;
+  bottom: 15vw;
+  left: 5vw;
+  backdrop-filter: blur(5px);
 }
 
 .swiper-container {
