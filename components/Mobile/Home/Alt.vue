@@ -62,11 +62,27 @@
         <swiper-slide>
           <MobileView
             :style="lightBackground"
-            class="justify-center align-center section philosophy"
+            class="justify-center align-center section relative philosophy"
           >
-            <span class="text-h6">
+            <span class="text-h6 text-center">
               {{ $t('welcome.philosophy') }}
             </span>
+            <CustomSVG
+              class="open-ap"
+              :src="require('~/assets/icons/open-ap.svg')"
+              width="5vh"
+              height="5vh"
+              color="#18110C80"
+              cover
+            ></CustomSVG>
+            <CustomSVG
+              class="close-ap"
+              :src="require('~/assets/icons/close-ap.svg')"
+              width="5vh"
+              height="5vh"
+              color="#18110C80"
+              cover
+            ></CustomSVG>
           </MobileView>
         </swiper-slide>
         <swiper-slide>
@@ -329,6 +345,16 @@ a {
   bottom: 15vw;
   left: 5vw;
   backdrop-filter: blur(5px);
+}
+.open-ap {
+  position: absolute;
+  top: 12vw;
+  left: 5vw;
+}
+.close-ap {
+  position: absolute;
+  bottom: 12vw;
+  right: 5vw;
 }
 
 .swiper-container {
