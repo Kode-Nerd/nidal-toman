@@ -58,7 +58,7 @@
               :style="{ color: themes.light.lightPrimary3 }"
               class="text-h4"
             >
-              {{ $t('welcome.philosophy') }}
+              {{ $t('welcome.philosophyHead') }} {{ $t('welcome.philosophy') }}
             </span>
           </div>
         </div>

@@ -42,6 +42,13 @@
                 cover
               ></CustomSVG>
             </MobileView>
+            <MobileView
+              class="justify-center align-center title-box mt-2 mb-n6"
+            >
+              <span :style="titleStyle" class="text-center">
+                {{ $t('welcome.title') }}
+              </span>
+            </MobileView>
             <MobileView class="full-width align-end">
               <v-img
                 class="figure-shadow"
@@ -52,37 +59,43 @@
                 height="68vh"
               ></v-img>
             </MobileView>
-            <MobileView class="justify-center align-center title-box">
-              <span class="font-weight-light">
-                {{ $t('welcome.title') }}
-              </span>
-            </MobileView>
           </MobileView>
         </swiper-slide>
         <swiper-slide>
-          <MobileView
-            :style="lightBackground"
-            class="justify-center align-center section relative philosophy"
-          >
-            <span class="text-h6 text-center">
-              {{ $t('welcome.philosophy') }}
-            </span>
-            <CustomSVG
-              class="open-ap"
-              :src="require('~/assets/icons/open-ap.svg')"
-              width="5vh"
-              height="5vh"
-              color="#18110C80"
-              cover
-            ></CustomSVG>
-            <CustomSVG
-              class="close-ap"
-              :src="require('~/assets/icons/close-ap.svg')"
-              width="5vh"
-              height="5vh"
-              color="#18110C80"
-              cover
-            ></CustomSVG>
+          <MobileView :style="lightBackground">
+            <MobileView
+              class="justify-center align-center section relative philosophy"
+            >
+              <p class="text-h5 font-weight-bold text-center">
+                {{ $t('welcome.philosophyHead') }}
+              </p>
+              <span class="text-h6 font-weight-light text-center">
+                {{ $t('welcome.philosophy') }}
+              </span>
+              <!-- <CustomSVG
+                class="open-ap"
+                :src="require('~/assets/icons/open-ap.svg')"
+                width="5vh"
+                height="5vh"
+                color="#18110C80"
+                cover
+              ></CustomSVG>
+              <CustomSVG
+                class="close-ap"
+                :src="require('~/assets/icons/close-ap.svg')"
+                width="5vh"
+                height="5vh"
+                color="#18110C80"
+                cover
+              ></CustomSVG> -->
+            </MobileView>
+            <MobileView class="justify-center align-center">
+              <CustomSVG
+                :src="require('~/assets/mini-logo.svg')"
+                width="10vh"
+                height="10vh"
+              ></CustomSVG>
+            </MobileView>
           </MobileView>
         </swiper-slide>
         <swiper-slide>
@@ -224,6 +237,9 @@ export default {
     }
   },
   computed: {
+    locale() {
+      return this.$store.state.locale
+    },
     drawer: {
       set(val) {
         this.$store.commit('SET_SIDENAV', val)
@@ -260,6 +276,11 @@ export default {
         position: 'absolute',
         bottom: '15%',
         right: '4%',
+      }
+    },
+    titleStyle() {
+      return {
+        color: this.themes.light.darkBackground,
       }
     },
   },
@@ -301,8 +322,9 @@ a {
   padding: 10vh 3vw 0px 3vw;
 }
 .section.philosophy {
-  min-height: 50vh;
+  min-height: 75vh;
   height: auto;
+  padding: 10vw;
 }
 .section.relative {
   position: relative;
@@ -325,7 +347,7 @@ a {
   position: absolute;
   padding: 5vh 5vw;
   width: 100vw;
-  bottom: 0px;
+  bottom: 10vw;
 }
 .procedure-title {
   transform: translate(-50%, -50%);
@@ -339,12 +361,9 @@ a {
   -webkit-filter: drop-shadow(10px 10x 3px #00000050);
 }
 .title-box {
-  width: 55vw;
-  height: 20vw;
-  position: absolute;
-  bottom: 15vw;
-  left: 5vw;
-  backdrop-filter: blur(5px);
+  width: 85vw;
+  min-height: 20vw;
+  letter-spacing: 3px;
 }
 .open-ap {
   position: absolute;
