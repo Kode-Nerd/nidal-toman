@@ -138,7 +138,7 @@ export default {
     return {
       alert: {
         show: false,
-        type: '',
+        type: 'success',
         text: '',
       },
       contacts: [
@@ -176,7 +176,18 @@ export default {
       return this.$vuetify.theme.themes
     },
   },
+  mounted() {
+    this.checkMailEndPoint()
+  },
   methods: {
+    checkMailEndPoint() {
+      const tmpOrigin = 'https://nidal-toman.herokuapp.com'
+      const url = new URL('/api/mail', tmpOrigin)
+
+      this.$axios.$get(url, this.form).then(() => {
+        console.log('Mail ready!')
+      })
+    },
     alertShow(text, type = 'success') {
       this.alert = {
         show: true,
@@ -186,7 +197,7 @@ export default {
       setTimeout(() => {
         this.alert = {
           show: false,
-          type: '',
+          type: 'success',
           text: '',
         }
       }, 3000)
