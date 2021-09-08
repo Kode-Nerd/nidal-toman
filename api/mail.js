@@ -133,7 +133,7 @@ app.post('/', async (req, res) => {
     <p>Email: ${email}</p>
     <p>No: ${no}</p>
     <p>IP Address: ${ip}</p>
-    <p>Location: ${location || 'NA'}</p>
+    <p>Location: ${JSON.stringify(location) || 'NA'}</p>
     <p>Agreed to policy: ${check}</p>
     <span>Detail:</span><br/>
     <p>${detail}</p>
