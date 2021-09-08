@@ -222,7 +222,7 @@ export default {
   },
   methods: {
     checkMailEndPoint() {
-      const tmpOrigin = 'http://localhost:3000'
+      const tmpOrigin = 'https://nidal-toman.herokuapp.com'
       const url = new URL('/api/mail', tmpOrigin)
 
       this.$axios.$get(url, this.form).then(() => {
@@ -260,7 +260,7 @@ export default {
 
       this.sendingEmail = true
       // const origin = window.location.origin
-      const tmpOrigin = 'http://localhost:3000'
+      const tmpOrigin = 'https://nidal-toman.herokuapp.com'
       const url = new URL('/api/mail', tmpOrigin)
 
       this.$axios
