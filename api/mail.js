@@ -3,6 +3,7 @@ const app = express()
 import nodemailer from 'nodemailer'
 import cors from 'cors'
 import { google } from 'googleapis'
+import mailgun from 'mailgun-js'
 
 const OAuth2 = google.auth.OAuth2
 const oauth2Client = new OAuth2(
@@ -70,6 +71,25 @@ const sendMail = async (msg, info) => {
   }
 }
 
+const sendMailgun = (msg, info) => {
+  return new Promise((resolve, reject) => {
+    const DOMAIN = process.env.MAILGUN_DOMAIN;
+    const mg = mailgun({apiKey: process.env.MAILGUN_APIKEY, domain: DOMAIN});
+    const data = {
+      from: sender,
+      to: process.env.MAIL_TO || 'info@nidal-toman.de',
+      subject: info ? `${info.name} - ${info.email}` : process.env.MAIL_SUBJECT || 'New Contact Form Submission',
+      html: msg
+    };
+    mg.messages().send(data, function (error, body) {
+      if (error) {
+        reject(error);
+      }
+      resolve(body);
+    });
+  })
+}
+
 app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
@@ -102,7 +122,7 @@ app.post('/', async (req, res) => {
   `
 
   try {
-    const info = await sendMail(msg, { name, email })
+    const info = await sendMailgun(msg, { name, email })
     console.log(info)
     res.send('Mail sent!')
   } catch (err) {
