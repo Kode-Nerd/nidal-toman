@@ -14,8 +14,8 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext'
-      }
+          'http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext',
+      },
     ],
   },
 
@@ -59,7 +59,7 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    ['nuxt-gmaps', { key: process.env.NUXT_ENV_GMAP_APIKEY }]
+    ['nuxt-gmaps', { key: process.env.NUXT_ENV_GMAP_APIKEY }],
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -95,9 +95,9 @@ export default {
           primary2: '#F06C9B', // pink
           primary3: '#D2AF69', // gold
           primary4: '#18110C', // black
-          darkBackground: "#EAE8E4", // gray
-          lightBackground: "#F6F5F3", // light gray
-          lightPrimary3: "#DCD6C9", // lightGold
+          darkBackground: '#EAE8E4', // gray
+          lightBackground: '#F6F5F3', // light gray
+          lightPrimary3: '#DCD6C9', // lightGold
           background: '#FFFFFF', // white
           text: colors.blueGrey.darken3,
           logo: '#D5A35A', // gold logo
