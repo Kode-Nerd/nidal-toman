@@ -22,7 +22,7 @@ export default {
       return this.$vuetify.theme.themes
     },
     interiors() {
-      const list = [1, 2, 13, 3, 5, 4, 12, 6, 11, 7, 9, 8, 10, 14]
+      const list = [1, 2, 13, 3, 5, 4, 12, 6, 11, 9, 8, 10, 14]
       const interior = list.map((item) =>
         require(`~/assets/images/interiors_min/interior${item}.jpg`)
       )
