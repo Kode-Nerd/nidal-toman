@@ -308,12 +308,21 @@ export default {
   z-index: 1;
 }
 
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1584px) {
   .image-left {
     left: 80px;
   }
   .image-right {
     right: 80px;
+  }
+}
+
+@media only screen and (max-width: 1368px) {
+  .image-left {
+    left: 40px;
+  }
+  .image-right {
+    right: 40px;
   }
 }
 .apposthrope {

@@ -38,7 +38,7 @@ export default {
     },
     width: {
       type: String,
-      default: '55%',
+      default: '52%',
     },
   },
   computed: {
@@ -49,7 +49,7 @@ export default {
       let width = this.width
 
       const innerWidth = window.innerWidth
-      if (innerWidth <= 1440) {
+      if (innerWidth <= 1584) {
         width = `calc(${this.width} + 7%)`
       }
       return {
@@ -69,9 +69,14 @@ export default {
   padding: 20vh 200px;
   width: 100vw;
 }
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1584px) {
   .section {
     padding: 20vh 80px;
+  }
+}
+@media only screen and (max-width: 1368px) {
+  .section {
+    padding: 20vh 40px;
   }
 }
 
