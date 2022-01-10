@@ -222,7 +222,7 @@
     <MobileView class="list-section">
       <v-list flat three-line>
         <v-list-item-group v-model="selectedItem.conferences" color="primary3">
-          <template v-for="index in 24">
+          <template v-for="index in 25">
             <v-list-item
               :key="`conferences-${index}`"
               @click="openDialog('conferences', index)"

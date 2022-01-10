@@ -213,7 +213,7 @@
             </div>
             <div>
               <ProfilePublicationItem
-                v-for="index in 24"
+                v-for="index in 25"
                 :key="`conferences-${index}`"
                 :title="$t(`profile.conferences.list.${index - 1}.title`)"
                 :subtitle="$t(`profile.conferences.list.${index - 1}.detail`)"

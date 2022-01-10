@@ -49,7 +49,7 @@
       {
         "title": "Gründung der Privatpraxis",
         "subtitle": "Gründung der Privatpraxis für Ästhetische & Plastische",
-        "place": "Chirurgie Dr. med. Nidal Toman",
+        "place": "Praxis Dr. Nidal Toman",
         "year": "2016"
       }
     ]
@@ -237,6 +237,11 @@
   "conferences": {
     "label": "Organisierte Konferenzen und Präsidentschaften",
     "list": [
+      {
+        "title": "Orthomolekulare Therapieansätze zur Behandlung von stressbedingten Symptomen",
+        "detail": "VKÄ, Tagung Notfallmedizin, 12. Juni 2021",
+        "author": "Toman N."
+      },
       {
         "title": "Plastische und Rekonstruktive Chirurgie",
         "detail": "Berliner Türkischer Ärztetag, Berlin, 04-06 Dezember 2009",
