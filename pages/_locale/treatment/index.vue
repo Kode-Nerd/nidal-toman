@@ -11,7 +11,7 @@ export default {
   },
   head() {
     return {
-      title: 'Dr. Nidal Toman',
+      title: 'Prof. Dr. Nidal Toman',
       meta: [
         {
           hid: 'description',
