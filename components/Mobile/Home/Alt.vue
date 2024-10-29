@@ -311,7 +311,7 @@ a {
 .vertical-swiper-page {
   position: relative;
   width: 100vw;
-  height: calc(100vh - 60px);
+  height: 100dvh;
 }
 .header {
   padding: 10px;
@@ -321,20 +321,20 @@ a {
 .section {
   box-sizing: border-box;
   padding: 10vh 10vw;
-  height: calc(100vh - 60px);
+  height: 100dvh;
 }
 .section.main {
   padding: 10vh 3vw 0px 3vw;
 }
 .section.philosophy {
-  min-height: calc(100vh - 60px);
+  min-height: 100dvh;
   padding: 10vw;
 }
 .section.relative {
   position: relative;
 }
 .full {
-  height: calc(100vh - 60px);
+  height: 100dvh;
   width: 100vw;
 }
 .section.procedure {

@@ -25,7 +25,7 @@
       height="100vh"
     >
       <nuxt />
-      <div class="bottom-gap"></div>
+      <!-- <div class="bottom-gap"></div> -->
     </v-responsive>
   </v-app>
 </template>
