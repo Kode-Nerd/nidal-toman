@@ -7,10 +7,10 @@
     ></CoverHeader>
     <MobileView class="mt-16 pa-4">
       <CustomSVG
-        class="ml-n4 mb-n2"
+        class="ml-n4 mb-2"
         :src="require('~/assets/name.svg')"
-        width="19rem"
-        height="2.5rem"
+        width="24rem"
+        height="1rem"
         :color="themes.light.primary3"
         cover
       ></CustomSVG>

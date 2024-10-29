@@ -255,7 +255,7 @@ export default {
       return `${this.mainLogoWidthSize}vh`
     },
     mainLogoHeight() {
-      return `${0.4 * this.mainLogoWidthSize}vh`
+      return `${0.45 * this.mainLogoWidthSize}vh`
     },
     lightBackground() {
       return {

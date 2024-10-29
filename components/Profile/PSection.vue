@@ -2,10 +2,10 @@
   <div class="section">
     <div v-if="title" class="title">
       <CustomSVG
-        class="ml-n8 mb-n8 mt-n3"
+        class="ml-n8 mb-1 mt-n3"
         :src="require('~/assets/name.svg')"
-        :width="'38rem'"
-        :height="'5rem'"
+        :width="'48rem'"
+        :height="'2rem'"
         :color="themes.light.primary3"
         cover
       ></CustomSVG>
