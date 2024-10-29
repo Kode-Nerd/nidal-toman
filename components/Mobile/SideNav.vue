@@ -10,7 +10,7 @@
       <CustomSVG
         class="mb-2"
         :src="require('~/assets/name.svg')"
-        :width="'10rem'"
+        :width="'11.5rem'"
         :height="'1.25rem'"
         :color="themes.light.primary3"
         cover
