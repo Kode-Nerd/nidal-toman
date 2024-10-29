@@ -22,7 +22,7 @@
       id="mobile-screen"
       ref="mobileScreen"
       class="overflow-y-auto"
-      height="100vh"
+      height="100dvh"
     >
       <nuxt />
       <!-- <div class="bottom-gap"></div> -->
@@ -186,8 +186,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .bottom-gap {
   height: 60px;
+}
+#app > .v-application--wrap {
+  min-height: 100dvh;
 }
 </style>
