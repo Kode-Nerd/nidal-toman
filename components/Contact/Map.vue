@@ -78,6 +78,6 @@ export default {
   height: 400px;
 }
 .mobile {
-  height: calc(100vh - 56px);
+  height: calc(100dvh - 56px);
 }
 </style>
