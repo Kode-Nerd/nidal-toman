@@ -56,7 +56,7 @@
                 position="center"
                 :src="require('~/assets/fig_2.png')"
                 width="32vh"
-                height="68vh"
+                height="59vh"
               ></v-img>
             </MobileView>
           </MobileView>
@@ -88,8 +88,6 @@
                 color="#18110C80"
                 cover
               ></CustomSVG> -->
-            </MobileView>
-            <MobileView class="justify-center align-center">
               <CustomSVG
                 :src="require('~/assets/mini-logo.svg')"
                 width="10vh"
@@ -208,6 +206,7 @@ export default {
       mainLogoWidthSize: 35,
       buttonShow: false,
       verticalSwiperOption: {
+        touchEventsTarget: 'container',
         direction: 'vertical',
         slidesPerView: 'auto',
         centeredSlides: true,
@@ -274,7 +273,7 @@ export default {
     figure2MoreInfoStyle() {
       return {
         position: 'absolute',
-        bottom: '15%',
+        bottom: '10%',
         right: '4%',
       }
     },
@@ -285,6 +284,10 @@ export default {
     },
   },
   methods: {
+    openDrawer() {
+      console.log('triggered')
+      this.drawer = !this.drawer
+    },
     showFAB(swiper) {
       const val = swiper.activeIndex
 
@@ -308,29 +311,30 @@ a {
 .vertical-swiper-page {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 60px);
 }
 .header {
   padding: 10px;
+  z-index: 1;
+  position: relative;
 }
 .section {
   box-sizing: border-box;
   padding: 10vh 10vw;
-  height: 100vh;
+  height: calc(100vh - 60px);
 }
 .section.main {
   padding: 10vh 3vw 0px 3vw;
 }
 .section.philosophy {
-  min-height: 75vh;
-  height: auto;
+  min-height: calc(100vh - 60px);
   padding: 10vw;
 }
 .section.relative {
   position: relative;
 }
 .full {
-  height: 100vh;
+  height: calc(100vh - 60px);
   width: 100vw;
 }
 .section.procedure {
@@ -347,7 +351,7 @@ a {
   position: absolute;
   padding: 5vh 5vw;
   width: 100vw;
-  bottom: 10vw;
+  bottom: 0;
 }
 .procedure-title {
   transform: translate(-50%, -50%);
