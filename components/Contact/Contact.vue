@@ -260,7 +260,7 @@ export default {
 
       this.sendingEmail = true
       const origin = window.location.origin
-      const tmpOrigin = 'https://nidal-toman.herokuapp.com'
+      // const tmpOrigin = 'https://nidal-toman.herokuapp.com'
       const url = new URL('/api/mail', origin)
 
       this.$axios
