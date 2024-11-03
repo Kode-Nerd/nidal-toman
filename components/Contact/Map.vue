@@ -1,6 +1,13 @@
 <template>
-  <div>
-    <GMap
+  <div class="wrapper" :class="{ mobile }">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d607.2073385194286!2d13.32398562857337!3d52.500328498246226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a850fa4954eca3%3A0x1406c2788da9ed70!2sProf.%20Dr.%20Nidal%20Toman!5e0!3m2!1sen!2sid!4v1730638451520!5m2!1sen!2sid"
+      style="border: 0; height: 100%; width: 100%"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+    <!-- <GMap
       ref="gMap"
       :center="{ lat: 52.50026483203335, lng: 13.32467700913042 }"
       :options="{
@@ -29,7 +36,7 @@
           </div>
         </GMapInfoWindow>
       </GMapMarker>
-    </GMap>
+    </GMap> -->
   </div>
 </template>
 
