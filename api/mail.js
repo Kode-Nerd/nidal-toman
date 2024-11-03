@@ -76,6 +76,48 @@ const sendMail = async (msg, info) => {
   }
 }
 
+const sendSMTP = (msg, info) => {
+  return new Promise((resolve, reject) => {
+    // Create a transporter object using the default SMTP transport
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST, // Replace with your SMTP server
+      port: 465, // Replace with your SMTP port
+      secure: true, // true for 465, false for other ports
+      auth: {
+          user: process.env.SMTP_USER, // Replace with your SMTP username
+          pass: process.env.SMTP_PASS // Replace with your SMTP password
+      }
+    });
+  
+    // Setup email data
+    const mailOptions = {
+      from: process.env.MAIL_FROM || '"No Reply" <no-reply@nidal-toman.de>', // Replace with the sender's email address
+      to: process.env.MAIL_TO || 'info@nidal-toman.de', // Replace with the recipient's email address
+      subject: info
+        ? `${info.name} - ${info.email}`
+        : process.env.MAIL_SUBJECT || 'New Contact Form Submission',
+      text: 'New Contact Form Submission',
+      html: msg
+    };
+    if (process.env.MAIL_CC) {
+      mailOptions.cc = process.env.MAIL_CC
+    }
+    if (process.env.MAIL_BCC) {
+      mailOptions.bcc = process.env.MAIL_BCC
+    }
+  
+    // Send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        reject(error);
+      }
+      console.log('Message sent: %s', info.messageId);
+      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+      resolve(info)
+    });
+  })
+}
+
 const sendMailgun = (msg, info) => {
   return new Promise((resolve, reject) => {
     const DOMAIN = process.env.MAILGUN_DOMAIN
@@ -142,7 +184,7 @@ app.post('/', async (req, res) => {
   `
 
   try {
-    const info = await sendMailgun(msg, { name, email })
+    const info = await sendSMTP(msg, { name, email })
     console.log(info)
     res.send('Mail sent!')
   } catch (err) {
