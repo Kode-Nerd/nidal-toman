@@ -259,8 +259,8 @@ export default {
       }
 
       this.sendingEmail = true
-      const origin = window.location.origin
-      // const tmpOrigin = 'https://nidal-toman.herokuapp.com'
+      // const origin = window.location.origin
+      const origin = 'https://scrawny-wasp-ramdhon-0d820f07.koyeb.app'
       const url = new URL('/api/mail', origin)
 
       this.$axios
